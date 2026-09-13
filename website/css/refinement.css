@@ -1010,60 +1010,6 @@ body:has(#screen-puzzle.active, #libraryScreen.active, #breinkrakersScreen.activ
 .home-daily-copy { margin-top: 46px; }
 .home-equation { margin: 26px 0 30px; }
 
-.home-equation button.home-category-icon {
-  width: 48px;
-  height: 48px;
-  display: grid;
-  place-items: center;
-  padding: 0;
-  overflow: hidden;
-  position: relative;
-  border: 1px solid rgba(255, 255, 255, .22);
-  border-radius: 10px;
-  background: rgba(255, 255, 255, .07);
-  color: #fff;
-  cursor: help;
-  font: 700 20px 'JetBrains Mono', monospace;
-  transition: transform .16s ease, background .16s ease, border-color .16s ease;
-}
-
-.home-equation button.home-category-icon:hover,
-.home-equation button.home-category-icon:focus-visible {
-  transform: translateY(-2px);
-  background: rgba(255, 255, 255, .13);
-  border-color: rgba(255, 255, 255, .48);
-}
-
-.home-equation button.home-category-icon.result {
-  color: var(--accent);
-  border-color: rgba(255, 216, 74, .58);
-  background: rgba(255, 216, 74, .10);
-}
-
-.home-equation-hint {
-  position: absolute;
-  left: 0;
-  top: calc(100% + 7px);
-  width: max-content !important;
-  max-width: min(280px, 80vw);
-  height: auto !important;
-  padding: 5px 9px !important;
-  border: 1px solid rgba(255, 255, 255, .18) !important;
-  border-radius: 7px !important;
-  background: #252B67 !important;
-  color: #F4F5FF !important;
-  opacity: 0;
-  transform: translateY(-3px);
-  pointer-events: none;
-  font: 600 11px/1.35 'Space Grotesk', sans-serif !important;
-  transition: opacity .14s ease, transform .14s ease;
-}
-
-.home-equation-hint.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .home-quick-card {
   overflow: hidden;
   isolation: isolate;
@@ -1132,7 +1078,6 @@ body:has(#screen-puzzle.active, #libraryScreen.active, #breinkrakersScreen.activ
   .home-daily-copy { margin-top: 32px; }
   .home-daily-card .hero-headline { font-size: 39px; }
   .home-equation { margin: 20px 0 25px; }
-  .home-equation button.home-category-icon { width: 40px; height: 40px; border-radius: 8px; }
   .home-quick-actions { grid-auto-rows: 136px; }
   .home-quick-card { min-height: 136px; padding: 17px 15px; }
   .home-quick-card strong { margin-top: 24px; font-size: 17px; }
