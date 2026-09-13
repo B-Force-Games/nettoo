@@ -704,6 +704,24 @@
     motion.addEventListener('change', finish);
   }
 
+  let homeCategorieTimer = null;
+
+  function toonHomeCategorie(naam, tijdelijk = false) {
+    const hint = document.getElementById('homeCategoryHint');
+    if (!hint) return;
+    clearTimeout(homeCategorieTimer);
+    hint.textContent = naam;
+    hint.classList.add('show');
+    if (tijdelijk) {
+      homeCategorieTimer = setTimeout(() => hint.classList.remove('show'), 2200);
+    }
+  }
+
+  function verbergHomeCategorie() {
+    clearTimeout(homeCategorieTimer);
+    document.getElementById('homeCategoryHint')?.classList.remove('show');
+  }
+
   function renderHomeDailyPreview(puzzle = DAILY_PUZZLES[0] || PUZZLE_DATA) {
     if (!puzzle) return;
     const categories = categorieënVoor(puzzle);
@@ -734,6 +752,11 @@
       renderDailyCategoryReel(icon, category, index, String(puzzle.date || puzzle.id || puzzle.number || 'daily'));
       icon.title = translatedCategories[index] || category;
       icon.setAttribute('aria-label', translatedCategories[index] || category);
+      icon.onmouseenter = () => toonHomeCategorie(translatedCategories[index] || category);
+      icon.onmouseleave = verbergHomeCategorie;
+      icon.onfocus = () => toonHomeCategorie(translatedCategories[index] || category);
+      icon.onblur = verbergHomeCategorie;
+      icon.onclick = () => toonHomeCategorie(translatedCategories[index] || category, true);
     });
   }
 
