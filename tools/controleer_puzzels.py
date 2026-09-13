@@ -14,8 +14,9 @@ Wat er wordt getoetst:
   antwoord     komt het antwoord overeen met de vragenbank
   uniek        komt elke vraag hoogstens een keer voor binnen de set
   categorie    drie verschillende categorieen per puzzel
-  kleur        drie verschillende kleurfamilies
-  icoon        drie verschillende iconen
+  eenheid      geen zichtbare eenheid twee keer in dezelfde puzzel
+  kleur        rapporteert gedeelde kleurfamilies als visuele waarschuwing
+  icoon        rapporteert gedeelde iconen als visuele waarschuwing
   fotos        hoogstens twee fotovragen per puzzel
   fotoveld     draagt een puzzel met fotovragen ook echt een foto
   bewerking    zijn de vier bewerkingen ongeveer gelijk verdeeld
@@ -36,6 +37,10 @@ if hasattr(sys.stdout, 'reconfigure'):
 WORTEL = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(WORTEL, 'data')
 REVIEW = os.path.join(WORTEL, 'vragen', 'vragen_review_compleet.xlsx')
+if WORTEL not in sys.path:
+    sys.path.insert(0, WORTEL)
+
+from puzzels.maak_unieke_puzzels import vraag_eenheid
 
 
 def laad(naam):
@@ -64,6 +69,7 @@ def rekent(op, a, b, c):
 def main():
     fr = laad('netto_frontend_puzzles.js')
     rp = laad('netto_race_pool.js')
+    bk = laad('netto_breinkrakers.js')
     fotos = laad('netto_fotos.js')
 
     families = dict(re.findall(r'--categorie-([a-z0-9-]+):\s*var\(--familie-([a-z]+)\)',
@@ -108,10 +114,14 @@ def main():
             cats = p.get('categories') or []
             if len(set(cats)) < 3:
                 fouten['dubbele categorie'] += 1
+            eenheden = [vraag_eenheid(label) for label in labels]
+            eenheden = [eenheid for eenheid in eenheden if eenheid]
+            if len(set(eenheden)) < len(eenheden):
+                fouten['dubbele eenheid'] += 1
             if len({families.get(sleutel(x)) for x in cats}) < 3:
-                fouten['dubbele kleur'] += 1
+                waarschuwingen['gedeelde kleurfamilie'] += 1
             if len({iconen.get(x, 'idea') for x in cats}) < 3:
-                fouten['dubbel icoon'] += 1
+                waarschuwingen['gedeeld icoon'] += 1
             n = sum(1 for l in labels if l in fotos)
             if n > 2:
                 # Waarschuwing, geen fout. MAX_FOTOS_PER_PUZZEL is een voorkeur
@@ -151,6 +161,49 @@ def main():
         for k, v in waarschuwingen.items():
             print(f'    let op: {k}: {v} (geen fout, zie de toelichting in dit bestand)')
         print()
+
+    bk_fouten = Counter()
+    bk_gebruik = Counter()
+    for p in bk:
+        vragen = [p[f'q{i}'] for i in (1, 2, 3, 4)]
+        labels = [v['label'] for v in vragen]
+        antwoorden = [v['answer'] for v in vragen]
+        categorieen = [v['category'] for v in vragen]
+        eenheden = [vraag_eenheid(label) for label in labels]
+        eenheden = [eenheid for eenheid in eenheden if eenheid]
+        if len(set(labels)) < 4:
+            bk_fouten['dubbele vraag binnen puzzel'] += 1
+        if len(set(categorieen)) < 4:
+            bk_fouten['dubbele categorie'] += 1
+        if len(set(eenheden)) < len(eenheden):
+            bk_fouten['dubbele eenheid'] += 1
+        for label, antwoord in zip(labels, antwoorden):
+            bk_gebruik[label] += 1
+            if label in bank and bank[label] != antwoord:
+                bk_fouten['antwoord'] += 1
+        a, b, c, d = antwoorden
+        if (p['op1'] == '÷' and (not b or a % b)):
+            bk_fouten['niet-exacte deling'] += 1
+            continue
+        tussen = a * b if p['op1'] == '×' else (a // b if p['op1'] == '÷'
+                 else a + b if p['op1'] == '+' else a - b)
+        if p['op2'] == '÷' and (not c or tussen % c):
+            bk_fouten['niet-exacte deling'] += 1
+            continue
+        uitkomst = tussen * c if p['op2'] == '×' else (tussen // c if p['op2'] == '÷'
+                    else tussen + c if p['op2'] == '+' else tussen - c)
+        if uitkomst != d:
+            bk_fouten['som'] += 1
+    if max(bk_gebruik.values(), default=0) > 4:
+        bk_fouten['vraag vaker dan vier keer'] += 1
+    print(f'=== breinkrakers: {len(bk)} puzzels')
+    if bk_fouten:
+        alles_goed = False
+        for k, v in bk_fouten.items():
+            print(f'    FOUT {k}: {v}')
+    else:
+        print('    alle voorwaarden gehaald')
+    print()
 
     # Delen daily en bibliotheek echt een set?
     dl = {p[f'q{i}_label'] for p in fr['daily'] for i in (1, 2, 3)}

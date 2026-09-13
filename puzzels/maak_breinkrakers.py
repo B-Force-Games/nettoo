@@ -11,8 +11,9 @@ keer/deel- en één plus/min-bewerking, in wisselende volgorde:
     AM   a + b × c = d   hier niet, en dat is de bedoeling: de speler moet de
                          som echt lezen in plaats van er een keersom in te zien
 
-Alle vier de vragen komen uit de geverifieerde vragenbank, zijn binnen één
-puzzel altijd verschillend en de formule klopt exact.
+Alle vier de vragen komen uit de geverifieerde vragenbank, hebben binnen één
+puzzel verschillende categorieën en zichtbare eenheden, en de formule klopt
+exact.
 
 Output:
   1. breinkrakers.xlsx          — 100.000 puzzels (tabblad Breinkrakers + Overzicht)
@@ -23,12 +24,19 @@ from __future__ import annotations
 
 import json
 import math
+import argparse
 import zipfile
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 
 import pandas as pd
+
+try:
+    from puzzels.maak_unieke_puzzels import vraag_eenheid
+except ModuleNotFoundError:
+    # Bij rechtstreeks draaien staat de map puzzels/ zelf op sys.path.
+    from maak_unieke_puzzels import vraag_eenheid
 
 # Dezelfde bron als de gewone puzzels: elke vraag hierin heeft een
 # gecontroleerde bron. De oude bank had die kolommen niet.
@@ -69,6 +77,7 @@ class Vraag:
     text: str
     category: str
     answer: int
+    unit: str | None
 
 
 def load_questions(path: Path) -> list[Vraag]:
@@ -82,7 +91,9 @@ def load_questions(path: Path) -> list[Vraag]:
         # 0 en 1 leveren lege bewerkingen op (b × 1 = b), dus die doen niet mee.
         if antwoord < 2:
             continue
-        vragen.append(Vraag(str(rij["Vraag NL"]), str(rij["Categorie"]), antwoord))
+        tekst = str(rij["Vraag NL"])
+        vragen.append(Vraag(tekst, str(rij["Categorie"]), antwoord,
+                            vraag_eenheid(tekst)))
     return vragen
 
 
@@ -274,6 +285,10 @@ def write_xlsx(path: Path, rows: list, stats: dict) -> None:
 # ------------------------------------------------------------------ main
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--alleen-frontend', action='store_true',
+                        help='laat het grote controlewerkboek ongemoeid')
+    args = parser.parse_args()
     print(f"Inlezen: {INPUT}")
     questions = load_questions(INPUT)
     vals_all = [q.answer for q in questions]
@@ -391,7 +406,7 @@ def main() -> None:
                 a, b, op1 = pl[combo_index // len(tweede)]
                 c, d, op2 = tweede[combo_index % len(tweede)]
                 combo_key = (a, op1, b, op2, c)
-                ids = assign_ids(a, b, c, d, buckets, take_id)
+                ids = assign_ids(a, b, c, d, buckets, take_id, questions)
                 if ids is None:
                     continue
                 if ids == prev_ids.get(combo_key):
@@ -454,8 +469,9 @@ def main() -> None:
         "Hard": levels["Hard"],
         "Extremely Hard": levels["Extremely Hard"],
     }
-    print(f"Schrijven: {OUTPUT_XLSX} ...")
-    write_xlsx(OUTPUT_XLSX, xlsx_rows, stats)
+    if not args.alleen_frontend:
+        print(f"Schrijven: {OUTPUT_XLSX} ...")
+        write_xlsx(OUTPUT_XLSX, xlsx_rows, stats)
 
     # 3. Frontend-subset: 200 speelpuzzels met een bewuste niveau-mix. Beide
     #    families komen aan bod, want een lijst met alleen "a × b + c" is
@@ -546,27 +562,43 @@ def main() -> None:
         + ";\n",
         encoding="utf-8",
     )
-    size_mb = OUTPUT_XLSX.stat().st_size / (1024 * 1024)
-    print(f"Klaar: {OUTPUT_XLSX} ({size_mb:.1f} MB, {len(rows):,} puzzels) "
-          f"+ {OUTPUT_JS} ({len(puzzles)} speelpuzzels)")
+    if args.alleen_frontend:
+        print(f"Klaar: {OUTPUT_JS} ({len(puzzles)} speelpuzzels); "
+              f"{OUTPUT_XLSX} bewust niet gewijzigd")
+    else:
+        size_mb = OUTPUT_XLSX.stat().st_size / (1024 * 1024)
+        print(f"Klaar: {OUTPUT_XLSX} ({size_mb:.1f} MB, {len(rows):,} puzzels) "
+              f"+ {OUTPUT_JS} ({len(puzzles)} speelpuzzels)")
 
 
-def assign_ids(a, b, c, d, buckets, take_id):
-    used: set[int] = set()
-    ids = []
-    for value in (a, b, c, d):
-        qid = take_id(value, used)
-        if qid is None:
-            # fallback: zoek welke id dan ook die nog niet gebruikt is
-            for qid2 in buckets[value]:
-                if qid2 not in used:
-                    qid = qid2
-                    break
+def assign_ids(a, b, c, d, buckets, take_id, questions):
+    """Koppel vier waarden aan vier inhoudelijk verschillende vragen."""
+    waarden = (a, b, c, d)
+
+    def zoek(positie, gebruikt, categorieen, eenheden):
+        if positie == len(waarden):
+            return ()
+        geweigerd = set(gebruikt)
+        while True:
+            qid = take_id(waarden[positie], geweigerd)
             if qid is None:
                 return None
-        ids.append(qid)
-        used.add(qid)
-    return tuple(ids)
+            geweigerd.add(qid)
+            vraag = questions[qid]
+            if vraag.category in categorieen:
+                continue
+            if vraag.unit and vraag.unit in eenheden:
+                continue
+            vervolg = zoek(
+                positie + 1,
+                gebruikt | {qid},
+                categorieen | {vraag.category},
+                eenheden | ({vraag.unit} if vraag.unit else set()),
+            )
+            if vervolg is not None:
+                return (qid,) + vervolg
+
+    return zoek(0, set(), set(), set())
 
 
 if __name__ == "__main__":

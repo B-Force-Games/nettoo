@@ -72,7 +72,10 @@ PERSOON = {'body', 'bodies', 'child', 'children', 'girl', 'boy', 'man', 'men',
            'woman', 'women', 'soldier', 'soldiers', 'victim', 'victims', 'baby'}
 
 
-def geschikt_beeld(titel):
+def geschikt_beeld(titel, geblokkeerde_bestanden=()):
+    bestandsnaam = str(titel or '').removeprefix('File:')
+    if bestandsnaam in geblokkeerde_bestanden:
+        return False
     losse = set(re.findall(r'[a-z]+', str(titel or '').lower()))
     if losse & ONGESCHIKT:
         return False
@@ -126,7 +129,9 @@ def main():
     # foto gewoon staan — de minaretten van de Taj Mahal overleefden zo twee
     # ronden. De vraagtekst is de sleutel waarop de frontend zoekt, dus dat is
     # de enige sleutel die nergens tussendoor glipt.
-    geblokkeerd = set(lees(os.path.join(FOTOS, 'geblokkeerd.json')).get('vragen', []))
+    blokkades = lees(os.path.join(FOTOS, 'geblokkeerd.json'))
+    geblokkeerd = set(blokkades.get('vragen', []))
+    geblokkeerde_bestanden = set(blokkades.get('bestanden', []))
 
     # Handmatige keuzes, als het blad al is ingevuld.
     keuzes = {}
@@ -156,7 +161,7 @@ def main():
         # De kandidatenlijst zoals die in het keuzeblad stond: hoofdafbeelding
         # vooraan, daarna wat de oudere ronde vond.
         beste = (hoofd.get(str(nr), {}).get('kandidaten') or [None])[0]
-        if beste and not geschikt_beeld(beste.get('titel', '')):
+        if beste and not geschikt_beeld(beste.get('titel', ''), geblokkeerde_bestanden):
             beste = None
         bron_van_beste = 'hoofdafbeelding' if beste else None
         # Staat het antwoord niet op een Wikipedia-artikel, dan is er geen
@@ -170,16 +175,18 @@ def main():
         # weinig om vanzelf toe te passen, dus deze kandidaten wachten op een
         # keuze in het werkblad. Hetzelfde geldt voor de oude zoekronde.
         gevonden = (onderwerp.get(str(nr), {}).get('kandidaten') or [None])[0]
-        if gevonden and not geschikt_beeld(gevonden.get('titel', '')):
+        if gevonden and not geschikt_beeld(gevonden.get('titel', ''), geblokkeerde_bestanden):
             gevonden = None
         rest = [k for k in ([gevonden] if gevonden else []) +
                 [k for k in (oud.get(str(nr), {}).get('kandidaten') or [])
                  if past_bij_onderwerp(k.get('titel', ''), r['Bron (geverifieerd)'])
-                 and geschikt_beeld(k.get('titel', ''))]
+                 and geschikt_beeld(k.get('titel', ''), geblokkeerde_bestanden)]
                 if not beste or k.get('titel') != beste.get('titel')]
         lijst = ([beste] if beste else []) + rest[:2]
 
         eigen = handmatig.get(str(nr))
+        if eigen and not geschikt_beeld(eigen.get('titel', ''), geblokkeerde_bestanden):
+            eigen = None
         if eigen:
             telling['handmatig'] += 1
             uit[vraag] = {'url': eigen['url'], 'pagina': eigen['pagina'],

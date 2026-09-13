@@ -64,6 +64,81 @@ OPERATORS = ('+', '−', '×', '÷')
 OPERATOR_GEWICHT = {'+': 0.0, '−': 8.0, '×': 14.0, '÷': 18.0}
 NIVEAUS = ('easy', 'intermediate', 'hard', 'extremely-hard')
 
+# Dit is dezelfde vraagontleding als de frontend gebruikt. Een puzzel met twee
+# keer "jaar" of "landen" voelt ook met verschillende onderwerpen herhaald.
+# Daarom is de zichtbare eenheid, niet alleen de categorie, een harde eis bij
+# het combineren. Context zoals "bezoekers per jaar" telt bewust niet als jaar.
+VRAAG_EENHEDEN = (
+    (r'vierkante kilometers?|km[²2]', 'km²'),
+    (r'vierkante meters?|m[²2]', 'm²'),
+    (r'vierkante centimeters?|cm[²2]', 'cm²'),
+    (r'kubieke meters?|m[³3]', 'm³'),
+    (r'kubieke centimeters?|cm[³3]', 'cm³'),
+    (r'kilometers? per uur|km/[uh]', 'km/u'),
+    (r'kilometers? per seconde|km/s', 'km/s'),
+    (r'meters? per seconde|m/s', 'm/s'),
+    (r'graden? celsius|°c', '°C'),
+    (r'graden? fahrenheit|°f', '°F'),
+    (r'millimeters?|mm', 'mm'), (r'centimeters?|cm', 'cm'),
+    (r'decimeters?|dm', 'dm'), (r'kilometers?|km', 'km'),
+    (r'meters?|m', 'm'), (r'milligram(?:men)?|mg', 'mg'),
+    (r'kilogram(?:men)?|kg', 'kg'), (r'gram(?:men)?|g', 'g'),
+    (r'ton(?:nen)?', 'ton'), (r'milliliters?|ml', 'ml'),
+    (r'centiliters?|cl', 'cl'), (r'liters?|l', 'liter'),
+    (r'hectares?|ha', 'ha'), (r'procent(?:en)?', '%'),
+    (r'graden?', 'graden'), (r'seconden?', 'sec'),
+    (r'minu(?:ut|ten)', 'min'), (r'u(?:ur|ren)', 'uur'),
+    (r'da(?:g|gen)', 'dagen'), (r'we(?:ek|ken)', 'weken'),
+    (r'maanden?', 'maanden'), (r'ja(?:ar|ren)', 'jaar'),
+    (r'eeuw(?:en)?', 'eeuwen'), (r"euro(?:s|’s|'s)?", 'euro'),
+    (r'dollars?', 'dollar'),
+)
+TEL_OVERSLAAN = {
+    'verschillende', 'officiele', 'officiële', 'individuele', 'erkende',
+    'bekende', 'gepubliceerde', 'complete', 'standaard', 'totale', 'unieke',
+    'actieve', 'echte', 'grote', 'kleine', 'afzonderlijke', 'belangrijkste',
+    'centrale', 'natuurlijke', 'zware', 'gewone', 'huidige', 'oorspronkelijke',
+}
+TEL_GEEN = {'van', 'de', 'het', 'een', 'er', 'is', 'zijn', 'in', 'op', 'procent'}
+TEL_SCHAAL = {
+    'duizend': '× 1.000', 'miljoen': '× 1.000.000',
+    'miljard': '× 1.000.000.000', 'biljoen': '× 1.000.000.000.000',
+}
+
+
+def vraag_eenheid(vraag):
+    """Leid de eenheid af die de speler naast het invoerveld ziet."""
+    tekst = ' '.join(str(vraag or '').lower().split())
+    schaal = r'(?:(duizend|miljoen|miljard) )?'
+    for begin in (r'\bin\s+', r'\bhoeveel\s+'):
+        for patroon, label in VRAAG_EENHEDEN:
+            treffer = re.search(begin + schaal + r'(?:' + patroon + r')(?![\w/])',
+                                tekst)
+            if treffer:
+                return ((treffer.group(1) + ' ') if treffer.group(1) else '') + label
+    if re.search(r'\bwelk percentage\b', tekst):
+        return '%'
+    if re.match(r'^in welk jaar\b', tekst):
+        return 'jaar'
+
+    treffer = re.search(r'\bhoeveel\s+(.+)', tekst)
+    if not treffer:
+        return None
+    woorden = re.findall(r"[^\W\d_']+(?:'[^\W\d_]+)?", treffer.group(1), re.UNICODE)
+    index = 0
+    voorvoegsel = ''
+    if woorden and woorden[0] in TEL_SCHAAL:
+        voorvoegsel = TEL_SCHAAL[woorden[0]] + ' '
+        index = 1
+    while index < len(woorden) and woorden[index] in TEL_OVERSLAAN:
+        index += 1
+    woord = woorden[index] if index < len(woorden) else None
+    if not woord or woord in TEL_GEEN:
+        return voorvoegsel.strip() or None
+    if len(woord) > 14:
+        return voorvoegsel.strip() or None
+    return voorvoegsel + woord
+
 
 def kleurfamilies():
     """Leest uit de stylesheet welke categorie welke kleurfamilie krijgt.
@@ -161,7 +236,8 @@ def lees_vragen():
             continue
         vragen.append({'nr': int(r['Nr']), 'antwoord': a,
                        'categorie': str(r['Categorie']),
-                       'tekst': str(r['Vraag NL'])})
+                       'tekst': str(r['Vraag NL']),
+                       'eenheid': vraag_eenheid(r['Vraag NL'])})
     return vragen
 
 
@@ -187,15 +263,10 @@ def bouw(vragen, doel_aantal, seed, quota=10**9):
     families = kleurfamilies()
     icoon = iconen()
     for q in vragen:
-        # De kleur is bepalender dan de categorie: drie verschillende
-        # categorieen leverden bij 28 procent van de puzzels toch twee gelijke
-        # tinten op, omdat 29 categorieen 8 families delen. Twee kaarten met
-        # dezelfde kleur naast elkaar ziet er slordig uit, dus de eis verschuift
-        # van categorie naar familie. Dat is meteen strenger: verschillende
-        # families betekent altijd ook verschillende categorieen.
-        # Kleur en icoon moeten allebei verschillen. Ze overlappen grotendeels,
-        # maar niet helemaal: Records en Economie hebben verschillende kleuren
-        # en hetzelfde icoon.
+        # Kleur en icoon blijven beschikbaar voor de rapportage. Voor het
+        # combineren is de inhoudelijke categorie leidend: twee verschillende
+        # categorieen mogen bewust dezelfde kleurfamilie delen. Dat voorkomt
+        # dat een visuele groepering onnodig tientallen goede puzzels kost.
         q['familie'] = (families.get(categoriesleutel(q['categorie']), q['categorie']),
                         icoon.get(q['categorie'], 'idea'))
     met_foto = fotos_per_vraag()
@@ -246,8 +317,8 @@ def bouw(vragen, doel_aantal, seed, quota=10**9):
         lijst.sort(key=lambda t: -min(beschikbaar[t[0]], beschikbaar[t[1]],
                                       beschikbaar[t[2]]))
 
-    def kies(waarde, verboden_cats, gebruikt, fotos_al):
-        """Pak een vrije vraag met deze waarde en een nog ongebruikte kleur.
+    def opties_voor(waarde, verboden_cats, verboden_eenheden, gebruikt, fotos_al):
+        """Geef vrije vragen met verse visuele kenmerken en een verse eenheid.
 
         Bij gelijke geschiktheid wint de vraag die de fotoverdeling het beste
         dient: zolang de puzzel er nog geen heeft telt een foto als pluspunt, en
@@ -261,14 +332,44 @@ def bouw(vragen, doel_aantal, seed, quota=10**9):
         """
         opties = [i for i in per_waarde[waarde]
                   if i in vrij and i not in gebruikt
-                  and not (set(vragen[i]['familie']) & verboden_cats)]
+                  and vragen[i]['categorie'] not in verboden_cats
+                  and (not vragen[i]['eenheid']
+                       or vragen[i]['eenheid'] not in verboden_eenheden)]
         if fotos_al >= MAX_FOTOS_PER_PUZZEL:
             # Hard: liever een puzzel minder dan drie foto's op een hoop. De
             # uitwijk "neem dan toch maar een fotovraag" liet er dertien door.
             opties = [i for i in opties if not vragen[i]['foto']]
         elif fotos_al == 0:
             opties.sort(key=lambda i: not vragen[i]['foto'])
-        return opties[0] if opties else None
+        return opties
+
+    def kies_combinatie(waarden):
+        """Zoek binnen één rekendrietal naar een geldige vragencombinatie.
+
+        De oude versie koos voor iedere antwoordwaarde meteen de eerste vraag.
+        Als die toevallig dezelfde eenheid had als een latere vraag, viel het
+        hele rekendrietal af terwijl een tweede kandidaat wel paste. Met drie
+        posities is volledige backtracking klein genoeg en voorkomt het dat de
+        nieuwe eenhedenregel tientallen onnodige puzzels kost.
+        """
+        def zoek(positie, gebruikt, cats, eenheden, fotos):
+            if positie == len(waarden):
+                return []
+            for index in opties_voor(waarden[positie], cats, eenheden,
+                                     gebruikt, fotos):
+                vraag = vragen[index]
+                vervolg = zoek(
+                    positie + 1,
+                    gebruikt | {index},
+                    cats | {vraag['categorie']},
+                    eenheden | ({vraag['eenheid']} if vraag['eenheid'] else set()),
+                    fotos + (1 if vraag['foto'] else 0),
+                )
+                if vervolg is not None:
+                    return [index] + vervolg
+            return None
+
+        return zoek(0, set(), set(), set(), 0)
 
     puzzels = []
     volgorde = [(op, n) for n in NIVEAUS for op in OPERATORS]
@@ -294,16 +395,7 @@ def bouw(vragen, doel_aantal, seed, quota=10**9):
                 if min(beschikbaar[a], beschikbaar[b], beschikbaar[c]) < 1:
                     lijst.pop(idx)
                     continue
-                gebruikt, cats, keuze, fotos = set(), set(), [], 0
-                for w in (a, b, c):
-                    i = kies(w, cats, gebruikt, fotos)
-                    if i is None:
-                        keuze = None
-                        break
-                    gebruikt.add(i)
-                    cats.update(vragen[i]['familie'])
-                    fotos += 1 if vragen[i]['foto'] else 0
-                    keuze.append(i)
+                keuze = kies_combinatie((a, b, c))
                 if keuze is None:
                     lijst.pop(idx)
                     continue
@@ -380,9 +472,13 @@ def main():
                        if len({q['familie'][0] for q in p['vragen']}) < 3)
     dubbel_icoon = sum(1 for p in puzzels
                        if len({q['familie'][1] for q in p['vragen']}) < 3)
+    dubbel_eenheid = sum(1 for p in puzzels
+                         if len([q['eenheid'] for q in p['vragen'] if q['eenheid']])
+                         != len({q['eenheid'] for q in p['vragen'] if q['eenheid']}))
     print(f'puzzels met een dubbele categorie: {dubbel_cat}')
     print(f'puzzels met een dubbele kleur    : {dubbel_kleur}')
     print(f'puzzels met een dubbel icoon     : {dubbel_icoon}')
+    print(f'puzzels met een dubbele eenheid  : {dubbel_eenheid}')
     fv = Counter(sum(1 for q in p['vragen'] if q['foto']) for p in puzzels)
     met = len(puzzels) - fv[0]
     print(f'puzzels met minstens een foto    : {met} van {len(puzzels)} '
@@ -391,6 +487,7 @@ def main():
 
     alle = [q['nr'] for p in puzzels for q in p['vragen']]
     assert len(alle) == len(set(alle)), 'een vraag komt twee keer voor'
+    assert dubbel_cat == dubbel_eenheid == 0
     print('controle: elke vraag hoogstens een keer — in orde')
 
     if not args.schrijf:

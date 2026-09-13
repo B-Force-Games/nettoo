@@ -1,6 +1,9 @@
 {
  "_toelichting": "Vraagteksten waarvan de foto is afgekeurd bij de visuele controle van alle contactvellen (tools/maak_contactvellen.py). Deze lijst wint van elke andere bron, ook van handmatige_fotos.json - anders komt een afgekeurde foto terug zodra de vraag niet in het keuzeblad staat.",
  "_redenen": "Meestal een van drie: het antwoord is op de foto te tellen (vlagsterren, honkbaldiagram, eierdoos), de foto toont iets anders dan de vraag (een 787 bij een 747, een Kever bij de eerste elektrische auto), of het beeld leidt af met een verkeerd getal.",
+ "bestanden": [
+  "Human.svg"
+ ],
  "vragen": [
   "Door hoeveel landen lopen de Alpen volgens de Alpine Convention?",
   "Hoe lang waren de langste vingernagels aan één hand in meters?",
