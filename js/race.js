@@ -263,6 +263,7 @@
 
   function openSettings() {
     closeMenu();
+    updateConfettiToggle();
     updateAutoCalcToggle();
     if (typeof werkLeaderboardToggleBij === 'function') werkLeaderboardToggleBij();
     applyTheme();
@@ -558,7 +559,7 @@
     // goed; de kleine marge vangt alleen afrondingsruis van het delen door drie.
     const grens = raceState.tolerantie;
     const raak = factor <= grens + 0.0001;
-    if (raak) launchConfetti();
+    if (exact) { launchConfetti(); showExactRaceNotice(); }
     raceState.results.push({ puzzle: p, guesses, factor, exact, raak });
     raceState.correct += raak ? 1 : 0;
     raceState.streak = raak ? raceState.streak + 1 : 0;

@@ -1,4 +1,6 @@
 /* Netto refinement layer — shared editorial game system */
+.race-exact-notice { flex-direction: column; align-items: flex-start; gap: 10px; pointer-events: auto; }
+.race-exact-notice button { color: inherit; background: transparent; border: 1px solid currentColor; border-radius: 6px; padding: 8px 12px; font: inherit; cursor: pointer; }
 .daily-photo[hidden] { display: none; }
 /* Dezelfde polaroid, met de verplichte bron direct bij het beeld. */
 /* De foto zweeft rechts en de vraagtekst loopt ernaast, zoals een afbeelding in

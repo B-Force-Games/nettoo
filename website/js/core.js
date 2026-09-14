@@ -1591,7 +1591,41 @@
   }
 
   let confettiCleanupTimer = null;
+  function updateConfettiToggle() {
+    document.getElementById('confettiToggle')?.setAttribute('aria-checked', String(localStorage.getItem('netto_confetti') !== 'off'));
+  }
+  function toggleConfetti() {
+    const enabled = localStorage.getItem('netto_confetti') === 'off';
+    localStorage.setItem('netto_confetti', enabled ? 'on' : 'off');
+    updateConfettiToggle();
+    if (!enabled) {
+      clearTimeout(confettiCleanupTimer);
+      const layer = document.getElementById('confettiLayer');
+      if (layer) { layer.hidden = true; layer.replaceChildren(); }
+    }
+  }
+  function showExactRaceNotice() {
+    document.getElementById('raceExactNotice')?.remove();
+    const notice = document.createElement('div');
+    notice.id = 'raceExactNotice';
+    notice.className = 'toast race-exact-notice';
+    const message = document.createElement('span');
+    message.setAttribute('role', 'status');
+    message.textContent = statsCopy('Je had alle drie de antwoorden exact goed!', 'You got all three answers exactly right!');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = statsCopy('Confetti uitschakelen', 'Disable confetti');
+    button.onclick = () => {
+      notice.remove();
+      openSettings();
+      document.getElementById('confettiToggle')?.focus();
+    };
+    notice.append(message, button);
+    document.getElementById('toastContainer').append(notice);
+    setTimeout(() => notice.remove(), 8000);
+  }
   function launchConfetti() {
+    if (localStorage.getItem('netto_confetti') === 'off' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const layer = document.getElementById('confettiLayer');
     if (!layer) return;
     if (confettiCleanupTimer) clearTimeout(confettiCleanupTimer);
@@ -1607,7 +1641,7 @@
       piece.style.setProperty('--left', `${Math.random() * 100}%`);
       piece.style.setProperty('--size', `${7 + Math.random() * 8}px`);
       piece.style.setProperty('--color', colors[i % colors.length]);
-      piece.style.setProperty('--duration', `${2.1 + Math.random() * 1.2}s`);
+      piece.style.setProperty('--duration', `${3.2 + Math.random() * 1.2}s`);
       piece.style.setProperty('--delay', `${Math.random() * 0.35}s`);
       piece.style.setProperty('--drift', `${Math.round((Math.random() - 0.5) * 260)}px`);
       piece.style.setProperty('--start-rotation', `${Math.round(Math.random() * 180 - 90)}deg`);
@@ -1619,7 +1653,7 @@
       layer.hidden = true;
       layer.innerHTML = '';
       confettiCleanupTimer = null;
-    }, 3800);
+    }, 5000);
   }
 
   function getActivePuzzleKey() {
