@@ -1456,14 +1456,48 @@
   }
   function exactNumber(value) { return Number.isFinite(value) && Math.abs(value - Math.round(value)) < 1e-9 ? Math.round(value) : value; }
   function setAutoInput(id, value) {
-    const input = document.getElementById(id); if (!input || !Number.isFinite(value)) return;
-    input.value = formatDutchNumber(String(exactNumber(value)).replace('.', ','));
+    const input = document.getElementById(id);
+    if (!input || input.disabled || document.activeElement === input || !Number.isSafeInteger(value) || value < 0) return;
+    input.value = formatDutchNumber(String(value));
     autoCalculatedInputs.add(id); input.dataset.autoCalculated = 'true'; input.classList.add('auto-calculated');
     input.setAttribute('aria-label', 'Automatisch berekend antwoord');
   }
   function clearAutoInput(id) {
     const input = document.getElementById(id); if (!input || !autoCalculatedInputs.has(id)) return;
     input.value = ''; input.placeholder = 'Jouw schatting'; input.dataset.autoCalculated = 'false'; input.classList.remove('auto-calculated'); autoCalculatedInputs.delete(id);
+    input.removeAttribute('aria-label');
+  }
+  // Eén invoerregel voor alle spelmodi, inclusief plakken. Een ongeldig teken
+  // wordt geweigerd, niet stilletjes uit een ander getal weggepoetst.
+  function bindWholeNumberInput(input, update) {
+    let previous = input.value;
+    input.addEventListener('beforeinput', event => {
+      if (event.data && /\D/.test(event.data)) event.preventDefault();
+    });
+    input.addEventListener('input', () => {
+      if (!/^\d*$/.test(input.value)) { input.value = previous; return; }
+      previous = input.value;
+      autoCalculatedInputs.delete(input.id);
+      input.classList.remove('auto-calculated');
+      input.dataset.autoCalculated = 'false';
+      input.removeAttribute('aria-label');
+      update();
+    });
+    input.addEventListener('focus', () => {
+      if (autoCalculatedInputs.has(input.id)) clearAutoInput(input.id);
+      // Groepering weghalen maakt ook een groot automatisch antwoord bewerkbaar.
+      const value = parseFormattedNumber(input.value);
+      if (Number.isSafeInteger(value)) input.value = String(value);
+      previous = input.value;
+    });
+  }
+
+  function validWholeEquation(values, operator) {
+    return values.every(v => Number.isSafeInteger(v) && v > 0)
+      && calculateDailyValue(values[0], values[1], operator) === values[2];
+  }
+  function showEquationNotice() {
+    showNoticeToast(statsCopy('Vul gehele getallen in die samen een kloppende som vormen.', 'Enter whole numbers that form a valid equation.'));
   }
   function calculateDerivedValues(ids, operator) {
     if (!isAutoCalcEnabled()) return;
@@ -1493,23 +1527,7 @@
     const inputs = ids.map(id => document.getElementById(id));
     if (inputs.some(input => !input)) return;
     inputs.forEach(input => {
-      input.addEventListener('focus', () => {
-        input.dataset.editing = 'true';
-        // Dit geldt ook voor Daily: bij focus krijgt de speler het automatische veld terug.
-        if (autoCalculatedInputs.has(input.id)) clearAutoInput(input.id);
-      });
-      input.addEventListener('blur', () => {
-        input.dataset.editing = 'false';
-        if (!input.value.trim()) calculateDerivedValues(ids, operator);
-      });
-      input.addEventListener('input', () => {
-        autoCalculatedInputs.delete(input.id);
-        input.dataset.autoCalculated = 'false';
-        input.placeholder = input.value.trim() ? '' : 'Jouw schatting';
-        input.classList.remove('auto-calculated');
-        if (!input.value.trim()) input.placeholder = 'Jouw schatting';
-        calculateDerivedValues(ids, operator);
-      });
+      bindWholeNumberInput(input, () => calculateDerivedValues(ids, operator));
     });
     calculateDerivedValues(ids, operator);
   }
@@ -1517,6 +1535,7 @@
   function initInputs() {
     ['g1', 'g2', 'g3'].forEach((id, index, arr) => {
       const input = document.getElementById(id);
+      bindWholeNumberInput(input, updateDailyDerivedInput);
       
       // Detecteer letters bij keydown
       input.addEventListener('keydown', (e) => {
@@ -1535,7 +1554,7 @@
         if (allowed.includes(e.key) || e.ctrlKey || e.metaKey) return;
 
         // Als er een letter of ongeldig teken wordt ingedrukt
-        if (!/[\d,]/.test(e.key)) {
+        if (!/\d/.test(e.key)) {
           e.preventDefault();
           input.classList.add('shake');
           setTimeout(() => input.classList.remove('shake'), 400);
@@ -1544,23 +1563,6 @@
       });
 
       // Formatteer bij invoer
-      input.addEventListener('input', (e) => {
-        let val = input.value;
-        if (/[a-zA-Z]/.test(val)) {
-          showSarcasticToast();
-        }
-        if (val.trim() === '') {
-          autoCalculatedInputs.delete(id);
-          input.dataset.autoCalculated = 'false';
-          input.placeholder = 'Jouw schatting';
-          input.classList.remove('auto-calculated');
-          updateDailyDerivedInput();
-          return;
-        }
-        input.value = formatDutchNumber(val);
-        autoCalculatedInputs.delete(id); input.dataset.autoCalculated = 'false'; input.classList.remove('auto-calculated');
-        updateDailyDerivedInput();
-      });
     });
   }
 
@@ -2048,7 +2050,7 @@
       return;
     }
 
-    if (!dailyEquationMatches(g1,g2,g3,PUZZLE_DATA.operator || '×')) {
+    if (!validWholeEquation([g1,g2,g3],PUZZLE_DATA.operator || '×')) {
       const error = document.getElementById('dailyEquationError');
       const message = statsCopy('Je schattingen vormen nog geen kloppende som. Pas een antwoord aan voordat je inlevert.', 'Your estimates do not form a valid equation yet. Adjust an answer before submitting.');
       if (error) { error.textContent = message; error.hidden = false; }

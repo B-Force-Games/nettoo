@@ -90,19 +90,10 @@
     if (inputs.some(input => !input)) return;
     const guesses = inputs.map(input => parseFormattedNumber(input.value));
     if (guesses.some(v => !Number.isFinite(v) || v <= 0)) {
-      if (auto) {
-        // Timer expired with incomplete input: fill blanks with 1 so scoring
-        // still runs (max deviation), and show feedback instead of blocking.
-        for (let i = 0; i < 3; i++) {
-          const inp = document.getElementById(`${prefix}Answer${i}`);
-          if (inp && (!Number.isFinite(guesses[i]) || guesses[i] <= 0)) inp.value = '1';
-        }
-        guesses.forEach((v, i) => { if (!Number.isFinite(v) || v <= 0) guesses[i] = 1; });
-      } else {
-        showNoticeToast('Vul alle drie de vragen in met een getal groter dan 0.');
-        return;
-      }
+      showEquationNotice();
+      return;
     }
+    if (!validWholeEquation(guesses, active.operator || '×')) { showEquationNotice(); return; }
     stopPuzzleTimer(prefix);
     const answers = [active.q1_answer,active.q2_answer,active.q3_answer];
     const factor = answers.reduce((sum,a,i) => sum + scoreVraag(guesses[i],a),0) / 3;
@@ -423,13 +414,7 @@
     if (note) localStorage.setItem('netto_auto_calc_note_seen', 'true');
     [0, 1, 2, 3].forEach(i => {
       const input = document.getElementById(`bkAnswer${i}`);
-      input.addEventListener('input', () => {
-        autoCalculatedInputs.delete(input.id);
-        input.classList.remove('auto-calculated');
-        input.removeAttribute('aria-label');
-        input.dataset.autoCalculated = 'false';
-        bkTryAutoFill();
-      });
+      bindWholeNumberInput(input, bkTryAutoFill);
       input.addEventListener('keydown', event => {
         if (event.key !== 'Enter') return;
         event.preventDefault();
@@ -498,6 +483,7 @@
       return;
     }
     const answers = [p.q1.answer, p.q2.answer, p.q3.answer, p.q4.answer];
+    if (!guesses.every(v => Number.isSafeInteger(v)) || bkPas(bkPas(guesses[0], p.op1, guesses[1]), p.op2, guesses[2]) !== guesses[3]) { showEquationNotice(); return; }
     const exact = guesses.every((g, i) => g === answers[i]);
     if (exact) launchConfetti();
     const vraagFactor = (g, a) => (a === 0 ? (g === 0 ? 1 : 10) : scoreVraag(g, a));
