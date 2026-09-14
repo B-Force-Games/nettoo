@@ -536,10 +536,6 @@
         if (allowed.includes(e.key) || e.ctrlKey || e.metaKey) return;
         if (!/[\d,]/.test(e.key)) { e.preventDefault(); input.classList.add('shake'); setTimeout(() => input.classList.remove('shake'), 400); showSarcasticToast(); }
       });
-      input.addEventListener('input', () => {
-        if (/[a-zA-Z]/.test(input.value)) showSarcasticToast();
-        input.value = formatDutchNumber(input.value);
-      });
     });
     bindDerivedInputs('race', operator);
   }
@@ -550,11 +546,12 @@
     const p = raceQueue[raceState.index];
     if (!p) { finishRace(false); return; }
     const answers = [p.q1_answer, p.q2_answer, p.q3_answer];
-    // Leeg veld telt als 1: in de race ga je altijd direct door.
+    // Ook in de race moet een inzending een geldige gehele som zijn.
     const guesses = [0, 1, 2].map(i => {
       const v = parseFormattedNumber(document.getElementById(`raceAnswer${i}`).value);
-      return Number.isFinite(v) && v > 0 ? v : 1;
+      return v;
     });
+    if (!validWholeEquation(guesses, p.operator || '×')) { showEquationNotice(); return; }
     const factor = answers.reduce((sum, a, i) => sum + scoreVraag(guesses[i], a), 0) / 3;
     const exact = guesses[0] === answers[0] && guesses[1] === answers[1] && guesses[2] === answers[2];
     // Een punt valt binnen de gekozen speling. Bij 1,00 komt dat neer op exact

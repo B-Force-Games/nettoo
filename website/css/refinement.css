@@ -176,6 +176,27 @@
 #results .daily-result-actions .btn-share { background: var(--accent); color: #14163B; border: 1px solid transparent; }
 #screen-puzzle #results .btn-leaderboard-open { display: inline-flex; background: var(--surface-2); color: var(--ink); border: 1px solid var(--surface-border); }
 #results .daily-result-navigation { display: flex; justify-content: space-between; gap: 12px; margin-top: 8px; }
+/* Een duidelijk geselecteerde vraag en rustige antwoordparen geven de
+   uitslag houvast, zonder extra uitleg of versiering toe te voegen. */
+#screen-puzzle #numberlineCard .review-question-tabs {
+  gap: 4px; padding: 4px; border-radius: 12px; background: var(--surface-2);
+}
+#screen-puzzle #numberlineCard .review-question-tabs button {
+  min-height: 46px; border: 1px solid transparent; border-radius: 9px;
+}
+#screen-puzzle #numberlineCard .review-question-tabs button[aria-pressed="true"] {
+  background: var(--surface); border-color: var(--surface-border);
+  box-shadow: 0 2px 5px rgba(20,22,59,.08); color: var(--ink);
+}
+#screen-puzzle #numberlineCard .review-question-tabs button:focus-visible {
+  outline: 2px solid var(--ink); outline-offset: 2px;
+}
+#screen-puzzle #numberlineCard .review-comparison {
+  gap: 0; padding: 16px; border: 1px solid var(--surface-border);
+  border-radius: 12px; background: var(--surface-2);
+}
+#screen-puzzle #numberlineCard .review-comparison > div { padding: 0 12px 0 0; }
+#screen-puzzle #numberlineCard .review-comparison > .review-answer { padding: 0 0 0 16px; }
 #results .daily-result-navigation .daily-home-button { width: auto; min-height: 44px; margin: 0; padding: 8px 4px; border-color: transparent; font-size: 13px; }
 #results :is(.daily-result-actions, .daily-result-navigation) button:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 #results .daily-result-actions .btn-leaderboard-open:hover { border-color: var(--ink); }
