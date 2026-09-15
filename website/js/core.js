@@ -1063,6 +1063,7 @@
     setStatsText('statsDistributionHint', '• vandaag', '• today');
     setStatsText('statsCalendarButton', 'Streakkalender bekijken', 'View streak calendar');
     setStatsText('statsShareButton', 'Deel statistieken ↗', 'Share statistics ↗');
+    setStatsText('statsFullPageButton', 'Bekijk uitgebreide statistieken →', 'See full stats →');
     if (!daily) {
       setStatsText('statsCurrentStreakLabel', 'Beste nauwkeurigheid', 'Best accuracy');
       setStatsText('statsBestStreakLabel', 'Gem. factor', 'Avg. factor');
@@ -2989,6 +2990,7 @@
     document.getElementById('breinkrakersScreen').classList.toggle('active', name === 'breinkrakers');
     document.getElementById('settingsScreen').classList.toggle('active', name === 'settings');
     document.getElementById('leaderboardScreen')?.classList.toggle('active', name === 'leaderboard');
+    document.getElementById('statsScreen')?.classList.toggle('active', name === 'stats');
     document.getElementById('submitScreen').classList.toggle('active', name === 'submit');
     document.getElementById('calculator').classList.remove('open');
     window.scrollTo(0, 0);

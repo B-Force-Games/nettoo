@@ -303,6 +303,7 @@
     }
     container.querySelectorAll('[data-tolerance]').forEach(label => {
       label.classList.toggle('active', label.dataset.tolerance === config.toleranceKey);
+      label.setAttribute('aria-pressed', String(label.dataset.tolerance === config.toleranceKey));
     });
     const uitleg = document.getElementById(
       `race${mode[0].toUpperCase() + mode.slice(1)}ToleranceNote`);
@@ -506,8 +507,10 @@
     document.getElementById('raceCorrectCount').textContent = raceState.correct;
     document.getElementById('raceStreakCount').textContent = raceState.streak;
     document.getElementById('raceProgressFill').style.transform = `scaleX(${raceState.progress || 0})`;
-    document.getElementById('raceFeedback').textContent = '';
-    document.getElementById('raceFeedback').className = 'race-feedback';
+    if (!raceState.results.length) {
+      document.getElementById('raceFeedback').textContent = '';
+      document.getElementById('raceFeedback').className = 'race-feedback';
+    }
     const listEl = document.getElementById('raceQuestionList');
     const autoCalcNote = localStorage.getItem('netto_auto_calc_note_seen') === 'true' ? '' : `<div class="auto-calc-note" role="status" aria-live="polite">↳ Antwoorden worden automatisch berekend als de berekening klopt.</div>`;
     if (autoCalcNote) localStorage.setItem('netto_auto_calc_note_seen', 'true');
@@ -570,7 +573,7 @@
     fb.textContent = raak
       ? (exact ? '✓ Exact — door!' : `✓ Binnen ${grens.toFixed(2)}× (${factor.toFixed(2)}×) — door!`)
       : `✗ ${factor.toFixed(2)}× ernaast — door!`;
-    fb.classList.add(raak ? 'is-good' : 'is-bad');
+    fb.className = 'race-feedback ' + (raak ? 'is-good' : 'is-bad');
     raceState.index += 1;
     if (raceState.index >= raceQueue.length) { finishRace(false); return; }
     renderRacePuzzle();
@@ -593,7 +596,10 @@
     if (!raceState.statsSaved) {
       const saved = readStatsStorage('netto_race_stats', []);
       const history = Array.isArray(saved) ? saved : [];
-      history.push(...raceState.results.map(result => ({ factor: result.factor, exact: result.exact, completedAt: new Date().toISOString() })));
+      // Een momentopname blijft bruikbaar als de puzzelcatalogus later verandert.
+      history.push(...raceState.results.map(result => ({ factor: result.factor, exact: result.exact,
+        guesses: result.guesses, answers: [result.puzzle.q1_answer, result.puzzle.q2_answer, result.puzzle.q3_answer],
+        operators: [result.puzzle.operator], categories: result.puzzle.categories || [], completedAt: new Date().toISOString() })));
       localStorage.setItem('netto_race_stats', JSON.stringify(history));
       raceState.statsSaved = true;
     }
