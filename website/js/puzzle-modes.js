@@ -489,7 +489,8 @@
     const vraagFactor = (g, a) => (a === 0 ? (g === 0 ? 1 : 10) : scoreVraag(g, a));
     const factor = answers.reduce((s, a, i) => s + vraagFactor(guesses[i], a), 0) / 4;
     const currentIndex = bkState.index;
-    const newResult = { id: p.id, factor, exact };
+    // Bewaar antwoorddetails zodat statistieken geen schattingen hoeven te reconstrueren.
+    const newResult = { id: p.id, factor, exact, guesses, answers, operators: [p.op1, p.op2], categories: p.categories || [], completedAt: new Date().toISOString() };
     const previousResultIndex = bkState.results.findIndex(result => result.id === p.id);
     if (previousResultIndex >= 0) bkState.results[previousResultIndex] = newResult;
     else bkState.results.push(newResult);

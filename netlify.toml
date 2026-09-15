@@ -48,3 +48,9 @@
   for = "/index.html"
   [headers.values]
     Cache-Control = "no-cache"
+
+# De zelfstandige pagina werkt ook als /stats rechtstreeks wordt geopend.
+[[redirects]]
+  from = "/stats"
+  to = "/stats.html"
+  status = 200

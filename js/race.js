@@ -20,16 +20,16 @@
   // en middelt hun factor, dus een misser op een vraag kun je met twee goede
   // deels goedmaken.
   const RACE_TOLERANTIES = {
-    perfect: 1.00, scherp: 1.10, netjes: 1.25, ruim: 1.50, grof: 2.00
+    perfect: 1.00, netjes: 1.25, ruim: 1.50, grof: 2.00, breed: 3.00
   };
   const RACE_TOLERANTIE_META = {
     perfect: { label: '1,00×', name: 'Perfect', uitleg: 'Exact goed, niets ernaast' },
-    scherp: { label: '1,10×', name: 'Scherp', uitleg: 'Tien procent speling' },
     netjes: { label: '1,25×', name: 'Netjes', uitleg: 'Een kwart ernaast mag' },
     ruim: { label: '1,50×', name: 'Ruim', uitleg: 'Anderhalf keer ernaast mag' },
-    grof: { label: '2,00×', name: 'Grof', uitleg: 'Factor twee, orde van grootte' }
+    grof: { label: '2,00×', name: 'Grof', uitleg: 'Factor twee, orde van grootte' },
+    breed: { label: '3,00×', name: 'Breed', uitleg: 'Gemiddelde afwijking tot factor drie' }
   };
-  const RACE_TOLERANTIE_VOLGORDE = ['perfect', 'scherp', 'netjes', 'ruim', 'grof'];
+  const RACE_TOLERANTIE_VOLGORDE = ['perfect', 'netjes', 'ruim', 'grof', 'breed'];
   const RACE_TOLERANTIE_STANDAARD = 'perfect';
   const RACE_LEVEL_ORDER = { 'easy': 0, 'intermediate': 1, 'hard': 2, 'extremely-hard': 3 };
   const RACE_LEVEL_LABEL = { 'easy': 'Easy', 'intermediate': 'Intermediate', 'hard': 'Hard', 'extremely-hard': 'Extremely Hard' };
@@ -303,6 +303,7 @@
     }
     container.querySelectorAll('[data-tolerance]').forEach(label => {
       label.classList.toggle('active', label.dataset.tolerance === config.toleranceKey);
+      label.setAttribute('aria-pressed', String(label.dataset.tolerance === config.toleranceKey));
     });
     const uitleg = document.getElementById(
       `race${mode[0].toUpperCase() + mode.slice(1)}ToleranceNote`);
@@ -506,8 +507,10 @@
     document.getElementById('raceCorrectCount').textContent = raceState.correct;
     document.getElementById('raceStreakCount').textContent = raceState.streak;
     document.getElementById('raceProgressFill').style.transform = `scaleX(${raceState.progress || 0})`;
-    document.getElementById('raceFeedback').textContent = '';
-    document.getElementById('raceFeedback').className = 'race-feedback';
+    if (!raceState.results.length) {
+      document.getElementById('raceFeedback').textContent = '';
+      document.getElementById('raceFeedback').className = 'race-feedback';
+    }
     const listEl = document.getElementById('raceQuestionList');
     const autoCalcNote = localStorage.getItem('netto_auto_calc_note_seen') === 'true' ? '' : `<div class="auto-calc-note" role="status" aria-live="polite">↳ Antwoorden worden automatisch berekend als de berekening klopt.</div>`;
     if (autoCalcNote) localStorage.setItem('netto_auto_calc_note_seen', 'true');
@@ -570,7 +573,7 @@
     fb.textContent = raak
       ? (exact ? '✓ Exact — door!' : `✓ Binnen ${grens.toFixed(2)}× (${factor.toFixed(2)}×) — door!`)
       : `✗ ${factor.toFixed(2)}× ernaast — door!`;
-    fb.classList.add(raak ? 'is-good' : 'is-bad');
+    fb.className = 'race-feedback ' + (raak ? 'is-good' : 'is-bad');
     raceState.index += 1;
     if (raceState.index >= raceQueue.length) { finishRace(false); return; }
     renderRacePuzzle();
@@ -593,7 +596,10 @@
     if (!raceState.statsSaved) {
       const saved = readStatsStorage('netto_race_stats', []);
       const history = Array.isArray(saved) ? saved : [];
-      history.push(...raceState.results.map(result => ({ factor: result.factor, exact: result.exact, completedAt: new Date().toISOString() })));
+      // Een momentopname blijft bruikbaar als de puzzelcatalogus later verandert.
+      history.push(...raceState.results.map(result => ({ factor: result.factor, exact: result.exact,
+        guesses: result.guesses, answers: [result.puzzle.q1_answer, result.puzzle.q2_answer, result.puzzle.q3_answer],
+        operators: [result.puzzle.operator], categories: result.puzzle.categories || [], completedAt: new Date().toISOString() })));
       localStorage.setItem('netto_race_stats', JSON.stringify(history));
       raceState.statsSaved = true;
     }
@@ -603,21 +609,29 @@
     const isRecord = correct > best;
     if (isRecord) localStorage.setItem('netto_race_best', String(correct));
     const review = raceState.results.map((r, i) => `
-      <div class="race-review-item ${r.exact ? 'good' : 'bad'}">
-        <div class="race-review-head"><b>#${i + 1}</b><span class="race-review-op">${r.puzzle.operator}</span><span class="race-review-verdict">${r.exact ? '✓ exact' : `✗ ${r.factor.toFixed(2)}×`}</span></div>
+      <div class="race-review-item ${r.raak ? 'good' : 'bad'}">
+        <div class="race-review-head"><b>#${i + 1}</b><span class="race-review-op">${r.puzzle.operator}</span><span class="race-review-verdict">${r.exact ? '✓ exact' : `${r.raak ? '✓' : '✗'} ${r.factor.toFixed(2)}×`}</span></div>
         <div class="race-review-calc">${r.puzzle.calculation || ''}</div>
         <div class="race-review-answers">${[[r.puzzle.q1_label, r.puzzle.q1_answer, r.guesses[0]], [r.puzzle.q2_label, r.puzzle.q2_answer, r.guesses[1]], [r.puzzle.q3_label, r.puzzle.q3_answer, r.guesses[2]]].map(row => `<div class="race-review-row"><span>${row[0]}</span><b class="${Number(row[2]) === Number(row[1]) ? 'ok' : 'no'}">jij: ${fmt(row[2])} · echt: ${fmt(row[1])}</b></div>`).join('')}</div>
       </div>`).join('') || '<div class="race-review-empty">Geen puzzels ingediend — zet meteen een nieuwe race in!</div>';
     document.getElementById('raceFinalScore').textContent = correct;
+    document.getElementById('raceFinalScoreLabel').textContent = raceState.tolerantie === 1
+      ? statsCopy('puzzels exact goed', 'puzzles exactly right')
+      : statsCopy('puzzels binnen de marge', 'puzzles within tolerance');
     const durationLabel = raceDurationMeta(raceState.durationKey).label;
-    let meta = `${attempted} puzzels geprobeerd in ${durationLabel} · langste reeks ${longest}${byTime ? '' : ' · hele reeks af'}${isRecord ? ' · <b>NIEUW RECORD!</b>' : ''}`;
+    const stat = (value, label) => `<span class="race-summary-stat"><strong>${value}</strong><span>${label}</span></span>`;
+    let meta = stat(attempted, statsCopy('Gespeeld', 'Played'))
+      + stat(durationLabel, statsCopy('Speelduur', 'Duration'))
+      + stat(longest, statsCopy('Langste reeks', 'Longest streak'))
+      + `<span class="race-summary-note">${statsCopy('Marge', 'Tolerance')}: ${raceState.tolerantie.toFixed(2)}×</span>`
+      + (isRecord ? `<span class="race-summary-record">${statsCopy('Nieuw persoonlijk record', 'New personal best')}</span>` : '');
     document.getElementById('raceResultsMeta').innerHTML = meta;
     document.getElementById('raceReviewList').innerHTML = review;
     document.getElementById('racePlay').style.display = 'none';
     document.getElementById('raceResults').style.display = 'block';
     if (raceDuelSession) {
       raceDuelSession.myCorrect = correct;
-      if (!raceDuelSession.opponent || !raceDuelSession.opponent.finished) meta += ' · wachten op de uitslag van je tegenstander…';
+      if (!raceDuelSession.opponent || !raceDuelSession.opponent.finished) meta += `<span class="race-summary-note">${statsCopy('Wachten op je tegenstander…', 'Waiting for your opponent…')}</span>`;
       broadcastRaceEvent(raceDuelSession.code, 'finish', { correct, attempted });
       tryShowDuelVerdict();
     } else {
