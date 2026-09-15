@@ -24,6 +24,7 @@ MIRROR_FILES = (
     "css/admin.css",
     "css/stats-page.css",
     "js/core.js",
+    "js/question-context.js",
     "js/puzzle-modes.js",
     "js/race.js",
     "js/submissions.js",

@@ -2011,6 +2011,23 @@
         }
       }
       kaart.classList.add('vraag-met-categorie');
+      const context = window.NettoVraagContext?.(vraag);
+      let ondertekst = kaart.querySelector('.vraag-ondertekst');
+      if (context) {
+        if (!ondertekst) {
+          ondertekst = document.createElement('p');
+          ondertekst.className = 'vraag-ondertekst';
+          ondertekst.setAttribute('data-i18n-skip', '');
+          kaart.querySelector('.q-label')?.after(ondertekst);
+        }
+        ondertekst.textContent = statsCopy(context.nl, context.en);
+        if (invoer) {
+          ondertekst.id = invoer.id + 'Context';
+          const ids = (invoer.getAttribute('aria-describedby') || '').split(' ').filter(Boolean);
+          if (!ids.includes(ondertekst.id)) ids.push(ondertekst.id);
+          invoer.setAttribute('aria-describedby', ids.join(' '));
+        }
+      } else ondertekst?.remove();
       kaart.style.setProperty('--vraag-tint', 'var(' + categorieKleurVariabele(categorie) + ')');
       // Klein verschil per stap houdt ook gedeelde kleurfamilies herkenbaar.
       kaart.style.setProperty('--vraag-menging', (84 - index * 12) + '%');
