@@ -366,6 +366,14 @@
   const REBUILT_DATA = window.NETTO_REBUILT_PUZZLES || { library: [], daily: [], reserve: [] };
   // De statische set blijft de basis: het spel moet werken zonder database.
   const STATIC_DAILIES = (REBUILT_DATA.daily || []).map(normalizeLibraryPuzzle);
+  // Daily change: show the first archive Daily as today's puzzle, while the
+  // previous current Daily moves to the first archive position.
+  if (STATIC_DAILIES.length > 1) {
+    [STATIC_DAILIES[0], STATIC_DAILIES[STATIC_DAILIES.length - 1]] = [
+      STATIC_DAILIES[STATIC_DAILIES.length - 1],
+      STATIC_DAILIES[0]
+    ];
+  }
   let DAILY_PUZZLES = STATIC_DAILIES;
   let PUZZLE_DATA = DAILY_PUZZLES[activePuzzleIndex] || PUZZLE_ARCHIVE[0];
 
