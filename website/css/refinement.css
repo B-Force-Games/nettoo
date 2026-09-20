@@ -26,8 +26,10 @@ body[data-full-stats] .sidebar a { text-decoration: none; }
 #raceResultsMeta .race-summary-stat > span { color: var(--text-muted); font-size: 12px; }
 #raceResultsMeta .race-summary-note { grid-column: 1 / -1; font-size: 12px; color: var(--text-muted); }
 #raceResultsMeta .race-summary-record { grid-column: 1 / -1; justify-self: start; padding: 6px 10px; border-radius: 6px; background: var(--accent); color: #14163B; font-size: 12px; font-weight: 600; }
-.race-exact-notice { flex-direction: column; align-items: flex-start; gap: 10px; pointer-events: auto; }
-.race-exact-notice button { color: inherit; background: transparent; border: 1px solid currentColor; border-radius: 6px; padding: 8px 12px; font: inherit; cursor: pointer; }
+.toast.has-action { display: grid; grid-template-columns: auto 1fr; align-items: start; pointer-events: auto; }
+.toast.has-action .toast-action { grid-column: 2; justify-self: start; color: inherit; background: transparent; border: 1px solid currentColor; border-radius: 6px; padding: 8px 12px; font: inherit; cursor: pointer; }
+.toast.has-action .toast-action:hover { background: rgba(255,255,255,.1); }
+.toast.has-action .toast-action:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .daily-photo[hidden] { display: none; }
 /* Dezelfde polaroid, met de verplichte bron direct bij het beeld. */
 /* De foto zweeft rechts en de vraagtekst loopt ernaast, zoals een afbeelding in

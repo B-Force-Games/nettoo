@@ -1157,7 +1157,7 @@
   function shareStats() {
     const snapshot = getModeStatsSnapshot();
     if (!snapshot.entries.length) {
-      showNoticeToast(statsCopy('Nog geen resultaten om te delen.', 'No results to share yet.'), '📊');
+      showNoticeToast(statsCopy('Nog geen resultaten om te delen.', 'No results to share yet.'), '📊', statsCopy('Niets om te delen', 'Nothing to share'));
       return;
     }
     const recent = snapshot.entries.slice(-30);
@@ -1312,6 +1312,15 @@
     return parseFloat(clean);
   }
 
+  function removeToastAfter(toast, duration = 3800) {
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateY(-10px)';
+      toast.style.transition = 'all 0.3s ease';
+      setTimeout(() => toast.remove(), 300);
+    }, duration);
+  }
+
   function showSarcasticToast(msg, isCopy = false) {
     const now = Date.now();
     if (!isCopy && now - lastToastTime < 1800) return; // Voorkom toast-spam
@@ -1341,39 +1350,68 @@
     }
 
     container.appendChild(toast);
-    setTimeout(() => {
-      toast.style.opacity = '0';
-      toast.style.transform = 'translateY(-10px)';
-      toast.style.transition = 'all 0.3s ease';
-      setTimeout(() => toast.remove(), 300);
-    }, 3800);
+    removeToastAfter(toast);
   }
 
-  // Neutrale melding (geen alert): voor validaties en informatie
-  function showNoticeToast(msg, icon = '💡') {
+  // Neutrale melding met een expliciete kop. Zo kan een account-, fout- of
+  // instellingenmelding nooit per ongeluk de kop van een kopieeractie krijgen.
+  function showNoticeToast(msg, icon = '💡', title = null, options = {}) {
+    if (options.id) document.getElementById(options.id)?.remove();
     const container = document.getElementById('toastContainer');
     const toast = document.createElement('div');
-    toast.className = 'toast copy-toast';
-    toast.innerHTML = `
-      <div class="toast-icon">${icon}</div>
-      <div class="toast-body">
-        <b>Let op</b>
-        <span>${msg}</span>
-      </div>
-    `;
+    if (options.id) toast.id = options.id;
+    toast.className = `toast notice-toast${options.actionLabel ? ' has-action' : ''}`;
+    const iconElement = document.createElement('div');
+    iconElement.className = 'toast-icon';
+    iconElement.textContent = icon;
+    const body = document.createElement('div');
+    body.className = 'toast-body';
+    const heading = document.createElement('b');
+    heading.textContent = title || statsCopy('Let op', 'Notice');
+    const message = document.createElement('span');
+    message.textContent = msg;
+    body.appendChild(heading);
+    body.appendChild(message);
+    toast.appendChild(iconElement);
+    toast.appendChild(body);
+    if (options.actionLabel && typeof options.onAction === 'function') {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'toast-action';
+      button.textContent = options.actionLabel;
+      button.onclick = () => {
+        toast.remove();
+        options.onAction();
+      };
+      toast.appendChild(button);
+    }
     container.appendChild(toast);
-    setTimeout(() => {
-      toast.style.opacity = '0';
-      toast.style.transform = 'translateY(-10px)';
-      toast.style.transition = 'all 0.3s ease';
-      setTimeout(() => toast.remove(), 300);
-    }, 3800);
+    removeToastAfter(toast, options.duration || 3800);
+    return toast;
   }
 
   let autoCalculatedInputs = new Set();
   // Settings: auto-calculator aan/uit (default aan). Uit = geen auto-fill, overal.
   const AUTO_CALC_KEY = 'netto_auto_calc';
   function isAutoCalcEnabled() { return localStorage.getItem(AUTO_CALC_KEY) !== 'off'; }
+  const REQUIRE_EQUATION_KEY = 'netto_require_equation';
+  function isEquationRequired() { return localStorage.getItem(REQUIRE_EQUATION_KEY) !== 'off'; }
+  function updateEquationRequirementToggle() {
+    document.getElementById('equationRequirementToggle')?.setAttribute('aria-checked', String(isEquationRequired()));
+  }
+  function toggleEquationRequirement() {
+    localStorage.setItem(REQUIRE_EQUATION_KEY, isEquationRequired() ? 'off' : 'on');
+    updateEquationRequirementToggle();
+    const error = document.getElementById('dailyEquationError');
+    if (error && !isEquationRequired()) error.hidden = true;
+    showNoticeToast(
+      isEquationRequired()
+        ? statsCopy('Puzzels vereisen nu weer een kloppende som.', 'Puzzles now require a correct equation.')
+        : statsCopy('Je kunt nu ook een puzzel met een niet-kloppende som inleveren.', 'You can now submit a puzzle even when its equation does not match.'),
+      '⚙️',
+      statsCopy('Instelling bijgewerkt', 'Setting updated')
+    );
+  }
   // ===== Zichtbaarheid op het leaderboard =====
   // Staat in profiles.leaderboard_zichtbaar, niet in localStorage: het is een
   // keuze over wat anderen zien, en die hoort bij het account te horen en niet
@@ -1415,16 +1453,18 @@
       const { error } = await supabaseClient
         .from('profiles').update({ leaderboard_zichtbaar: nieuw }).eq('id', currentUser.id);
       if (error) throw error;
-      showSarcasticToast(nieuw
+      showNoticeToast(nieuw
         ? statsCopy('Je staat weer op het leaderboard.', 'You are back on the leaderboard.')
         : statsCopy('Je staat niet meer op het leaderboard. Spelen kan gewoon door.',
-                    'You are off the leaderboard now. You can still play.'), true);
+                    'You are off the leaderboard now. You can still play.'), '⚙️',
+        statsCopy('Instelling bijgewerkt', 'Setting updated'));
     } catch (err) {
       // Terugdraaien: anders zegt de schakelaar iets anders dan de databank.
       leaderboardZichtbaar = !nieuw;
       werkLeaderboardToggleBij();
-      showSarcasticToast(statsCopy('Kon dit niet opslaan. Probeer het later opnieuw.',
-                                   'Could not save this. Please try again later.'));
+      showNoticeToast(statsCopy('Kon dit niet opslaan. Probeer het later opnieuw.',
+                                'Could not save this. Please try again later.'), '⚠️',
+        statsCopy('Opslaan mislukt', 'Could not save'));
     }
   }
 
@@ -1436,7 +1476,10 @@
       // Direct alle huidige auto-ingevulde velden leegmaken.
       [...autoCalculatedInputs].forEach(id => clearAutoInput(id));
     }
-    showSarcasticToast(next === 'on' ? 'Auto-calculator staat nu AAN' : 'Auto-calculator staat nu UIT', true);
+    showNoticeToast(
+      statsCopy(next === 'on' ? 'Auto-calculator staat nu aan.' : 'Auto-calculator staat nu uit.',
+                next === 'on' ? 'Auto calculator is now on.' : 'Auto calculator is now off.'),
+      '⚙️', statsCopy('Instelling bijgewerkt', 'Setting updated'));
   }
   function updateAutoCalcToggle() {
     const toggle = document.getElementById('autoCalcToggle');
@@ -1505,8 +1548,25 @@
     return values.every(v => Number.isSafeInteger(v) && v > 0)
       && calculateDailyValue(values[0], values[1], operator) === values[2];
   }
+  function validWholeAnswers(values, allowZero = false) {
+    return values.every(value => Number.isSafeInteger(value) && (allowZero ? value >= 0 : value > 0));
+  }
   function showEquationNotice() {
-    showNoticeToast(statsCopy('Vul gehele getallen in die samen een kloppende som vormen.', 'Enter whole numbers that form a valid equation.'));
+    showNoticeToast(
+      statsCopy('Je antwoorden vormen geen kloppende som. Pas een antwoord aan of schakel deze controle uit in Settings.',
+                'Your answers do not form a correct equation. Adjust an answer or disable this check in Settings.'),
+      '≠',
+      statsCopy('Som klopt niet', 'Equation does not match'),
+      {
+        id: 'equationNotice',
+        actionLabel: statsCopy('Controle uitschakelen', 'Disable this check'),
+        duration: 8000,
+        onAction: () => {
+          openSettings();
+          document.getElementById('equationRequirementToggle')?.focus();
+        }
+      }
+    );
   }
   function calculateDerivedValues(ids, operator) {
     if (!isAutoCalcEnabled()) return;
@@ -1614,24 +1674,20 @@
     }
   }
   function showExactRaceNotice() {
-    document.getElementById('raceExactNotice')?.remove();
-    const notice = document.createElement('div');
-    notice.id = 'raceExactNotice';
-    notice.className = 'toast race-exact-notice';
-    const message = document.createElement('span');
-    message.setAttribute('role', 'status');
-    message.textContent = statsCopy('Je had alle drie de antwoorden exact goed!', 'You got all three answers exactly right!');
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.textContent = statsCopy('Confetti uitschakelen', 'Disable confetti');
-    button.onclick = () => {
-      notice.remove();
-      openSettings();
-      document.getElementById('confettiToggle')?.focus();
-    };
-    notice.append(message, button);
-    document.getElementById('toastContainer').append(notice);
-    setTimeout(() => notice.remove(), 8000);
+    showNoticeToast(
+      statsCopy('Je had alle drie de antwoorden exact goed!', 'You got all three answers exactly right!'),
+      '🎉',
+      statsCopy('Exact goed', 'Exactly right'),
+      {
+        id: 'raceExactNotice',
+        actionLabel: statsCopy('Confetti uitschakelen', 'Disable confetti'),
+        duration: 8000,
+        onAction: () => {
+          openSettings();
+          document.getElementById('confettiToggle')?.focus();
+        }
+      }
+    );
   }
   function launchConfetti() {
     if (localStorage.getItem('netto_confetti') === 'off' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -2088,15 +2144,18 @@
     const g2 = parseFormattedNumber(document.getElementById('g2').value);
     const g3 = parseFormattedNumber(document.getElementById('g3').value);
 
-    if (![g1,g2,g3].every(Number.isFinite) || g1 <= 0 || g2 <= 0 || g3 <= 0) {
-      showNoticeToast('Vul eerst alle drie de vragen in met een getal groter dan 0.');
+    if (!validWholeAnswers([g1,g2,g3])) {
+      showNoticeToast(
+        statsCopy('Vul eerst alle drie de vragen in met een heel getal groter dan 0.', 'Enter a whole number greater than 0 for all three questions.'),
+        '✏️', statsCopy('Antwoorden ontbreken', 'Complete your answers'));
       return;
     }
 
-    if (!validWholeEquation([g1,g2,g3],PUZZLE_DATA.operator || '×')) {
+    if (isEquationRequired() && !validWholeEquation([g1,g2,g3],PUZZLE_DATA.operator || '×')) {
       const error = document.getElementById('dailyEquationError');
-      const message = statsCopy('Je schattingen vormen nog geen kloppende som. Pas een antwoord aan voordat je inlevert.', 'Your estimates do not form a valid equation yet. Adjust an answer before submitting.');
+      const message = statsCopy('Je schattingen vormen nog geen kloppende som.', 'Your estimates do not form a correct equation yet.');
       if (error) { error.textContent = message; error.hidden = false; }
+      showEquationNotice();
       document.getElementById('g3').focus();
       return;
     }
@@ -2561,7 +2620,9 @@
         // dus direct ingelogd. Staat die instelling in het Supabase-project toch
         // weer aan, dan komt er geen sessie terug en is dit de uitleg.
         if (!data.session) {
-          showSarcasticToast('Account aangemaakt! Bevestig je e-mailadres via de link in je inbox, daarna kun je inloggen.', true);
+          showNoticeToast(
+            statsCopy('Account aangemaakt! Bevestig je e-mailadres via de link in je inbox, daarna kun je inloggen.', 'Account created! Confirm your email using the link in your inbox, then sign in.'),
+            '✉️', statsCopy('Account aangemaakt', 'Account created'));
           setAuthBusy(false);
           return;
         }
@@ -2583,7 +2644,9 @@
     stuurLokaleScoresOp();
     laadLeaderboardZichtbaar();
     closeAuthModal();
-    showSarcasticToast(`Welkom terug, ${currentUser.username}! Je scores zijn gesynchroniseerd.`, true);
+    showNoticeToast(
+      statsCopy(`Welkom terug, ${currentUser.username}! Je scores zijn gesynchroniseerd.`, `Welcome back, ${currentUser.username}! Your scores are synced.`),
+      '👋', statsCopy('Ingelogd', 'Signed in'));
     checkSubmissionNotifications();
 
     // Sync eventuele vandaag al gespeelde puzzel
@@ -2625,7 +2688,9 @@
         email, { redirectTo: eigenAdres() });
       if (error) throw error;
       backToAuthForm();
-      showSarcasticToast('Resetlink verstuurd! Check je inbox (ook de spam-map).', true);
+      showNoticeToast(
+        statsCopy('Resetlink verstuurd! Check je inbox (ook de spam-map).', 'Reset link sent! Check your inbox, including spam.'),
+        '✉️', statsCopy('E-mail verstuurd', 'Email sent'));
     } catch (err) {
       box.textContent = mapAuthError(err.message);
       box.style.display = 'block';
@@ -2642,7 +2707,7 @@
     werkLeaderboardToggleBij();
     updateUserUI();
     closeAuthModal();
-    showSarcasticToast("Succesvol uitgelogd.", true);
+    showNoticeToast(statsCopy('Succesvol uitgelogd.', 'You have been signed out.'), '👋', statsCopy('Uitgelogd', 'Signed out'));
   }
 
   function toggleAuthMode() {
@@ -3074,7 +3139,9 @@
     if (!next) {
       selectedDifficulty = 'easy';
       openPuzzles();
-      showNoticeToast('Je hebt alle Library-puzzels voltooid. Lekker gewerkt!', '🏆');
+      showNoticeToast(
+        statsCopy('Je hebt alle Library-puzzels voltooid. Lekker gewerkt!', 'You completed every Library puzzle. Well played!'),
+        '🏆', statsCopy('Library voltooid', 'Library complete'));
       return;
     }
     selectedDifficulty = next.difficulty;

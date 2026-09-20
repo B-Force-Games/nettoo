@@ -265,6 +265,7 @@
     closeMenu();
     updateConfettiToggle();
     updateAutoCalcToggle();
+    updateEquationRequirementToggle();
     if (typeof werkLeaderboardToggleBij === 'function') werkLeaderboardToggleBij();
     applyTheme();
     showScreen('settings');
@@ -439,7 +440,10 @@
       broadcastRaceEvent(session.code, 'start', { startedAt: Date.now(), seed: session.seed, durationKey, toleranceKey });
     }
     raceQueue = buildRaceQueue(isDuel && session ? session.seed : undefined);
-    if (!raceQueue.length) { showNoticeToast('Er zijn nog geen race-puzzels geladen.'); return; }
+    if (!raceQueue.length) {
+      showNoticeToast(statsCopy('Er zijn nog geen race-puzzels geladen.', 'There are no race puzzles loaded yet.'), '🏁', statsCopy('Geen puzzels', 'No puzzles'));
+      return;
+    }
     raceState = { index: 0, results: [], correct: 0, streak: 0, longestStreak: 0, remaining: totalSeconds, totalSeconds, durationKey, toleranceKey,
       tolerantie: RACE_TOLERANTIES[toleranceKey] || 1.0, timerId: null, progress: 0, endsAt: null };
     const inDuel = Boolean(isDuel && raceDuelSession);
@@ -555,7 +559,13 @@
       const v = parseFormattedNumber(document.getElementById(`raceAnswer${i}`).value);
       return v;
     });
-    if (!validWholeEquation(guesses, p.operator || '×')) { showEquationNotice(); return; }
+    if (!validWholeAnswers(guesses)) {
+      showNoticeToast(
+        statsCopy('Vul alle drie de vragen in met een heel getal groter dan 0.', 'Enter a whole number greater than 0 for all three questions.'),
+        '✏️', statsCopy('Antwoorden ontbreken', 'Complete your answers'));
+      return;
+    }
+    if (isEquationRequired() && !validWholeEquation(guesses, p.operator || '×')) { showEquationNotice(); return; }
     const factor = answers.reduce((sum, a, i) => sum + scoreVraag(guesses[i], a), 0) / 3;
     const exact = guesses[0] === answers[0] && guesses[1] === answers[1] && guesses[2] === answers[2];
     // Een punt valt binnen de gekozen speling. Bij 1,00 komt dat neer op exact
@@ -654,7 +664,7 @@
 
   function requireRaceLogin() {
     if (currentUser) return true;
-    showSarcasticToast('Log eerst in om een duel te spelen.');
+    showNoticeToast(statsCopy('Log eerst in om een duel te spelen.', 'Sign in before playing a duel.'), '👤', statsCopy('Inloggen vereist', 'Sign-in required'));
     openAuthModal();
     return false;
   }
@@ -686,7 +696,10 @@
   function joinRaceRoom(inputId = 'raceOnlineJoinCode') {
     if (!requireRaceLogin()) return;
     const raw = (document.getElementById(inputId)?.value || '').trim().toUpperCase();
-    if (!/^[A-Z2-9]{6}$/.test(raw)) { showSarcasticToast('Vul een geldige room-code in (6 tekens).'); return; }
+    if (!/^[A-Z2-9]{6}$/.test(raw)) {
+      showNoticeToast(statsCopy('Vul een geldige room-code in (6 tekens).', 'Enter a valid 6-character room code.'), '⚠️', statsCopy('Ongeldige code', 'Invalid code'));
+      return;
+    }
     leaveRaceRoom();
     connectRaceRoom(raw, 'guest', { visibility: 'closed' });
   }
@@ -701,7 +714,10 @@
   }
 
   function connectRaceRoom(code, role, config = {}) {
-    if (!supabaseClient) { showSarcasticToast('Geen verbinding met Supabase.'); return; }
+    if (!supabaseClient) {
+      showNoticeToast(statsCopy('Geen verbinding met de server.', 'Could not connect to the server.'), '⚠️', statsCopy('Verbindingsprobleem', 'Connection issue'));
+      return;
+    }
     const durationKey = RACE_DURATIONS[config.durationKey] ? config.durationKey : null;
     const toleranceKey = RACE_TOLERANTIES[config.toleranceKey] ? config.toleranceKey : null;
     raceDuelSession = {
@@ -778,7 +794,9 @@
         : `Verbonden met ${raceDuelSession.opponentName} — wachten tot de host start…`);
       const startBtn = document.getElementById('raceDuelStartBtn');
       if (startBtn) startBtn.style.display = raceDuelSession.role === 'host' ? 'block' : 'none';
-      if (isNew) showSarcasticToast(`${raceDuelSession.opponentName} is in de room!`);
+      if (isNew) showNoticeToast(
+        statsCopy(`${raceDuelSession.opponentName} is in de room!`, `${raceDuelSession.opponentName} joined the room!`),
+        '🎮', statsCopy('Speler gevonden', 'Player joined'));
       // Open games starten automatisch 20 seconden nadat er een tegenstander is.
       if (raceDuelSession.role === 'host' && raceDuelSession.visibility === 'open') scheduleOpenRaceAutoStart();
     }

@@ -44,7 +44,7 @@ function renderLibraryStats() {
 
   function showLibraryAnswers(index) {
     const p = libraryPuzzles[index]; if (!p) return;
-    showNoticeToast(`${p.q1_label} — ${fmt(p.q1_answer)} · ${p.q2_label} — ${fmt(p.q2_answer)} · ${p.q3_label} — ${fmt(p.q3_answer)}`, '📝');
+    showNoticeToast(`${p.q1_label} — ${fmt(p.q1_answer)} · ${p.q2_label} — ${fmt(p.q2_answer)} · ${p.q3_label} — ${fmt(p.q3_answer)}`, '📝', statsCopy('Antwoorden', 'Answers'));
   }
 
   function renderDailyArchive() {
@@ -117,7 +117,10 @@ function renderLibraryStats() {
     selectedDifficulty = level;
     libraryIndex = 0;
     const set = libraryPuzzles.filter(p => p.difficulty === level);
-    if (!set.length) { showSarcasticToast('Deze difficulty bevat nog geen geladen puzzels.'); return; }
+    if (!set.length) {
+      showNoticeToast(statsCopy('Deze difficulty bevat nog geen geladen puzzels.', 'There are no loaded puzzles at this difficulty yet.'), '🧩', statsCopy('Geen puzzels', 'No puzzles'));
+      return;
+    }
     document.getElementById('libraryDifficulties').style.display = 'none'; document.getElementById('dailyPuzzleList').style.display = 'none'; document.getElementById('libraryCardGrid').style.display = 'none'; document.getElementById('libraryPuzzleView').style.display = 'block'; renderLibraryPuzzle();
   }
 
@@ -388,6 +391,7 @@ function renderLibraryStats() {
   window.joinOpenRaceGame = joinOpenRaceGame;
   window.selectRaceTolerantie = selectRaceTolerantie;
   window.toggleAutoCalc = toggleAutoCalc;
+  window.toggleEquationRequirement = toggleEquationRequirement;
   window.toggleLeaderboardZichtbaar = toggleLeaderboardZichtbaar;
   window.toggleTheme = toggleTheme;
   window.applyTheme = applyTheme;

@@ -89,11 +89,13 @@
     const inputs = [0,1,2].map(i => document.getElementById(`${prefix}Answer${i}`));
     if (inputs.some(input => !input)) return;
     const guesses = inputs.map(input => parseFormattedNumber(input.value));
-    if (guesses.some(v => !Number.isFinite(v) || v <= 0)) {
-      showEquationNotice();
+    if (!validWholeAnswers(guesses)) {
+      showNoticeToast(
+        statsCopy('Vul alle drie de vragen in met een heel getal groter dan 0.', 'Enter a whole number greater than 0 for all three questions.'),
+        '✏️', statsCopy('Antwoorden ontbreken', 'Complete your answers'));
       return;
     }
-    if (!validWholeEquation(guesses, active.operator || '×')) { showEquationNotice(); return; }
+    if (isEquationRequired() && !validWholeEquation(guesses, active.operator || '×')) { showEquationNotice(); return; }
     stopPuzzleTimer(prefix);
     const answers = [active.q1_answer,active.q2_answer,active.q3_answer];
     const factor = answers.reduce((sum,a,i) => sum + scoreVraag(guesses[i],a),0) / 3;
@@ -378,7 +380,10 @@
   }
 
   function startBreinkrakers(selectedIndex) {
-    if (!BK_DATA.length) { showNoticeToast('Er zijn nog geen breinkrakers beschikbaar. Draai maak_breinkrakers.py.'); return; }
+    if (!BK_DATA.length) {
+      showNoticeToast(statsCopy('Er zijn nog geen breinkrakers beschikbaar.', 'There are no Brain Teasers available yet.'), '🧠', statsCopy('Geen puzzels', 'No puzzles'));
+      return;
+    }
     const progress = bkNormaliseProgress(bkLoadProgress());
     const requestedIndex = Number.isInteger(selectedIndex) ? selectedIndex : bkFindNextIncompleteIndex(progress);
     progress.index = Math.max(0, Math.min(requestedIndex, BK_DATA.length - 1));
@@ -478,12 +483,14 @@
     }
     const p = bkActivePuzzle; if (!p || !bkState) return;
     const guesses = [0, 1, 2, 3].map(i => parseFormattedNumber(document.getElementById(`bkAnswer${i}`).value));
-    if (guesses.some(v => !Number.isFinite(v) || v < 0)) {
-      showNoticeToast('Vul alle vier de vragen in met een getal 0 of hoger.');
+    if (!validWholeAnswers(guesses, true)) {
+      showNoticeToast(
+        statsCopy('Vul alle vier de vragen in met een heel getal van 0 of hoger.', 'Enter a whole number of 0 or higher for all four questions.'),
+        '✏️', statsCopy('Antwoorden ontbreken', 'Complete your answers'));
       return;
     }
     const answers = [p.q1.answer, p.q2.answer, p.q3.answer, p.q4.answer];
-    if (!guesses.every(v => Number.isSafeInteger(v)) || bkPas(bkPas(guesses[0], p.op1, guesses[1]), p.op2, guesses[2]) !== guesses[3]) { showEquationNotice(); return; }
+    if (isEquationRequired() && bkPas(bkPas(guesses[0], p.op1, guesses[1]), p.op2, guesses[2]) !== guesses[3]) { showEquationNotice(); return; }
     const exact = guesses.every((g, i) => g === answers[i]);
     if (exact) launchConfetti();
     const vraagFactor = (g, a) => (a === 0 ? (g === 0 ? 1 : 10) : scoreVraag(g, a));

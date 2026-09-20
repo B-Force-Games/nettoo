@@ -95,7 +95,16 @@
         .limit(5);
       if (error || !data || !data.length) return;
       for (const n of data) {
-        showNoticeToast(n.message, n.type === 'submission_accepted' ? '🎉' : n.type === 'submission_denied' ? '📮' : '💡');
+        const accepted = n.type === 'submission_accepted';
+        const denied = n.type === 'submission_denied';
+        showNoticeToast(
+          n.message,
+          accepted ? '🎉' : denied ? '📮' : '💡',
+          accepted
+            ? statsCopy('Inzending geaccepteerd', 'Submission approved')
+            : denied
+              ? statsCopy('Inzending beoordeeld', 'Submission reviewed')
+              : statsCopy('Nieuwe melding', 'New notification'));
         await supabaseClient.from('user_notifications').update({ read: true }).eq('id', n.id);
       }
     } catch (e) { /* meldingen zijn niet-kritiek */ }
@@ -156,7 +165,9 @@
       if (error) throw error;
       ['subQ1','subQ2','subQ3','subA1','subA2','subA3','subNote'].forEach(id => { document.getElementById(id).value = ''; });
       updateSubmitPreview();
-      showNoticeToast('Inzending ontvangen. Je krijgt bericht zodra de review klaar is.', '✓');
+      showNoticeToast(
+        statsCopy('Inzending ontvangen. Je krijgt bericht zodra de review klaar is.', 'Submission received. We will notify you when the review is complete.'),
+        '✓', statsCopy('Inzending ontvangen', 'Submission received'));
     } catch (err) {
       showErr(mapAuthError(err.message));
     } finally {
