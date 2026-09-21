@@ -80,16 +80,191 @@ function renderConnectionStart() {
     const result = results.find(r => r.id === puzzle.id);
     const button = document.createElement('button');
     button.type = 'button';
-    button.className = 'connection-catalog-card';
+    button.className = 'connection-catalog-card' + (result ? ' has-played' : '');
     const number = document.createElement('strong');
     number.textContent = '#' + (index + 1);
     const label = document.createElement('span');
-    label.textContent = result ? (result.connectionCorrect ? '✓ ' : '≠ ') + result.factor.toFixed(2) + '×'
-      : statsCopy('Open puzzel →', 'Open puzzle →');
+    if (result) {
+      label.className = result.connectionCorrect ? 'status-correct' : 'status-incorrect';
+      label.textContent = (result.connectionCorrect ? '✓ ' : '≠ ') + result.factor.toFixed(2) + '×';
+    } else {
+      label.textContent = statsCopy('Open puzzel →', 'Open puzzle →');
+    }
     button.append(number, label);
     button.onclick = () => startConnection(index);
     grid.append(button);
   });
+}
+
+function operatorName(symbol) {
+  if (symbol === '+') return statsCopy('Plus (optellen)', 'Plus (addition)');
+  if (symbol === '−') return statsCopy('Min (aftrekken)', 'Minus (subtraction)');
+  if (symbol === '×') return statsCopy('Keer (vermenigvuldigen)', 'Multiply');
+  if (symbol === '÷') return statsCopy('Delen door (delen)', 'Divide');
+  return symbol;
+}
+
+function renderConnectionOperatorConnector() {
+  const connector = document.createElement('div');
+  connector.className = 'connector connection-connector connection-operator-connector';
+  
+  const lineLeft = document.createElement('div');
+  lineLeft.className = 'connector-line';
+  
+  const switchBox = document.createElement('div');
+  switchBox.className = 'connection-operator-switch';
+  switchBox.setAttribute('role', 'radiogroup');
+  switchBox.setAttribute('aria-label', statsCopy('Kies het rekenkundige teken', 'Choose the mathematical operator'));
+  
+  connectionOperators.forEach(symbol => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'connection-op-btn';
+    button.textContent = symbol;
+    button.setAttribute('role', 'radio');
+    button.setAttribute('aria-checked', String(connectionState?.operator === symbol));
+    button.setAttribute('aria-label', operatorName(symbol));
+    button.dataset.operator = symbol;
+    if (connectionState?.operator === symbol) button.classList.add('active');
+    
+    button.onclick = () => {
+      setConnectionOperator(symbol);
+      button.focus();
+    };
+    button.onkeydown = event => {
+      if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+        event.preventDefault();
+        const next = connectionOperators[(connectionOperators.indexOf(symbol) + 1) % connectionOperators.length];
+        setConnectionOperator(next);
+        switchBox.querySelector(`[data-operator="${next}"]`)?.focus();
+      } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+        event.preventDefault();
+        const prev = connectionOperators[(connectionOperators.indexOf(symbol) - 1 + connectionOperators.length) % connectionOperators.length];
+        setConnectionOperator(prev);
+        switchBox.querySelector(`[data-operator="${prev}"]`)?.focus();
+      }
+    };
+    switchBox.append(button);
+  });
+  
+  const lineRight = document.createElement('div');
+  lineRight.className = 'connector-line';
+  
+  connector.append(lineLeft, switchBox, lineRight);
+  return connector;
+}
+
+function setConnectionOperator(symbol) {
+  if (!connectionState || connectionState.submitted) return;
+  connectionState.operator = symbol;
+  const switchBox = document.querySelector('.connection-operator-switch');
+  if (switchBox) {
+    switchBox.querySelectorAll('.connection-op-btn').forEach(btn => {
+      const active = btn.dataset.operator === symbol;
+      btn.setAttribute('aria-checked', String(active));
+      btn.classList.toggle('active', active);
+    });
+  }
+  updateConnectionLiveFormula();
+}
+
+function renderConnectionEqualsConnector() {
+  const connector = document.createElement('div');
+  connector.className = 'connector connection-connector connection-equals-connector';
+  const lineLeft = document.createElement('div');
+  lineLeft.className = 'connector-line';
+  const badge = document.createElement('div');
+  badge.className = 'connector-badge eq';
+  badge.textContent = '=';
+  badge.setAttribute('aria-label', statsCopy('Is gelijk aan', 'Equals'));
+  const lineRight = document.createElement('div');
+  lineRight.className = 'connector-line';
+  connector.append(lineLeft, badge, lineRight);
+  return connector;
+}
+
+function updateConnectionLiveFormula() {
+  if (typeof document === 'undefined') return;
+  const container = document.getElementById('connectionLiveFormula');
+  if (!container || !connectionState) return;
+  if (connectionState.submitted) {
+    container.style.display = 'none';
+    return;
+  }
+  container.style.display = 'flex';
+  
+  const guesses = connectionState.order.map(i => {
+    const input = document.getElementById('connectionAnswer' + i);
+    const val = input ? input.value.trim() : '';
+    return val ? parseFormattedNumber(val) : null;
+  });
+  const op = connectionState.operator;
+  
+  const hasG1 = guesses[0] !== null && Number.isSafeInteger(guesses[0]) && guesses[0] > 0;
+  const hasG2 = guesses[1] !== null && Number.isSafeInteger(guesses[1]) && guesses[1] > 0;
+  const hasG3 = guesses[2] !== null && Number.isSafeInteger(guesses[2]) && guesses[2] > 0;
+  
+  const g1Str = hasG1 ? fmt(guesses[0]) : '?';
+  const g2Str = hasG2 ? fmt(guesses[1]) : '?';
+  const g3Str = hasG3 ? fmt(guesses[2]) : '?';
+  const opStr = op || '?';
+  
+  let statusBadge = '';
+  let statusClass = '';
+  if (hasG1 && hasG2 && hasG3 && op) {
+    const holds = connectionEquation(guesses, op);
+    if (holds) {
+      statusBadge = `<span class="live-match-badge is-valid">✓ ${statsCopy('Som klopt', 'Equation matches')}</span>`;
+      statusClass = 'is-valid';
+    } else {
+      statusBadge = `<span class="live-match-badge is-invalid">≠ ${statsCopy('Som klopt niet', 'Equation does not match')}</span>`;
+      statusClass = 'is-invalid';
+    }
+  } else if (!op) {
+    statusBadge = `<span class="live-match-badge is-prompt">${statsCopy('Kies een teken', 'Choose an operator')}</span>`;
+  }
+  
+  container.innerHTML = `
+    <div class="connection-live-formula-inner ${statusClass}">
+      <span class="live-formula-label">${statsCopy('Vergelijking', 'Equation')}</span>
+      <div class="live-formula-tokens">
+        <span class="live-pill ${hasG1 ? 'has-value' : ''}">${g1Str}</span>
+        <span class="live-op-token ${op ? 'has-op' : ''}">${opStr}</span>
+        <span class="live-pill ${hasG2 ? 'has-value' : ''}">${g2Str}</span>
+        <span class="live-eq-token">=</span>
+        <span class="live-pill is-result ${hasG3 ? 'has-value' : ''}">${g3Str}</span>
+      </div>
+      ${statusBadge}
+    </div>
+  `;
+}
+
+function handleConnectionGlobalKeydown(event) {
+  if (typeof document === 'undefined' || !connectionState || connectionState.submitted) return;
+  const bkScreen = document.getElementById('breinkrakersScreen');
+  if (!bkScreen || bkScreen.style.display === 'none' || !bkScreen.classList.contains('is-playing')) return;
+  
+  const key = event.key;
+  let targetOp = null;
+  if (key === '+' || key === 'Add') targetOp = '+';
+  else if (key === '-' || key === 'Subtract' || key === '−') targetOp = '−';
+  else if (key === '*' || key === 'Multiply' || key === '×') targetOp = '×';
+  else if ((key === 'x' || key === 'X') && (!event.target || event.target.tagName !== 'INPUT')) targetOp = '×';
+  else if (key === '/' || key === 'Divide' || key === ':' || key === '÷') targetOp = '÷';
+  
+  if (targetOp) {
+    setConnectionOperator(targetOp);
+    if (event.target && event.target.tagName === 'INPUT') {
+      event.preventDefault();
+    }
+  }
+}
+
+if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+  if (!window._connectionKeyHandlerBound) {
+    window.addEventListener('keydown', handleConnectionGlobalKeydown);
+    window._connectionKeyHandlerBound = true;
+  }
 }
 
 function startConnection(index = 0) {
@@ -135,7 +310,12 @@ function startConnection(index = 0) {
     input.className = 'library-answer-input daily-style-input';
     input.placeholder = statsCopy('Jouw schatting', 'Your estimate'); input.autocomplete = 'off';
     // Geen verborgen operator aan de autocalculator geven: die zou het verband verklappen.
-    bindWholeNumberInput(input, () => {});
+    bindWholeNumberInput(input, () => {
+      updateConnectionLiveFormula();
+    });
+    input.addEventListener('input', () => {
+      updateConnectionLiveFormula();
+    });
     input.addEventListener('keydown', event => {
       if (event.key !== 'Enter') return;
       event.preventDefault();
@@ -146,35 +326,49 @@ function startConnection(index = 0) {
     const heading = document.createElement('div'); heading.className = 'connection-question-heading';
     heading.append(question, handle);
     wrapper.append(input); card.append(position, heading, wrapper);
+    
+    // Tikken op een kaart wanneer een andere is geselecteerd zorgt direct voor een wissel
+    card.addEventListener('click', event => {
+      if (event.target.closest('input') || event.target.closest('.connection-drag-handle')) return;
+      if (connectionPicked !== null) {
+        selectConnectionCard(i);
+      }
+    });
     return card;
   });
   werkVraagDetailsBij(puzzle, cards, false);
   cards.forEach(card => list.append(card));
-  const operator = document.createElement('fieldset'); operator.className = 'connection-operators';
-  const legend = document.createElement('legend'); legend.textContent = statsCopy('Kies het teken', 'Choose the operator');
-  operator.append(legend);
-  connectionOperators.forEach(symbol => {
-    const button = document.createElement('button'); button.type = 'button'; button.textContent = symbol;
-    button.setAttribute('aria-pressed', 'false');
-    button.onclick = () => {
-      connectionState.operator = symbol;
-      operator.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b === button)));
-    };
-    operator.append(button);
-  });
-  list.append(operator);
-  const equal = document.createElement('div'); equal.className = 'connection-equals'; equal.textContent = '=';
-  list.append(equal);
+  
+  const opConnector = renderConnectionOperatorConnector();
+  list.append(opConnector);
+  
+  const eqConnector = renderConnectionEqualsConnector();
+  list.append(eqConnector);
+  
   layoutConnection();
+  updateConnectionLiveFormula();
 }
 
 function layoutConnection() {
   const list = document.getElementById('bkQuestionList');
+  if (!connectionState) return;
   const cards = connectionState.order.map(i => list.querySelector('[data-question="' + i + '"]'));
   cards.forEach((card, index) => {
-    card.querySelector('.connection-position').textContent = index === 2 ? statsCopy('Uitkomst', 'Result') : statsCopy('Positie ', 'Position ') + (index + 1);
+    if (!card) return;
+    const isResult = index === 2;
+    const pos = card.querySelector('.connection-position');
+    if (pos) {
+      pos.innerHTML = isResult
+        ? `<span class="connection-pos-pill is-result"><span class="connection-pos-dot"></span>${statsCopy('Uitkomst · Somdoel', 'Result · Target')}</span>`
+        : `<span class="connection-pos-pill"><span class="connection-pos-num">${index + 1}</span>${statsCopy('Positie ', 'Position ') + (index + 1)}</span>`;
+    }
   });
-  list.replaceChildren(cards[0], list.querySelector('.connection-operators'), cards[1], list.querySelector('.connection-equals'), cards[2]);
+  const opConnector = list.querySelector('.connection-operator-connector');
+  const eqConnector = list.querySelector('.connection-equals-connector');
+  if (opConnector && eqConnector && cards[0] && cards[1] && cards[2]) {
+    list.replaceChildren(cards[0], opConnector, cards[1], eqConnector, cards[2]);
+  }
+  updateConnectionLiveFormula();
 }
 
 function moveConnection(question, direction) {
@@ -185,22 +379,42 @@ function moveConnection(question, direction) {
   [order[index], order[target]] = [order[target], order[index]];
   layoutConnection();
   const card = document.querySelector('#bkQuestionList [data-question="' + question + '"]');
-  card.querySelector('.connection-drag-handle').focus({ preventScroll: true });
-  document.getElementById('bkFeedback').textContent = statsCopy('Vraag verplaatst naar positie ', 'Question moved to position ') + (target + 1) + '.';
+  card?.querySelector('.connection-drag-handle')?.focus({ preventScroll: true });
+  const feedback = document.getElementById('bkFeedback');
+  if (feedback) {
+    feedback.textContent = statsCopy('Vraag verplaatst naar positie ', 'Question moved to position ') + (target + 1) + '.';
+  }
 }
 
 function selectConnectionCard(question) {
   if (!connectionState || connectionState.submitted) return;
+  const prevPicked = connectionPicked;
   if (connectionPicked !== null && connectionPicked !== question) {
     const from = connectionState.order.indexOf(connectionPicked);
     const to = connectionState.order.indexOf(question);
     moveConnection(connectionPicked, to - from);
     connectionPicked = null;
-  } else connectionPicked = connectionPicked === question ? null : question;
+  } else {
+    connectionPicked = connectionPicked === question ? null : question;
+  }
+  const feedback = document.getElementById('bkFeedback');
+  if (feedback) {
+    if (connectionPicked !== null) {
+      const pos = connectionState.order.indexOf(connectionPicked) + 1;
+      feedback.textContent = statsCopy(
+        `Vraag op positie ${pos} geselecteerd. Tik op een andere vraag om te wisselen.`,
+        `Question at position ${pos} selected. Tap another question to swap.`
+      );
+    } else if (prevPicked !== null) {
+      feedback.textContent = '';
+    }
+  }
   document.querySelectorAll('#bkQuestionList .connection-question').forEach(card => {
-    const picked = Number(card.dataset.question) === connectionPicked;
+    const qNum = Number(card.dataset.question);
+    const picked = qNum === connectionPicked;
     card.classList.toggle('is-picked', picked);
-    card.querySelector('.connection-drag-handle').setAttribute('aria-pressed', String(picked));
+    card.classList.toggle('is-swap-target', connectionPicked !== null && !picked);
+    card.querySelector('.connection-drag-handle')?.setAttribute('aria-pressed', String(picked));
   });
 }
 
@@ -329,6 +543,8 @@ function submitConnection() {
   feedback.textContent = '';
   document.getElementById('connectionHint').hidden = true;
   document.getElementById('connectionSkip').hidden = true;
+  const liveFormula = document.getElementById('connectionLiveFormula');
+  if (liveFormula) liveFormula.style.display = 'none';
   document.getElementById('bkSubmitButton').textContent = state.index + 1 < connectionPool.length ? statsCopy('Volgende puzzel →', 'Next puzzle →') : statsCopy('Alle puzzels →', 'All puzzles →');
   if (result.exact) launchConfetti();
   document.getElementById('breinkrakersScreen').scrollTop = 0;
