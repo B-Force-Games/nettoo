@@ -2022,21 +2022,26 @@
     const paneel = document.createElement('details');
     paneel.className = 'vraag-bron';
     const kop = document.createElement('summary');
-    kop.textContent = 'Waar komt dit vandaan?';
+    kop.textContent = statsCopy('Waar komt dit vandaan?', 'Where does this answer come from?');
     const uitleg = document.createElement('p');
-    // Bewijszinnen zijn inhoud uit de bron, geen HTML of vertaalinstructies.
+    // Vertalingen zijn vooraf gegenereerd: geen externe vertaalverzoeken tijdens spelen.
     uitleg.setAttribute('data-i18n-skip', '');
-    uitleg.textContent = vermelding.uitleg;
+    const english = window.NettoI18n?.language === 'en';
+    const translation = window.NETTO_BRONNEN_EN?.[vermelding.uitleg];
+    uitleg.textContent = english ? (translation || vermelding.uitleg) : vermelding.uitleg;
     const link = document.createElement('a');
     link.href = url.href;
     link.target = '_blank';
     link.rel = 'noopener';
-    // De bewijszin zelf blijft Nederlands: dat is een citaat uit de bron, geen
-    // interfacetekst. Dit label eromheen is dat wel, en bleef staan omdat het
-    // met de hand aan elkaar werd geplakt en dus nooit langs de vertaling kwam.
     link.textContent = statsCopy('Bekijk de bron: ', 'View the source: ')
       + url.hostname.replace(/^www\./, '');
     paneel.append(kop, uitleg, link);
+    if (english && translation && translation !== vermelding.uitleg) {
+      const note = document.createElement('small');
+      note.className = 'source-translation-note';
+      note.textContent = 'Automatically translated';
+      paneel.appendChild(note);
+    }
     return paneel;
   }
 
@@ -2075,6 +2080,23 @@
         }
       }
       kaart.classList.add('vraag-met-categorie');
+      const context = window.NettoVraagContext?.(vraag);
+      let ondertekst = kaart.querySelector('.vraag-ondertekst');
+      if (context) {
+        if (!ondertekst) {
+          ondertekst = document.createElement('p');
+          ondertekst.className = 'vraag-ondertekst';
+          ondertekst.setAttribute('data-i18n-skip', '');
+          kaart.querySelector('.q-label')?.after(ondertekst);
+        }
+        ondertekst.textContent = statsCopy(context.nl, context.en);
+        if (invoer) {
+          ondertekst.id = invoer.id + 'Context';
+          const ids = (invoer.getAttribute('aria-describedby') || '').split(' ').filter(Boolean);
+          if (!ids.includes(ondertekst.id)) ids.push(ondertekst.id);
+          invoer.setAttribute('aria-describedby', ids.join(' '));
+        }
+      } else ondertekst?.remove();
       kaart.style.setProperty('--vraag-tint', 'var(' + categorieKleurVariabele(categorie) + ')');
       // Klein verschil per stap houdt ook gedeelde kleurfamilies herkenbaar.
       kaart.style.setProperty('--vraag-menging', (84 - index * 12) + '%');

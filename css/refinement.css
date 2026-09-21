@@ -1,4 +1,25 @@
 /* Netto refinement layer — shared editorial game system */
+.puzzle-review-summary { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 4px 20px; padding: 22px 24px; margin-bottom: 8px; border-radius: 14px; background: #14163B; color: #fff; }
+.puzzle-review-summary > span:first-child { font-size: 13px; font-weight: 600; }
+.puzzle-review-summary > strong { grid-column: 2; grid-row: 1 / 3; color: #FFDF4A; font: 700 clamp(28px, 6vw, 40px) 'Space Grotesk', sans-serif; }
+.puzzle-review-summary > span:last-child { color: #C7CEEF; font-size: 12px; }
+.library-question.puzzle-review-question { padding: 22px; border: 1px solid var(--surface-border); border-radius: 14px; color: var(--ink); }
+.puzzle-review-heading { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; color: var(--text-muted); font-size: 11px; }
+.puzzle-review-verdict { font-weight: 600; }
+.puzzle-review-verdict.is-exact { color: #08734C; }
+[data-theme="dark"] .puzzle-review-verdict.is-exact { color: #75E3B6; }
+.puzzle-review-question h3 { margin: 12px 0 18px; font-size: 16px; line-height: 1.5; font-weight: 500; }
+.puzzle-review-comparison { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; margin: 0; }
+.puzzle-review-comparison > div + div { border-left: 1px solid var(--surface-border); padding-left: 16px; }
+.puzzle-review-comparison dt { margin-bottom: 5px; color: var(--text-muted); font-size: 12px; }
+.puzzle-review-comparison dd { margin: 0; color: var(--ink); font: 600 clamp(19px, 4vw, 26px) 'JetBrains Mono', monospace; overflow-wrap: anywhere; }
+.puzzle-review-comparison > div:last-child dd { font-weight: 800; }
+.source-translation-note { display: block; margin-top: 8px; color: var(--text-muted); font-size: 11px; }
+@media (max-width: 480px) {
+  .library-question.puzzle-review-question { padding: 16px; }
+  .puzzle-review-summary { padding: 18px 16px; }
+}
+.vraag-ondertekst { color: var(--text-muted); font: 400 13px/1.5 'Space Grotesk', sans-serif; margin: -4px 0 14px; max-width: 65ch; }
 .topbar > .topbar-navigation { display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; gap: 10px; flex-shrink: 0; }
 .topbar-navigation > .hamburger, .topbar-navigation > .topbar-home { width: 42px; height: 42px; flex: 0 0 42px; margin: 0; }
 .topbar-home { display: inline-flex; align-items: center; justify-content: center; padding: 0; border-radius: 10px; border: 1px solid rgba(255,255,255,.24); background: rgba(15,18,69,.18); color: #fff; cursor: pointer; text-decoration: none; }

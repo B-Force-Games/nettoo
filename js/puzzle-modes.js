@@ -102,10 +102,61 @@
     if (guesses.every((guess, i) => isSpotOnAnswer(guess, answers[i]))) launchConfetti();
     const plays = JSON.parse(localStorage.getItem('netto_library_plays') || '{}'); plays[active.id] = { factor, guesses, completedAt:new Date().toISOString() }; localStorage.setItem('netto_library_plays',JSON.stringify(plays));
     updateContinuePuzzleButton();
-    document.getElementById(prefix + 'QuestionList').innerHTML = answers.map((a,i) => `<div class="library-question"><b>Vraag ${i+1}</b>${[active.q1_label,active.q2_label,active.q3_label][i]}<br><strong>Echt antwoord: ${fmt(a)} · ${scoreVraag(guesses[i],a).toFixed(2)}×</strong></div>`).join('') + `<div class="score-badge-container"><div class="score-badge-title">Jouw gemiddelde afwijking</div><div class="score-badge-val" style="color:${scoreColor(factor)}">${factor.toFixed(2)}×</div></div>`;
+    renderPuzzleReview(prefix, active, guesses, answers, factor);
     werkPuzzelNavigatieBij(prefix, true);
     syncLibraryPlay(active, guesses[0], guesses[1], guesses[2], factor);
     if (prefix === 'library') renderLibraryCards(); else renderCatalogusPuzzles();
+  }
+
+  function renderPuzzleReview(prefix, puzzle, guesses, answers, factor) {
+    const list = document.getElementById(prefix + 'QuestionList');
+    list.replaceChildren();
+    const summary = document.createElement('section');
+    summary.className = 'puzzle-review-summary';
+    summary.setAttribute('aria-label', statsCopy('Puzzelresultaat', 'Puzzle result'));
+    const label = document.createElement('span');
+    label.textContent = statsCopy('Nauwkeurigheid', 'Accuracy');
+    const score = document.createElement('strong');
+    score.textContent = Math.round(100 / factor) + '%';
+    const detail = document.createElement('span');
+    detail.textContent = statsCopy('Gemiddelde afwijking: ', 'Average deviation: ') + factor.toFixed(2) + '×';
+    summary.append(label, score, detail);
+    list.appendChild(summary);
+    answers.forEach((answer, index) => {
+      const card = document.createElement('article');
+      card.className = 'library-question puzzle-review-question';
+      const header = document.createElement('div');
+      header.className = 'puzzle-review-heading';
+      const number = document.createElement('span');
+      number.textContent = statsCopy('Vraag ', 'Question ') + (index + 1);
+      const verdict = document.createElement('span');
+      const exact = isSpotOnAnswer(guesses[index], answer);
+      verdict.className = 'puzzle-review-verdict' + (exact ? ' is-exact' : '');
+      verdict.textContent = exact ? statsCopy('✓ Exact goed', '✓ Exactly right')
+        : scoreVraag(guesses[index], answer).toFixed(2) + '× ' + (guesses[index] < answer
+          ? statsCopy('te laag', 'too low') : statsCopy('te hoog', 'too high'));
+      header.append(number, verdict);
+      const question = document.createElement('h3');
+      const original = puzzle['q' + (index + 1) + '_label'];
+      question.textContent = window.NettoI18n?.t(original) || original;
+      const comparison = document.createElement('dl');
+      comparison.className = 'puzzle-review-comparison';
+      [
+        [statsCopy('Jouw schatting', 'Your estimate'), guesses[index]],
+        [statsCopy('Juiste antwoord', 'Actual answer'), answer]
+      ].forEach(([caption, value]) => {
+        const column = document.createElement('div');
+        const term = document.createElement('dt');
+        term.textContent = caption;
+        const valueElement = document.createElement('dd');
+        valueElement.textContent = fmt(value);
+        column.append(term, valueElement);
+        comparison.appendChild(column);
+      });
+      card.append(header, question, comparison);
+      list.appendChild(card);
+    });
+    werkVraagDetailsBij(puzzle, [...list.querySelectorAll('.puzzle-review-question')], true);
   }
 
   function openDailyPuzzles() {
