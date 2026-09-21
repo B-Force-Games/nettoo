@@ -19,6 +19,7 @@
   .library-question.puzzle-review-question { padding: 16px; }
   .puzzle-review-summary { padding: 18px 16px; }
 }
+.vraag-ondertekst { color: var(--text-muted); font: 400 13px/1.5 'Space Grotesk', sans-serif; margin: -4px 0 14px; max-width: 65ch; }
 .topbar > .topbar-navigation { display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; gap: 10px; flex-shrink: 0; }
 .topbar-navigation > .hamburger, .topbar-navigation > .topbar-home { width: 42px; height: 42px; flex: 0 0 42px; margin: 0; }
 .topbar-home { display: inline-flex; align-items: center; justify-content: center; padding: 0; border-radius: 10px; border: 1px solid rgba(255,255,255,.24); background: rgba(15,18,69,.18); color: #fff; cursor: pointer; text-decoration: none; }
