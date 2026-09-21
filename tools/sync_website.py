@@ -26,6 +26,7 @@ MIRROR_FILES = (
     "js/core.js",
     "js/question-context.js",
     "js/puzzle-modes.js",
+    "js/find-connection.js",
     "js/race.js",
     "js/submissions.js",
     "js/library.js",

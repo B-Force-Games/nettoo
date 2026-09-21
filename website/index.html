@@ -36,9 +36,9 @@
 <script src="data/netto_race_pool.js?v=43"></script>
 <script src="data/netto_breinkrakers.js?v=30"></script>
 <script src="data/netto_translations_en.js?v=50"></script>
-<script src="js/i18n.js?v=67"></script>
+<script src="js/i18n.js?v=68"></script>
 <link rel="stylesheet" href="css/styles.css?v=58">
-<link rel="stylesheet" href="css/refinement.css?v=115">
+<link rel="stylesheet" href="css/refinement.css?v=116">
 <link rel="stylesheet" href="css/stats-page.css?v=4">
 
 </head>
@@ -118,7 +118,7 @@
       <div class="sidebar-group">
         <div class="sidebar-group-title">Spelen</div>
         <button class="sidebar-item" onclick="openPuzzles()"><span class="sidebar-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17.5h7M17.5 14v7"/></svg></span><span class="label">Puzzels</span><span class="arrow">→</span></button>
-        <button class="sidebar-item" onclick="openBreinkrakers()"><span class="sidebar-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 4.5A3.5 3.5 0 0 0 6 8v.4A3.5 3.5 0 0 0 4 15a3.5 3.5 0 0 0 5.5 3M14.5 4.5A3.5 3.5 0 0 1 18 8v.4a3.5 3.5 0 0 1 2 6.6 3.5 3.5 0 0 1-5.5 3M9.5 4.5v15M14.5 4.5v15M9.5 9H7.8M14.5 14h1.7"/></svg></span><span class="label">Breinkrakers</span><span class="arrow">→</span></button>
+        <button class="sidebar-item" onclick="openConnection()"><span class="sidebar-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 4.5A3.5 3.5 0 0 0 6 8v.4A3.5 3.5 0 0 0 4 15a3.5 3.5 0 0 0 5.5 3M14.5 4.5A3.5 3.5 0 0 1 18 8v.4a3.5 3.5 0 0 1 2 6.6 3.5 3.5 0 0 1-5.5 3M9.5 4.5v15M14.5 4.5v15M9.5 9H7.8M14.5 14h1.7"/></svg></span><span class="label">Find the Connection</span><span class="arrow">→</span></button>
         <button class="sidebar-item" onclick="openPuzzleRace()"><span class="sidebar-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6M12 5V2"/></svg></span><span class="label">Puzzel Race</span><span class="arrow">→</span></button>
       </div>
       <div class="sidebar-group">
@@ -192,9 +192,9 @@
           <span class="home-mode-body"><b>Puzzel Race</b><small>Solo, online of met vrienden</small></span>
           <span class="home-mode-arrow">→</span>
         </button>
-        <button class="home-mode-card" onclick="openBreinkrakers()">
+        <button class="home-mode-card" onclick="openConnection()">
           <span class="home-mode-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 4.5A3.5 3.5 0 0 0 6 8v.4A3.5 3.5 0 0 0 4 15a3.5 3.5 0 0 0 5.5 3M14.5 4.5A3.5 3.5 0 0 1 18 8v.4a3.5 3.5 0 0 1 2 6.6 3.5 3.5 0 0 1-5.5 3M9.5 4.5v15M14.5 4.5v15M9.5 9H7.8M14.5 14h1.7"/></svg></span>
-          <span class="home-mode-body"><b>Breinkrakers</b><small>4 vragen in één formule</small></span>
+          <span class="home-mode-body"><b>Find the Connection</b><small>Three questions. One hidden equation.</small></span>
           <span class="home-mode-arrow">→</span>
         </button>
         <button class="home-mode-card" onclick="openDailyPuzzles()">
@@ -417,7 +417,7 @@
           <div class="how-next-grid">
             <button type="button" onclick="goHome(); showScreen('puzzle')"><b>De Daily</b><span>Drie vragen, één keer per dag.</span><i aria-hidden="true">→</i></button>
             <button type="button" onclick="openPuzzleRace()"><b>Puzzel Race</b><span>Zoveel mogelijk exact binnen de tijd.</span><i aria-hidden="true">→</i></button>
-            <button type="button" onclick="openBreinkrakers()"><b>Breinkrakers</b><span>Vier antwoorden in één formule.</span><i aria-hidden="true">→</i></button>
+            <button type="button" onclick="openConnection()"><b>Find the Connection</b><span>Rearrange three questions and find the connection.</span><i aria-hidden="true">→</i></button>
           </div>
         </div>
       </section>
@@ -597,17 +597,17 @@
     </div>
   </main>
 
-  <!-- ============ BREINKRAKERS ============ -->
+  <!-- ============ FIND THE CONNECTION ============ -->
   <main class="library-screen breinkrakers-screen" id="breinkrakersScreen">
     <div class="library-page-inner">
-      <div class="library-page-top"><button class="library-home" onclick="goHome()">Netto</button><span class="library-page-kicker">NETTO · BREINKRAKERS</span></div>
+      <div class="library-page-top"><button class="library-home" onclick="goHome()">Netto</button><span class="library-page-kicker">NETTO · FIND THE CONNECTION</span></div>
 
       <section class="bk-library-overview" id="bkStart">
-        <h1 class="library-page-title">Breinkrakers</h1>
-        <p class="library-page-subtitle">Vier vragen vormen samen één formule. Kies een puzzel en vul alle vier de antwoorden in.</p>
-        <div class="library-stats" aria-label="Voortgang Breinkrakers">
+        <h1 class="library-page-title">Find the Connection</h1>
+        <p class="library-page-subtitle">Three questions. One hidden equation. Rearrange them and find the mathematical connection.</p>
+        <div class="library-stats" aria-label="Voortgang Find the Connection">
           <div class="library-stat"><b id="bkPlayedCount">0</b><span>Gespeeld</span></div>
-          <div class="library-stat"><b id="bkExactCount">0</b><span>Volledig exact</span></div>
+          <div class="library-stat"><b id="bkExactCount">0</b><span>Connections found</span></div>
           <div class="library-stat"><b id="bkAverageScore">—</b><span>Gemiddelde score</span></div>
         </div>
         <div class="bk-catalog-toolbar">
@@ -617,24 +617,18 @@
       </section>
 
       <section class="bk-play-panel" id="bkPlay" style="display:none;">
-        <div class="eyebrow"><span>Netto</span> · <span>Breinkrakers</span> · <span id="bkCounter">1 / 199</span></div>
+        <div class="eyebrow"><span>Netto</span> · <span>Find the Connection</span> · <span id="bkCounter">1 / 199</span></div>
         <h1 class="headline" id="bkPuzzleLabel">Puzzel 1</h1>
-        <p class="bk-leesregel">Reken van links naar rechts: 2 + 3 × 4 = 20.</p>
+        <p class="bk-leesregel" id="connectionHint">Estimate each answer. Move the questions with the arrows, then choose an operator.</p>
         <div class="card race-question-card bk-question-card">
           <div class="race-question-list" id="bkQuestionList"></div>
           <div class="race-feedback" id="bkFeedback" role="status" aria-live="polite"></div>
-          <button class="btn-check race-submit-button" id="bkSubmitButton" type="button" onclick="submitBreinkrakers()">Check mijn score</button>
+          <button class="btn-check race-submit-button" id="bkSubmitButton" type="button" onclick="submitConnection()">Check my connection</button>
         </div>
-        <button class="bk-overview-button" type="button" onclick="renderBreinkrakersStart()">← Alle Breinkrakers</button>
+        <div class="connection-navigation"><button class="bk-overview-button" type="button" onclick="renderConnectionStart()">← All connections</button><button class="bk-overview-button" id="connectionSkip" type="button" onclick="startConnection(connectionState.index + 1)">Skip puzzle →</button></div>
       </section>
 
-      <section class="race-panel race-results-panel" id="bkDone" style="display:none;">
-        <div class="race-kicker">BREINKRAKERS · KLAAR</div>
-        <h2 class="race-results-title">Alle puzzels gespeeld 🎉</h2>
-        <div class="race-score-card"><strong id="bkDoneScore">—</strong><span>gemiddelde afwijking</span></div>
-        <p class="race-results-meta" id="bkDoneMeta"></p>
-        <button class="hero-cta race-restart-button" type="button" onclick="renderBreinkrakersStart()">Terug naar alle puzzels →</button>
-      </section>
+
     </div>
   </main>
 
@@ -1036,14 +1030,15 @@
 <script src="js/photo-credits.js?v=3"></script>
 <script src="js/daily-photos.js?v=2"></script>
 <script src="js/question-context.js?v=1"></script>
-<script src="js/core.js?v=112"></script>
-<script src="js/puzzle-modes.js?v=54"></script>
+<script src="js/core.js?v=113"></script>
+<script src="js/puzzle-modes.js?v=55"></script>
+<script src="js/find-connection.js?v=1"></script>
 <script src="js/race.js?v=63"></script>
 <script src="js/submissions.js?v=41"></script>
-<script src="js/library.js?v=57"></script>
-<script src="js/site-navigation.js?v=2"></script>
+<script src="js/library.js?v=58"></script>
+<script src="js/site-navigation.js?v=3"></script>
 <script src="js/app.js?v=35"></script>
-<script src="js/stats-page.js?v=3"></script>
+<script src="js/stats-page.js?v=4"></script>
 
 </body>
 </html>

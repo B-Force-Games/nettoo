@@ -377,7 +377,7 @@ function renderLibraryStats() {
   window.closeBreinkrakers = closeBreinkrakers;
   window.startBreinkrakers = startBreinkrakers;
   window.submitBreinkrakers = submitBreinkrakers;
-  window.bkTryAutoFill = bkTryAutoFill;
+  window.openConnection = openConnection;
   window.openSettings = openSettings;
   window.openHowItWorks = openHowItWorks;
   window.closeSettings = closeSettings;
