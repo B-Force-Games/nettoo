@@ -19,7 +19,7 @@
       const visible = id => Boolean(document.getElementById(id)?.getClientRects().length);
       function destination() {
         if (visible('libraryPuzzleView')) return { label: copy('Terug naar alle puzzels', 'Back to all puzzles'), open: () => openPuzzles() };
-        if (visible('bkPlay') || visible('bkDone')) return { label: copy('Terug naar alle breinkrakers', 'Back to all Brain Teasers'), open: () => renderBreinkrakersStart() };
+        if (visible('bkPlay') || visible('bkDone')) return { label: copy('Terug naar alle verbanden', 'Back to all connections'), open: () => renderBreinkrakersStart() };
         return { label: copy('Naar home', 'Go home'), open: () => goHome() };
       }
       function updateBackLabel() {
@@ -38,7 +38,7 @@
     window.openNavigationDestination = function () {
       const url = new URL(location.href);
       const target = url.searchParams.get('screen');
-      const routes = { daily: () => { goHome(); showScreen('puzzle'); }, archive: () => openDailyPuzzles(), leaderboard: () => openLeaderboardModal(), puzzles: () => openPuzzles(), brain: () => openBreinkrakers(), race: () => openPuzzleRace(), how: () => openHowItWorks(), submit: () => openSubmitQuestion(), about: () => openAbout() };
+      const routes = { daily: () => { goHome(); showScreen('puzzle'); }, archive: () => openDailyPuzzles(), leaderboard: () => openLeaderboardModal(), puzzles: () => openPuzzles(), brain: () => openConnection(), connection: () => openConnection(), race: () => openPuzzleRace(), how: () => openHowItWorks(), submit: () => openSubmitQuestion(), about: () => openAbout() };
       if (routes[target]) {
         url.searchParams.delete('screen'); history.replaceState(null, '', url);
         routes[target]();
@@ -55,7 +55,7 @@
   nav.ariaLabel = copy('Hoofdnavigatie', 'Main navigation');
   const groups = [
     ['Daily', [['daily','De Daily','Daily'],['archive','Daily Archive','Daily Archive'],['leaderboard','Ranglijst','Leaderboard']]],
-    [copy('Spelen','Play'), [['puzzles','Puzzels','Puzzles'],['brain','Breinkrakers','Brain Teasers'],['race','Puzzelrace','Puzzle Race']]],
+    [copy('Spelen','Play'), [['puzzles','Puzzels','Puzzles'],['connection','Find the Connection','Find the Connection'],['race','Puzzelrace','Puzzle Race']]],
     [copy('Meer','More'), [['how','Hoe werkt het?','How does it work?'],['submit','Vraag insturen','Submit a question']]]
   ];
   nav.innerHTML = '<div class="sidebar-header"><a class="sidebar-logo" href="index.html">Netto</a><button type="button" class="sidebar-close" aria-label="' + copy('Menu sluiten','Close menu') + '">×</button></div><div class="sidebar-tagline">' + copy('het schattingsspel','the estimation game') + '</div><div class="sidebar-scroll">' + groups.map(([name,items]) => '<div class="sidebar-group"><div class="sidebar-group-title">' + name + '</div>' + items.map(([id,nl,en]) => '<a class="sidebar-item" href="index.html?screen=' + id + '"><span class="label">' + copy(nl,en) + '</span><span class="arrow">→</span></a>').join('') + '</div>').join('') + '</div><a class="sidebar-footer" href="index.html?screen=about">' + copy('Over Netto','About Netto') + '</a>';

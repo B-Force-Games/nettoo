@@ -1,7 +1,7 @@
 // Uitgebreide statistieken: uitsluitend opgeslagen resultaten, nooit verzonnen antwoorden.
 (function () {
   'use strict';
-  const modes = { daily: ['Daily', 'Daily'], library: ['Puzzels', 'Puzzles'], breinkrakers: ['Breinkrakers', 'Brain Teasers'], race: ['Puzzelrace', 'Puzzle Race'] };
+  const modes = { daily: ['Daily', 'Daily'], library: ['Puzzels', 'Puzzles'], connection: ['Find the Connection', 'Find the Connection'], race: ['Puzzelrace', 'Puzzle Race'] };
   const read = (key, fallback) => { try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch (_) { return fallback; } };
   const t = (nl, en) => readLanguage() === 'en' ? en : nl;
   function readLanguage() { try { return localStorage.getItem('netto_language') === 'nl' ? 'nl' : 'en'; } catch (_) { return 'en'; } }
@@ -12,6 +12,7 @@
   const average = list => list.length ? list.reduce((sum, value) => sum + value, 0) / list.length : null;
   const local = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
   let mode = new URLSearchParams(location.search).get('mode') || 'daily';
+  if (mode === 'breinkrakers' || mode === 'brain') mode = 'connection';
   if (!modes[mode]) mode = 'daily';
   let period = 'week';
   let demo = local && new URLSearchParams(location.search).get('demo') === '1';
@@ -71,9 +72,9 @@
     } else if (selected === 'library') {
       const plays = read('netto_library_plays', {});
       entries = (data.library || []).map(p => attempt(plays[p.id], p, plays[p.id]?.completedAt?.slice(0, 10)));
-    } else if (selected === 'breinkrakers') {
-      const puzzles = new Map((window.NETTO_BREINKRAKERS || []).map(p => [p.id, p]));
-      const saved = read('netto_breinkrakers_progress', {});
+    } else if (selected === 'connection') {
+      const puzzles = new Map((data.library || []).map(p => [p.id, p]));
+      const saved = read('netto_connection_progress', {});
       entries = (Array.isArray(saved.results) ? saved.results : []).map(p => attempt(p, puzzles.get(p.id), p.completedAt?.slice(0, 10)));
     } else {
       const saved = read('netto_race_stats', []);
@@ -222,7 +223,7 @@
     }
   }
   window.openFullStatsPage = function (selected) {
-    const aliases = { puzzles: 'library', brain: 'breinkrakers' };
+    const aliases = { puzzles: 'library', brain: 'connection', breinkrakers: 'connection' };
     const chosen = aliases[selected] || selected || 'daily';
     location.href = 'stats.html?mode=' + encodeURIComponent(modes[chosen] ? chosen : 'daily');
   };

@@ -841,7 +841,7 @@
   let statsCountdownTimer = null;
   let statsReturnFocus = null;
   let statsMode = 'daily';
-  const STATS_MODES = { daily: ['Daily', 'Daily'], puzzles: ['Puzzels', 'Puzzles'], brain: ['Breinkrakers', 'Brain Teasers'], race: ['Puzzelrace', 'Puzzle Race'] };
+  const STATS_MODES = { daily: ['Daily', 'Daily'], puzzles: ['Puzzels', 'Puzzles'], brain: ['Find the Connection', 'Find the Connection'], race: ['Puzzelrace', 'Puzzle Race'] };
 
   function readStatsStorage(key, fallback) {
     try { return JSON.parse(localStorage.getItem(key)) || fallback; } catch (_) { return fallback; }
@@ -854,7 +854,7 @@
       const plays = readStatsStorage('netto_library_plays', {});
       results = libraryPuzzles.map(p => plays[p.id]).filter(Boolean);
     } else if (statsMode === 'brain') {
-      const saved = readStatsStorage('netto_breinkrakers_progress', {});
+      const saved = readStatsStorage('netto_connection_progress', {});
       results = Array.isArray(saved.results) ? saved.results : [];
     } else {
       const saved = readStatsStorage('netto_race_stats', []);

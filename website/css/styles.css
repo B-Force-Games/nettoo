@@ -1235,17 +1235,17 @@
     --familie-sand: #413D2A; --familie-slate: #303B4B;
     --eenheid-inkt: #C4CAD8;
   }
-  :is(#dailyQuestionView, #libraryQuestionList, #catalogusQuestionList) .vraag-met-categorie {
+  :is(#dailyQuestionView, #libraryQuestionList, #catalogusQuestionList, #bkQuestionList) .vraag-met-categorie {
     background: var(--vraag-tint, var(--surface-2));
     background: color-mix(in srgb, var(--vraag-tint, var(--surface-2)) var(--vraag-menging, 84%), var(--surface));
     border: 1px solid var(--surface-border); border-radius: 12px;
     padding: 16px; color: var(--ink);
   }
-  :is(#dailyQuestionView, #libraryQuestionList, #catalogusQuestionList) .vraag-met-categorie .q-label { display:block; color:var(--ink); }
-  :is(#dailyQuestionView, #libraryQuestionList, #catalogusQuestionList) .vraag-met-categorie input {
+  :is(#dailyQuestionView, #libraryQuestionList, #catalogusQuestionList, #bkQuestionList) .vraag-met-categorie .q-label { display:block; color:var(--ink); }
+  :is(#dailyQuestionView, #libraryQuestionList, #catalogusQuestionList, #bkQuestionList) .vraag-met-categorie input {
     background: var(--surface); color:var(--ink); min-width:0;
   }
-  :is(#dailyQuestionView, #libraryQuestionList, #catalogusQuestionList) .vraag-met-categorie input:disabled { opacity:.8; }
+  :is(#dailyQuestionView, #libraryQuestionList, #catalogusQuestionList, #bkQuestionList) .vraag-met-categorie input:disabled { opacity:.8; }
   /* Het label zweeft absoluut rechts in het veld, dus het getal moet ruimte
      krijgen of het loopt eronderdoor. Breinkrakers en de race stonden hier
      niet bij: daar verscheen wel "towers" maar bleef de padding op 16px. */
