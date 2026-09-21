@@ -37,8 +37,8 @@
 <script src="data/netto_breinkrakers.js?v=30"></script>
 <script src="data/netto_translations_en.js?v=50"></script>
 <script src="js/i18n.js?v=68"></script>
-<link rel="stylesheet" href="css/styles.css?v=58">
-<link rel="stylesheet" href="css/refinement.css?v=116">
+<link rel="stylesheet" href="css/styles.css?v=59">
+<link rel="stylesheet" href="css/refinement.css?v=118">
 <link rel="stylesheet" href="css/stats-page.css?v=4">
 
 </head>
@@ -118,7 +118,7 @@
       <div class="sidebar-group">
         <div class="sidebar-group-title">Spelen</div>
         <button class="sidebar-item" onclick="openPuzzles()"><span class="sidebar-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17.5h7M17.5 14v7"/></svg></span><span class="label">Puzzels</span><span class="arrow">→</span></button>
-        <button class="sidebar-item" onclick="openConnection()"><span class="sidebar-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 4.5A3.5 3.5 0 0 0 6 8v.4A3.5 3.5 0 0 0 4 15a3.5 3.5 0 0 0 5.5 3M14.5 4.5A3.5 3.5 0 0 1 18 8v.4a3.5 3.5 0 0 1 2 6.6 3.5 3.5 0 0 1-5.5 3M9.5 4.5v15M14.5 4.5v15M9.5 9H7.8M14.5 14h1.7"/></svg></span><span class="label">Find the Connection</span><span class="arrow">→</span></button>
+        <button class="sidebar-item" onclick="openConnection()"><span class="sidebar-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14l4-4M8 16l-1 1a3.5 3.5 0 0 1-5-5l4-4a3.5 3.5 0 0 1 5 0M16 8l1-1a3.5 3.5 0 0 1 5 5l-4 4a3.5 3.5 0 0 1-5 0"/></svg></span><span class="label">Find the Connection</span><span class="arrow">→</span></button>
         <button class="sidebar-item" onclick="openPuzzleRace()"><span class="sidebar-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6M12 5V2"/></svg></span><span class="label">Puzzel Race</span><span class="arrow">→</span></button>
       </div>
       <div class="sidebar-group">
@@ -193,7 +193,7 @@
           <span class="home-mode-arrow">→</span>
         </button>
         <button class="home-mode-card" onclick="openConnection()">
-          <span class="home-mode-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 4.5A3.5 3.5 0 0 0 6 8v.4A3.5 3.5 0 0 0 4 15a3.5 3.5 0 0 0 5.5 3M14.5 4.5A3.5 3.5 0 0 1 18 8v.4a3.5 3.5 0 0 1 2 6.6 3.5 3.5 0 0 1-5.5 3M9.5 4.5v15M14.5 4.5v15M9.5 9H7.8M14.5 14h1.7"/></svg></span>
+          <span class="home-mode-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14l4-4M8 16l-1 1a3.5 3.5 0 0 1-5-5l4-4a3.5 3.5 0 0 1 5 0M16 8l1-1a3.5 3.5 0 0 1 5 5l-4 4a3.5 3.5 0 0 1-5 0"/></svg></span>
           <span class="home-mode-body"><b>Find the Connection</b><small>Three questions. One hidden equation.</small></span>
           <span class="home-mode-arrow">→</span>
         </button>
@@ -605,7 +605,7 @@
       <section class="bk-library-overview" id="bkStart">
         <h1 class="library-page-title">Find the Connection</h1>
         <p class="library-page-subtitle">Three questions. One hidden equation. Rearrange them and find the mathematical connection.</p>
-        <div class="library-stats" aria-label="Voortgang Find the Connection">
+        <div class="library-stats" aria-label="Find the Connection progress">
           <div class="library-stat"><b id="bkPlayedCount">0</b><span>Gespeeld</span></div>
           <div class="library-stat"><b id="bkExactCount">0</b><span>Connections found</span></div>
           <div class="library-stat"><b id="bkAverageScore">—</b><span>Gemiddelde score</span></div>
@@ -619,7 +619,7 @@
       <section class="bk-play-panel" id="bkPlay" style="display:none;">
         <div class="eyebrow"><span>Netto</span> · <span>Find the Connection</span> · <span id="bkCounter">1 / 199</span></div>
         <h1 class="headline" id="bkPuzzleLabel">Puzzel 1</h1>
-        <p class="bk-leesregel" id="connectionHint">Estimate each answer. Move the questions with the arrows, then choose an operator.</p>
+        <p class="bk-leesregel" id="connectionHint">Drag the handles to swap questions, or tap two handles. Choose an operator and find the connection.</p>
         <div class="card race-question-card bk-question-card">
           <div class="race-question-list" id="bkQuestionList"></div>
           <div class="race-feedback" id="bkFeedback" role="status" aria-live="polite"></div>
@@ -1032,7 +1032,7 @@
 <script src="js/question-context.js?v=1"></script>
 <script src="js/core.js?v=113"></script>
 <script src="js/puzzle-modes.js?v=55"></script>
-<script src="js/find-connection.js?v=1"></script>
+<script src="js/find-connection.js?v=3"></script>
 <script src="js/race.js?v=63"></script>
 <script src="js/submissions.js?v=41"></script>
 <script src="js/library.js?v=58"></script>

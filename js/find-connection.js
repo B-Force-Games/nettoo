@@ -3,6 +3,7 @@ const CONNECTION_PROGRESS_KEY = 'netto_connection_progress';
 const connectionOperators = ['+', '−', '×', '÷'];
 let connectionPool = [];
 let connectionState = null;
+let connectionPicked = null;
 
 // Gehele getallen vergelijken met BigInt voorkomt afrondingsfouten en overloop.
 function connectionEquation(values, operator) {
@@ -95,6 +96,7 @@ function startConnection(index = 0) {
   const puzzle = connectionPool[index];
   if (!puzzle) { renderConnectionStart(); return; }
   connectionState = { puzzle, index, order: shuffledConnectionOrder(), operator: null, submitted: false };
+  connectionPicked = null;
   const screen = document.getElementById('breinkrakersScreen');
   screen.classList.add('is-playing');
   screen.scrollTop = 0;
@@ -113,19 +115,16 @@ function startConnection(index = 0) {
     const card = document.createElement('div');
     card.className = 'q-block connection-question';
     card.dataset.question = i;
-    const controls = document.createElement('div');
-    controls.className = 'connection-card-controls';
     const position = document.createElement('span');
     position.className = 'connection-position';
-    controls.append(position);
-    [-1, 1].forEach(direction => {
-      const move = document.createElement('button');
-      move.type = 'button'; move.textContent = direction < 0 ? '↑' : '↓';
-      move.dataset.move = direction;
-      move.setAttribute('aria-label', direction < 0 ? statsCopy('Vraag omhoog', 'Move question up') : statsCopy('Vraag omlaag', 'Move question down'));
-      move.onclick = () => moveConnection(i, direction);
-      controls.append(move);
-    });
+    const handle = document.createElement('button');
+    handle.type = 'button'; handle.className = 'connection-drag-handle';
+    handle.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 7h14M5 12h14M5 17h14"/></svg>';
+    handle.setAttribute('aria-label', statsCopy('Verplaats deze vraag', 'Move this question'));
+    handle.setAttribute('aria-pressed', 'false');
+    handle.setAttribute('aria-describedby', 'connectionHint');
+    handle.setAttribute('aria-description', statsCopy('Gebruik de pijltjestoetsen om te verplaatsen, of tik twee grepen aan om te wisselen.', 'Use the arrow keys to move, or tap two handles to swap.'));
+    bindConnectionDrag(handle, card, i);
     const question = document.createElement('label');
     question.className = 'q-label'; question.htmlFor = 'connectionAnswer' + i;
     const original = puzzle['q' + (i + 1) + '_label'];
@@ -144,7 +143,9 @@ function startConnection(index = 0) {
       if (next !== undefined) document.getElementById('connectionAnswer' + next).focus();
       else submitConnection();
     });
-    wrapper.append(input); card.append(controls, question, wrapper);
+    const heading = document.createElement('div'); heading.className = 'connection-question-heading';
+    heading.append(question, handle);
+    wrapper.append(input); card.append(position, heading, wrapper);
     return card;
   });
   werkVraagDetailsBij(puzzle, cards, false);
@@ -172,8 +173,6 @@ function layoutConnection() {
   const cards = connectionState.order.map(i => list.querySelector('[data-question="' + i + '"]'));
   cards.forEach((card, index) => {
     card.querySelector('.connection-position').textContent = index === 2 ? statsCopy('Uitkomst', 'Result') : statsCopy('Positie ', 'Position ') + (index + 1);
-    card.querySelector('[data-move="-1"]').disabled = index === 0;
-    card.querySelector('[data-move="1"]').disabled = index === 2;
   });
   list.replaceChildren(cards[0], list.querySelector('.connection-operators'), cards[1], list.querySelector('.connection-equals'), cards[2]);
 }
@@ -186,8 +185,104 @@ function moveConnection(question, direction) {
   [order[index], order[target]] = [order[target], order[index]];
   layoutConnection();
   const card = document.querySelector('#bkQuestionList [data-question="' + question + '"]');
-  (card.querySelector('[data-move="' + direction + '"]:not(:disabled)') || card.querySelector('button:not(:disabled)')).focus();
+  card.querySelector('.connection-drag-handle').focus({ preventScroll: true });
   document.getElementById('bkFeedback').textContent = statsCopy('Vraag verplaatst naar positie ', 'Question moved to position ') + (target + 1) + '.';
+}
+
+function selectConnectionCard(question) {
+  if (!connectionState || connectionState.submitted) return;
+  if (connectionPicked !== null && connectionPicked !== question) {
+    const from = connectionState.order.indexOf(connectionPicked);
+    const to = connectionState.order.indexOf(question);
+    moveConnection(connectionPicked, to - from);
+    connectionPicked = null;
+  } else connectionPicked = connectionPicked === question ? null : question;
+  document.querySelectorAll('#bkQuestionList .connection-question').forEach(card => {
+    const picked = Number(card.dataset.question) === connectionPicked;
+    card.classList.toggle('is-picked', picked);
+    card.querySelector('.connection-drag-handle').setAttribute('aria-pressed', String(picked));
+  });
+}
+
+// Eén pointerpad voor muis, pen en aanraking. Tijdens het slepen blijven de echte
+// invoervelden op hun plek in de DOM; pas bij loslaten wisselen we de kaarten.
+function bindConnectionDrag(handle, card, question) {
+  let drag = null, suppressClick = false;
+  const screen = document.getElementById('breinkrakersScreen');
+  handle.addEventListener('click', () => {
+    if (suppressClick) { suppressClick = false; return; }
+    selectConnectionCard(question);
+  });
+  handle.addEventListener('keydown', event => {
+    if (event.key === 'Escape') { finish(false); connectionPicked = question; selectConnectionCard(question); }
+    if (event.key !== 'ArrowUp' && event.key !== 'ArrowDown') return;
+    event.preventDefault();
+    moveConnection(question, event.key === 'ArrowUp' ? -1 : 1);
+  });
+  function frame() {
+    if (!drag || !handle.isConnected) { finish(false); return; }
+    if (drag.moved) {
+      const bounds = screen.getBoundingClientRect();
+      const top = Math.max(bounds.top, 72), bottom = Math.min(bounds.bottom, innerHeight);
+      if (drag.y < top + 70) screen.scrollTop -= 9;
+      else if (drag.y > bottom - 70) screen.scrollTop += 9;
+      card.style.transform = 'translateY(' + (drag.y - drag.startY + screen.scrollTop - drag.scrollTop) + 'px)';
+      const listBounds = card.parentElement.getBoundingClientRect();
+      let distance = Infinity;
+      drag.target = null;
+      document.querySelectorAll('#bkQuestionList .connection-question').forEach(other => {
+        other.classList.remove('is-drop-target');
+        const rect = other.getBoundingClientRect();
+        const centre = other === card ? drag.centre - (screen.scrollTop - drag.scrollTop) : rect.top + rect.height / 2;
+        const delta = Math.abs(drag.y - centre);
+        if (drag.x >= listBounds.left - 30 && drag.x <= listBounds.right + 30 && delta < distance) {
+          distance = delta; drag.target = other;
+        }
+      });
+      if (drag.target && drag.target !== card) drag.target.classList.add('is-drop-target');
+    }
+    drag.frame = requestAnimationFrame(frame);
+  }
+  function finish(commit) {
+    if (!drag) return;
+    const current = drag;
+    drag = null;
+    cancelAnimationFrame(current.frame);
+    suppressClick = current.moved;
+    // De eventuele klik direct na pointerup hoort niet nog een kaart te selecteren.
+    setTimeout(() => { suppressClick = false; }, 0);
+    if (handle.hasPointerCapture(current.id)) handle.releasePointerCapture(current.id);
+    card.style.removeProperty('transform');
+    card.classList.remove('is-dragging');
+    document.querySelectorAll('#bkQuestionList .is-drop-target').forEach(el => el.classList.remove('is-drop-target'));
+    if (commit && current.moved && current.target && current.target !== card) {
+      const from = connectionState.order.indexOf(question);
+      const to = connectionState.order.indexOf(Number(current.target.dataset.question));
+      moveConnection(question, to - from);
+    }
+  }
+  handle.addEventListener('pointerdown', event => {
+    if (event.button !== 0 || !event.isPrimary || connectionState?.submitted) return;
+    const rect = card.getBoundingClientRect();
+    drag = { id: event.pointerId, startY: event.clientY, y: event.clientY, x: event.clientX, scrollTop: screen.scrollTop, centre: rect.top + rect.height / 2, moved: false };
+    handle.setPointerCapture(event.pointerId);
+    drag.frame = requestAnimationFrame(frame);
+  });
+  handle.addEventListener('pointermove', event => {
+    if (!drag || event.pointerId !== drag.id) return;
+    drag.y = event.clientY; drag.x = event.clientX;
+    if (Math.abs(drag.y - drag.startY) > 5) {
+      if (!drag.moved && connectionPicked !== null) {
+        const picked = connectionPicked;
+        selectConnectionCard(picked);
+      }
+      drag.moved = true;
+      card.classList.add('is-dragging');
+    }
+  });
+  handle.addEventListener('pointerup', () => finish(true));
+  handle.addEventListener('pointercancel', () => finish(false));
+  handle.addEventListener('lostpointercapture', () => finish(false));
 }
 
 function submitConnection() {
@@ -221,7 +316,6 @@ function submitConnection() {
   connection.classList.toggle('is-correct', correct);
   const title = document.createElement('h2'); title.textContent = correct ? statsCopy('✓ Verband gevonden', '✓ Connection found') : statsCopy('Verband niet gevonden', 'Connection not found');
   const equation = document.createElement('p');
-  equation.textContent = result.answers.map(fmt).join(' ').trim();
   equation.textContent = fmt(result.answers[0]) + ' ' + state.operator + ' ' + fmt(result.answers[1]) + (correct ? ' = ' : ' ≠ ') + fmt(result.answers[2]);
   connection.append(title, equation);
   if (!correct) {
@@ -237,7 +331,7 @@ function submitConnection() {
   document.getElementById('connectionSkip').hidden = true;
   document.getElementById('bkSubmitButton').textContent = state.index + 1 < connectionPool.length ? statsCopy('Volgende puzzel →', 'Next puzzle →') : statsCopy('Alle puzzels →', 'All puzzles →');
   if (result.exact) launchConfetti();
-  document.getElementById('bkPuzzleLabel').scrollIntoView({ block: 'start' });
+  document.getElementById('breinkrakersScreen').scrollTop = 0;
 }
 
 // Oude routes en integraties blijven werken, zonder de oude vier-vragenmodus te laden.
