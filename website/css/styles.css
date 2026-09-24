@@ -583,12 +583,6 @@
   .library-difficulties button:hover, .library-actions button:hover { border-color:var(--bg-main); background:#EEF2FF; }
   .library-difficulties span { float:right; color:#5B6172; font:500 11px 'JetBrains Mono',monospace; }
   .library-progress { color:#6B7280; font:600 11px 'JetBrains Mono',monospace; text-transform:uppercase; margin-bottom:12px; }
-  .library-timer { display:flex; align-items:center; gap:8px; font:600 12px 'JetBrains Mono',monospace; color:#6B7280; margin-bottom:12px; }
-  .library-timer .timer-ring { width:10px; height:10px; border-radius:99px; background:var(--green); transition:background-color .5s ease; }
-  .library-timer.warn .timer-ring { background:var(--orange); }
-  .library-timer.crit .timer-ring { background:var(--red); animation:pulse 1s ease-in-out infinite; }
-  .library-timer.warn { color:var(--orange); }
-  .library-timer.crit { color:var(--red); }
   @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:.35; } }
   .library-equation { background:var(--accent); border-radius:12px; padding:12px; text-align:center; color:var(--bg-dark); font:700 18px 'JetBrains Mono',monospace; margin-bottom:14px; }
   .library-progress-blocks { display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin-bottom:16px; }

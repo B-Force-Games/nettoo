@@ -1,48 +1,6 @@
 // Netto frontend module.
 // Loaded as a classic script so the existing shared global scope stays intact.
 
-// ===== Puzzle countdown timer (Puzzels-tab én Library) =====
-  // Per-difficulty time budget (seconds). Harder puzzles get more thinking time.
-  const LIBRARY_TIMER_SECONDS = {
-    'easy': 60,
-    'intermediate': 90,
-    'hard': 120,
-    'extremely-hard': 180,
-  };
-  const puzzleTimerIntervals = {};
-
-  function stopPuzzleTimer(prefix) {
-    if (puzzleTimerIntervals[prefix]) { clearInterval(puzzleTimerIntervals[prefix]); delete puzzleTimerIntervals[prefix]; }
-  }
-  function stopLibraryTimer() { stopPuzzleTimer('library'); }
-
-  function startPuzzleTimer(prefix, difficulty) {
-    stopPuzzleTimer(prefix);
-    const el = document.getElementById(prefix + 'Timer');
-    if (!el) return;
-    const total = LIBRARY_TIMER_SECONDS[difficulty] ?? 120;
-    const endsAt = Date.now() + total * 1000;
-    let remaining = total;
-    const render = () => {
-      const m = Math.floor(remaining / 60);
-      const s = remaining % 60;
-      el.textContent = `⏱ ${m}:${s.toString().padStart(2, '0')}`;
-      el.classList.toggle('warn', remaining <= 30 && remaining > 10);
-      el.classList.toggle('crit', remaining <= 10);
-    };
-    render();
-    puzzleTimerIntervals[prefix] = setInterval(() => {
-      remaining = Math.max(0, Math.ceil((endsAt - Date.now()) / 1000));
-      if (remaining <= 0) {
-        stopPuzzleTimer(prefix);
-        el.textContent = '⏱ 0:00';
-        el.classList.add('crit');
-        submitPuzzleView(prefix, true);
-        return;
-      }
-      render();
-    }, 1000);
-  }
   // ===== Generieke puzzle-view (werkt voor 'library' én 'catalogus' prefix) =====
   function werkPuzzelNavigatieBij(prefix, ingeleverd) {
     const navigatie = document.querySelector('#' + prefix + 'PuzzleView .library-actions');
@@ -51,21 +9,25 @@
     const reeks = bibliotheek ? libraryPuzzles.filter(p => p.difficulty === selectedDifficulty) : catalogusPuzzleList;
     const index = bibliotheek ? libraryIndex : catalogusPuzzleIndex;
     const verplaats = stap => bibliotheek ? libraryMove(stap) : catalogusPuzzleMove(stap);
-    const vorige = document.createElement('button');
-    vorige.type = 'button';
-    vorige.textContent = statsCopy('← Vorige', '← Previous');
-    vorige.disabled = index <= 0;
-    vorige.onclick = () => verplaats(-1);
-    const volgende = document.createElement('button');
-    volgende.type = 'button';
-    volgende.className = ingeleverd ? 'puzzel-verder' : '';
     const laatste = index >= reeks.length - 1;
-    volgende.textContent = laatste
-      ? statsCopy('Alle puzzels →', 'All puzzles →')
-      : ingeleverd ? statsCopy('Volgende puzzel →', 'Next puzzle →') : statsCopy('Overslaan →', 'Skip puzzle →');
-    // Overslaan navigeert alleen: het levert geen antwoord of score in.
-    volgende.onclick = laatste ? () => bibliotheek ? openPuzzles() : openCatalogusLibrary() : () => verplaats(1);
-    navigatie.replaceChildren(vorige, volgende);
+    const hoofdactie = document.createElement('button');
+    hoofdactie.type = 'button';
+    hoofdactie.className = 'puzzel-hoofdactie' + (ingeleverd ? ' puzzel-verder' : '');
+    hoofdactie.textContent = ingeleverd
+      ? laatste ? statsCopy('Afronden →', 'Finish →') : statsCopy('Volgende puzzel →', 'Next puzzle →')
+      : statsCopy('Controleer mijn score', 'Check my score');
+    hoofdactie.onclick = ingeleverd
+      ? laatste ? () => bibliotheek ? openPuzzles() : openCatalogusLibrary() : () => verplaats(1)
+      : () => submitPuzzleView(prefix);
+    navigatie.replaceChildren(hoofdactie);
+    if (!ingeleverd) {
+      const overslaan = document.createElement('button');
+      overslaan.type = 'button';
+      overslaan.textContent = statsCopy('Overslaan →', 'Skip puzzle →');
+      // Overslaan navigeert alleen: het levert geen antwoord of score in.
+      overslaan.onclick = laatste ? () => bibliotheek ? openPuzzles() : openCatalogusLibrary() : () => verplaats(1);
+      navigatie.append(overslaan);
+    }
   }
 
   function renderPuzzleView(prefix, p, progressLabel, moveAction) {
@@ -74,12 +36,11 @@
     document.getElementById(prefix + 'Progress').textContent = progressLabel;
     document.getElementById(prefix + 'Equation').style.display = 'none';
     const autoCalcNote = localStorage.getItem('netto_auto_calc_note_seen') === 'true' ? '' : `<div class="auto-calc-note" role="status" aria-live="polite">↳ Antwoorden worden automatisch berekend als de berekening klopt.</div>`;
-    listEl.innerHTML = [[p.q1_label,p.q1_answer],[p.q2_label,p.q2_answer],[p.q3_label,p.q3_answer]].map((q,i) => `<div class="q-block"><div class="q-label">${q[0] || 'Vraag niet beschikbaar'}</div><div class="input-wrapper"><input type="text" class="library-answer-input daily-style-input" id="${prefix}Answer${i}" name="netto-schatting-${i}" inputmode="numeric" placeholder="Jouw schatting" autocomplete="off" autocorrect="off" spellcheck="false" data-lpignore="true"></div></div>${i < 2 ? `<div class="connector"><div class="connector-line"></div><div class="connector-badge ${i === 1 ? 'eq' : ''}">${i === 0 ? (p.operator || '×') : '='}</div><div class="connector-line"></div></div>` : ''}`).join('') + autoCalcNote + `<button class="btn-check" onclick="submit${prefix === 'library' ? 'Library' : 'Catalogus'}Puzzle()">Check mijn score</button>`;
+    listEl.innerHTML = [[p.q1_label,p.q1_answer],[p.q2_label,p.q2_answer],[p.q3_label,p.q3_answer]].map((q,i) => `<div class="q-block"><div class="q-label">${q[0] || 'Vraag niet beschikbaar'}</div><div class="input-wrapper"><input type="text" class="library-answer-input daily-style-input" id="${prefix}Answer${i}" name="netto-schatting-${i}" inputmode="numeric" placeholder="Jouw schatting" autocomplete="off" autocorrect="off" spellcheck="false" data-lpignore="true"></div></div>${i < 2 ? `<div class="connector"><div class="connector-line"></div><div class="connector-badge ${i === 1 ? 'eq' : ''}">${i === 0 ? (p.operator || '×') : '='}</div><div class="connector-line"></div></div>` : ''}`).join('') + autoCalcNote;
     if (autoCalcNote) localStorage.setItem('netto_auto_calc_note_seen', 'true');
     if (prefix === 'library') libraryActivePuzzle = p; else catalogusActivePuzzle = p;
     renderPuzzelfoto(listEl, p);
     bindDerivedInputs(prefix, p.operator || '×');
-    startPuzzleTimer(prefix, p.difficulty);
     werkPuzzelNavigatieBij(prefix, false);
   }
 
@@ -96,7 +57,6 @@
       return;
     }
     if (isEquationRequired() && !validWholeEquation(guesses, active.operator || '×')) { showEquationNotice(); return; }
-    stopPuzzleTimer(prefix);
     const answers = [active.q1_answer,active.q2_answer,active.q3_answer];
     const factor = answers.reduce((sum,a,i) => sum + scoreVraag(guesses[i],a),0) / 3;
     if (guesses.every((guess, i) => isSpotOnAnswer(guess, answers[i]))) launchConfetti();
@@ -206,7 +166,6 @@
 
   function closeCatalogusScreen() {
     document.getElementById('catalogusScreen').classList.remove('active');
-    stopPuzzleTimer('catalogus');
     showScreen('home');
   }
 
@@ -301,7 +260,6 @@
   }
 
   function openLibraryScreen(mode) {
-    stopLibraryTimer();
     libraryMode = mode;
     document.getElementById('libraryStats').style.display = 'grid';
     document.getElementById('dailyDateControls').style.display = mode === 'daily' ? 'flex' : 'none';
@@ -324,7 +282,7 @@
   }
   function openAbout() { closeMenu(); showScreen('library'); document.getElementById('libraryScreen').classList.add('active'); document.getElementById('libraryPageKicker').textContent='NETTO · OVER'; document.getElementById('libraryTitle').textContent='Over Netto'; document.getElementById('librarySubtitle').textContent='Het idee achter het spel.'; document.getElementById('libraryDifficulties').style.display='none'; document.getElementById('dailyPuzzleList').style.display='none'; document.getElementById('libraryPuzzleView').style.display='none'; document.getElementById('libraryStats').style.display='none'; document.getElementById('dailyDateControls').style.display='none'; document.getElementById('howPanel').style.display='none'; document.getElementById('aboutPanel').style.display='block'; }
   function openHowItWorks() { closeMenu(); showScreen('library'); document.getElementById('libraryScreen').classList.add('active'); document.getElementById('libraryPageKicker').textContent='NETTO · UITLEG'; document.getElementById('libraryTitle').textContent='Hoe werkt het?'; document.getElementById('librarySubtitle').textContent='Drie schattingen. Eén formule. De laagste factor wint.'; document.getElementById('libraryDifficulties').style.display='none'; document.getElementById('dailyPuzzleList').style.display='none'; document.getElementById('libraryPuzzleView').style.display='none'; document.getElementById('libraryStats').style.display='none'; document.getElementById('dailyDateControls').style.display='none'; document.getElementById('aboutPanel').style.display='none'; document.getElementById('howPanel').style.display='block'; }
-  function closeLibraryScreen() { document.getElementById('libraryScreen').classList.remove('active'); stopLibraryTimer(); showScreen('home'); }
+  function closeLibraryScreen() { document.getElementById('libraryScreen').classList.remove('active'); showScreen('home'); }
   function closeLibrary() { closeLibraryScreen(); }
 
   // ===== BREINKRAKERS — 4 vragen in één formule: A op1 B op2 C = D, van links naar rechts =====

@@ -653,6 +653,37 @@ textarea:focus-visible,
 [data-theme="dark"] .library-difficulties button:not(.active) { background: var(--surface); color: var(--ink); }
 [data-theme="dark"] .library-difficulties button span { color: #C7CEEF; }
 
+/* Laat een open bibliotheekpuzzel het venster vullen zonder vragen of acties af te snijden.
+   Alleen het vragenscherm rekt mee; de langere review mag gewoon scrollen. */
+@media (min-width: 760px) and (min-height: 680px) {
+  #libraryScreen.active:has(#libraryPuzzleView #libraryQuestionList > .q-block) {
+    padding-bottom: 20px;
+  }
+  #libraryPuzzleView:has(#libraryQuestionList > .q-block) {
+    max-width: 760px;
+  }
+  #libraryPuzzleView:has(#libraryQuestionList > .q-block) .library-puzzle-card {
+    min-height: calc(100dvh - clamp(62px, 7vh, 90px) - 20px);
+    display: flex;
+    flex-direction: column;
+  }
+  #libraryQuestionList:has(> .q-block) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  #libraryQuestionList > .q-block {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #libraryQuestionList > .connector,
+  #libraryQuestionList > .auto-calc-note {
+    flex: 0 0 auto;
+  }
+}
+
 .daily-archive-list { border-radius: var(--ui-radius-md); }
 .daily-archive-row { min-height: 70px; padding: 16px 20px; }
 .daily-archive-row:hover { background: #F5F6FF; }
@@ -688,6 +719,14 @@ textarea:focus-visible,
 }
 
 .library-actions button.puzzel-verder { background: var(--accent); color: #14163B; border-color: transparent; text-align: center; }
+.library-puzzle-view .library-actions { display:flex; align-items:stretch; }
+.library-puzzle-view .library-actions button { flex:0 0 auto; background:var(--surface); color:var(--ink); }
+.library-puzzle-view .library-actions button.puzzel-hoofdactie {
+  flex:1; min-width:0; background:var(--bg-dark); border-color:var(--bg-dark); color:#fff;
+}
+.library-puzzle-view .library-actions button.puzzel-hoofdactie:hover { background:#0E102E; color:#fff; }
+.library-puzzle-view .library-actions button.puzzel-verder { background:var(--accent); border-color:transparent; color:#14163B; }
+.library-puzzle-view .library-actions button.puzzel-verder:hover { background:var(--accent); color:#14163B; }
 .library-actions button:disabled { opacity: .4; cursor: default; transform: none; }
 .library-actions button:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
@@ -2337,4 +2376,195 @@ body:has(#screen-puzzle.active, #libraryScreen.active, #breinkrakersScreen.activ
 .connection-op-btn:focus-visible {
   outline: 3px solid #526CFF;
   outline-offset: 3px;
+}
+
+/* De navigatie en de speelschermen passen ook bij 100% zoom in een laag venster. */
+.sidebar { height: 100dvh; bottom: auto; }
+.sidebar .sidebar-scroll { overflow-y: visible; }
+.sidebar .sidebar-footer { display: grid; flex-shrink: 0; }
+
+@media (max-height: 650px) {
+  .sidebar { padding-block: 8px 7px; }
+  .sidebar .sidebar-header { min-height: 36px; }
+  .sidebar .sidebar-logo { font-size: 22px; }
+  .sidebar .sidebar-tagline { margin-bottom: 4px; font-size: 9px; }
+  .sidebar .sidebar-scroll { padding-bottom: 0; }
+  .sidebar .sidebar-group { margin-bottom: 2px; }
+  .sidebar .sidebar-group-title { padding: 2px 9px 3px; font-size: 9px; }
+  .sidebar .sidebar-item { min-height: clamp(30px, 6vh, 35px); margin: 0; padding: 3px 8px; gap: 8px; }
+  .sidebar .sidebar-icon { width: 24px; height: 24px; }
+  .sidebar .sidebar-icon svg { width: 14px; height: 14px; }
+  .sidebar .sidebar-footer { margin-top: 3px; padding: 5px 9px 1px; }
+}
+
+@media (min-width: 760px) and (max-height: 940px) {
+  #screen-puzzle:not(.is-review),
+  #libraryScreen:has(#libraryPuzzleView[style*="display: block"]),
+  #raceScreen:has(#racePlay[style*="display: block"]),
+  #breinkrakersScreen.is-playing { padding-top: 82px; padding-bottom: 16px; }
+
+  #libraryScreen:has(#libraryPuzzleView[style*="display: block"]) .library-page-top,
+  #raceScreen:has(#racePlay[style*="display: block"]) .library-page-top { display: none; }
+
+  #screen-puzzle:not(.is-review) .eyebrow, #bkPlay .eyebrow { font-size: 10px; margin-bottom: 4px; }
+  #screen-puzzle:not(.is-review) .headline, #bkPlay .headline { font-size: 24px; line-height: 1.15; margin: 0 0 8px; }
+  #bkPlay .bk-leesregel { margin: 0 0 10px; font-size: 12px; }
+  #screen-puzzle:not(.is-review) .card,
+  #libraryPuzzleView .library-puzzle-card,
+  #bkPlay .bk-question-card { padding: 18px 22px; }
+
+  #libraryPuzzleView { margin-top: 0; scroll-margin-top: 82px; }
+  #libraryPuzzleView .library-progress { display: inline-flex; margin: 0 14px 8px 0; }
+  #libraryPuzzleView .library-equation { margin: 4px 0 8px; }
+
+  :is(#dailyQuestionView, #libraryQuestionList, #raceQuestionList, #bkQuestionList) .q-block { padding: 10px 14px; margin: 0; }
+  :is(#dailyQuestionView, #libraryQuestionList, #raceQuestionList, #bkQuestionList) .q-label { font-size: 14px; line-height: 1.35; margin-bottom: 7px; }
+  :is(#dailyQuestionView, #libraryQuestionList, #raceQuestionList, #bkQuestionList) .vraag-ondertekst { font-size: 12px; line-height: 1.35; margin: 0 0 7px; }
+  :is(#dailyQuestionView, #libraryQuestionList, #raceQuestionList, #bkQuestionList) .input-wrapper input { min-height: 42px; height: 42px; padding-top: 8px; padding-bottom: 8px; font-size: 16px; }
+  :is(#dailyQuestionView, #libraryQuestionList, #raceQuestionList, #bkQuestionList) .connector { margin: 6px 0; gap: 12px; }
+  :is(#dailyQuestionView, #libraryQuestionList, #raceQuestionList, #bkQuestionList) .connector-badge { width: 34px; height: 32px; min-height: 32px; font-size: 16px; }
+  #libraryQuestionList { gap: 0; }
+  :is(#dailyQuestionView, #libraryQuestionList, #racePlay, #bkPlay) .btn-check { min-height: 42px; margin-top: 10px; padding: 10px 16px; }
+  #libraryPuzzleView .library-actions { margin-top: 8px; gap: 8px; }
+  #libraryPuzzleView .library-actions button { min-height: 36px; padding: 8px 12px; }
+
+  #racePlay { padding: 16px 22px; margin-top: 0; }
+  #racePlay .race-level { font-size: 20px; }
+  #racePlay .race-clock strong { font-size: 28px; }
+  #racePlay .race-scoreline { margin-block: 6px; }
+  #racePlay .race-history-label { margin: 6px 0 2px; }
+  #racePlay .race-history { min-height: 24px; padding-block: 2px; }
+  #racePlay .race-progress-track { margin-block: 8px; }
+  #racePlay .race-question-card { padding: 14px 16px; margin-top: 8px; }
+  #racePlay .race-hint { margin-top: 6px; font-size: 11px; }
+
+  :is(#dailyQuestionView, #libraryQuestionList, #raceQuestionList) .q-block:has(.puzzelfoto),
+  #dailyQuestionView .q-block.has-photo { min-height: 104px; padding-right: 112px; }
+  .puzzelfoto-lijst .puzzelfoto,
+  #screen-puzzle #dailyQuestionView .q-block > .daily-photo { position: absolute; float: none; width: 100px; top: 6px; right: -14px; margin: 0; }
+  .puzzelfoto .daily-photo img, #screen-puzzle .daily-photo img { height: 66px; }
+  .puzzelfoto .daily-photo span, #screen-puzzle .daily-photo span { padding-block: 6px; }
+}
+
+@media (min-width: 760px) and (max-height: 800px) {
+  #libraryScreen:has(#libraryPuzzleView[style*="display: block"]),
+  #raceScreen:has(#racePlay[style*="display: block"]),
+  #breinkrakersScreen.is-playing { padding-top: 70px; }
+  #libraryPuzzleView .library-puzzle-card { padding: 14px 20px; }
+  #libraryQuestionList .q-block { padding-block: 8px; }
+  #libraryQuestionList .connector { margin-block: 4px; }
+
+  #racePlay .race-topline { align-items: center; }
+  #racePlay .race-level { font-size: 18px; }
+  #racePlay .race-clock strong { font-size: 24px; }
+  #racePlay .race-progress-track { margin-block: 4px; }
+  #racePlay .race-scoreline { margin-block: 3px; }
+  #racePlay .race-history-label { margin: 2px 0 0; }
+  #racePlay .race-history { min-height: 18px; padding: 0; }
+  #racePlay .race-question-card { padding: 10px 14px; margin-top: 6px; }
+  #raceQuestionList .q-block { padding: 6px 12px; }
+  #raceQuestionList .connector { margin-block: 4px; }
+  #raceQuestionList .connector-badge { height: 28px; min-height: 28px; }
+  #raceQuestionList .input-wrapper input { height: 40px; min-height: 40px; }
+  #raceQuestionList .q-block:has(.puzzelfoto) { min-height: 96px; }
+  #racePlay .btn-check { min-height: 38px; padding-block: 8px; }
+  #racePlay .race-hint { margin-top: 4px; font-size: 10px; }
+
+  #bkPlay .bk-question-card { padding: 12px 18px; }
+  #bkQuestionList { gap: 0; }
+  #bkQuestionList .q-block { padding: 6px 12px; }
+  #bkQuestionList .connector { margin-block: 4px; }
+  #bkQuestionList .connector-badge { height: 26px; min-height: 26px; width: 30px; }
+  #bkQuestionList .input-wrapper input { height: 38px; min-height: 38px; }
+  #bkQuestionList .connection-operators { position: relative; display: flex; justify-content: center; align-items: center; flex-wrap: nowrap; gap: 6px; min-height: 36px; margin: 5px 0; padding: 0; }
+  #bkQuestionList .connection-operators legend { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  #bkQuestionList .connection-operators button { width: 36px; height: 34px; font-size: 18px; }
+  #bkQuestionList .connection-equals { margin: 5px 0; font-size: 22px; line-height: 1.1; }
+  #bkPlay .connection-actions { margin-top: 8px; }
+}
+
+@media (max-width: 430px) {
+  #bkPlay .connection-actions { flex-direction:column; }
+  .library-puzzle-view .library-actions { flex-wrap:wrap; }
+  .library-puzzle-view .library-actions button.puzzel-hoofdactie { order:-1; flex-basis:100%; }
+  .library-puzzle-view .library-actions button:not(.puzzel-hoofdactie) { flex:1; }
+}
+
+#bkPlay .race-feedback:empty, #racePlay .race-feedback:empty { display: none; }
+
+/* Gebruik de vrije hoogte voor leesbare vragen, niet voor extra marge rond de puzzel. */
+@media (min-width: 760px) and (min-height: 651px) and (max-height: 940px) {
+  :is(#dailyQuestionView, #libraryQuestionList, #raceQuestionList) .q-block {
+    padding: clamp(11px, 1.6vh, 15px) 16px;
+  }
+  :is(#dailyQuestionView, #libraryQuestionList, #raceQuestionList) .q-label {
+    font-size: 15px;
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+  :is(#dailyQuestionView, #libraryQuestionList, #raceQuestionList) .vraag-ondertekst {
+    font-size: 12px;
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+  :is(#dailyQuestionView, #libraryQuestionList, #raceQuestionList) .input-wrapper input {
+    height: clamp(44px, 6.2vh, 48px);
+    min-height: clamp(44px, 6.2vh, 48px);
+    font-size: 16px;
+  }
+  :is(#dailyQuestionView, #libraryQuestionList, #raceQuestionList) .connector {
+    margin-block: clamp(6px, 1.1vh, 10px);
+  }
+  :is(#dailyQuestionView, #libraryQuestionList, #raceQuestionList) .connector-badge {
+    width: 36px;
+    height: 34px;
+    min-height: 34px;
+  }
+}
+
+/* Tijdens het spelen blijft de navigatie bereikbaar, maar neemt ze minder hoogte in. */
+#libraryScreen.active:has(#libraryPuzzleView[style*="display: block"]) .library-page-top,
+#raceScreen.active:has(#racePlay[style*="display: block"]) .library-page-top { display: none; }
+body:has(#screen-puzzle.active:not(.is-review),
+          #libraryScreen.active #libraryPuzzleView[style*="display: block"],
+          #raceScreen.active #racePlay[style*="display: block"],
+          #breinkrakersScreen.active.is-playing) .topbar {
+  height: 54px;
+  border-bottom: 0;
+  background: linear-gradient(180deg, var(--bg-main) 75%, transparent);
+  backdrop-filter: none;
+}
+body:has(#screen-puzzle.active:not(.is-review),
+          #libraryScreen.active #libraryPuzzleView[style*="display: block"],
+          #raceScreen.active #racePlay[style*="display: block"],
+          #breinkrakersScreen.active.is-playing) .topbar-navigation > :is(.hamburger, .topbar-home) {
+  width: 36px;
+  height: 36px;
+  flex-basis: 36px;
+}
+body:has(#screen-puzzle.active:not(.is-review),
+          #libraryScreen.active #libraryPuzzleView[style*="display: block"],
+          #raceScreen.active #racePlay[style*="display: block"],
+          #breinkrakersScreen.active.is-playing) .topbar :is(.streak-badge, .stats-button, .user-btn) {
+  min-height: 36px;
+}
+body:has(#screen-puzzle.active:not(.is-review),
+          #libraryScreen.active #libraryPuzzleView[style*="display: block"],
+          #raceScreen.active #racePlay[style*="display: block"],
+          #breinkrakersScreen.active.is-playing) .topbar .stats-button {
+  width: 36px;
+  padding: 7px;
+}
+
+@media (min-width: 760px) {
+  #screen-puzzle.active:not(.is-review) { padding-top: clamp(64px, 7vh, 82px); }
+  #libraryScreen.active:has(#libraryPuzzleView[style*="display: block"]),
+  #raceScreen.active:has(#racePlay[style*="display: block"]),
+  #breinkrakersScreen.active.is-playing { padding-top: clamp(62px, 7vh, 90px); }
+}
+@media (max-width: 759px) {
+  #screen-puzzle.active:not(.is-review) { padding-top: 78px; }
+  #libraryScreen.active:has(#libraryPuzzleView[style*="display: block"]),
+  #raceScreen.active:has(#racePlay[style*="display: block"]),
+  #breinkrakersScreen.active.is-playing { padding-top: 72px; }
 }

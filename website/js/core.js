@@ -3068,8 +3068,6 @@
 
   function showScreen(name) {
     document.getElementById('fotoCreditsScreen')?.classList.toggle('active', name === 'fotoverantwoording');
-    stopPuzzleTimer('library');
-    stopPuzzleTimer('catalogus');
     if (name === 'library') document.getElementById('libraryCardGrid').style.display = 'none';
     if (name !== 'race' && raceState) {
       stopRaceTimer();
