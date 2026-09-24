@@ -688,6 +688,14 @@ textarea:focus-visible,
 }
 
 .library-actions button.puzzel-verder { background: var(--accent); color: #14163B; border-color: transparent; text-align: center; }
+.library-puzzle-view .library-actions { display:flex; align-items:stretch; }
+.library-puzzle-view .library-actions button { flex:0 0 auto; background:var(--surface); color:var(--ink); }
+.library-puzzle-view .library-actions button.puzzel-hoofdactie {
+  flex:1; min-width:0; background:var(--bg-dark); border-color:var(--bg-dark); color:#fff;
+}
+.library-puzzle-view .library-actions button.puzzel-hoofdactie:hover { background:#0E102E; color:#fff; }
+.library-puzzle-view .library-actions button.puzzel-verder { background:var(--accent); border-color:transparent; color:#14163B; }
+.library-puzzle-view .library-actions button.puzzel-verder:hover { background:var(--accent); color:#14163B; }
 .library-actions button:disabled { opacity: .4; cursor: default; transform: none; }
 .library-actions button:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
@@ -1858,8 +1866,16 @@ body:has(#screen-puzzle.active, #libraryScreen.active, #breinkrakersScreen.activ
 .connection-verdict p { margin:8px 0 0; font:500 14px/1.6 'JetBrains Mono',monospace; overflow-wrap:anywhere; }
 .connection-verdict.is-correct h2 { color:#08734c; }
 [data-theme="dark"] .connection-verdict.is-correct h2 { color:#75e3b6; }
-.connection-navigation { display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-top:16px; }
-.connection-navigation .bk-overview-button { margin:0; }
+.connection-actions { display:flex; gap:8px; margin-top:10px; }
+.connection-actions .btn-check { flex:1; min-width:0; width:auto; margin:0; }
+.connection-skip {
+  min-height:42px; padding:8px 14px; border:1px solid var(--surface-border); border-radius:9px;
+  background:var(--surface, #fff); color:var(--ink); cursor:pointer;
+  font:700 13px 'Space Grotesk', sans-serif;
+}
+.connection-skip:hover { border-color:var(--ink); }
+.connection-skip:focus-visible { outline:3px solid #526cff; outline-offset:2px; }
+.connection-skip[hidden] { display:none; }
 .connection-catalog-card:focus-visible, .connection-drag-handle:focus-visible, .connection-operators button:focus-visible { outline:3px solid #526cff; outline-offset:3px; }
 
 /* De navigatie en de speelschermen passen ook bij 100% zoom in een laag venster. */
@@ -1912,7 +1928,6 @@ body:has(#screen-puzzle.active, #libraryScreen.active, #breinkrakersScreen.activ
   :is(#dailyQuestionView, #libraryQuestionList, #racePlay, #bkPlay) .btn-check { min-height: 42px; margin-top: 10px; padding: 10px 16px; }
   #libraryPuzzleView .library-actions { margin-top: 8px; gap: 8px; }
   #libraryPuzzleView .library-actions button { min-height: 36px; padding: 8px 12px; }
-  #libraryPuzzleView > .bk-overview-button, #bkPlay > .bk-overview-button { margin-top: 8px; padding: 8px 12px; }
 
   #racePlay { padding: 16px 22px; margin-top: 0; }
   #racePlay .race-level { font-size: 20px; }
@@ -1966,8 +1981,91 @@ body:has(#screen-puzzle.active, #libraryScreen.active, #breinkrakersScreen.activ
   #bkQuestionList .connection-operators legend { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   #bkQuestionList .connection-operators button { width: 36px; height: 34px; font-size: 18px; }
   #bkQuestionList .connection-equals { margin: 5px 0; font-size: 22px; line-height: 1.1; }
-  #bkPlay .connection-navigation { margin-top: 8px; }
-  #bkPlay > .bk-overview-button { min-height: 36px; }
+  #bkPlay .connection-actions { margin-top: 8px; }
+}
+
+@media (max-width: 430px) {
+  #bkPlay .connection-actions { flex-direction:column; }
+  .library-puzzle-view .library-actions { flex-wrap:wrap; }
+  .library-puzzle-view .library-actions button.puzzel-hoofdactie { order:-1; flex-basis:100%; }
+  .library-puzzle-view .library-actions button:not(.puzzel-hoofdactie) { flex:1; }
 }
 
 #bkPlay .race-feedback:empty, #racePlay .race-feedback:empty { display: none; }
+
+/* Gebruik de vrije hoogte voor leesbare vragen, niet voor extra marge rond de puzzel. */
+@media (min-width: 760px) and (min-height: 651px) and (max-height: 940px) {
+  :is(#dailyQuestionView, #libraryQuestionList, #raceQuestionList) .q-block {
+    padding: clamp(11px, 1.6vh, 15px) 16px;
+  }
+  :is(#dailyQuestionView, #libraryQuestionList, #raceQuestionList) .q-label {
+    font-size: 15px;
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+  :is(#dailyQuestionView, #libraryQuestionList, #raceQuestionList) .vraag-ondertekst {
+    font-size: 12px;
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+  :is(#dailyQuestionView, #libraryQuestionList, #raceQuestionList) .input-wrapper input {
+    height: clamp(44px, 6.2vh, 48px);
+    min-height: clamp(44px, 6.2vh, 48px);
+    font-size: 16px;
+  }
+  :is(#dailyQuestionView, #libraryQuestionList, #raceQuestionList) .connector {
+    margin-block: clamp(6px, 1.1vh, 10px);
+  }
+  :is(#dailyQuestionView, #libraryQuestionList, #raceQuestionList) .connector-badge {
+    width: 36px;
+    height: 34px;
+    min-height: 34px;
+  }
+}
+
+/* Tijdens het spelen blijft de navigatie bereikbaar, maar neemt ze minder hoogte in. */
+#libraryScreen.active:has(#libraryPuzzleView[style*="display: block"]) .library-page-top,
+#raceScreen.active:has(#racePlay[style*="display: block"]) .library-page-top { display: none; }
+body:has(#screen-puzzle.active:not(.is-review),
+          #libraryScreen.active #libraryPuzzleView[style*="display: block"],
+          #raceScreen.active #racePlay[style*="display: block"],
+          #breinkrakersScreen.active.is-playing) .topbar {
+  height: 54px;
+  border-bottom: 0;
+  background: linear-gradient(180deg, var(--bg-main) 75%, transparent);
+  backdrop-filter: none;
+}
+body:has(#screen-puzzle.active:not(.is-review),
+          #libraryScreen.active #libraryPuzzleView[style*="display: block"],
+          #raceScreen.active #racePlay[style*="display: block"],
+          #breinkrakersScreen.active.is-playing) .topbar-navigation > :is(.hamburger, .topbar-home) {
+  width: 36px;
+  height: 36px;
+  flex-basis: 36px;
+}
+body:has(#screen-puzzle.active:not(.is-review),
+          #libraryScreen.active #libraryPuzzleView[style*="display: block"],
+          #raceScreen.active #racePlay[style*="display: block"],
+          #breinkrakersScreen.active.is-playing) .topbar :is(.streak-badge, .stats-button, .user-btn) {
+  min-height: 36px;
+}
+body:has(#screen-puzzle.active:not(.is-review),
+          #libraryScreen.active #libraryPuzzleView[style*="display: block"],
+          #raceScreen.active #racePlay[style*="display: block"],
+          #breinkrakersScreen.active.is-playing) .topbar .stats-button {
+  width: 36px;
+  padding: 7px;
+}
+
+@media (min-width: 760px) {
+  #screen-puzzle.active:not(.is-review) { padding-top: clamp(64px, 7vh, 82px); }
+  #libraryScreen.active:has(#libraryPuzzleView[style*="display: block"]),
+  #raceScreen.active:has(#racePlay[style*="display: block"]),
+  #breinkrakersScreen.active.is-playing { padding-top: clamp(62px, 7vh, 90px); }
+}
+@media (max-width: 759px) {
+  #screen-puzzle.active:not(.is-review) { padding-top: 78px; }
+  #libraryScreen.active:has(#libraryPuzzleView[style*="display: block"]),
+  #raceScreen.active:has(#racePlay[style*="display: block"]),
+  #breinkrakersScreen.active.is-playing { padding-top: 72px; }
+}
