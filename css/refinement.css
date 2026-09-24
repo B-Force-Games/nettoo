@@ -653,6 +653,37 @@ textarea:focus-visible,
 [data-theme="dark"] .library-difficulties button:not(.active) { background: var(--surface); color: var(--ink); }
 [data-theme="dark"] .library-difficulties button span { color: #C7CEEF; }
 
+/* Laat een open bibliotheekpuzzel het venster vullen zonder vragen of acties af te snijden.
+   Alleen het vragenscherm rekt mee; de langere review mag gewoon scrollen. */
+@media (min-width: 760px) and (min-height: 680px) {
+  #libraryScreen.active:has(#libraryPuzzleView #libraryQuestionList > .q-block) {
+    padding-bottom: 20px;
+  }
+  #libraryPuzzleView:has(#libraryQuestionList > .q-block) {
+    max-width: 760px;
+  }
+  #libraryPuzzleView:has(#libraryQuestionList > .q-block) .library-puzzle-card {
+    min-height: calc(100dvh - clamp(62px, 7vh, 90px) - 20px);
+    display: flex;
+    flex-direction: column;
+  }
+  #libraryQuestionList:has(> .q-block) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  #libraryQuestionList > .q-block {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #libraryQuestionList > .connector,
+  #libraryQuestionList > .auto-calc-note {
+    flex: 0 0 auto;
+  }
+}
+
 .daily-archive-list { border-radius: var(--ui-radius-md); }
 .daily-archive-row { min-height: 70px; padding: 16px 20px; }
 .daily-archive-row:hover { background: #F5F6FF; }
@@ -1914,8 +1945,7 @@ body:has(#screen-puzzle.active, #libraryScreen.active, #breinkrakersScreen.activ
   #bkPlay .bk-question-card { padding: 18px 22px; }
 
   #libraryPuzzleView { margin-top: 0; scroll-margin-top: 82px; }
-  #libraryPuzzleView .library-progress,
-  #libraryPuzzleView .library-timer { display: inline-flex; margin: 0 14px 8px 0; }
+  #libraryPuzzleView .library-progress { display: inline-flex; margin: 0 14px 8px 0; }
   #libraryPuzzleView .library-equation { margin: 4px 0 8px; }
 
   :is(#dailyQuestionView, #libraryQuestionList, #raceQuestionList, #bkQuestionList) .q-block { padding: 10px 14px; margin: 0; }
