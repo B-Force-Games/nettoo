@@ -107,64 +107,36 @@ function operatorName(symbol) {
 function renderConnectionOperatorConnector() {
   const connector = document.createElement('div');
   connector.className = 'connector connection-connector connection-operator-connector';
-  
   const lineLeft = document.createElement('div');
   lineLeft.className = 'connector-line';
-  
-  const switchBox = document.createElement('div');
-  switchBox.className = 'connection-operator-switch';
-  switchBox.setAttribute('role', 'radiogroup');
-  switchBox.setAttribute('aria-label', statsCopy('Kies het rekenkundige teken', 'Choose the mathematical operator'));
-  
+  const select = document.createElement('select');
+  select.className = 'connector-badge connection-operator-select';
+  select.setAttribute('aria-label', statsCopy('Kies het rekenkundige teken', 'Choose the mathematical operator'));
+  const prompt = document.createElement('option');
+  prompt.value = '';
+  prompt.textContent = '?';
+  prompt.disabled = true;
+  select.append(prompt);
   connectionOperators.forEach(symbol => {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'connection-op-btn';
-    button.textContent = symbol;
-    button.setAttribute('role', 'radio');
-    button.setAttribute('aria-checked', String(connectionState?.operator === symbol));
-    button.setAttribute('aria-label', operatorName(symbol));
-    button.dataset.operator = symbol;
-    if (connectionState?.operator === symbol) button.classList.add('active');
-    
-    button.onclick = () => {
-      setConnectionOperator(symbol);
-      button.focus();
-    };
-    button.onkeydown = event => {
-      if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
-        event.preventDefault();
-        const next = connectionOperators[(connectionOperators.indexOf(symbol) + 1) % connectionOperators.length];
-        setConnectionOperator(next);
-        switchBox.querySelector(`[data-operator="${next}"]`)?.focus();
-      } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
-        event.preventDefault();
-        const prev = connectionOperators[(connectionOperators.indexOf(symbol) - 1 + connectionOperators.length) % connectionOperators.length];
-        setConnectionOperator(prev);
-        switchBox.querySelector(`[data-operator="${prev}"]`)?.focus();
-      }
-    };
-    switchBox.append(button);
+    const option = document.createElement('option');
+    option.value = symbol;
+    option.textContent = symbol;
+    option.setAttribute('aria-label', operatorName(symbol));
+    select.append(option);
   });
-  
+  select.value = connectionState?.operator || '';
+  select.addEventListener('change', () => setConnectionOperator(select.value));
   const lineRight = document.createElement('div');
   lineRight.className = 'connector-line';
-  
-  connector.append(lineLeft, switchBox, lineRight);
+  connector.append(lineLeft, select, lineRight);
   return connector;
 }
 
 function setConnectionOperator(symbol) {
-  if (!connectionState || connectionState.submitted) return;
+  if (!connectionState || connectionState.submitted || !connectionOperators.includes(symbol)) return;
   connectionState.operator = symbol;
-  const switchBox = document.querySelector('.connection-operator-switch');
-  if (switchBox) {
-    switchBox.querySelectorAll('.connection-op-btn').forEach(btn => {
-      const active = btn.dataset.operator === symbol;
-      btn.setAttribute('aria-checked', String(active));
-      btn.classList.toggle('active', active);
-    });
-  }
+  const select = document.querySelector('.connection-operator-select');
+  if (select) select.value = symbol;
   updateConnectionLiveFormula();
 }
 
@@ -188,55 +160,24 @@ function updateConnectionLiveFormula() {
   const container = document.getElementById('connectionLiveFormula');
   if (!container || !connectionState) return;
   if (connectionState.submitted) {
-    container.style.display = 'none';
+    container.hidden = true;
     return;
   }
-  container.style.display = 'flex';
-  
   const guesses = connectionState.order.map(i => {
     const input = document.getElementById('connectionAnswer' + i);
     const val = input ? input.value.trim() : '';
     return val ? parseFormattedNumber(val) : null;
   });
   const op = connectionState.operator;
-  
-  const hasG1 = guesses[0] !== null && Number.isSafeInteger(guesses[0]) && guesses[0] > 0;
-  const hasG2 = guesses[1] !== null && Number.isSafeInteger(guesses[1]) && guesses[1] > 0;
-  const hasG3 = guesses[2] !== null && Number.isSafeInteger(guesses[2]) && guesses[2] > 0;
-  
-  const g1Str = hasG1 ? fmt(guesses[0]) : '?';
-  const g2Str = hasG2 ? fmt(guesses[1]) : '?';
-  const g3Str = hasG3 ? fmt(guesses[2]) : '?';
-  const opStr = op || '?';
-  
-  let statusBadge = '';
-  let statusClass = '';
-  if (hasG1 && hasG2 && hasG3 && op) {
-    const holds = connectionEquation(guesses, op);
-    if (holds) {
-      statusBadge = `<span class="live-match-badge is-valid">✓ ${statsCopy('Som klopt', 'Equation matches')}</span>`;
-      statusClass = 'is-valid';
-    } else {
-      statusBadge = `<span class="live-match-badge is-invalid">≠ ${statsCopy('Som klopt niet', 'Equation does not match')}</span>`;
-      statusClass = 'is-invalid';
-    }
-  } else if (!op) {
-    statusBadge = `<span class="live-match-badge is-prompt">${statsCopy('Kies een teken', 'Choose an operator')}</span>`;
-  }
-  
-  container.innerHTML = `
-    <div class="connection-live-formula-inner ${statusClass}">
-      <span class="live-formula-label">${statsCopy('Vergelijking', 'Equation')}</span>
-      <div class="live-formula-tokens">
-        <span class="live-pill ${hasG1 ? 'has-value' : ''}">${g1Str}</span>
-        <span class="live-op-token ${op ? 'has-op' : ''}">${opStr}</span>
-        <span class="live-pill ${hasG2 ? 'has-value' : ''}">${g2Str}</span>
-        <span class="live-eq-token">=</span>
-        <span class="live-pill is-result ${hasG3 ? 'has-value' : ''}">${g3Str}</span>
-      </div>
-      ${statusBadge}
-    </div>
-  `;
+  // De drie kaarten tonen de formule al; pas bij een complete poging is extra feedback nuttig.
+  container.hidden = !op || !guesses.every(value => Number.isSafeInteger(value) && value > 0);
+  if (container.hidden) { container.textContent = ''; return; }
+  const klopt = connectionEquation(guesses, op);
+  container.classList.toggle('is-valid', klopt);
+  container.classList.toggle('is-invalid', !klopt);
+  container.textContent = klopt
+    ? statsCopy('✓ De som klopt', '✓ Equation matches')
+    : statsCopy('≠ De som klopt niet', '≠ Equation does not match');
 }
 
 function handleConnectionGlobalKeydown(event) {
@@ -276,11 +217,16 @@ function startConnection(index = 0) {
   screen.classList.add('is-playing');
   screen.scrollTop = 0;
   document.getElementById('bkStart').style.display = 'none';
-  document.getElementById('bkPlay').style.display = 'block';
+  document.getElementById('bkPlay').style.display = 'flex';
   document.getElementById('bkPuzzleLabel').textContent = statsCopy('Puzzel ', 'Puzzle ') + (index + 1);
   document.getElementById('bkCounter').textContent = (index + 1) + ' / ' + connectionPool.length;
   document.getElementById('bkFeedback').textContent = '';
-  document.getElementById('connectionHint').hidden = false;
+  const hint = document.getElementById('connectionHint');
+  hint.hidden = false;
+  hint.textContent = statsCopy(
+    'Verplaats vragen met de greep. Kies een teken; bij − en ÷ telt de volgorde.',
+    'Move questions with the handle. Choose an operator; order matters for − and ÷.'
+  );
   document.getElementById('connectionSkip').hidden = false;
   const submit = document.getElementById('bkSubmitButton');
   submit.textContent = statsCopy('Controleer mijn verband', 'Check my connection');
@@ -357,11 +303,11 @@ function layoutConnection() {
     if (!card) return;
     const isResult = index === 2;
     const pos = card.querySelector('.connection-position');
-    if (pos) {
-      pos.innerHTML = isResult
-        ? `<span class="connection-pos-pill is-result"><span class="connection-pos-dot"></span>${statsCopy('Uitkomst · Somdoel', 'Result · Target')}</span>`
-        : `<span class="connection-pos-pill"><span class="connection-pos-num">${index + 1}</span>${statsCopy('Positie ', 'Position ') + (index + 1)}</span>`;
-    }
+    if (pos) pos.textContent = isResult
+      ? statsCopy('Uitkomst', 'Result')
+      : statsCopy('Positie ', 'Position ') + (index + 1);
+    card.querySelector('.connection-drag-handle')?.setAttribute('aria-label',
+      statsCopy('Verplaats vraag op positie ', 'Move question at position ') + (index + 1));
   });
   const opConnector = list.querySelector('.connection-operator-connector');
   const eqConnector = list.querySelector('.connection-equals-connector');

@@ -3,6 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+  // De proeflayouts zijn alleen zichtbaar via een expliciete URL-parameter.
+  const nettoLandingProef = new URLSearchParams(location.search).get('landing');
+  if (nettoLandingProef === 'editorial' || nettoLandingProef === 'playboard') {
+    document.documentElement.dataset.landingPreview = nettoLandingProef;
+  }
+</script>
 <title>Netto · dagelijkse schatting</title>
 <meta name="description" content="Schat drie feiten, vind het verband. Elke dag een nieuwe puzzel.">
 <meta name="theme-color" content="#14163B">
@@ -38,7 +45,7 @@
 <script src="data/netto_translations_en.js?v=50"></script>
 <script src="js/i18n.js?v=68"></script>
 <link rel="stylesheet" href="css/styles.css?v=60">
-<link rel="stylesheet" href="css/refinement.css?v=127">
+<link rel="stylesheet" href="css/refinement.css?v=130">
 <link rel="stylesheet" href="css/stats-page.css?v=4">
 
 </head>
@@ -134,6 +141,12 @@
   <!-- ============ SCHERM 1: HOME ============ -->
   <main class="screen screen-home active" id="screen-home">
     <div class="home-content">
+      <nav class="home-preview-switcher" aria-label="Landing page layout previews">
+        <span>Layout test</span>
+        <a href="index.html">Current</a>
+        <a href="index.html?landing=editorial" data-preview="editorial">Editorial</a>
+        <a href="index.html?landing=playboard" data-preview="playboard">Playboard</a>
+      </nav>
       <div class="home-landing-grid">
         <section class="home-daily-card" data-operator="×" aria-labelledby="homeDailyTitle">
           <div class="home-daily-topline">
@@ -1032,7 +1045,7 @@
 <script src="js/question-context.js?v=1"></script>
 <script src="js/core.js?v=114"></script>
 <script src="js/puzzle-modes.js?v=58"></script>
-<script src="js/find-connection.js?v=3"></script>
+<script src="js/find-connection.js?v=5"></script>
 <script src="js/race.js?v=63"></script>
 <script src="js/submissions.js?v=41"></script>
 <script src="js/library.js?v=58"></script>
