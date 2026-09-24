@@ -2780,36 +2780,39 @@ html[data-landing-preview="editorial"] .home-quick-card strong { max-width: none
 }
 
 /* Een Daily gebruikt dezelfde royale kaartbreedte als een gewone puzzel.
-   De foto is onderdeel van de vraagkaart en bepaalt haar hoogte: zo kan hij
-   groter worden zonder over een andere vraag of het antwoordveld te vallen. */
+   De foto krijgt naast het compacte vraagvlak haar eigen ruimte, zodat de
+   afbeelding groot kan blijven zonder andere vragen te bedekken. */
 #screen-puzzle.active:not(.is-review) .inner { max-width: 760px; }
 #screen-puzzle:not(.is-review) #dailyQuestionView .q-label { font-size: 15px; line-height: 1.4; }
 #screen-puzzle #dailyQuestionView > .q-block.has-photo {
   display: grid;
   grid-template-columns: minmax(0, 1fr) clamp(180px, 35%, 244px);
-  grid-template-rows: 1fr auto 1fr;
+  grid-template-rows: 1fr auto auto auto 1fr;
   column-gap: clamp(14px, 2.5vw, 24px);
-  row-gap: 5px;
+  row-gap: 0;
   align-content: center;
-  padding: clamp(12px, 2vh, 18px);
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
   min-height: 0;
 }
 #screen-puzzle #dailyQuestionView > .q-block.has-photo::after { content: none; }
 #screen-puzzle #dailyQuestionView > .q-block.has-photo > .q-label {
   grid-column: 1;
-  grid-row: 1;
-  align-self: end;
-  margin-bottom: 0;
+  grid-row: 2;
+  align-self: start;
+  margin: 14px 14px 8px;
 }
-#screen-puzzle #dailyQuestionView > .q-block.has-photo > .vraag-ondertekst { grid-column: 1; grid-row: 2; margin-bottom: 0; }
-#screen-puzzle #dailyQuestionView > .q-block.has-photo > .input-wrapper { grid-column: 1; grid-row: 3; align-self: start; clear: none; }
+#screen-puzzle #dailyQuestionView > .q-block.has-photo > .vraag-ondertekst { grid-column: 1; grid-row: 3; margin: 0 14px 8px; }
+#screen-puzzle #dailyQuestionView > .q-block.has-photo > .input-wrapper { grid-column: 1; grid-row: 4; margin: 0 14px 14px; clear: none; }
 #screen-puzzle #dailyQuestionView > .q-block.has-photo > .vraag-bron { grid-column: 1 / -1; }
 #screen-puzzle #dailyQuestionView > .q-block.has-photo > .daily-photo {
   position: relative;
   top: auto;
   right: auto;
   grid-column: 2;
-  grid-row: 1 / 4;
+  grid-row: 1 / 6;
   align-self: center;
   float: none;
   width: 100%;
@@ -2847,33 +2850,36 @@ html[data-landing-preview="editorial"] .home-quick-card strong { max-width: none
   #screen-puzzle #dailyQuestionView > .q-block.has-photo > .input-wrapper { grid-row: 4; }
 }
 
-/* Ook bibliotheekpuzzels geven de foto een eigen plek binnen de vraagkaart.
+/* Ook bibliotheekpuzzels geven de foto een eigen plek naast het vraagvlak.
    Op een laag venster mag de pagina scrollen in plaats van de foto te krimpen. */
 #libraryQuestionList > .q-block:has(> .puzzelfoto) {
   display: grid;
   grid-template-columns: minmax(0, 1fr) clamp(180px, 35%, 244px);
-  grid-template-rows: 1fr auto 1fr;
+  grid-template-rows: 1fr auto auto auto 1fr;
   column-gap: clamp(14px, 2.5vw, 24px);
-  row-gap: 5px;
+  row-gap: 0;
   align-content: center;
   min-height: 0;
-  padding: clamp(12px, 2vh, 18px);
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
 }
 #libraryQuestionList > .q-block:has(> .puzzelfoto)::after { content: none; }
 #libraryQuestionList > .q-block:has(> .puzzelfoto) > .q-label {
   grid-column: 1;
-  grid-row: 1;
-  align-self: end;
-  margin-bottom: 0;
+  grid-row: 2;
+  align-self: start;
+  margin: 14px 14px 8px;
 }
-#libraryQuestionList > .q-block:has(> .puzzelfoto) > .vraag-ondertekst { grid-column: 1; grid-row: 2; margin-bottom: 0; }
-#libraryQuestionList > .q-block:has(> .puzzelfoto) > .input-wrapper { grid-column: 1; grid-row: 3; align-self: start; clear: none; }
+#libraryQuestionList > .q-block:has(> .puzzelfoto) > .vraag-ondertekst { grid-column: 1; grid-row: 3; margin: 0 14px 8px; }
+#libraryQuestionList > .q-block:has(> .puzzelfoto) > .input-wrapper { grid-column: 1; grid-row: 4; margin: 0 14px 14px; clear: none; }
 #libraryQuestionList > .q-block:has(> .puzzelfoto) > .puzzelfoto {
   position: relative;
   top: auto;
   right: auto;
   grid-column: 2;
-  grid-row: 1 / 4;
+  grid-row: 1 / 6;
   align-self: center;
   float: none;
   width: 100%;
@@ -2900,18 +2906,35 @@ html[data-landing-preview="editorial"] .home-quick-card strong { max-width: none
   #libraryQuestionList > .q-block:has(> .puzzelfoto) > .input-wrapper { grid-row: 4; }
 }
 
-/* De tekstkolom naast een grote foto mag geen klein eilandje in de kaart zijn. */
-#screen-puzzle #dailyQuestionView > .q-block.has-photo > .q-label,
-#libraryQuestionList > .q-block:has(> .puzzelfoto) > .q-label {
-  max-width: 28ch;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.3;
+/* Alleen de tekst en invoer delen een gekleurd vlak. De foto houdt haar eigen
+   ruimte, zodat een korte vraag geen groot leeg kleurvlak nodig heeft. */
+#screen-puzzle #dailyQuestionView > .q-block.has-photo::before,
+#libraryQuestionList > .q-block:has(> .puzzelfoto)::before {
+  content: '';
+  grid-column: 1;
+  grid-row: 2 / 5;
+  background: color-mix(in srgb, var(--vraag-tint, var(--surface-2)) var(--vraag-menging, 84%), var(--surface));
+  border: 1px solid var(--surface-border);
+  border-radius: 12px;
+  pointer-events: none;
 }
-#screen-puzzle #dailyQuestionView > .q-block.has-photo > .input-wrapper input,
-#libraryQuestionList > .q-block:has(> .puzzelfoto) > .input-wrapper input {
-  min-height: 52px;
-  height: 52px;
+#screen-puzzle #dailyQuestionView > .q-block.has-photo > :is(.q-label, .vraag-ondertekst, .input-wrapper),
+#libraryQuestionList > .q-block:has(> .puzzelfoto) > :is(.q-label, .vraag-ondertekst, .input-wrapper) { position: relative; }
+
+@media (max-width: 560px) {
+  #screen-puzzle #dailyQuestionView > .q-block.has-photo,
+  #libraryQuestionList > .q-block:has(> .puzzelfoto) {
+    padding: 14px;
+    row-gap: 10px;
+    background: color-mix(in srgb, var(--vraag-tint, var(--surface-2)) var(--vraag-menging, 84%), var(--surface));
+    border: 1px solid var(--surface-border);
+  }
+  #screen-puzzle #dailyQuestionView > .q-block.has-photo::before,
+  #libraryQuestionList > .q-block:has(> .puzzelfoto)::before { content: none; }
+  #screen-puzzle #dailyQuestionView > .q-block.has-photo > .q-label,
+  #libraryQuestionList > .q-block:has(> .puzzelfoto) > .q-label { grid-row: 1; margin: 0; }
+  #screen-puzzle #dailyQuestionView > .q-block.has-photo > .vraag-ondertekst,
+  #libraryQuestionList > .q-block:has(> .puzzelfoto) > .vraag-ondertekst { grid-row: 2; margin: 0; }
+  #screen-puzzle #dailyQuestionView > .q-block.has-photo > .input-wrapper,
+  #libraryQuestionList > .q-block:has(> .puzzelfoto) > .input-wrapper { margin: 0; }
 }
-#screen-puzzle #dailyQuestionView > .q-block.has-photo,
-#libraryQuestionList > .q-block:has(> .puzzelfoto) { row-gap: 14px; }
