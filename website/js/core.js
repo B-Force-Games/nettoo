@@ -1393,6 +1393,7 @@
   let autoCalculatedInputs = new Set();
   // Settings: auto-calculator aan/uit (default aan). Uit = geen auto-fill, overal.
   const AUTO_CALC_KEY = 'netto_auto_calc';
+  const DAILY_AUTO_HINT_KEY = 'netto_daily_auto_hint_seen_v1';
   function isAutoCalcEnabled() { return localStorage.getItem(AUTO_CALC_KEY) !== 'off'; }
   const REQUIRE_EQUATION_KEY = 'netto_require_equation';
   function isEquationRequired() { return localStorage.getItem(REQUIRE_EQUATION_KEY) !== 'off'; }
@@ -1513,10 +1514,17 @@
     input.value = formatDutchNumber(String(value));
     autoCalculatedInputs.add(id); input.dataset.autoCalculated = 'true'; input.classList.add('auto-calculated');
     input.setAttribute('aria-label', 'Automatisch berekend antwoord');
+    if (/^g[123]$/.test(id) && !localStorage.getItem(DAILY_AUTO_HINT_KEY)) {
+      localStorage.setItem(DAILY_AUTO_HINT_KEY, '1');
+      showNoticeToast(
+        statsCopy('De som heeft dit antwoord ingevuld. Klik in het vak om je eigen antwoord te geven.', 'The equation filled in this answer. Click the field to enter your own answer.'),
+        '=', statsCopy('Automatisch ingevuld', 'Filled in for you'), { id: 'dailyAutoHint', duration: 6500 }
+      );
+    }
   }
   function clearAutoInput(id) {
     const input = document.getElementById(id); if (!input || !autoCalculatedInputs.has(id)) return;
-    input.value = ''; input.placeholder = 'Jouw schatting'; input.dataset.autoCalculated = 'false'; input.classList.remove('auto-calculated'); autoCalculatedInputs.delete(id);
+    input.value = ''; input.placeholder = /^g[123]$/.test(id) ? 'Jouw antwoord' : 'Jouw schatting'; input.dataset.autoCalculated = 'false'; input.classList.remove('auto-calculated'); autoCalculatedInputs.delete(id);
     input.removeAttribute('aria-label');
   }
   // Eén invoerregel voor alle spelmodi, inclusief plakken. Een ongeldig teken
@@ -2997,6 +3005,7 @@
     document.getElementById('screen-puzzle').classList.add('is-review');
     const headline = document.getElementById('dailyHeadline');
     if (headline) headline.textContent = statsCopy('Jouw resultaat.', 'Your result.');
+    document.getElementById('dailyPlayIntro').hidden = true;
     questions.style.display = 'none';
     results.classList.add('show');
     updateDailyReviewNav();
@@ -3011,11 +3020,12 @@
     document.getElementById('screen-puzzle').classList.remove('is-review');
     const headline = document.getElementById('dailyHeadline');
     if (headline) headline.textContent = statsCopy('De vragen.', 'The questions.');
+    document.getElementById('dailyPlayIntro').hidden = true;
     const questions = document.getElementById('dailyQuestionView');
     const results = document.getElementById('results');
     if (!questions || !results) return;
     dailyReviewView = 'questions';
-    questions.style.display = 'block';
+    questions.style.display = '';
     results.classList.remove('show');
     updateDailyReviewNav();
   }
@@ -3026,11 +3036,16 @@
     if (equationError) equationError.hidden = true;
     document.getElementById('screen-puzzle').classList.remove('is-review');
     const headline = document.getElementById('dailyHeadline');
-    if (headline) headline.innerHTML = statsCopy('Schat het <span class="script">slim.</span>', 'Make a <span class="script">smart guess.</span>');
+    if (headline) headline.innerHTML = statsCopy('Drie antwoorden. <span class="script">Eén som.</span>', 'Three answers. <span class="script">One equation.</span>');
+    const intro = document.getElementById('dailyPlayIntro');
+    if (intro) {
+      intro.textContent = statsCopy('Geef je antwoorden. Gebruik de som om ze scherper te maken.', 'Enter your answers. Use the equation to refine your guesses.');
+      intro.hidden = false;
+    }
     const questions = document.getElementById('dailyQuestionView');
     const nav = document.getElementById('dailyReviewNav');
     const results = document.getElementById('results');
-    if (questions) questions.style.display = 'block';
+    if (questions) questions.style.display = '';
     if (nav) nav.classList.remove('show');
     if (results) results.classList.remove('show');
     dailyReviewView = 'questions';

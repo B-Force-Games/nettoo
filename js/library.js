@@ -244,7 +244,7 @@ function renderLibraryStats() {
     ['g1', 'g2', 'g3'].forEach(id => {
       const input = document.getElementById(id);
       input.value = '';
-      input.placeholder = 'Jouw schatting';
+      input.placeholder = 'Jouw antwoord';
       input.dataset.autoCalculated = 'false';
       input.classList.remove('auto-calculated');
       input.disabled = false;

@@ -744,6 +744,17 @@ textarea:focus-visible,
 /* Daily play */
 #screen-puzzle { align-items: flex-start; padding-top: 116px; }
 #screen-puzzle .inner { max-width: 680px; }
+#screen-puzzle .daily-play-intro { margin: -12px 0 20px; color: #D6DCFF; text-align: center; font: 500 14px/1.4 'Space Grotesk',sans-serif; }
+#screen-puzzle .daily-play-intro[hidden] { display: none; }
+#dailyQuestionView { display: flex; flex-direction: column; }
+#dailyQuestionView > .q-block { box-shadow: 0 8px 20px rgba(13,18,68,.08); }
+#dailyQuestionView > .q-block:focus-within { box-shadow: 0 9px 24px rgba(37,47,182,.15); }
+@media (min-width: 760px) and (min-height: 680px) {
+  #screen-puzzle.active:not(.is-review) .card { display: flex; flex-direction: column; min-height: min(calc(100dvh - 225px), 690px); }
+  #screen-puzzle.active:not(.is-review) #dailyQuestionView { flex: 1; }
+  #dailyQuestionView > .q-block { flex: 1 0 auto; display: flex; flex-direction: column; justify-content: center; }
+  #dailyQuestionView > .connector { flex: 0 0 auto; }
+}
 /* De puzzel paste niet op een gewoon bureaubladscherm: hij vroeg 825 pixels
    hoogte terwijl een venster van 900 er na tabbladen en adresbalk zo'n 780
    overhoudt. Daarom moest je naar tachtig procent zoomen om hem in een keer te
@@ -2646,6 +2657,7 @@ html[data-landing-preview="editorial"] .home-quick-card strong { max-width: none
   #screen-puzzle.active:not(.is-review) { padding-top: 56px; padding-bottom: 8px; }
   #screen-puzzle:not(.is-review) .eyebrow { margin-bottom: 2px; }
   #screen-puzzle:not(.is-review) .headline { margin-bottom: 5px; font-size: 21px; }
+  #screen-puzzle .daily-play-intro { margin: 0 0 7px; font-size: 11px; line-height: 1.2; }
   #screen-puzzle:not(.is-review) .card { padding: 12px 18px; }
   #dailyQuestionView .q-block { padding: 7px 12px; }
   #dailyQuestionView .q-label { margin-bottom: 5px; }
