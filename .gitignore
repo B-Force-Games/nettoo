@@ -22,6 +22,34 @@ Thumbs.db
 dist/
 build/
 
+# Routepagina's worden tijdens publicatie gegenereerd.
+/daily/
+/daily-archive/
+/puzzles/
+/connections/
+/race/
+/leaderboard/
+/stats/
+/settings/
+/how-to-play/
+/submit-question/
+/about/
+/photo-credits/
+/admin/
+/website/daily/
+/website/daily-archive/
+/website/puzzles/
+/website/connections/
+/website/race/
+/website/leaderboard/
+/website/stats/
+/website/settings/
+/website/how-to-play/
+/website/submit-question/
+/website/about/
+/website/photo-credits/
+/website/admin/
+
 # Temporary files
 *.tmp
 *.temp

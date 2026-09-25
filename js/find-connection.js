@@ -82,7 +82,7 @@ function renderConnectionStart() {
     button.type = 'button';
     button.className = 'connection-catalog-card' + (result ? ' has-played' : '');
     const number = document.createElement('strong');
-    number.textContent = '#' + (index + 1);
+    number.textContent = '#' + puzzle.number;
     const label = document.createElement('span');
     if (result) {
       label.className = result.connectionCorrect ? 'status-correct' : 'status-incorrect';
@@ -219,9 +219,9 @@ function startConnection(index = 0) {
   document.getElementById('bkStart').style.display = 'none';
   document.getElementById('bkPlay').style.display = 'flex';
   const puzzelknop = document.getElementById('bkPuzzleLabel');
-  puzzelknop.parentElement.setAttribute('aria-label', statsCopy('Puzzel ', 'Puzzle ') + (index + 1));
-  puzzelknop.textContent = '← ' + statsCopy('Puzzel ', 'Puzzle ') + (index + 1);
-  puzzelknop.setAttribute('aria-label', statsCopy('Terug naar alle verbanden vanaf puzzel ', 'Back to all connections from puzzle ') + (index + 1));
+  puzzelknop.parentElement.setAttribute('aria-label', statsCopy('Puzzel ', 'Puzzle ') + puzzle.number);
+  puzzelknop.textContent = '← ' + statsCopy('Puzzel ', 'Puzzle ') + puzzle.number;
+  puzzelknop.setAttribute('aria-label', statsCopy('Terug naar alle verbanden vanaf puzzel ', 'Back to all connections from puzzle ') + puzzle.number);
   document.getElementById('bkCounter').textContent = (index + 1) + ' / ' + connectionPool.length;
   document.getElementById('bkFeedback').textContent = '';
   document.getElementById('connectionAnnouncement').textContent = '';

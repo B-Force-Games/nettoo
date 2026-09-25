@@ -38,6 +38,9 @@ jobs:
       - name: Controleer of website/ gelijk is aan de frontend
         run: python tools/sync_website.py --check
 
+      - name: Maak directe adressen voor de spelpagina's
+        run: python tools/bouw_routes.py
+
       # enablement zet Pages zelf aan als dat nog niet gebeurd is. Zonder deze
       # regel faalt de stap met "Get Pages site failed - Not Found", en die
       # tekst zegt niet dat je een schakelaar in de repo-instellingen moet

@@ -2997,6 +2997,27 @@ html[data-landing-preview="editorial"] .home-quick-card strong { max-width: none
   gap: 14px;
   width: 100%;
 }
+
+/* Een ontbrekende of nog niet vrijgegeven Daily krijgt een eigen, rustige staat. */
+.route-status-screen { min-height: calc(100vh - 80px); padding: clamp(28px, 7vw, 80px) 24px; }
+.route-status-card {
+  width: min(100%, 680px); margin: 0 auto; padding: clamp(28px, 5vw, 54px);
+  border: 1px solid #DDE2F5; border-radius: 24px; background: #fff;
+  box-shadow: 0 20px 54px rgba(12, 20, 80, .13); color: #171C40;
+}
+.route-status-eyebrow {
+  display: block; margin-bottom: 18px; color: #2733AA;
+  font: 700 13px 'Space Mono', monospace; letter-spacing: .1em; text-transform: uppercase;
+}
+.route-status-card h1 { margin: 0 0 14px; font: 700 clamp(30px, 5vw, 48px)/1.08 'Space Grotesk', sans-serif; }
+.route-status-card p { margin: 0; max-width: 48ch; color: #59617D; font: 17px/1.55 'Space Grotesk', sans-serif; }
+.route-status-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 32px; }
+.route-status-actions .hero-cta { margin: 0; }
+.route-status-home {
+  min-height: 52px; padding: 12px 20px; border: 1px solid #D8DDF3; border-radius: 12px;
+  background: #fff; color: #171C40; font: 700 15px 'Space Grotesk', sans-serif; cursor: pointer;
+}
+.route-status-home:hover { border-color: #2733AA; }
 #bkPlay .headline.puzzle-section-header {
   display: flex;
   align-items: center;

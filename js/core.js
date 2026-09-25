@@ -92,7 +92,7 @@
   //
   // Speel je lokaal, dan heeft je vriend niets aan http://127.0.0.1; in dat
   // geval valt hij terug op het gepubliceerde adres.
-  const GEPUBLICEERD = 'https://berend-wt.github.io/nettoo/';
+  const GEPUBLICEERD = 'https://b-force-games.github.io/nettoo/';
   function speelAdres() {
     try {
       const u = new URL(window.location.href);
@@ -135,6 +135,7 @@
       // mag er wel geoordeeld worden over een ontbrekende daily.
       dailySyncAfgerond = true;
       renderHomeDailyPreview();
+      window.NettoRoutes?.dailyReady();
     }
     bewaakDagwissel();
   });
@@ -447,7 +448,13 @@
       TODAY_STR = nieuweSleutel;
       dailySyncGedaan = false;
       dailySyncAfgerond = false;
-      syncDailiesFromSupabase();
+      window.NettoRoutes?.dayChanged();
+      if (supabaseClient) syncDailiesFromSupabase();
+      else {
+        dailySyncAfgerond = true;
+        renderHomeDailyPreview();
+        window.NettoRoutes?.dailyReady();
+      }
     };
     setInterval(opnieuwControleren, 60000);
     // Een achtergrondtab krijgt getemperde timers; bij terugkeer meteen kijken.
@@ -475,11 +482,12 @@
       if (error) {
         console.warn('Daily-sync mislukt, statische set blijft actief:', error.message || error);
         dailySyncAfgerond = true;
+        window.NettoRoutes?.dailyReady();
         renderHomeDailyPreview();
         return;
       }
       dailySyncAfgerond = true;
-      if (!Array.isArray(data) || !data.length) { renderHomeDailyPreview(); return; }
+      if (!Array.isArray(data) || !data.length) { window.NettoRoutes?.dailyReady(); renderHomeDailyPreview(); return; }
 
       const previousId = DAILY_PUZZLES[0]?.id;
       DAILY_PUZZLES = mergeDailies(data.map(mapDbDaily));
@@ -493,9 +501,11 @@
         if (typeof loadActivePuzzle === 'function') loadActivePuzzle();
       }
       renderHomeDailyPreview();
+      window.NettoRoutes?.dailyReady();
     } catch (err) {
       console.warn('Daily-sync overgeslagen, statische set blijft actief:', err);
       dailySyncAfgerond = true;
+      window.NettoRoutes?.dailyReady();
       renderHomeDailyPreview();
     }
   }
@@ -760,13 +770,7 @@
 
       // Koppel knoppen expliciet via event listeners
       const btnStart = document.getElementById('btnStartPuzzle');
-      if (btnStart) btnStart.onclick = () => {
-        dailyArchivePuzzleView = false;
-        activePuzzleIndex = 0;
-        PUZZLE_DATA = DAILY_PUZZLES[0] || PUZZLE_ARCHIVE[0];
-        loadActivePuzzle();
-        showScreen('puzzle');
-      };
+      if (btnStart) btnStart.onclick = () => window.NettoRoutes?.openToday();
 
       const btnHamb = document.getElementById('hamburgerBtn');
       if (btnHamb) btnHamb.onclick = toggleMenu;
@@ -3078,6 +3082,7 @@
 
   function showScreen(name) {
     document.getElementById('fotoCreditsScreen')?.classList.toggle('active', name === 'fotoverantwoording');
+    document.getElementById('routeStatusScreen')?.classList.toggle('active', name === 'route-status');
     if (name === 'library') document.getElementById('libraryCardGrid').style.display = 'none';
     if (name !== 'race' && raceState) {
       stopRaceTimer();
@@ -3129,7 +3134,8 @@
   };
 
   function libraryPuzzleNumber(difficulty, index) {
-    return (LIBRARY_DIFFICULTY_OFFSET[difficulty] || 0) + index + 1;
+    const puzzle = libraryPuzzles.filter(item => item.difficulty === difficulty)[index];
+    return Number(puzzle?.number) || (LIBRARY_DIFFICULTY_OFFSET[difficulty] || 0) + index + 1;
   }
 
   function getSavedLibraryPlays() {

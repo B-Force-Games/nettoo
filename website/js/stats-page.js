@@ -1,6 +1,7 @@
 // Uitgebreide statistieken: uitsluitend opgeslagen resultaten, nooit verzonnen antwoorden.
 (function () {
   'use strict';
+  const siteBase = new URL('../', document.currentScript?.src || location.href);
   const modes = { daily: ['Daily', 'Daily'], library: ['Puzzels', 'Puzzles'], connection: ['Find the Connection', 'Find the Connection'], race: ['Puzzelrace', 'Puzzle Race'] };
   const read = (key, fallback) => { try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch (_) { return fallback; } };
   const t = (nl, en) => readLanguage() === 'en' ? en : nl;
@@ -225,7 +226,7 @@
   window.openFullStatsPage = function (selected) {
     const aliases = { puzzles: 'library', brain: 'connection', breinkrakers: 'connection' };
     const chosen = aliases[selected] || selected || 'daily';
-    location.href = 'stats.html?mode=' + encodeURIComponent(modes[chosen] ? chosen : 'daily');
+    location.href = new URL('stats/?mode=' + encodeURIComponent(modes[chosen] ? chosen : 'daily'), window.NettoRoutes?.base || siteBase).href;
   };
   window.renderFullStatsPage = renderFullStatsPage;
   // De hoofdpagina laadt alleen de navigatie; de zelfstandige pagina rendert de analyse.

@@ -32,6 +32,7 @@ MIRROR_FILES = (
     "js/library.js",
     "js/app.js",
     "js/site-navigation.js",
+    "js/routes.js",
     "js/stats-page.js",
     "js/i18n.js",
     "js/daily-photos.js",

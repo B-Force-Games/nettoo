@@ -22,16 +22,13 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Netto · dagelijkse schatting">
 <meta property="og:description" content="Drie vragen. Eén verband. Elke dag een nieuwe puzzel.">
-<!-- netto.game is niet het adres waar dit spel staat; die twee tags wezen dus
-     naar een pagina die niets teruggeeft, en naar een afbeelding die niet
-     bestond. Verhuist het spel ooit naar een eigen domein, dan moeten deze twee
-     regels mee (de deel-link in js/core.js past zich vanzelf aan). -->
-<meta property="og:url" content="https://berend-wt.github.io/nettoo/">
-<meta property="og:image" content="https://berend-wt.github.io/nettoo/og-image.png">
+<!-- Deelvoorbeelden gebruiken het huidige GitHub Pages-adres. -->
+<meta property="og:url" content="https://b-force-games.github.io/nettoo/">
+<meta property="og:image" content="https://b-force-games.github.io/nettoo/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Netto · dagelijkse schatting">
 <meta name="twitter:description" content="Drie vragen. Eén verband. Elke dag een nieuwe puzzel.">
-<meta name="twitter:image" content="https://berend-wt.github.io/nettoo/og-image.png">
+<meta name="twitter:image" content="https://b-force-games.github.io/nettoo/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Caveat:wght@600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <!-- Supabase Client CDN (defer om te voorkomen dat de pagina blokkeert) -->
@@ -45,7 +42,7 @@
 <script src="data/netto_translations_en.js?v=50"></script>
 <script src="js/i18n.js?v=69"></script>
 <link rel="stylesheet" href="css/styles.css?v=60">
-<link rel="stylesheet" href="css/refinement.css?v=148">
+<link rel="stylesheet" href="css/refinement.css?v=149">
 <link rel="stylesheet" href="css/stats-page.css?v=4">
 
 </head>
@@ -118,7 +115,7 @@
     <div class="sidebar-scroll">
       <div class="sidebar-group">
         <div class="sidebar-group-title">Daily</div>
-        <button class="sidebar-item" onclick="goHome(); showScreen('puzzle')"><span class="sidebar-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 12h.01"/></svg></span><span class="label">De Daily</span><span class="arrow">→</span></button>
+        <button class="sidebar-item" onclick="NettoRoutes.openToday()"><span class="sidebar-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 12h.01"/></svg></span><span class="label">De Daily</span><span class="arrow">→</span></button>
         <button class="sidebar-item" onclick="openDailyPuzzles()"><span class="sidebar-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg></span><span class="label">Daily Archive</span><span class="arrow">→</span></button>
         <button class="sidebar-item" onclick="openLeaderboardModal()"><span class="sidebar-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4Z"/><path d="M7 6H4v2a4 4 0 0 0 4 4M17 6h3v2a4 4 0 0 1-4 4"/></svg></span><span class="label">Leaderboard</span><span class="arrow">→</span></button>
       </div>
@@ -164,7 +161,7 @@
             <b aria-hidden="true">=</b>
             <span class="home-category-icon result" id="homeDailyCategory3" role="img"></span>
           </div>
-          <button class="hero-cta" id="btnStartPuzzle" onclick="showScreen('puzzle')">
+          <button class="hero-cta" id="btnStartPuzzle" onclick="NettoRoutes.openToday()">
             <span>Speel de Daily</span>
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
@@ -428,7 +425,7 @@
         <div class="how-next">
           <h3>Wat wil je spelen?</h3>
           <div class="how-next-grid">
-            <button type="button" onclick="goHome(); showScreen('puzzle')"><b>De Daily</b><span>Drie vragen, één keer per dag.</span><i aria-hidden="true">→</i></button>
+            <button type="button" onclick="NettoRoutes.openToday()"><b>De Daily</b><span>Drie vragen, één keer per dag.</span><i aria-hidden="true">→</i></button>
             <button type="button" onclick="openPuzzleRace()"><b>Puzzel Race</b><span>Zoveel mogelijk exact binnen de tijd.</span><i aria-hidden="true">→</i></button>
             <button type="button" onclick="openConnection()"><b>Find the Connection</b><span>Rearrange three questions and find the connection.</span><i aria-hidden="true">→</i></button>
           </div>
@@ -1033,6 +1030,17 @@
     <div id="fotoCreditsLijst" class="foto-credits-lijst"></div>
   </div>
 </main>
+<main class="screen route-status-screen" id="routeStatusScreen">
+  <div class="route-status-card" role="status">
+    <span class="route-status-eyebrow" id="routeStatusEyebrow"></span>
+    <h1 id="routeStatusTitle"></h1>
+    <p id="routeStatusMessage"></p>
+    <div class="route-status-actions">
+      <button type="button" class="hero-cta" onclick="openDailyPuzzles()" id="routeStatusArchive"></button>
+      <button type="button" class="route-status-home" onclick="goHome()" id="routeStatusHome"></button>
+    </div>
+  </div>
+</main>
 <dialog id="puzzelFotoDialog" class="daily-photo-dialog" onclick="if(event.target === this) this.close()">
   <button type="button" class="photo-close" onclick="this.closest('dialog').close()" aria-label="Foto sluiten">×</button>
   <img alt="">
@@ -1042,15 +1050,16 @@
 <script src="js/photo-credits.js?v=4"></script>
 <script src="js/daily-photos.js?v=2"></script>
 <script src="js/question-context.js?v=1"></script>
-<script src="js/core.js?v=118"></script>
+<script src="js/core.js?v=121"></script>
 <script src="js/puzzle-modes.js?v=61"></script>
-<script src="js/find-connection.js?v=7"></script>
+<script src="js/find-connection.js?v=8"></script>
 <script src="js/race.js?v=63"></script>
 <script src="js/submissions.js?v=41"></script>
 <script src="js/library.js?v=59"></script>
-<script src="js/site-navigation.js?v=3"></script>
-<script src="js/app.js?v=35"></script>
-<script src="js/stats-page.js?v=4"></script>
+<script src="js/site-navigation.js?v=4"></script>
+<script src="js/routes.js?v=3"></script>
+<script src="js/app.js?v=36"></script>
+<script src="js/stats-page.js?v=5"></script>
 
 </body>
 </html>
