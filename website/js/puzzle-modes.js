@@ -33,7 +33,13 @@
   function renderPuzzleView(prefix, p, progressLabel, moveAction) {
     const listEl = document.getElementById(prefix + 'QuestionList');
     if (!listEl || !p) return;
-    document.getElementById(prefix + 'Progress').textContent = progressLabel;
+    const progress = document.getElementById(prefix + 'Progress');
+    if (prefix === 'library') {
+      const badge = document.createElement('span');
+      badge.className = 'puzzle-index-badge';
+      badge.textContent = progressLabel;
+      progress.replaceChildren(badge);
+    } else progress.textContent = progressLabel;
     document.getElementById(prefix + 'Equation').style.display = 'none';
     const autoCalcNote = localStorage.getItem('netto_auto_calc_note_seen') === 'true' ? '' : `<div class="auto-calc-note" role="status" aria-live="polite">↳ Antwoorden worden automatisch berekend als de berekening klopt.</div>`;
     listEl.innerHTML = [[p.q1_label,p.q1_answer],[p.q2_label,p.q2_answer],[p.q3_label,p.q3_answer]].map((q,i) => `<div class="q-block"><div class="q-label">${q[0] || 'Vraag niet beschikbaar'}</div><div class="input-wrapper"><input type="text" class="library-answer-input daily-style-input" id="${prefix}Answer${i}" name="netto-schatting-${i}" inputmode="numeric" placeholder="Jouw schatting" autocomplete="off" autocorrect="off" spellcheck="false" data-lpignore="true"></div></div>${i < 2 ? `<div class="connector"><div class="connector-line"></div><div class="connector-badge ${i === 1 ? 'eq' : ''}">${i === 0 ? (p.operator || '×') : '='}</div><div class="connector-line"></div></div>` : ''}`).join('') + autoCalcNote;
