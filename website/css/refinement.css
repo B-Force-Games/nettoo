@@ -744,6 +744,15 @@ textarea:focus-visible,
 /* Daily play */
 #screen-puzzle { align-items: flex-start; padding-top: 116px; }
 #screen-puzzle .inner { max-width: 680px; }
+#dailyQuestionView { display: flex; flex-direction: column; }
+#dailyQuestionView > .q-block { box-shadow: 0 8px 20px rgba(13,18,68,.08); }
+#dailyQuestionView > .q-block:focus-within { box-shadow: 0 9px 24px rgba(37,47,182,.15); }
+@media (min-width: 760px) and (min-height: 680px) {
+  #screen-puzzle.active:not(.is-review) .card { display: flex; flex-direction: column; min-height: min(calc(100dvh - 225px), 690px); }
+  #screen-puzzle.active:not(.is-review) #dailyQuestionView { flex: 1; }
+  #dailyQuestionView > .q-block { flex: 1 0 auto; display: flex; flex-direction: column; justify-content: center; }
+  #dailyQuestionView > .connector { flex: 0 0 auto; }
+}
 /* De puzzel paste niet op een gewoon bureaubladscherm: hij vroeg 825 pixels
    hoogte terwijl een venster van 900 er na tabbladen en adresbalk zo'n 780
    overhoudt. Daarom moest je naar tachtig procent zoomen om hem in een keer te
@@ -1866,48 +1875,336 @@ body:has(#screen-puzzle.active, #libraryScreen.active, #breinkrakersScreen.activ
   #leaderboardScreen .lb-tabs button { flex: 1; padding: 12px 8px; font-size: 11px; }
 }
 
-/* Verborgen verbanden gebruiken dezelfde kaarten; alleen de verplaatsbediening is nieuw. */
-#bkQuestionList { display:grid; gap:12px; }
-#connectionHint[hidden], #connectionSkip[hidden] { display:none; }
-.connection-question .q-label { display:block; }
-.connection-question { border-radius:12px; padding:16px; border:1px solid var(--surface-border); }
-.connection-catalog-card { display:flex; flex-direction:column; justify-content:space-between; gap:36px; min-height:155px; padding:24px; text-align:left; border:1px solid var(--surface-border); border-radius:16px; background:var(--surface, #fff); color:var(--ink); cursor:pointer; font:inherit; }
-.connection-catalog-card strong { font:700 26px 'JetBrains Mono', monospace; }
-.connection-catalog-card span { font-size:13px; }
-.connection-catalog-card:hover { border-color:var(--ink); transform:translateY(-2px); }
-.connection-question { min-width:0; position:relative; }
-.connection-position { display:block; margin-bottom:8px; color:var(--text-muted); font:600 10px 'JetBrains Mono', monospace; text-transform:uppercase; letter-spacing:.08em; }
-.connection-question-heading { display:grid; grid-template-columns:minmax(0,1fr) 44px; align-items:start; column-gap:12px; }
-.connection-question-heading .q-label { grid-column:1; grid-row:1; min-width:0; margin:0 0 14px; }
-.connection-question-heading .vraag-ondertekst { grid-column:1 / -1; margin:0 0 14px; }
-.connection-question-heading .connection-drag-handle { grid-column:2; grid-row:1; }
-.connection-drag-handle { display:flex; align-items:center; justify-content:center; flex:0 0 44px; width:44px; height:44px; margin-top:-10px; border:0; border-radius:9px; color:var(--text-muted); background:transparent; cursor:grab; touch-action:none; user-select:none; }
-.connection-drag-handle svg { width:24px; height:24px; pointer-events:none; }
-.connection-drag-handle:hover, .connection-drag-handle[aria-pressed="true"] { color:var(--ink); background:var(--surface); }
-.connection-question.is-dragging { z-index:4; box-shadow:0 15px 35px rgba(20,22,59,.24); opacity:.96; pointer-events:none; }
-.connection-question.is-dragging .connection-drag-handle { cursor:grabbing; pointer-events:auto; }
-.connection-question.is-drop-target, .connection-question.is-picked { outline:2px dashed var(--ink); outline-offset:3px; }
-.connection-operators { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; border:0; margin:8px 0; padding:10px; min-width:0; }
-.connection-operators legend { text-align:center; color:var(--text-muted); font-size:12px; padding:0 8px; }
-.connection-operators button { width:48px; height:44px; border:1px solid var(--surface-border); border-radius:10px; background:var(--surface, #fff); color:var(--ink); font:600 23px 'Space Grotesk',sans-serif; cursor:pointer; }
-.connection-operators button[aria-pressed="true"] { background:#ffdf4a; color:#14163b; border-color:#14163b; box-shadow:0 0 0 2px #14163b; }
-.connection-equals { text-align:center; color:var(--ink); font-size:28px; margin:8px 0; }
-.connection-verdict { border:1px solid var(--surface-border); border-radius:14px; padding:20px; background:var(--surface, #fff); color:var(--ink); }
-.connection-verdict h2 { margin:0 0 12px; font-size:19px; }
-.connection-verdict p { margin:8px 0 0; font:500 14px/1.6 'JetBrains Mono',monospace; overflow-wrap:anywhere; }
-.connection-verdict.is-correct h2 { color:#08734c; }
-[data-theme="dark"] .connection-verdict.is-correct h2 { color:#75e3b6; }
-.connection-actions { display:flex; gap:8px; margin-top:10px; }
-.connection-actions .btn-check { flex:1; min-width:0; width:auto; margin:0; }
-.connection-skip {
-  min-height:42px; padding:8px 14px; border:1px solid var(--surface-border); border-radius:9px;
-  background:var(--surface, #fff); color:var(--ink); cursor:pointer;
-  font:700 13px 'Space Grotesk', sans-serif;
+/* ==========================================================================
+   Find the Connection (Verborgen Verbanden)
+   ========================================================================== */
+
+#bkQuestionList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
-.connection-skip:hover { border-color:var(--ink); }
-.connection-skip:focus-visible { outline:3px solid #526cff; outline-offset:2px; }
-.connection-skip[hidden] { display:none; }
-.connection-catalog-card:focus-visible, .connection-drag-handle:focus-visible, .connection-operators button:focus-visible { outline:3px solid #526cff; outline-offset:3px; }
+
+#connectionSkip[hidden] {
+  display: none;
+}
+
+.connection-question {
+  border-radius: 14px;
+  padding: 18px 20px;
+  border: 1px solid var(--surface-border);
+  background: var(--surface, #fff);
+  color: var(--ink);
+  min-width: 0;
+  position: relative;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.connection-question.is-swap-target {
+  cursor: pointer;
+}
+
+.connection-question.is-swap-target:hover {
+  border-color: var(--accent);
+  background: var(--surface-2);
+}
+
+.connection-question.is-picked {
+  border-color: var(--ink);
+  box-shadow: 0 0 0 2px var(--ink), 0 8px 24px rgba(20, 22, 59, 0.12);
+  transform: translateY(-2px);
+}
+
+[data-theme="dark"] .connection-question.is-picked {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent), 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.connection-question.is-drop-target {
+  border-color: var(--ink);
+  outline: 2px dashed var(--ink);
+  outline-offset: 3px;
+  background: var(--surface-2);
+}
+
+[data-theme="dark"] .connection-question.is-drop-target {
+  border-color: var(--accent);
+  outline-color: var(--accent);
+}
+
+.connection-position {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--text-muted);
+  font: 700 11px 'JetBrains Mono', monospace;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Heading with drag handle */
+.connection-question-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 44px;
+  align-items: start;
+  column-gap: 12px;
+}
+
+.connection-question-heading .q-label {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+  margin: 0 0 14px;
+  display: block;
+}
+
+.connection-question-heading .vraag-ondertekst {
+  grid-column: 1 / -1;
+  margin: 0 0 14px;
+}
+
+.connection-question-heading .connection-drag-handle {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.connection-drag-handle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  margin-top: -8px;
+  margin-right: -8px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: var(--text-muted);
+  background: var(--surface-2);
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  transition: all 0.15s ease;
+}
+
+.connection-drag-handle svg {
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+.connection-drag-handle:hover,
+.connection-drag-handle[aria-pressed="true"] {
+  color: var(--ink);
+  background: var(--surface-border);
+  border-color: var(--surface-border);
+}
+
+.connection-drag-handle[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--surface);
+}
+
+[data-theme="dark"] .connection-drag-handle[aria-pressed="true"] {
+  background: var(--accent);
+  color: #14163B;
+}
+
+.connection-question.is-dragging {
+  z-index: 4;
+  box-shadow: 0 18px 40px rgba(20, 22, 59, 0.28);
+  opacity: 0.96;
+  pointer-events: none;
+}
+
+.connection-question.is-dragging .connection-drag-handle {
+  cursor: grabbing;
+  pointer-events: auto;
+}
+
+/* ==========================================================================
+   Operator Switch & Connectors
+   ========================================================================== */
+
+.connection-connector {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 12px 0;
+  padding: 0 4px;
+}
+
+.connection-connector .connector-line {
+  flex: 1;
+  height: 2px;
+  background: var(--surface-border);
+  border-radius: 2px;
+}
+
+.connection-operator-select {
+  flex: 0 0 38px;
+  width: 38px;
+  height: 36px;
+  min-height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 9px;
+  appearance: none;
+  color: #fff;
+  background: var(--bg-main);
+  text-align: center;
+  text-align-last: center;
+  font: 700 18px 'JetBrains Mono', monospace;
+  cursor: pointer;
+}
+
+.connection-operator-select option { color: var(--ink); background: var(--surface); }
+.connection-operator-select:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+[data-theme="dark"] .connection-operator-select {
+  color: #fff;
+  background: var(--bg-main);
+}
+
+.connection-equals-connector .connector-badge.eq {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 20px;
+  font-weight: 800;
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: var(--bg-dark, #14163B);
+  border: 1px solid var(--surface-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.connection-live-formula {
+  margin: 8px 0 0;
+  text-align: center;
+  font: 700 11px 'JetBrains Mono', monospace;
+}
+
+.connection-live-formula[hidden] { display: none; }
+.connection-live-formula.is-valid { color: #08734C; }
+.connection-live-formula.is-invalid { color: #A04721; }
+[data-theme="dark"] .connection-live-formula.is-valid { color: #75E3B6; }
+[data-theme="dark"] .connection-live-formula.is-invalid { color: #FCD34D; }
+
+/* ==========================================================================
+   Connection Verdict & Catalog Cards
+   ========================================================================== */
+
+.connection-verdict {
+  border: 1px solid var(--surface-border);
+  border-radius: 14px;
+  padding: 20px;
+  background: var(--surface, #fff);
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+
+.connection-verdict h2 {
+  margin: 0 0 12px;
+  font-size: 19px;
+}
+
+.connection-verdict p {
+  margin: 8px 0 0;
+  font: 500 14px/1.6 'JetBrains Mono', monospace;
+  overflow-wrap: anywhere;
+}
+
+.connection-verdict.is-correct {
+  border-color: #059669;
+  background: rgba(5, 150, 105, 0.06);
+}
+
+.connection-verdict.is-correct h2 {
+  color: #08734C;
+}
+
+[data-theme="dark"] .connection-verdict.is-correct {
+  border-color: #059669;
+  background: rgba(5, 150, 105, 0.12);
+}
+
+[data-theme="dark"] .connection-verdict.is-correct h2 {
+  color: #75E3B6;
+}
+
+.connection-catalog-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 36px;
+  min-height: 155px;
+  padding: 24px;
+  text-align: left;
+  border: 1px solid var(--surface-border);
+  border-radius: 16px;
+  background: var(--surface, #fff);
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.connection-catalog-card strong {
+  font: 700 26px 'JetBrains Mono', monospace;
+}
+
+.connection-catalog-card span {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.connection-catalog-card:hover {
+  border-color: var(--ink);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.connection-catalog-card.has-played {
+  background: var(--surface-2);
+}
+
+.connection-catalog-card .status-correct {
+  color: #059669;
+}
+
+[data-theme="dark"] .connection-catalog-card .status-correct {
+  color: #75E3B6;
+}
+
+.connection-catalog-card .status-incorrect {
+  color: #D97706;
+}
+
+[data-theme="dark"] .connection-catalog-card .status-incorrect {
+  color: #FCD34D;
+}
+
+.connection-navigation {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.connection-navigation .bk-overview-button {
+  margin: 0;
+}
+
+.connection-catalog-card:focus-visible,
+.connection-drag-handle:focus-visible,
+.connection-operator-select:focus-visible {
+  outline: 3px solid #526CFF;
+  outline-offset: 3px;
+}
 
 /* De navigatie en de speelschermen passen ook bij 100% zoom in een laag venster. */
 .sidebar { height: 100dvh; bottom: auto; }
@@ -2098,4 +2395,605 @@ body:has(#screen-puzzle.active:not(.is-review),
   #libraryScreen.active:has(#libraryPuzzleView[style*="display: block"]),
   #raceScreen.active:has(#racePlay[style*="display: block"]),
   #breinkrakersScreen.active.is-playing { padding-top: 72px; }
+}
+
+/* De hele menulijst blijft op normale browserzoom zichtbaar, inclusief de footer. */
+.sidebar {
+  width: 304px;
+  max-width: calc(100vw - 44px);
+  height: 100dvh;
+  padding: clamp(8px, 1.7dvh, 18px) 16px clamp(8px, 1.5dvh, 14px);
+  overflow: hidden;
+}
+.sidebar .sidebar-header { min-height: clamp(34px, 5.8dvh, 50px); flex: 0 0 auto; }
+.sidebar .sidebar-tagline { margin-bottom: clamp(3px, 1.3dvh, 14px); flex: 0 0 auto; }
+.sidebar .sidebar-scroll {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 0 3px;
+  overflow: visible;
+}
+.sidebar .sidebar-group { margin: 0; }
+.sidebar .sidebar-group-title { padding: 3px 9px 4px; }
+.sidebar .sidebar-item {
+  min-height: clamp(30px, 5.8dvh, 44px);
+  margin: 0;
+  padding: 4px 9px;
+}
+.sidebar .sidebar-icon { width: 26px; height: 26px; }
+.sidebar .sidebar-footer {
+  display: grid;
+  flex: 0 0 auto;
+  margin: 3px 3px 0;
+  padding: 7px 10px 1px;
+}
+
+/* Find the Connection: dezelfde rustige kaarten en operatorpositie als Puzzels. */
+#bkPlay {
+  max-width: 760px;
+  flex-direction: column;
+}
+#bkPlay .eyebrow { margin-bottom: 2px; }
+#bkPlay .headline { margin: 0 0 4px; font-size: 23px; }
+#bkPlay .bk-leesregel { margin: 0 0 8px; font-size: 12px; line-height: 1.35; }
+#bkPlay .bk-question-card { padding: 14px 20px; }
+#bkQuestionList { gap: 0; }
+#bkQuestionList .connection-question {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  padding: 10px 14px;
+}
+#bkQuestionList .connection-position { margin-bottom: 3px; font-size: 10px; }
+#bkQuestionList .connection-question-heading {
+  display: block;
+}
+#bkQuestionList .connection-question-heading .q-label { margin-bottom: 6px; font-size: 14px; line-height: 1.35; }
+#bkQuestionList .connection-question-heading .vraag-ondertekst { margin-bottom: 6px; font-size: 11px; line-height: 1.3; }
+#bkQuestionList .input-wrapper input { min-height: 40px; height: 40px; }
+#bkQuestionList .connection-drag-handle {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  margin: 0;
+  background: transparent;
+}
+#bkQuestionList .connection-position { padding-right: 38px; }
+#bkQuestionList .connection-connector { margin: 5px 0; padding: 0; gap: 12px; }
+#bkQuestionList .connection-equals-connector .connector-badge.eq {
+  width: 38px;
+  height: 36px;
+  min-height: 36px;
+  border: 0;
+  box-shadow: none;
+}
+#bkPlay .connection-actions { display: flex; gap: 8px; margin-top: 8px; }
+#bkPlay .connection-actions .btn-check { flex: 1; margin: 0; min-height: 42px; }
+#bkPlay .connection-skip {
+  min-height: 42px;
+  padding: 8px 14px;
+  border: 1px solid var(--surface-border);
+  border-radius: 9px;
+  color: var(--ink);
+  background: var(--surface);
+  font: 700 13px 'Space Grotesk', sans-serif;
+  cursor: pointer;
+}
+#bkPlay .connection-skip:hover { border-color: var(--ink); }
+#bkPlay .connection-skip:focus-visible { outline: 3px solid #526CFF; outline-offset: 2px; }
+#bkPlay .connection-skip[hidden] { display: none; }
+
+@media (min-width: 760px) and (min-height: 680px) {
+  #bkPlay:not([style*="display: none"]) {
+    min-height: calc(100dvh - clamp(62px, 7vh, 90px) - 20px);
+    display: flex;
+    flex-direction: column;
+  }
+  #bkPlay .bk-question-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  #bkQuestionList { flex: 1; }
+  #bkQuestionList .connection-question { flex: 1 0 auto; }
+  #bkPlay .connection-actions { margin-top: auto; padding-top: 8px; }
+}
+
+@media (max-width: 759px) {
+  #bkPlay .bk-question-card { padding: 14px; }
+  #bkQuestionList .connection-question { padding: 11px 12px; }
+}
+@media (min-width: 760px) and (max-height: 679px) {
+  #bkPlay .bk-question-card { padding: 12px 18px; }
+  #bkQuestionList .connection-question { padding: 8px 12px; }
+  #bkQuestionList .connection-connector { margin: 2px 0; }
+  #bkPlay .bk-leesregel { margin-bottom: 6px; }
+}
+@media (max-width: 430px) {
+  #bkPlay .connection-actions { flex-direction: column; }
+}
+
+/* Twee zelfstandige startpagina-proeven; de bestaande layout blijft de standaard. */
+.home-preview-switcher { display: none; }
+html[data-landing-preview] .home-preview-switcher {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 0 0 16px;
+  color: #D6DCF9;
+  font: 700 11px 'JetBrains Mono', monospace;
+  letter-spacing: .02em;
+}
+.home-preview-switcher span { margin-right: 7px; opacity: .8; }
+.home-preview-switcher a {
+  padding: 7px 11px;
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: 8px;
+  color: #fff;
+  text-decoration: none;
+}
+.home-preview-switcher a:hover,
+.home-preview-switcher a:focus-visible,
+html[data-landing-preview="editorial"] .home-preview-switcher [data-preview="editorial"],
+html[data-landing-preview="playboard"] .home-preview-switcher [data-preview="playboard"] {
+  color: #151944;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Editorial: één breed podium voor de Daily, de twee vervolgstappen eronder. */
+html[data-landing-preview="editorial"] .home-landing-grid { grid-template-columns: 1fr; }
+html[data-landing-preview="editorial"] .home-daily-card {
+  min-height: 390px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(220px, .75fr);
+  grid-template-rows: auto 1fr auto;
+  align-items: center;
+  column-gap: 26px;
+  background: linear-gradient(128deg, #171B46 2%, #20266B 100%);
+}
+html[data-landing-preview="editorial"] .home-daily-topline { grid-column: 1 / -1; }
+html[data-landing-preview="editorial"] .home-daily-copy { grid-column: 1; grid-row: 2; margin: 20px 0; }
+html[data-landing-preview="editorial"] .home-daily-card .hero-headline { font-size: clamp(42px, 4.5vw, 66px); }
+html[data-landing-preview="editorial"] .home-equation {
+  grid-column: 2;
+  grid-row: 2 / 4;
+  justify-content: center;
+  align-self: center;
+  margin: 0;
+  padding: 30px 16px;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 16px;
+  background: rgba(255,255,255,.055);
+}
+html[data-landing-preview="editorial"] .home-daily-card .hero-cta { grid-column: 1; grid-row: 3; justify-self: start; }
+html[data-landing-preview="editorial"] .home-quick-actions { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; }
+html[data-landing-preview="editorial"] .home-quick-card { min-height: 150px; }
+html[data-landing-preview="editorial"] .home-quick-card strong { max-width: none; font-size: 21px; }
+
+/* Playboard: de Daily en snelle acties links, de spelmodi als rustige rechterkolom. */
+@media (min-width: 1000px) {
+  html[data-landing-preview="playboard"] .home-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(320px, .8fr);
+    grid-template-areas: "preview preview" "daily modes" "quick modes" "more more";
+    column-gap: 18px;
+    align-items: stretch;
+  }
+  html[data-landing-preview="playboard"] .home-preview-switcher { grid-area: preview; }
+  html[data-landing-preview="playboard"] .home-landing-grid { display: contents; }
+  html[data-landing-preview="playboard"] .home-daily-card { grid-area: daily; min-height: 380px; }
+  html[data-landing-preview="playboard"] .home-daily-copy { margin-top: 32px; }
+  html[data-landing-preview="playboard"] .home-daily-card .hero-headline { font-size: clamp(42px, 4.3vw, 58px); }
+  html[data-landing-preview="playboard"] .home-quick-actions {
+    grid-area: quick;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 12px;
+    margin-top: 12px;
+  }
+  html[data-landing-preview="playboard"] .home-quick-card { min-height: 138px; padding: 18px; }
+  html[data-landing-preview="playboard"] .home-quick-card strong { font-size: 18px; }
+  html[data-landing-preview="playboard"] .home-quick-detail { font-size: 11px; }
+  html[data-landing-preview="playboard"] .home-modes {
+    grid-area: modes;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    margin: 0;
+    padding: 24px;
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 20px;
+    background: rgba(16,20,61,.38);
+  }
+  html[data-landing-preview="playboard"] .home-modes-heading { align-items: flex-start; margin-bottom: 20px; }
+  html[data-landing-preview="playboard"] .home-modes-heading h2 { font-size: 24px; }
+  html[data-landing-preview="playboard"] .home-how-link { white-space: nowrap; }
+  html[data-landing-preview="playboard"] .home-modes-grid { grid-template-columns: 1fr; flex: 1; }
+  html[data-landing-preview="playboard"] .home-mode-card {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 38px minmax(0,1fr);
+    align-items: center;
+    gap: 13px;
+    padding: 13px 16px;
+  }
+  html[data-landing-preview="playboard"] .home-mode-card::before { width: 3px; height: 100%; transform: scaleY(.25); transform-origin: top; }
+  html[data-landing-preview="playboard"] .home-mode-card:hover::before,
+  html[data-landing-preview="playboard"] .home-mode-card:focus-visible::before { transform: scaleY(1); }
+  html[data-landing-preview="playboard"] .home-mode-arrow { top: 50%; transform: translateY(-50%); }
+  html[data-landing-preview="playboard"] .home-more { grid-area: more; }
+}
+
+@media (max-width: 700px) {
+  html[data-landing-preview="editorial"] .home-daily-card { display: flex; min-height: 0; }
+  html[data-landing-preview="editorial"] .home-daily-copy { margin: 30px 0 0; }
+  html[data-landing-preview="editorial"] .home-equation { align-self: stretch; justify-content: flex-start; margin: 22px 0; padding: 14px; }
+  html[data-landing-preview="editorial"] .home-daily-card .hero-cta { margin-top: 0; }
+  html[data-landing-preview="editorial"] .home-quick-actions { grid-template-columns: 1fr; }
+  html[data-landing-preview="editorial"] .home-quick-card { min-height: 120px; }
+  html[data-landing-preview="editorial"] .home-quick-card strong { font-size: 18px; }
+}
+
+/* Chrome met een smallere werkruimte: de Daily blijft leidend en de titel kan ademen. */
+@media (min-width: 761px) and (max-width: 980px) {
+  .home-landing-grid { grid-template-columns: 1fr; }
+  .home-quick-actions { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; }
+  .home-quick-card { min-height: 142px; }
+}
+
+/* Op een kort bureaubladvenster blijven ook de laatste vraag, actie en racetimer zichtbaar. */
+@media (min-width: 760px) and (max-height: 650px) {
+  #screen-puzzle.active:not(.is-review) { padding-top: 56px; padding-bottom: 8px; }
+  #screen-puzzle:not(.is-review) .eyebrow { margin-bottom: 2px; }
+  #screen-puzzle:not(.is-review) .headline { margin-bottom: 5px; font-size: 21px; }
+  #screen-puzzle:not(.is-review) .card { padding: 12px 18px; }
+  #dailyQuestionView .q-block { padding: 7px 12px; }
+  #dailyQuestionView .q-label { margin-bottom: 5px; }
+  #dailyQuestionView .input-wrapper input { min-height: 38px; height: 38px; }
+  #dailyQuestionView .connector { margin-block: 3px; }
+  #dailyQuestionView .connector-badge { height: 28px; min-height: 28px; }
+  #dailyQuestionView .btn-check { min-height: 40px; margin-top: 7px; }
+  #dailyQuestionView .q-block:has(.puzzelfoto),
+  #dailyQuestionView .q-block.has-photo { min-height: 94px; }
+
+  #breinkrakersScreen.active.is-playing,
+  #raceScreen.active:has(#racePlay[style*="display: block"]) { padding-top: 56px; padding-bottom: 8px; }
+  #bkPlay .eyebrow { margin-bottom: 1px; }
+  #bkPlay .headline { font-size: 21px; margin-bottom: 2px; }
+  #bkPlay .bk-leesregel { margin-bottom: 5px; font-size: 11px; }
+  #bkPlay .bk-question-card { padding: 9px 16px; }
+  #bkQuestionList .connection-question { padding: 6px 12px; }
+  #bkQuestionList .connection-connector { margin: 1px 0; }
+  #bkQuestionList .connection-operator-select,
+  #bkQuestionList .connection-equals-connector .connector-badge.eq { height: 28px; min-height: 28px; }
+  #bkQuestionList .input-wrapper input { height: 36px; min-height: 36px; }
+  #bkPlay .connection-actions { margin-top: 5px; }
+
+  #racePlay { padding: 10px 16px; }
+  #racePlay .race-topline { min-height: 37px; }
+  #racePlay .race-level { font-size: 16px; }
+  #racePlay .race-clock strong { font-size: 21px; line-height: 1; }
+  #racePlay .race-clock span { font-size: 9px; }
+  #racePlay .race-progress-track { margin: 3px 0; }
+  #racePlay .race-scoreline { margin: 1px 0 4px; }
+  #racePlay .race-history-label { display: none; }
+  #racePlay .race-history { min-height: 0; padding: 0; }
+  #racePlay .race-history:empty { display: none; }
+  #racePlay .race-question-card { max-width: none; padding: 8px 12px; margin-top: 4px; }
+  #raceQuestionList .q-block { padding: 4px 10px; }
+  #raceQuestionList .q-label { margin-bottom: 4px; font-size: 13px; line-height: 1.25; }
+  #raceQuestionList .input-wrapper input { height: 34px; min-height: 34px; }
+  #raceQuestionList .connector { margin-block: 1px; }
+  #raceQuestionList .connector-badge { width: 28px; height: 23px; min-height: 23px; font-size: 14px; }
+  #raceQuestionList .q-block:has(.puzzelfoto) { min-height: 84px; padding-right: 94px; }
+  #racePlay .puzzelfoto-lijst .puzzelfoto { width: 82px; }
+  #racePlay .puzzelfoto .daily-photo img { height: 52px; }
+  #racePlay .btn-check { min-height: 36px; margin-top: 5px; }
+  #racePlay .race-hint { display: none; }
+}
+
+@media (min-width: 760px) and (max-height: 650px) {
+  .home-daily-card { min-height: 360px; padding: 26px 30px; }
+  .home-daily-copy { margin-top: 20px; }
+  .home-daily-card .hero-headline { font-size: clamp(42px, 5vw, 55px); }
+  .home-daily-card .hero-sub { margin-top: 12px; }
+  .home-equation { margin: 17px 0 19px; }
+
+  #libraryScreen.active:has(#libraryPuzzleView[style*="display: block"]) { padding-top: 56px; padding-bottom: 8px; }
+  #libraryPuzzleView .library-puzzle-card { padding: 10px 18px; }
+  #libraryPuzzleView .library-progress { margin-bottom: 4px; }
+  #libraryQuestionList .q-block { padding: 5px 12px; }
+  #libraryQuestionList .q-label { margin-bottom: 5px; }
+  #libraryQuestionList .vraag-ondertekst { margin-bottom: 5px; }
+  #libraryQuestionList .input-wrapper input { height: 36px; min-height: 36px; }
+  #libraryQuestionList .connector { margin-block: 2px; }
+  #libraryQuestionList .connector-badge { height: 27px; min-height: 27px; }
+  #libraryQuestionList .btn-check { min-height: 38px; margin-top: 6px; }
+
+  .library-card-grid, .bk-card-grid { grid-auto-rows: 112px; gap: 8px; }
+  .library-flip-card, .library-flip-card-inner { height: 112px; min-height: 112px; }
+  .connection-catalog-card { min-height: 112px; padding: 16px; gap: 8px; }
+}
+
+@media (min-width: 760px) and (max-height: 540px) {
+  #bkPlay .bk-question-card { padding-block: 7px; }
+  #bkQuestionList .connection-question { padding-block: 4px; }
+  #bkQuestionList .input-wrapper input { height: 34px; min-height: 34px; }
+  #bkQuestionList .connection-connector { margin: 0; }
+}
+
+/* Overzichten mogen scrollen, maar de eerste keuze hoort direct in beeld. */
+@media (min-width: 760px) and (max-height: 650px) {
+  .library-page-title { margin-top: 18px; font-size: clamp(38px, 5vw, 52px); }
+  .library-page-subtitle { margin-bottom: 16px; }
+  .library-stats { margin-bottom: 14px; }
+  .library-stat { min-height: 82px; padding: 13px 16px; }
+  #leaderboardScreen .library-page-subtitle { margin-bottom: 8px; }
+  #leaderboardScreen .lb-tabs { margin-top: 8px; margin-bottom: 8px; }
+  #leaderboardScreen .leaderboard-day-nav { margin-top: 8px; padding-block: 15px; }
+}
+
+/* De drie schattingen krijgen weer lucht zonder op hoge schermen lege vlakken te worden. */
+#libraryQuestionList > .q-block {
+  box-shadow: 0 7px 18px rgba(13, 18, 68, .055);
+}
+@media (min-width: 760px) and (min-height: 680px) {
+  #libraryScreen.active:has(#libraryPuzzleView #libraryQuestionList > .q-block) {
+    padding-top: max(clamp(62px, 7vh, 90px), calc((100dvh - 690px) / 2));
+  }
+  #libraryPuzzleView:has(#libraryQuestionList > .q-block) .library-puzzle-card {
+    min-height: min(calc(100dvh - clamp(62px, 7vh, 90px) - 20px), 690px);
+  }
+}
+@media (min-width: 760px) and (max-height: 650px) {
+  #libraryPuzzleView .library-puzzle-card { padding-block: 8px; }
+  #libraryQuestionList .q-block { padding: 10px 12px; }
+  #libraryQuestionList .q-label { font-size: 15px; line-height: 1.3; }
+  #libraryQuestionList .input-wrapper input { height: 42px; min-height: 42px; }
+  #libraryQuestionList .connector { margin-block: 1px; }
+  #libraryQuestionList .connector-badge { height: 23px; min-height: 23px; }
+}
+@media (min-width: 760px) and (min-height: 541px) and (max-height: 679px) {
+  #libraryPuzzleView:has(#libraryQuestionList > .q-block) .library-puzzle-card {
+    min-height: calc(100dvh - 74px);
+    display: flex;
+    flex-direction: column;
+  }
+  #libraryQuestionList:has(> .q-block) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  #libraryQuestionList > .q-block { flex: 1 0 auto; justify-content: center; }
+}
+
+/* Een Daily gebruikt dezelfde royale kaartbreedte als een gewone puzzel.
+   De foto krijgt naast het compacte vraagvlak haar eigen ruimte, zodat de
+   afbeelding groot kan blijven zonder andere vragen te bedekken. */
+#screen-puzzle.active:not(.is-review) .inner { max-width: 760px; }
+#screen-puzzle:not(.is-review) #dailyQuestionView .q-label { font-size: 15px; line-height: 1.4; }
+#screen-puzzle #dailyQuestionView > .q-block.has-photo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(180px, 35%, 244px);
+  grid-template-rows: 1fr auto auto auto 1fr;
+  column-gap: clamp(14px, 2.5vw, 24px);
+  row-gap: 0;
+  align-content: center;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  min-height: 0;
+}
+#screen-puzzle #dailyQuestionView > .q-block.has-photo::after { content: none; }
+#screen-puzzle #dailyQuestionView > .q-block.has-photo > .q-label {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: start;
+  margin: 14px 14px 8px;
+}
+#screen-puzzle #dailyQuestionView > .q-block.has-photo > .vraag-ondertekst { grid-column: 1; grid-row: 3; margin: 0 14px 8px; }
+#screen-puzzle #dailyQuestionView > .q-block.has-photo > .input-wrapper { grid-column: 1; grid-row: 4; margin: 0 14px 14px; clear: none; }
+#screen-puzzle #dailyQuestionView > .q-block.has-photo > .vraag-bron { grid-column: 1 / -1; }
+#screen-puzzle #dailyQuestionView > .q-block.has-photo > .daily-photo {
+  position: relative;
+  top: auto;
+  right: auto;
+  grid-column: 2;
+  grid-row: 1 / 6;
+  align-self: center;
+  float: none;
+  width: 100%;
+  margin: 0;
+  transform: rotate(1deg);
+}
+#screen-puzzle #dailyQuestionView > .q-block.has-photo > .daily-photo img {
+  height: clamp(140px, 22vh, 184px);
+}
+#screen-puzzle #dailyQuestionView > .q-block.has-photo > .daily-photo span {
+  padding: 9px 4px 8px;
+  font-size: 10px;
+  line-height: 1.3;
+}
+
+@media (min-width: 760px) and (min-height: 680px) {
+  #screen-puzzle.active:not(.is-review) .card { min-height: min(calc(100dvh - 225px), 760px); }
+}
+
+/* Op een smal scherm staat de foto tussen de vraag en het antwoord. De kaart
+   mag dan groeien; de hele pagina scrolt in plaats van de foto te verkleinen. */
+@media (max-width: 560px) {
+  #screen-puzzle #dailyQuestionView > .q-block.has-photo {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto auto auto;
+  }
+  #screen-puzzle #dailyQuestionView > .q-block.has-photo > .daily-photo {
+    grid-column: 1;
+    grid-row: 3;
+    justify-self: center;
+    width: min(100%, 260px);
+    margin: 5px 0;
+  }
+  #screen-puzzle #dailyQuestionView > .q-block.has-photo > .daily-photo img { height: clamp(140px, 24vh, 190px); }
+  #screen-puzzle #dailyQuestionView > .q-block.has-photo > .input-wrapper { grid-row: 4; }
+}
+
+/* Ook bibliotheekpuzzels geven de foto een eigen plek naast het vraagvlak.
+   Op een laag venster mag de pagina scrollen in plaats van de foto te krimpen. */
+#libraryQuestionList > .q-block:has(> .puzzelfoto) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(180px, 35%, 244px);
+  grid-template-rows: 1fr auto auto auto 1fr;
+  column-gap: clamp(14px, 2.5vw, 24px);
+  row-gap: 0;
+  align-content: center;
+  min-height: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+#libraryQuestionList > .q-block:has(> .puzzelfoto)::after { content: none; }
+#libraryQuestionList > .q-block:has(> .puzzelfoto) > .q-label {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: start;
+  margin: 14px 14px 8px;
+}
+#libraryQuestionList > .q-block:has(> .puzzelfoto) > .vraag-ondertekst { grid-column: 1; grid-row: 3; margin: 0 14px 8px; }
+#libraryQuestionList > .q-block:has(> .puzzelfoto) > .input-wrapper { grid-column: 1; grid-row: 4; margin: 0 14px 14px; clear: none; }
+#libraryQuestionList > .q-block:has(> .puzzelfoto) > .puzzelfoto {
+  position: relative;
+  top: auto;
+  right: auto;
+  grid-column: 2;
+  grid-row: 1 / 6;
+  align-self: center;
+  float: none;
+  width: 100%;
+  margin: 0;
+  z-index: 1;
+}
+#libraryQuestionList > .q-block:has(> .puzzelfoto) .daily-photo { transform: rotate(1deg); }
+#libraryQuestionList > .q-block:has(> .puzzelfoto) .daily-photo img { height: clamp(140px, 22vh, 184px); }
+#libraryQuestionList > .q-block:has(> .puzzelfoto) .daily-photo span { padding: 9px 4px 8px; font-size: 10px; line-height: 1.3; }
+
+@media (max-width: 560px) {
+  #libraryQuestionList > .q-block:has(> .puzzelfoto) {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto auto auto;
+  }
+  #libraryQuestionList > .q-block:has(> .puzzelfoto) > .puzzelfoto {
+    grid-column: 1;
+    grid-row: 3;
+    justify-self: center;
+    width: min(100%, 260px);
+    margin: 5px 0;
+  }
+  #libraryQuestionList > .q-block:has(> .puzzelfoto) .daily-photo img { height: clamp(140px, 24vh, 190px); }
+  #libraryQuestionList > .q-block:has(> .puzzelfoto) > .input-wrapper { grid-row: 4; }
+}
+
+/* Alleen de tekst en invoer delen een gekleurd vlak. De foto houdt haar eigen
+   ruimte, zodat een korte vraag geen groot leeg kleurvlak nodig heeft. */
+#screen-puzzle #dailyQuestionView > .q-block.has-photo::before,
+#libraryQuestionList > .q-block:has(> .puzzelfoto)::before {
+  content: '';
+  grid-column: 1;
+  grid-row: 2 / 5;
+  background: color-mix(in srgb, var(--vraag-tint, var(--surface-2)) var(--vraag-menging, 84%), var(--surface));
+  border: 1px solid var(--surface-border);
+  border-radius: 12px;
+  pointer-events: none;
+}
+#screen-puzzle #dailyQuestionView > .q-block.has-photo > :is(.q-label, .vraag-ondertekst, .input-wrapper),
+#libraryQuestionList > .q-block:has(> .puzzelfoto) > :is(.q-label, .vraag-ondertekst, .input-wrapper) { position: relative; }
+
+@media (max-width: 560px) {
+  #screen-puzzle #dailyQuestionView > .q-block.has-photo,
+  #libraryQuestionList > .q-block:has(> .puzzelfoto) {
+    padding: 14px;
+    row-gap: 10px;
+    background: color-mix(in srgb, var(--vraag-tint, var(--surface-2)) var(--vraag-menging, 84%), var(--surface));
+    border: 1px solid var(--surface-border);
+  }
+  #screen-puzzle #dailyQuestionView > .q-block.has-photo::before,
+  #libraryQuestionList > .q-block:has(> .puzzelfoto)::before { content: none; }
+  #screen-puzzle #dailyQuestionView > .q-block.has-photo > .q-label,
+  #libraryQuestionList > .q-block:has(> .puzzelfoto) > .q-label { grid-row: 1; margin: 0; }
+  #screen-puzzle #dailyQuestionView > .q-block.has-photo > .vraag-ondertekst,
+  #libraryQuestionList > .q-block:has(> .puzzelfoto) > .vraag-ondertekst { grid-row: 2; margin: 0; }
+  #screen-puzzle #dailyQuestionView > .q-block.has-photo > .input-wrapper,
+  #libraryQuestionList > .q-block:has(> .puzzelfoto) > .input-wrapper { margin: 0; }
+}
+
+/* De kop krijgt zijn eigen ruimte; de drie vragen houden een rustig leesritme.
+   Een korte viewport mag scrollen naar de bediening zonder alles plat te drukken. */
+#screen-puzzle.active:not(.is-review) {
+  padding-top: clamp(80px, 10vh, 108px);
+  padding-bottom: 28px;
+}
+#screen-puzzle:not(.is-review) .eyebrow { margin-bottom: 10px; }
+#screen-puzzle:not(.is-review) #dailyHeadline {
+  font-size: clamp(30px, 4.2vw, 42px);
+  line-height: 1.1;
+  margin: 0 0 clamp(22px, 3vh, 32px);
+  text-wrap: balance;
+}
+:is(#dailyQuestionView, #libraryQuestionList, #catalogusQuestionList) > .connector {
+  margin-block: clamp(10px, 1.5vh, 16px);
+  gap: 14px;
+}
+:is(#dailyQuestionView, #libraryQuestionList, #catalogusQuestionList) > .connector .connector-badge {
+  width: 36px;
+  height: 34px;
+  min-height: 34px;
+  font-size: 17px;
+}
+
+/* Ook zonder instructieregel blijven de grepen toegankelijk via hun eigen labels. */
+.connection-announcement {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+#breinkrakersScreen.active.is-playing { padding-top: clamp(72px, 9vh, 100px); padding-bottom: 24px; }
+#bkPlay .eyebrow { margin-bottom: 8px; }
+#bkPlay .headline { margin-bottom: 20px; font-size: 26px; line-height: 1.15; }
+#bkPlay .bk-question-card { padding: 20px; }
+#bkQuestionList .connection-question {
+  min-height: clamp(108px, 17vh, 144px);
+  padding: 14px 16px;
+}
+#bkQuestionList .connection-position { margin-bottom: 6px; }
+#bkQuestionList .connection-question-heading .q-label { font-size: 15px; line-height: 1.4; margin-bottom: 8px; }
+#bkQuestionList .connection-question-heading .vraag-ondertekst { font-size: 12px; line-height: 1.4; margin-bottom: 8px; }
+#bkQuestionList .input-wrapper input { height: 44px; min-height: 44px; }
+#bkQuestionList .connection-connector { margin-block: clamp(10px, 1.5vh, 16px); }
+#bkQuestionList .connection-operator-select,
+#bkQuestionList .connection-equals-connector .connector-badge.eq { height: 34px; min-height: 34px; }
+#bkPlay .connection-actions { margin-top: 14px; }
+
+@media (min-width: 760px) and (max-height: 580px) {
+  #bkQuestionList .connection-question { padding-block: 11px; }
+  #bkQuestionList .input-wrapper input { height: 42px; min-height: 42px; }
+}
+
+@media (max-width: 560px) {
+  #bkPlay .bk-question-card { padding: 14px; }
+  #bkQuestionList .connection-question { padding: 14px; }
 }

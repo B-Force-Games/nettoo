@@ -55,7 +55,9 @@ function renderPuzzelfoto(lijst, puzzel) {
   lijst.querySelectorAll('.puzzelfoto').forEach(el => el.remove());
   const foto = geldigePuzzelfoto(puzzel);
   if (!foto || ![1, 2, 3].includes(Number(foto.vraag))) return;
-  const blok = lijst.querySelectorAll('.q-block')[Number(foto.vraag) - 1];
+  // Beeld bij vraag 1 staat in het midden; bijschrift en bron blijven bij vraag 1 horen.
+  const positie = Number(foto.vraag) === 1 ? 2 : Number(foto.vraag);
+  const blok = lijst.querySelectorAll('.q-block')[positie - 1];
   if (!blok) return;
   lijst.classList.add('puzzelfoto-lijst');
   const figuur = document.createElement('figure');

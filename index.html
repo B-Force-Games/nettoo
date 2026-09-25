@@ -3,6 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+  // De proeflayouts zijn alleen zichtbaar via een expliciete URL-parameter.
+  const nettoLandingProef = new URLSearchParams(location.search).get('landing');
+  if (nettoLandingProef === 'editorial' || nettoLandingProef === 'playboard') {
+    document.documentElement.dataset.landingPreview = nettoLandingProef;
+  }
+</script>
 <title>Netto · dagelijkse schatting</title>
 <meta name="description" content="Schat drie feiten, vind het verband. Elke dag een nieuwe puzzel.">
 <meta name="theme-color" content="#14163B">
@@ -36,9 +43,9 @@
 <script src="data/netto_race_pool.js?v=43"></script>
 <script src="data/netto_breinkrakers.js?v=30"></script>
 <script src="data/netto_translations_en.js?v=50"></script>
-<script src="js/i18n.js?v=68"></script>
+<script src="js/i18n.js?v=69"></script>
 <link rel="stylesheet" href="css/styles.css?v=60">
-<link rel="stylesheet" href="css/refinement.css?v=127">
+<link rel="stylesheet" href="css/refinement.css?v=143">
 <link rel="stylesheet" href="css/stats-page.css?v=4">
 
 </head>
@@ -134,6 +141,12 @@
   <!-- ============ SCHERM 1: HOME ============ -->
   <main class="screen screen-home active" id="screen-home">
     <div class="home-content">
+      <nav class="home-preview-switcher" aria-label="Landing page layout previews">
+        <span>Layout test</span>
+        <a href="index.html">Current</a>
+        <a href="index.html?landing=editorial" data-preview="editorial">Editorial</a>
+        <a href="index.html?landing=playboard" data-preview="playboard">Playboard</a>
+      </nav>
       <div class="home-landing-grid">
         <section class="home-daily-card" data-operator="×" aria-labelledby="homeDailyTitle">
           <div class="home-daily-topline">
@@ -231,7 +244,7 @@
   <main class="screen" id="screen-puzzle">
     <div class="inner">
       <div class="eyebrow" id="puzzleEyebrow">Netto · nr. 032 · 28 aug</div>
-      <h1 class="headline" id="dailyHeadline">Schat het <span class="script">slim.</span></h1>
+      <h1 class="headline" id="dailyHeadline">Drie antwoorden. <span class="script">Eén som.</span></h1>
 
       <div class="card">
         <div class="daily-question-view" id="dailyQuestionView">
@@ -249,7 +262,7 @@
         <div class="q-block" id="dailyPhotoQuestion">
           <label class="q-label" id="q1-label" for="g1">1. Hoeveel inwoners heeft Nederland ongeveer?</label>
           <div class="input-wrapper">
-            <input type="text" id="g1" name="netto-schatting-1" inputmode="numeric" placeholder="Jouw schatting" autocomplete="off" autocorrect="off" spellcheck="false" data-lpignore="true">
+            <input type="text" id="g1" name="netto-schatting-1" inputmode="numeric" placeholder="Jouw antwoord" autocomplete="off" autocorrect="off" spellcheck="false" data-lpignore="true">
             <span class="invoer-eenheid" id="g1Eenheid" hidden data-i18n-skip></span>
           </div>
         </div>
@@ -263,7 +276,7 @@
         <div class="q-block">
           <label class="q-label" id="q2-label" for="g2">2. Hoeveel bezoekers trekt de Efteling per jaar?</label>
           <div class="input-wrapper">
-            <input type="text" id="g2" name="netto-schatting-2" inputmode="numeric" placeholder="Jouw schatting" autocomplete="off" autocorrect="off" spellcheck="false" data-lpignore="true">
+            <input type="text" id="g2" name="netto-schatting-2" inputmode="numeric" placeholder="Jouw antwoord" autocomplete="off" autocorrect="off" spellcheck="false" data-lpignore="true">
             <span class="invoer-eenheid" id="g2Eenheid" hidden data-i18n-skip></span>
           </div>
         </div>
@@ -277,7 +290,7 @@
         <div class="q-block">
           <label class="q-label" id="q3-label" for="g3">3. Wat is dat vermenigvuldigd?</label>
           <div class="input-wrapper">
-            <input type="text" id="g3" name="netto-schatting-3" inputmode="numeric" placeholder="Jouw schatting" autocomplete="off" autocorrect="off" spellcheck="false" data-lpignore="true">
+            <input type="text" id="g3" name="netto-schatting-3" inputmode="numeric" placeholder="Jouw antwoord" autocomplete="off" autocorrect="off" spellcheck="false" data-lpignore="true">
             <span class="invoer-eenheid" id="g3Eenheid" hidden data-i18n-skip></span>
           </div>
         </div>
@@ -617,10 +630,11 @@
       <section class="bk-play-panel" id="bkPlay" style="display:none;">
         <div class="eyebrow"><span>Netto</span> · <span>Find the Connection</span> · <span id="bkCounter">1 / 199</span></div>
         <h1 class="headline" id="bkPuzzleLabel">Puzzel 1</h1>
-        <p class="bk-leesregel" id="connectionHint">Drag the handles to swap questions, or tap two handles. Choose an operator and find the connection.</p>
         <div class="card race-question-card bk-question-card">
           <div class="race-question-list" id="bkQuestionList"></div>
+          <div class="connection-live-formula" id="connectionLiveFormula" aria-live="polite"></div>
           <div class="race-feedback" id="bkFeedback" role="status" aria-live="polite"></div>
+          <span class="connection-announcement" id="connectionAnnouncement" role="status" aria-live="polite"></span>
           <div class="connection-actions">
             <button class="btn-check race-submit-button" id="bkSubmitButton" type="button" onclick="submitConnection()">Check my connection</button>
             <button class="connection-skip" id="connectionSkip" type="button" onclick="startConnection(connectionState.index + 1)">Skip puzzle →</button>
@@ -1026,15 +1040,15 @@
   <p class="daily-photo-credit" data-i18n-skip></p>
 </dialog>
 <!-- De volgorde is bewust: modules delen de bestaande classic-script scope. -->
-<script src="js/photo-credits.js?v=3"></script>
+<script src="js/photo-credits.js?v=4"></script>
 <script src="js/daily-photos.js?v=2"></script>
 <script src="js/question-context.js?v=1"></script>
-<script src="js/core.js?v=114"></script>
+<script src="js/core.js?v=117"></script>
 <script src="js/puzzle-modes.js?v=58"></script>
-<script src="js/find-connection.js?v=3"></script>
+<script src="js/find-connection.js?v=6"></script>
 <script src="js/race.js?v=63"></script>
 <script src="js/submissions.js?v=41"></script>
-<script src="js/library.js?v=58"></script>
+<script src="js/library.js?v=59"></script>
 <script src="js/site-navigation.js?v=3"></script>
 <script src="js/app.js?v=35"></script>
 <script src="js/stats-page.js?v=4"></script>
