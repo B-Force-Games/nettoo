@@ -218,7 +218,10 @@ function startConnection(index = 0) {
   screen.scrollTop = 0;
   document.getElementById('bkStart').style.display = 'none';
   document.getElementById('bkPlay').style.display = 'flex';
-  document.getElementById('bkPuzzleLabel').textContent = statsCopy('Puzzel ', 'Puzzle ') + (index + 1);
+  const puzzelknop = document.getElementById('bkPuzzleLabel');
+  puzzelknop.parentElement.setAttribute('aria-label', statsCopy('Puzzel ', 'Puzzle ') + (index + 1));
+  puzzelknop.textContent = '← ' + statsCopy('Puzzel ', 'Puzzle ') + (index + 1);
+  puzzelknop.setAttribute('aria-label', statsCopy('Terug naar alle verbanden vanaf puzzel ', 'Back to all connections from puzzle ') + (index + 1));
   document.getElementById('bkCounter').textContent = (index + 1) + ' / ' + connectionPool.length;
   document.getElementById('bkFeedback').textContent = '';
   document.getElementById('connectionAnnouncement').textContent = '';

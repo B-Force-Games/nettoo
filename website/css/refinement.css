@@ -2988,26 +2988,56 @@ html[data-landing-preview="editorial"] .home-quick-card strong { max-width: none
 #bkQuestionList .connection-equals-connector .connector-badge.eq { height: 34px; min-height: 34px; }
 #bkPlay .connection-actions { margin-top: 14px; }
 
-/* De puzzelkop en de acties krijgen ademruimte zonder de vragen op te rekken. */
+/* Beide spelmodi gebruiken dezelfde rustige, klikbare puzzelkop. */
+#libraryPuzzleView .puzzle-mode-eyebrow {
+  margin: 0 0 8px;
+  text-align: left;
+  font-size: 10px;
+}
+#bkPlay .eyebrow { text-align: left; }
 #libraryPuzzleView .library-progress {
   display: flex;
   align-items: center;
   gap: 14px;
   width: 100%;
 }
-#libraryPuzzleView .puzzle-index-badge {
+#bkPlay .headline.puzzle-section-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  margin: 0 0 20px;
+}
+#libraryPuzzleView .puzzle-index-badge,
+#bkPlay .puzzle-index-badge {
   display: inline-flex;
   align-items: center;
+  gap: 7px;
   min-height: 28px;
   padding: 6px 11px;
+  border: 0;
   border-radius: 8px;
   background: var(--accent);
   color: #171b3b;
   font: 700 11px/1 'JetBrains Mono', monospace;
   letter-spacing: .07em;
   white-space: nowrap;
+  cursor: pointer;
 }
-#libraryPuzzleView .library-progress::after {
+#libraryPuzzleView .puzzle-index-badge:hover,
+#bkPlay .puzzle-index-badge:hover { filter: brightness(.96); }
+#libraryPuzzleView .puzzle-index-badge:focus-visible,
+#bkPlay .puzzle-index-badge:focus-visible { outline: 3px solid var(--accent-blue-light); outline-offset: 3px; }
+#libraryPuzzleView .puzzle-badge-arrow { font-size: 15px; line-height: .7; }
+#libraryPuzzleView .puzzle-difficulty-stars {
+  margin-left: 5px;
+  padding-left: 9px;
+  border-left: 1px solid currentColor;
+  font-size: 12px;
+  letter-spacing: .02em;
+}
+#libraryPuzzleView .library-progress::after,
+#bkPlay .puzzle-section-header::after {
   content: '';
   flex: 1;
   height: 1px;
