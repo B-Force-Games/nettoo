@@ -2988,6 +2988,32 @@ html[data-landing-preview="editorial"] .home-quick-card strong { max-width: none
 #bkQuestionList .connection-equals-connector .connector-badge.eq { height: 34px; min-height: 34px; }
 #bkPlay .connection-actions { margin-top: 14px; }
 
+/* De puzzelkop en de acties krijgen ademruimte zonder de vragen op te rekken. */
+#libraryPuzzleView:has(#libraryQuestionList > .q-block) .library-progress {
+  margin-bottom: clamp(22px, 3vh, 30px);
+}
+#libraryPuzzleView:has(#libraryQuestionList > .q-block) .library-actions {
+  margin-top: clamp(22px, 3vh, 30px);
+}
+
+/* Vier rustige reeksen met per puzzel drie duidelijk verschillende vraagkleuren. */
+:root {
+  --puzzel-kleur-1-1: #e8f0fa; --puzzel-kleur-1-2: #faeee7; --puzzel-kleur-1-3: #e8f4ed;
+  --puzzel-kleur-2-1: #f0ebf9; --puzzel-kleur-2-2: #faf3df; --puzzel-kleur-2-3: #e6f1f4;
+  --puzzel-kleur-3-1: #f8eaf0; --puzzel-kleur-3-2: #edf3e4; --puzzel-kleur-3-3: #e9edfa;
+  --puzzel-kleur-4-1: #e6f3f2; --puzzel-kleur-4-2: #f6eddf; --puzzel-kleur-4-3: #f5e9eb;
+}
+[data-theme="dark"] {
+  --puzzel-kleur-1-1: #29394c; --puzzel-kleur-1-2: #49372f; --puzzel-kleur-1-3: #30473d;
+  --puzzel-kleur-2-1: #3d3451; --puzzel-kleur-2-2: #48422e; --puzzel-kleur-2-3: #2b414a;
+  --puzzel-kleur-3-1: #473540; --puzzel-kleur-3-2: #394631; --puzzel-kleur-3-3: #303a53;
+  --puzzel-kleur-4-1: #2c4547; --puzzel-kleur-4-2: #48402f; --puzzel-kleur-4-3: #493538;
+}
+#raceQuestionList .vraag-met-categorie {
+  background: color-mix(in srgb, var(--vraag-tint, var(--surface-2)) var(--vraag-menging, 78%), var(--surface));
+  border: 1px solid var(--surface-border);
+}
+
 @media (min-width: 760px) and (max-height: 580px) {
   #bkQuestionList .connection-question { padding-block: 11px; }
   #bkQuestionList .input-wrapper input { height: 42px; min-height: 42px; }

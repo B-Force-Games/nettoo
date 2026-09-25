@@ -2015,10 +2015,12 @@
     return voorvoegsel + woord;
   }
 
-  function categorieKleurVariabele(categorie) {
-    if (!Object.hasOwn(DAILY_CATEGORY_ICON_KEYS, categorie)) return '--surface-2';
-    return '--categorie-' + categorie.toLocaleLowerCase('nl-NL')
-      .replace(/&/g, 'en').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  function puzzelKleurset(puzzel) {
+    // Een vaste keuze per puzzel voorkomt dat de kleuren bij opnieuw openen wisselen.
+    const sleutel = String(puzzel.id ?? [puzzel.q1_label, puzzel.q2_label, puzzel.q3_label].join('|'));
+    let hash = 2166136261;
+    for (const teken of sleutel) hash = Math.imul(hash ^ teken.charCodeAt(0), 16777619);
+    return (hash >>> 0) % 4 + 1;
   }
 
   function maakBronpaneel(vraag) {
@@ -2061,11 +2063,10 @@
   }
 
   function werkVraagDetailsBij(puzzel, kaarten, ingeleverd) {
-    // Ontbreekt één databasecategorie, schuif de andere dan niet een plek op.
+    const kleurset = puzzelKleurset(puzzel);
     kaarten.forEach((kaart, index) => {
       if (!kaart) return;
       const vraag = puzzel['q' + (index + 1) + '_label'];
-      const categorie = puzzel.categories?.[index] || VRAAG_CATEGORIE.get((vraag || '').trim());
       const invoer = kaart.querySelector('input');
       if (invoer) {
         let label = kaart.querySelector('.invoer-eenheid');
@@ -2107,9 +2108,8 @@
           invoer.setAttribute('aria-describedby', ids.join(' '));
         }
       } else ondertekst?.remove();
-      kaart.style.setProperty('--vraag-tint', 'var(' + categorieKleurVariabele(categorie) + ')');
-      // Klein verschil per stap houdt ook gedeelde kleurfamilies herkenbaar.
-      kaart.style.setProperty('--vraag-menging', (84 - index * 12) + '%');
+      kaart.style.setProperty('--vraag-tint', `var(--puzzel-kleur-${kleurset}-${index + 1})`);
+      kaart.style.setProperty('--vraag-menging', '78%');
       kaart.querySelector('.vraag-bron')?.remove();
       if (ingeleverd) {
         const bron = maakBronpaneel(vraag);
