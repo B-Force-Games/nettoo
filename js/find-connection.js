@@ -221,12 +221,7 @@ function startConnection(index = 0) {
   document.getElementById('bkPuzzleLabel').textContent = statsCopy('Puzzel ', 'Puzzle ') + (index + 1);
   document.getElementById('bkCounter').textContent = (index + 1) + ' / ' + connectionPool.length;
   document.getElementById('bkFeedback').textContent = '';
-  const hint = document.getElementById('connectionHint');
-  hint.hidden = false;
-  hint.textContent = statsCopy(
-    'Verplaats vragen met de greep. Kies een teken; bij − en ÷ telt de volgorde.',
-    'Move questions with the handle. Choose an operator; order matters for − and ÷.'
-  );
+  document.getElementById('connectionAnnouncement').textContent = '';
   document.getElementById('connectionSkip').hidden = false;
   const submit = document.getElementById('bkSubmitButton');
   submit.textContent = statsCopy('Controleer mijn verband', 'Check my connection');
@@ -243,7 +238,6 @@ function startConnection(index = 0) {
     handle.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 7h14M5 12h14M5 17h14"/></svg>';
     handle.setAttribute('aria-label', statsCopy('Verplaats deze vraag', 'Move this question'));
     handle.setAttribute('aria-pressed', 'false');
-    handle.setAttribute('aria-describedby', 'connectionHint');
     handle.setAttribute('aria-description', statsCopy('Gebruik de pijltjestoetsen om te verplaatsen, of tik twee grepen aan om te wisselen.', 'Use the arrow keys to move, or tap two handles to swap.'));
     bindConnectionDrag(handle, card, i);
     const question = document.createElement('label');
@@ -326,7 +320,8 @@ function moveConnection(question, direction) {
   layoutConnection();
   const card = document.querySelector('#bkQuestionList [data-question="' + question + '"]');
   card?.querySelector('.connection-drag-handle')?.focus({ preventScroll: true });
-  const feedback = document.getElementById('bkFeedback');
+  // Verplaatsingen blijven hoorbaar voor schermlezers, zonder een extra tekstregel.
+  const feedback = document.getElementById('connectionAnnouncement');
   if (feedback) {
     feedback.textContent = statsCopy('Vraag verplaatst naar positie ', 'Question moved to position ') + (target + 1) + '.';
   }
@@ -343,7 +338,7 @@ function selectConnectionCard(question) {
   } else {
     connectionPicked = connectionPicked === question ? null : question;
   }
-  const feedback = document.getElementById('bkFeedback');
+  const feedback = document.getElementById('connectionAnnouncement');
   if (feedback) {
     if (connectionPicked !== null) {
       const pos = connectionState.order.indexOf(connectionPicked) + 1;
@@ -487,7 +482,7 @@ function submitConnection() {
   }
   document.getElementById('bkQuestionList').prepend(connection);
   feedback.textContent = '';
-  document.getElementById('connectionHint').hidden = true;
+  document.getElementById('connectionAnnouncement').textContent = '';
   document.getElementById('connectionSkip').hidden = true;
   const liveFormula = document.getElementById('connectionLiveFormula');
   if (liveFormula) liveFormula.style.display = 'none';

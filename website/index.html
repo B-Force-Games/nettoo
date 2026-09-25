@@ -45,7 +45,7 @@
 <script src="data/netto_translations_en.js?v=50"></script>
 <script src="js/i18n.js?v=69"></script>
 <link rel="stylesheet" href="css/styles.css?v=60">
-<link rel="stylesheet" href="css/refinement.css?v=142">
+<link rel="stylesheet" href="css/refinement.css?v=143">
 <link rel="stylesheet" href="css/stats-page.css?v=4">
 
 </head>
@@ -245,7 +245,6 @@
     <div class="inner">
       <div class="eyebrow" id="puzzleEyebrow">Netto · nr. 032 · 28 aug</div>
       <h1 class="headline" id="dailyHeadline">Drie antwoorden. <span class="script">Eén som.</span></h1>
-      <p class="daily-play-intro" id="dailyPlayIntro">Geef je antwoorden. Gebruik de som om ze scherper te maken.</p>
 
       <div class="card">
         <div class="daily-question-view" id="dailyQuestionView">
@@ -631,11 +630,11 @@
       <section class="bk-play-panel" id="bkPlay" style="display:none;">
         <div class="eyebrow"><span>Netto</span> · <span>Find the Connection</span> · <span id="bkCounter">1 / 199</span></div>
         <h1 class="headline" id="bkPuzzleLabel">Puzzel 1</h1>
-        <p class="bk-leesregel" id="connectionHint">Drag the handles to swap questions, or tap two handles. Choose an operator and find the connection.</p>
         <div class="card race-question-card bk-question-card">
           <div class="race-question-list" id="bkQuestionList"></div>
           <div class="connection-live-formula" id="connectionLiveFormula" aria-live="polite"></div>
           <div class="race-feedback" id="bkFeedback" role="status" aria-live="polite"></div>
+          <span class="connection-announcement" id="connectionAnnouncement" role="status" aria-live="polite"></span>
           <div class="connection-actions">
             <button class="btn-check race-submit-button" id="bkSubmitButton" type="button" onclick="submitConnection()">Check my connection</button>
             <button class="connection-skip" id="connectionSkip" type="button" onclick="startConnection(connectionState.index + 1)">Skip puzzle →</button>
@@ -1044,9 +1043,9 @@
 <script src="js/photo-credits.js?v=4"></script>
 <script src="js/daily-photos.js?v=2"></script>
 <script src="js/question-context.js?v=1"></script>
-<script src="js/core.js?v=116"></script>
+<script src="js/core.js?v=117"></script>
 <script src="js/puzzle-modes.js?v=58"></script>
-<script src="js/find-connection.js?v=5"></script>
+<script src="js/find-connection.js?v=6"></script>
 <script src="js/race.js?v=63"></script>
 <script src="js/submissions.js?v=41"></script>
 <script src="js/library.js?v=59"></script>

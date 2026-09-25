@@ -3007,7 +3007,6 @@
     document.getElementById('screen-puzzle').classList.add('is-review');
     const headline = document.getElementById('dailyHeadline');
     if (headline) headline.textContent = statsCopy('Jouw resultaat.', 'Your result.');
-    document.getElementById('dailyPlayIntro').hidden = true;
     questions.style.display = 'none';
     results.classList.add('show');
     updateDailyReviewNav();
@@ -3022,7 +3021,6 @@
     document.getElementById('screen-puzzle').classList.remove('is-review');
     const headline = document.getElementById('dailyHeadline');
     if (headline) headline.textContent = statsCopy('De vragen.', 'The questions.');
-    document.getElementById('dailyPlayIntro').hidden = true;
     const questions = document.getElementById('dailyQuestionView');
     const results = document.getElementById('results');
     if (!questions || !results) return;
@@ -3039,11 +3037,6 @@
     document.getElementById('screen-puzzle').classList.remove('is-review');
     const headline = document.getElementById('dailyHeadline');
     if (headline) headline.innerHTML = statsCopy('Drie antwoorden. <span class="script">Eén som.</span>', 'Three answers. <span class="script">One equation.</span>');
-    const intro = document.getElementById('dailyPlayIntro');
-    if (intro) {
-      intro.textContent = statsCopy('Geef je antwoorden. Gebruik de som om ze scherper te maken.', 'Enter your answers. Use the equation to refine your guesses.');
-      intro.hidden = false;
-    }
     const questions = document.getElementById('dailyQuestionView');
     const nav = document.getElementById('dailyReviewNav');
     const results = document.getElementById('results');
