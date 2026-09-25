@@ -35,8 +35,6 @@
     if (!listEl || !p) return;
     const progress = document.getElementById(prefix + 'Progress');
     if (prefix === 'library') {
-      const kicker = document.getElementById('libraryPlayKicker');
-      if (kicker) kicker.textContent = statsCopy('Netto · Puzzels', 'Netto · Puzzles');
       const badge = document.createElement('button');
       badge.type = 'button';
       badge.className = 'puzzle-index-badge';
@@ -44,7 +42,7 @@
       const naam = progressLabel.replace('Puzzel', statsCopy('Puzzel', 'Puzzle'));
       const sterren = { easy: 1, intermediate: 2, hard: 3, 'extremely-hard': 5 }[selectedDifficulty] || 1;
       const niveau = LIBRARY_DIFFICULTY_LABEL[selectedDifficulty] || LIBRARY_DIFFICULTY_LABEL.easy;
-      badge.setAttribute('aria-label', naam + ', ' + niveau + '. ' + statsCopy('Terug naar alle puzzels', 'Back to all puzzles'));
+      badge.setAttribute('aria-label', naam + '. ' + statsCopy('Terug naar alle puzzels', 'Back to all puzzles'));
       const pijl = document.createElement('span');
       pijl.className = 'puzzle-badge-arrow';
       pijl.setAttribute('aria-hidden', 'true');
@@ -54,10 +52,14 @@
       const niveauSterren = document.createElement('span');
       niveauSterren.className = 'puzzle-difficulty-stars';
       niveauSterren.setAttribute('aria-hidden', 'true');
-      niveauSterren.title = niveau;
       niveauSterren.textContent = '★'.repeat(sterren);
-      badge.append(pijl, titel, niveauSterren);
-      progress.replaceChildren(badge);
+      const moeilijkheid = document.createElement('span');
+      moeilijkheid.className = 'puzzle-difficulty';
+      const niveauNaam = document.createElement('span');
+      niveauNaam.textContent = niveau;
+      moeilijkheid.append(niveauSterren, niveauNaam);
+      badge.append(pijl, titel);
+      progress.replaceChildren(badge, moeilijkheid);
     } else progress.textContent = progressLabel;
     document.getElementById(prefix + 'Equation').style.display = 'none';
     const autoCalcNote = localStorage.getItem('netto_auto_calc_note_seen') === 'true' ? '' : `<div class="auto-calc-note" role="status" aria-live="polite">↳ Antwoorden worden automatisch berekend als de berekening klopt.</div>`;
