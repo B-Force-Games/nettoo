@@ -16,8 +16,22 @@ function fotoUitVraagtekst(puzzel) {
   return null;
 }
 
+// Een puzzel draagt zijn foto zelf mee in het veld photo. Dat veld is gevuld
+// toen de puzzel werd gemaakt en veroudert dus: bij de visuele controle zijn er
+// veertig foto's afgekeurd, en in vijfentwintig puzzels stond die afgekeurde
+// foto nog gewoon in dat veld. NETTO_FOTOS is de enige waarheid, dus als de
+// vraag daar niet meer in staat, telt het meegedragen veld niet mee.
+function nogInDeBank(puzzel, foto) {
+  const bron = window.NETTO_FOTOS;
+  if (!bron || !foto) return true;   // geen bank ingeladen: niets te toetsen
+  const nr = Number(foto.vraag);
+  const bij = nr >= 1 && nr <= 3 ? puzzel?.['q' + nr + '_label'] : null;
+  return bij ? Object.prototype.hasOwnProperty.call(bron, bij) : true;
+}
+
 function geldigePuzzelfoto(puzzel) {
-  const foto = puzzel?.photo || fotoUitVraagtekst(puzzel);
+  const eigen = puzzel?.photo;
+  const foto = (eigen && nogInDeBank(puzzel, eigen) ? eigen : null) || fotoUitVraagtekst(puzzel);
   if (!foto || !String(foto.maker || '').trim() || !String(foto.licentie || '').trim()) return null;
   try {
     const bron = new URL(foto.pagina);
@@ -41,7 +55,9 @@ function renderPuzzelfoto(lijst, puzzel) {
   lijst.querySelectorAll('.puzzelfoto').forEach(el => el.remove());
   const foto = geldigePuzzelfoto(puzzel);
   if (!foto || ![1, 2, 3].includes(Number(foto.vraag))) return;
-  const blok = lijst.querySelectorAll('.q-block')[Number(foto.vraag) - 1];
+  // Beeld bij vraag 1 staat in het midden; bijschrift en bron blijven bij vraag 1 horen.
+  const positie = Number(foto.vraag) === 1 ? 2 : Number(foto.vraag);
+  const blok = lijst.querySelectorAll('.q-block')[positie - 1];
   if (!blok) return;
   lijst.classList.add('puzzelfoto-lijst');
   const figuur = document.createElement('figure');

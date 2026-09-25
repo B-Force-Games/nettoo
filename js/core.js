@@ -1811,9 +1811,11 @@
     kaarten.forEach(kaart => kaart.classList.remove('has-photo'));
     if (!assigned && !gekoppeld && !rotatie) { photo.hidden = true; return; }
 
-    // De foto blijft bij de bijbehorende vraag, ook na wisselen van Daily.
+    // Foto's bij vraag 1 staan naast vraag 2 voor een rustige bovenkant.
+    // De inhoudelijke koppeling blijft staan in het bijschrift en het knoplabel.
     const vraagnummer = gekoppeld?.vraag >= 1 && gekoppeld.vraag <= 3 ? gekoppeld.vraag : 1;
-    const fotokaart = kaarten[vraagnummer - 1];
+    const fotopositie = vraagnummer === 1 ? 2 : vraagnummer;
+    const fotokaart = kaarten[fotopositie - 1];
     if (fotokaart) {
       fotokaart.prepend(photo);
       fotokaart.classList.add('has-photo');
