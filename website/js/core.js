@@ -2066,6 +2066,118 @@
     werkVraagDetailsBij(PUZZLE_DATA, kaarten, ingeleverd);
   }
 
+  // Alleen begripsuitleg: geen aantallen of hints naar het gevraagde antwoord.
+  // Nieuwe begrippen krijgen automatisch dezelfde bediening en vormgeving.
+  // Voeg eventueel `aliassen` toe voor andere schrijfwijzen of de Engelse naam.
+  // Zie docs/begripsuitleg.md; activering per spelmodus staat los van deze lijst.
+  const vraagBegrippen = [
+    { term: 'Parthenon', nl: 'Een oude Griekse tempel op de Akropolis in Athene.', en: 'An ancient Greek temple on the Acropolis in Athens.' }
+  ];
+  function maakBegrippenPatroon(begrippen) {
+    const termen = begrippen.flatMap(begrip => [begrip.term, ...(begrip.aliassen || [])])
+      .filter(term => typeof term === 'string' && term.trim())
+      .sort((a, b) => b.length - a.length)
+      .map(term => term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+    // Hele begrippen herkennen, ook met accenten, meerdere woorden of leestekens.
+    return termen.length ? new RegExp('(?<![\\p{L}\\p{N}_])(' + termen.join('|') + ')(?![\\p{L}\\p{N}_])', 'giu') : null;
+  }
+  let begripTip, actiefBegrip, begripVast = false, begripSluitTimer;
+
+  function sluitBegripUitleg() {
+    clearTimeout(begripSluitTimer);
+    if (begripTip) begripTip.hidden = true;
+    actiefBegrip?.setAttribute('aria-expanded', 'false');
+    actiefBegrip?.removeAttribute('aria-describedby');
+    actiefBegrip = null;
+    begripVast = false;
+  }
+
+  function planBegripSluiten() {
+    clearTimeout(begripSluitTimer);
+    begripSluitTimer = setTimeout(() => {
+      if (!begripVast && document.activeElement !== actiefBegrip) sluitBegripUitleg();
+    }, 160);
+  }
+
+  function toonBegripUitleg(knop, uitleg) {
+    clearTimeout(begripSluitTimer);
+    if (!begripTip) {
+      begripTip = document.createElement('div');
+      begripTip.id = 'vraagBegripUitleg';
+      begripTip.className = 'vraag-begrip-uitleg';
+      begripTip.setAttribute('role', 'tooltip');
+      begripTip.setAttribute('data-i18n-skip', '');
+      begripTip.hidden = true;
+      document.body.appendChild(begripTip);
+      begripTip.addEventListener('pointerenter', () => clearTimeout(begripSluitTimer));
+      begripTip.addEventListener('pointerleave', planBegripSluiten);
+      document.addEventListener('pointerdown', event => {
+        if (!actiefBegrip?.contains(event.target) && !begripTip.contains(event.target)) sluitBegripUitleg();
+      });
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') sluitBegripUitleg();
+      });
+      window.addEventListener('resize', sluitBegripUitleg);
+      document.addEventListener('scroll', sluitBegripUitleg, true);
+    }
+    if (actiefBegrip !== knop) sluitBegripUitleg();
+    actiefBegrip = knop;
+    knop.setAttribute('aria-describedby', 'vraagBegripUitleg');
+    knop.setAttribute('aria-expanded', 'true');
+    begripTip.textContent = uitleg;
+    begripTip.hidden = false;
+    const plek = knop.getBoundingClientRect();
+    const tip = begripTip.getBoundingClientRect();
+    const links = Math.max(12, Math.min(plek.left, document.documentElement.clientWidth - tip.width - 12));
+    const boven = plek.bottom + tip.height + 20 > window.innerHeight ? plek.top - tip.height - 8 : plek.bottom + 8;
+    begripTip.style.left = links + 'px';
+    begripTip.style.top = Math.max(12, boven) + 'px';
+  }
+
+  function verrijkVraagBegrippen(label, vraag) {
+    if (!label) return;
+    if (label.dataset.begripVraag === vraag && label.querySelector('.vraag-begrip')) return;
+    if (label.dataset.begripVraag) {
+      label.removeAttribute('data-i18n-skip');
+      delete label.dataset.begripVraag;
+    }
+    // Eerst de volledige zin vertalen; losse tekstfragmenten zijn geen vertaalsleutels.
+    const tekst = window.NettoI18n?.t(vraag) || vraag;
+    const patroon = maakBegrippenPatroon(vraagBegrippen);
+    if (!patroon) return;
+    const fragment = document.createDocumentFragment();
+    let einde = 0;
+    for (const match of tekst.matchAll(patroon)) {
+      const begrip = vraagBegrippen.find(item => [item.term, ...(item.aliassen || [])]
+        .some(term => term.toLowerCase() === match[0].toLowerCase()));
+      const uitleg = statsCopy(begrip.nl, begrip.en);
+      const knop = document.createElement('button');
+      knop.type = 'button';
+      knop.className = 'vraag-begrip';
+      knop.textContent = match[0];
+      knop.setAttribute('aria-expanded', 'false');
+      knop.addEventListener('pointerenter', event => {
+        if (event.pointerType === 'mouse') toonBegripUitleg(knop, uitleg);
+      });
+      knop.addEventListener('pointerleave', planBegripSluiten);
+      knop.addEventListener('focus', () => toonBegripUitleg(knop, uitleg));
+      knop.addEventListener('blur', sluitBegripUitleg);
+      knop.addEventListener('click', event => {
+        event.preventDefault();
+        event.stopPropagation();
+        if (actiefBegrip === knop && begripVast) sluitBegripUitleg();
+        else { toonBegripUitleg(knop, uitleg); begripVast = true; }
+      });
+      fragment.append(document.createTextNode(tekst.slice(einde, match.index)), knop);
+      einde = match.index + match[0].length;
+    }
+    if (!einde) return;
+    fragment.append(document.createTextNode(tekst.slice(einde)));
+    label.setAttribute('data-i18n-skip', '');
+    label.dataset.begripVraag = vraag;
+    label.replaceChildren(fragment);
+  }
+
   function werkVraagDetailsBij(puzzel, kaarten, ingeleverd) {
     const kleurset = puzzelKleurset(puzzel);
     kaarten.forEach((kaart, index) => {
@@ -2112,6 +2224,8 @@
           invoer.setAttribute('aria-describedby', ids.join(' '));
         }
       } else ondertekst?.remove();
+      // Deze proef blijft beperkt tot de Parthenon-vraag op het Daily-scherm.
+      if (kaart.closest('#dailyQuestionView')) verrijkVraagBegrippen(kaart.querySelector('.q-label'), vraag || '');
       kaart.style.setProperty('--vraag-tint', `var(--puzzel-kleur-${kleurset}-${index + 1})`);
       kaart.style.setProperty('--vraag-menging', '78%');
       kaart.querySelector('.vraag-bron')?.remove();

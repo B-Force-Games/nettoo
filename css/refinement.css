@@ -3078,3 +3078,51 @@ html[data-landing-preview="editorial"] .home-quick-card strong { max-width: none
   #bkPlay .bk-question-card { padding: 14px; }
   #bkQuestionList .connection-question { padding: 14px; }
 }
+
+/* Eerst alleen bij de Daily-vraag met begripsuitleg uitproberen. */
+#screen-puzzle #dailyQuestionView > .q-block .q-label:has(.vraag-begrip):has(+ .vraag-ondertekst) {
+  margin-bottom: 4px;
+}
+#screen-puzzle #dailyQuestionView > .q-block .q-label:has(.vraag-begrip) + .vraag-ondertekst {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--puzzle-header-muted);
+}
+@media (max-width: 560px) {
+  #screen-puzzle #dailyQuestionView > .q-block.has-photo:has(.vraag-begrip):has(> .vraag-ondertekst) { row-gap: 0; }
+}
+
+/* De stippellijn biedt optionele uitleg zonder de vraag visueel te onderbreken. */
+.q-label .vraag-begrip {
+  display: inline;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 2px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-decoration: underline dotted;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  cursor: help;
+}
+.vraag-begrip:hover { text-decoration-style: solid; }
+.vraag-begrip:focus-visible { outline: 2px solid var(--accent-blue-light); outline-offset: 3px; }
+.vraag-begrip-uitleg {
+  position: fixed;
+  z-index: 1000;
+  width: max-content;
+  max-width: min(280px, calc(100vw - 24px));
+  padding: 12px 15px;
+  border: 1px solid var(--surface-border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 6px 24px rgba(10, 15, 45, .18);
+  font: 400 14px/1.5 'Space Grotesk', sans-serif;
+}
+.vraag-begrip-uitleg[hidden] { display: none; }
