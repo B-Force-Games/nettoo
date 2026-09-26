@@ -28,6 +28,7 @@ build/
 /puzzles/
 /connections/
 /race/
+/live-rounds/
 /leaderboard/
 /stats/
 /settings/
@@ -41,6 +42,7 @@ build/
 /website/puzzles/
 /website/connections/
 /website/race/
+/website/live-rounds/
 /website/leaderboard/
 /website/stats/
 /website/settings/

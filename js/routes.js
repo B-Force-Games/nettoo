@@ -33,6 +33,7 @@
     if (active('fotoCreditsScreen')) return 'photo-credits';
     if (active('routeStatusScreen')) return document.getElementById('routeStatusScreen').dataset.route || '';
     if (active('screen-home')) return '';
+    if (active('liveScreen')) return 'live-rounds';
     if (active('screen-puzzle')) return PUZZLE_DATA?.date
       ? 'daily/' + shortDate(PUZZLE_DATA.date) : 'daily';
     if (active('libraryScreen')) {
@@ -143,6 +144,7 @@
       return true;
     }
     if (route === 'connections') { openConnection(); return true; }
+    if (route === 'live-rounds') { openLiveRounds(); return true; }
     if (route.startsWith('connections/')) {
       const number = Number(route.slice(12));
       openConnection();
@@ -209,7 +211,7 @@
     const aliases = {
       daily: 'daily', archive: 'daily-archive', leaderboard: 'leaderboard',
       puzzles: 'puzzles', brain: 'connections', connection: 'connections',
-      race: 'race', how: 'how-to-play', submit: 'submit-question', about: 'about'
+      race: 'race', live: 'live-rounds', how: 'how-to-play', submit: 'submit-question', about: 'about'
     };
     const legacy = new URLSearchParams(location.search).get('screen');
     if (legacy && aliases[legacy]) {
@@ -227,7 +229,7 @@
       'screen-home', 'screen-puzzle', 'routeStatusScreen', 'libraryScreen', 'libraryPuzzleView',
       'libraryProgress', 'aboutPanel', 'howPanel', 'breinkrakersScreen',
       'bkPlay', 'bkCounter', 'raceScreen', 'raceStart', 'raceModeOnlineTab',
-      'leaderboardScreen', 'settingsScreen', 'submitScreen', 'fotoCreditsScreen'
+      'leaderboardScreen', 'settingsScreen', 'submitScreen', 'fotoCreditsScreen', 'liveScreen'
     ];
     const observer = new MutationObserver(schedule);
     watched.forEach(id => {

@@ -1,0 +1,79 @@
+/* Live Rondes gebruikt het vertrouwde puzzeloppervlak, met een compacte gedeelde status. */
+#liveScreen { padding-top: 84px; }
+.live-shell { max-width: 880px; margin: 0 auto; padding-bottom: 32px; }
+.live-card { padding: clamp(20px, 3vw, 32px); border: 1px solid var(--surface-border); border-radius: 22px; background: var(--surface); color: var(--ink); }
+#liveScreen [hidden] { display: none !important; }
+.live-eyebrow { font: 600 11px/1.5 'Space Mono', monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--yellow, #ffdf48); margin: 0 0 14px; }
+.live-card .live-eyebrow { color: var(--ink-muted, #626880); }
+.live-card h1 { font-size: clamp(25px, 4vw, 40px); line-height: 1.15; margin: 0 0 14px; }
+.live-card h2 { font-size: 19px; margin: 0 0 18px; }
+.live-intro { font-size: 17px; line-height: 1.5; margin: 0; }
+.live-muted { color: var(--ink-muted, #626880); font-size: 13px; line-height: 1.5; }
+.live-rules { display: flex; flex-wrap: wrap; gap: 8px 20px; border-bottom: 1px solid var(--surface-border); padding: 18px 0 24px; margin-bottom: 28px; font-size: 12px; }
+.live-setup-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; }
+.live-settings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.live-card label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 16px; }
+.live-card input, .live-card select { width: 100%; min-width: 0; min-height: 46px; margin-top: 8px; padding: 10px 12px; border: 1px solid var(--surface-border); border-radius: 10px; background: var(--surface); color: var(--ink); font: inherit; }
+.live-card input:focus-visible, .live-card select:focus-visible, .live-card button:focus-visible { outline: 3px solid var(--accent-blue-light, #7777ff); outline-offset: 3px; }
+.live-card .hero-cta, .live-card .btn-check { margin: 6px 0 0; min-height: 48px; }
+.live-card button:disabled { opacity: .55; cursor: not-allowed; }
+.live-text-button { background: none; border: none; color: inherit; font: inherit; font-size: 13px; padding: 10px 4px; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; }
+.live-section-heading { display: flex; align-items: center; justify-content: space-between; margin-top: 32px; border-top: 1px solid var(--surface-border); padding-top: 24px; }
+.live-section-heading h2 { margin: 0; }
+.live-notice { padding: 12px 16px; border-radius: 12px; background: #fff0a6; color: #222044; font-size: 14px; line-height: 1.5; }
+.live-room-code { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; }
+.live-room-code strong { font: 700 32px/1.5 'Space Mono', monospace; letter-spacing: .12em; }
+.live-players { list-style: none; padding: 0; margin: 20px 0; }
+.live-player { display: flex; gap: 12px; align-items: center; border-bottom: 1px solid var(--surface-border); padding: 13px 4px; font-size: 14px; }
+.live-player > b { margin-left: auto; font-variant-numeric: tabular-nums; }
+.live-player small, .live-table small { display: block; font-size: 11px; font-weight: 400; color: var(--ink-muted, #626880); margin-top: 3px; }
+.live-marker { color: #b53e50; font-weight: 700; }
+.live-player.is-submitted .live-marker { color: #13845d; }
+.live-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 24px; }
+.live-round-heading { display: flex; gap: 20px; align-items: center; justify-content: space-between; }
+.live-round-heading h1 { font-size: 21px; margin: 0; }
+.live-clock { text-align: right; }
+.live-clock strong { display: block; font: 700 30px/1.2 'Space Mono', monospace; font-variant-numeric: tabular-nums; }
+.live-clock small { display: block; font-size: 10px; margin-top: 4px; text-transform: uppercase; letter-spacing: .08em; }
+.live-clock .is-urgent { color: #c23545; }
+.live-round-players { display: grid; grid-template-columns: repeat(auto-fit,minmax(150px,1fr)); gap: 4px 16px; margin: 16px 0 24px; }
+.live-round-players .live-player { font-size: 12px; padding: 8px 0; min-width: 0; }
+.live-player > span { overflow-wrap: anywhere; }
+.live-preparing { padding: 48px 0; text-align: center; font-size: 18px; }
+#liveQuestionList .q-block { padding: 16px 18px; margin: 0; border-radius: 14px; border: 1px solid var(--surface-border); background: color-mix(in srgb, var(--vraag-tint, var(--surface-2)) 78%, var(--surface)); color: var(--ink); }
+#liveQuestionList .q-label { font-size: 15px; line-height: 1.5; margin-bottom: 10px; }
+#liveQuestionList .input-wrapper input { margin: 0; min-height: 50px; }
+#liveQuestionList input.met-eenheid { padding-right: min(48%, var(--eenheid-ruimte)); }
+#liveQuestionList .connector { margin: 14px 0; gap: 14px; }
+#liveQuestionList .connector-badge { width: 36px; height: 36px; min-height: 36px; font-size: 18px; }
+#liveQuestionList .puzzelfoto { position: relative; float: right; width: 132px; margin: 0 0 12px 16px; top: auto; right: auto; }
+#liveQuestionList .puzzelfoto img { height: 98px; }
+#liveSubmit { margin-top: 24px; width: 100%; }
+.live-actual { margin: 24px 0 16px; background: #ffdf48; color: #18183e; border-radius: 12px; padding: 16px; font: 700 clamp(17px,3vw,24px)/1.5 'Space Mono',monospace; text-align: center; overflow-wrap: anywhere; }
+.live-reveal-questions { font-size: 13px; line-height: 1.5; margin-bottom: 24px; }
+.live-reveal-questions p { margin: 8px 0; }
+.live-table-wrap { overflow-x: auto; }
+.live-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.live-table td, .live-table th { padding: 14px 10px; text-align: right; border-bottom: 1px solid var(--surface-border); font-variant-numeric: tabular-nums; }
+.live-table th:first-child { text-align: left; min-width: 110px; }
+.live-table thead { font-size: 11px; color: var(--ink-muted, #626880); }
+.live-winner { background: color-mix(in srgb, #ffdf48 20%, var(--surface)); }
+.live-next { text-align: center; font-size: 14px; margin: 24px 0 8px; }
+@media(min-width: 601px) {
+  #liveQuestionList .q-block:has(.puzzelfoto) { display: grid; grid-template-columns: minmax(0,1fr) 132px; grid-template-rows: 1fr auto auto auto 1fr; column-gap: 20px; min-height: 164px; }
+  #liveQuestionList .q-block:has(.puzzelfoto)::after { content: none; }
+  #liveQuestionList .q-block:has(.puzzelfoto) > .q-label { grid-column: 1; grid-row: 2; }
+  #liveQuestionList .q-block:has(.puzzelfoto) > .vraag-ondertekst { grid-column: 1; grid-row: 3; }
+  #liveQuestionList .q-block:has(.puzzelfoto) > .input-wrapper { grid-column: 1; grid-row: 4; clear: none; }
+  #liveQuestionList .q-block:has(.puzzelfoto) > .puzzelfoto { grid-column: 2; grid-row: 1 / 6; float: none; align-self: center; margin: 0; }
+}
+@media(max-width: 600px) {
+  .live-setup-grid { grid-template-columns: 1fr; gap: 28px; }
+  .live-round-heading { align-items: flex-start; }
+  .live-round-heading h1 { font-size: 18px; }
+  .live-clock strong { font-size: 24px; }
+  .live-round-players { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  #liveQuestionList .q-block { padding: 14px; }
+  #liveQuestionList .puzzelfoto { width: 104px; }
+  #liveQuestionList .puzzelfoto img { height: 80px; }
+}

@@ -3195,6 +3195,8 @@
   }
 
   function showScreen(name) {
+    if (name !== 'live' && document.getElementById('liveScreen')?.classList.contains('active')) window.NettoLive?.leave(false);
+    document.getElementById('liveScreen')?.classList.toggle('active', name === 'live');
     document.getElementById('fotoCreditsScreen')?.classList.toggle('active', name === 'fotoverantwoording');
     document.getElementById('routeStatusScreen')?.classList.toggle('active', name === 'route-status');
     if (name === 'library') document.getElementById('libraryCardGrid').style.display = 'none';

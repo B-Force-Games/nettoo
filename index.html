@@ -40,9 +40,10 @@
 <script src="data/netto_race_pool.js?v=43"></script>
 <script src="data/netto_breinkrakers.js?v=30"></script>
 <script src="data/netto_translations_en.js?v=50"></script>
-<script src="js/i18n.js?v=69"></script>
+<script src="js/i18n.js?v=70"></script>
 <link rel="stylesheet" href="css/styles.css?v=62">
 <link rel="stylesheet" href="css/refinement.css?v=158">
+<link rel="stylesheet" href="css/live-rounds.css?v=1">
 <link rel="stylesheet" href="css/stats-page.css?v=5">
 
 </head>
@@ -124,6 +125,7 @@
         <button class="sidebar-item" onclick="openPuzzles()"><span class="sidebar-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17.5h7M17.5 14v7"/></svg></span><span class="label">Puzzels</span><span class="arrow">→</span></button>
         <button class="sidebar-item" onclick="openConnection()"><span class="sidebar-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14l4-4M8 16l-1 1a3.5 3.5 0 0 1-5-5l4-4a3.5 3.5 0 0 1 5 0M16 8l1-1a3.5 3.5 0 0 1 5 5l-4 4a3.5 3.5 0 0 1-5 0"/></svg></span><span class="label">Find the Connection</span><span class="arrow">→</span></button>
         <button class="sidebar-item" onclick="openPuzzleRace()"><span class="sidebar-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6M12 5V2"/></svg></span><span class="label">Puzzel Race</span><span class="arrow">→</span></button>
+        <button class="sidebar-item" onclick="openLiveRounds()"><span class="sidebar-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M16 5a3 3 0 0 1 0 6M21 21v-3a6 6 0 0 0-3-5"/></svg></span><span class="label">Live Rondes</span><span class="arrow">→</span></button>
       </div>
       <div class="sidebar-group">
         <div class="sidebar-group-title">Meer</div>
@@ -451,6 +453,68 @@
   </main>
 
   <!-- ============ PUZZEL RACE ============ -->
+  <main class="library-screen live-screen" id="liveScreen">
+    <div class="live-shell">
+      <p class="live-eyebrow">Netto · <span>Live Rondes</span></p>
+      <p id="liveMessage" class="live-notice" role="alert" hidden></p>
+      <p id="liveConnection" class="live-notice" role="status" hidden>Verbinding herstellen… Je antwoorden blijven staan.</p>
+      <section id="liveSetup" class="live-card">
+        <h1>Live Rondes</h1>
+        <p class="live-intro">Dezelfde puzzel. Dezelfde klok. Wie zit er het dichtst bij?</p>
+        <div class="live-rules"><span>2–8 spelers</span><span>1 punt per gewonnen ronde</span><span>Antwoorden samen onthullen</span></div>
+        <div class="live-setup-grid">
+          <form id="liveCreateForm">
+            <h2>Maak een room</h2>
+            <div class="live-settings-grid">
+              <label for="liveSeconds">Seconden per ronde<input id="liveSeconds" type="number" inputmode="numeric" min="5" max="3600" step="1" value="60" required></label>
+              <label for="liveRounds">Aantal rondes<input id="liveRounds" type="number" inputmode="numeric" min="1" max="1000" step="1" value="5" required></label>
+            </div>
+            <label for="liveVisibility">Zichtbaarheid<select id="liveVisibility"><option value="open">Open — iedereen kan meedoen</option><option value="closed">Privé — alleen met roomcode</option></select></label>
+            <button class="hero-cta" type="submit">Room maken →</button>
+          </form>
+          <form id="liveJoinForm">
+            <h2>Speel met vrienden</h2>
+            <label for="liveJoinCode">Roomcode<input id="liveJoinCode" type="text" maxlength="6" minlength="6" pattern="[A-Za-z2-9]{6}" placeholder="ABC234" autocomplete="off" required></label>
+            <button type="submit" class="btn-check">Meedoen →</button>
+            <button id="liveResume" type="button" class="live-text-button" hidden>Terug naar je room</button>
+          </form>
+        </div>
+        <div class="live-section-heading"><h2>Open rooms</h2><button id="liveRefresh" type="button" class="live-text-button">Vernieuwen</button></div>
+        <div id="liveOpenGames"></div>
+      </section>
+      <section id="liveRoom" class="live-card" hidden>
+        <h1>Wachtkamer</h1>
+        <div class="live-room-code"><strong id="liveRoomCode"></strong><button id="liveCopy" type="button" class="live-text-button">Code kopiëren</button></div>
+        <p id="liveRoomSummary" class="live-muted"></p>
+        <ul id="liveLobbyPlayers" class="live-players" aria-label="Spelers"></ul>
+        <p id="liveWaitingHost" class="live-muted">Wachten tot de host start…</p>
+        <div class="live-actions"><button id="liveStart" type="button" class="hero-cta">Start wedstrijd →</button><button type="button" class="live-text-button" data-live-leave>Room verlaten</button></div>
+      </section>
+      <section id="livePlay" class="live-card" hidden>
+        <header class="live-round-heading"><h1 id="liveRoundLabel"></h1><div class="live-clock"><strong id="liveTimer" role="timer"></strong><small>Resterende tijd</small></div></header>
+        <ul id="liveRoundPlayers" class="live-players live-round-players" aria-label="Inzendstatus"></ul>
+        <p id="livePreparing" class="live-preparing">Iedereen klaar? De ronde begint zo.</p>
+        <div id="liveQuestionList"></div>
+        <button id="liveSubmit" type="button" class="btn-check">Antwoorden inleveren</button>
+        <p id="liveRoundHint" class="live-muted"></p>
+        <button type="button" class="live-text-button" data-live-leave>Wedstrijd verlaten</button>
+      </section>
+      <section id="liveReveal" class="live-card" hidden>
+        <p class="live-eyebrow">De onthulling</p><h1 id="liveRevealTitle" tabindex="-1"></h1>
+        <div id="liveActual" class="live-actual"></div>
+        <div id="liveRevealQuestions" class="live-reveal-questions"></div>
+        <div class="live-table-wrap" role="region" aria-label="Antwoorden en tussenstand" tabindex="0"><table class="live-table"><thead><tr><th scope="col">Speler</th><th scope="col">Vraag 1</th><th scope="col">Vraag 2</th><th scope="col">Vraag 3</th><th scope="col">Gem. factor</th><th scope="col">Punten</th></tr></thead><tbody id="liveRevealRows"></tbody></table></div>
+        <p id="liveNextRound" class="live-next" role="status"></p>
+        <button type="button" class="live-text-button" data-live-leave>Wedstrijd verlaten</button>
+      </section>
+      <section id="liveFinished" class="live-card" hidden>
+        <p class="live-eyebrow">Eindstand</p><h1 id="liveFinishTitle" tabindex="-1"></h1>
+        <ul id="liveFinalPlayers" class="live-players"></ul>
+        <button type="button" class="hero-cta" data-live-leave>Terug naar Live Rondes →</button>
+      </section>
+    </div>
+  </main>
+
   <main class="library-screen race-screen" id="raceScreen">
     <div class="library-page-inner race-page-inner">
       <div class="library-page-top"><button class="library-home" onclick="goHome()">Netto</button><span class="library-page-kicker">NETTO · PUZZEL RACE</span></div>
@@ -1050,14 +1114,15 @@
 <script src="js/photo-credits.js?v=4"></script>
 <script src="js/daily-photos.js?v=2"></script>
 <script src="js/question-context.js?v=1"></script>
-<script src="js/core.js?v=123"></script>
+<script src="js/core.js?v=124"></script>
 <script src="js/puzzle-modes.js?v=61"></script>
 <script src="js/find-connection.js?v=8"></script>
-<script src="js/race.js?v=63"></script>
+<script src="js/race.js?v=64"></script>
+<script src="js/live-rounds.js?v=1"></script>
 <script src="js/submissions.js?v=41"></script>
 <script src="js/library.js?v=59"></script>
-<script src="js/site-navigation.js?v=4"></script>
-<script src="js/routes.js?v=3"></script>
+<script src="js/site-navigation.js?v=5"></script>
+<script src="js/routes.js?v=4"></script>
 <script src="js/app.js?v=36"></script>
 <script src="js/stats-page.js?v=5"></script>
 

@@ -18,6 +18,7 @@
       // De pijl gaat één niveau terug, niet door de browsergeschiedenis.
       const visible = id => Boolean(document.getElementById(id)?.getClientRects().length);
       function destination() {
+        if (visible('liveRoom') || visible('livePlay') || visible('liveReveal') || visible('liveFinished')) return { label: copy('Terug naar Live Rondes', 'Back to Live Rounds'), open: () => { window.NettoLive.leave(); openLiveRounds(); } };
         if (visible('libraryPuzzleView')) return { label: copy('Terug naar alle puzzels', 'Back to all puzzles'), open: () => openPuzzles() };
         if (visible('bkPlay') || visible('bkDone')) return { label: copy('Terug naar alle verbanden', 'Back to all connections'), open: () => renderBreinkrakersStart() };
         return { label: copy('Naar home', 'Go home'), open: () => goHome() };
@@ -28,7 +29,7 @@
       }
       home.addEventListener('click', () => { closeMenu(); destination().open(); updateBackLabel(); });
       const observer = new MutationObserver(updateBackLabel);
-      ['libraryScreen', 'breinkrakersScreen'].forEach(id => {
+      ['libraryScreen', 'breinkrakersScreen', 'liveScreen'].forEach(id => {
         const screen = document.getElementById(id);
         if (screen) observer.observe(screen, { attributes: true, subtree: true, attributeFilter: ['class', 'style'] });
       });
@@ -55,7 +56,7 @@
   nav.ariaLabel = copy('Hoofdnavigatie', 'Main navigation');
   const groups = [
     ['Daily', [['daily','De Daily','Daily'],['archive','Daily Archive','Daily Archive'],['leaderboard','Ranglijst','Leaderboard']]],
-    [copy('Spelen','Play'), [['puzzles','Puzzels','Puzzles'],['connection','Find the Connection','Find the Connection'],['race','Puzzelrace','Puzzle Race']]],
+    [copy('Spelen','Play'), [['puzzles','Puzzels','Puzzles'],['connection','Find the Connection','Find the Connection'],['race','Puzzelrace','Puzzle Race'],['live','Live Rondes','Live Rounds']]],
     [copy('Meer','More'), [['how','Hoe werkt het?','How does it work?'],['submit','Vraag insturen','Submit a question']]]
   ];
   nav.innerHTML = '<div class="sidebar-header"><a class="sidebar-logo" href="index.html">Netto</a><button type="button" class="sidebar-close" aria-label="' + copy('Menu sluiten','Close menu') + '">×</button></div><div class="sidebar-tagline">' + copy('het schattingsspel','the estimation game') + '</div><div class="sidebar-scroll">' + groups.map(([name,items]) => '<div class="sidebar-group"><div class="sidebar-group-title">' + name + '</div>' + items.map(([id,nl,en]) => '<a class="sidebar-item" href="index.html?screen=' + id + '"><span class="label">' + copy(nl,en) + '</span><span class="arrow">→</span></a>').join('') + '</div>').join('') + '</div><a class="sidebar-footer" href="index.html?screen=about">' + copy('Over Netto','About Netto') + '</a>';

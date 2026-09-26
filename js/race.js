@@ -40,6 +40,11 @@
   let raceOnlineVisibility = 'open'; // aan/uit-schakelaar in de online-tab
   let raceLobbyChannel = null;
   let raceLobbyReady = false;
+  let raceLobbyPublishedSignature = '';
+  function renderNettoOpenGames() {
+    renderOpenGames();
+    window.NettoLive?.renderOpenGames();
+  }
   // Of de laatste poging tot verbinden mislukte. Zonder dit is een kapotte
   // lobby niet te onderscheiden van een lobby waar niemand in zit.
   let raceLobbyFout = false;
@@ -134,15 +139,16 @@
       config: { presence: { key: RACE_CLIENT_ID } }
     });
     raceLobbyChannel
-      .on('presence', { event: 'sync' }, () => { raceLobbyReady = true; publishOpenRaceEntry(); renderOpenGames(); })
-      .on('presence', { event: 'join' }, renderOpenGames)
-      .on('presence', { event: 'leave' }, renderOpenGames)
+      .on('presence', { event: 'sync' }, () => { raceLobbyReady = true; publishOpenRaceEntry(); renderNettoOpenGames(); })
+      .on('presence', { event: 'join' }, renderNettoOpenGames)
+      .on('presence', { event: 'leave' }, renderNettoOpenGames)
       .subscribe(status => {
         if (status === 'SUBSCRIBED') {
           raceLobbyReady = true;
           raceLobbyFout = false;
+          raceLobbyPublishedSignature = '';
           publishOpenRaceEntry();
-          renderOpenGames();
+          renderNettoOpenGames();
         } else if (status === 'CHANNEL_ERROR' || status === 'TIMED_OUT') {
           // Kanaal kapot: volledig resetten zodat de volgende ensure het opnieuw probeert.
           raceLobbyReady = false;
@@ -150,7 +156,7 @@
           // En het opnieuw tekenen, anders blijft er "Nog geen open games"
           // staan terwijl er in werkelijkheid geen verbinding is.
           raceLobbyFout = true;
-          renderOpenGames();
+          renderNettoOpenGames();
         }
       });
   }
@@ -202,9 +208,18 @@
 
   function publishOpenRaceEntry(status = 'waiting') {
     const session = raceDuelSession;
+    const liveEntry = window.NettoLive?.lobbyEntry();
+    if (liveEntry && raceLobbyReady && raceLobbyChannel) {
+      const signature = JSON.stringify(liveEntry);
+      if (signature !== raceLobbyPublishedSignature) {
+        raceLobbyPublishedSignature = signature;
+        Promise.resolve(raceLobbyChannel.track(liveEntry)).catch(() => { raceLobbyPublishedSignature = ''; });
+      }
+      return;
+    }
     if (!raceLobbyReady || !raceLobbyChannel || !session || session.visibility !== 'open' || session.role !== 'host') return;
     try {
-      raceLobbyChannel.track({
+      const entry = {
         kind: 'open-race',
         status,
         roomCode: session.code,
@@ -213,12 +228,18 @@
         toleranceKey: session.toleranceKey || getRaceModeConfig('online').toleranceKey,
         createdAt: session.createdAt || Date.now(),
         client_id: RACE_CLIENT_ID
-      });
+      };
+      const signature = JSON.stringify(entry);
+      if (signature !== raceLobbyPublishedSignature) {
+        raceLobbyPublishedSignature = signature;
+        Promise.resolve(raceLobbyChannel.track(entry)).catch(() => { raceLobbyPublishedSignature = ''; });
+      }
     } catch (_) {}
     renderOpenGames();
   }
 
   function unpublishOpenRaceEntry() {
+    raceLobbyPublishedSignature = '';
     if (!raceLobbyChannel || !raceLobbyReady) return;
     try { raceLobbyChannel.untrack(); } catch (_) {}
     renderOpenGames();
@@ -676,7 +697,14 @@
     return code;
   }
 
-  function raceChannelName(code) { return `netto-race:${String(code).toUpperCase()}`; }
+  function raceChannelName(code, mode = 'race') { return `netto-race:${mode === 'live' ? 'live:' : ''}${String(code).toUpperCase()}`; }
+
+  // Beide online spelmodi gebruiken dezelfde Supabase-verbinding en kanaalconfiguratie.
+  function nettoRoomChannel(code, mode = 'race') {
+    return supabaseClient.channel(raceChannelName(code, mode), {
+      config: { broadcast: { self: false }, presence: { key: RACE_CLIENT_ID } }
+    });
+  }
 
   function createRaceRoom(visibility = 'closed', config = null) {
     if (!requireRaceLogin()) return;
@@ -738,7 +766,7 @@
     setRaceDuelStatus('Verbinden…');
     renderDuelPlayers();
     renderRaceRoomSettings();
-    const channel = supabaseClient.channel(raceChannelName(raceDuelSession.code), { config: { broadcast: { self: false } } });
+    const channel = nettoRoomChannel(raceDuelSession.code);
     channel
       .on('presence', { event: 'sync' }, () => handleRacePresence(channel))
       .on('presence', { event: 'leave' }, ({ key }) => {

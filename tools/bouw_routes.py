@@ -12,7 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data/netto_frontend_puzzles.js"
 SCREENS = (
-    "daily", "daily-archive", "puzzles", "connections", "race",
+    "daily", "daily-archive", "puzzles", "connections", "race", "live-rounds",
     "race/online", "leaderboard", "settings", "how-to-play",
     "submit-question", "about", "photo-credits",
 )
