@@ -3126,3 +3126,124 @@ html[data-landing-preview="editorial"] .home-quick-card strong { max-width: none
   font: 400 14px/1.5 'Space Grotesk', sans-serif;
 }
 .vraag-begrip-uitleg[hidden] { display: none; }
+
+/* Race heeft één puzzeloppervlak, niet een smalle kaart binnen een brede kaart.
+   Leesbaarheid gaat voor geforceerd passen op lage schermen; scrollen mag. */
+#racePlay {
+  position: relative;
+  width: 100%;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: clamp(20px, 3vw, 30px);
+}
+#racePlay .race-topline { align-items: center; min-height: 48px; }
+#racePlay .race-level { font-size: 22px; line-height: 1.25; }
+#racePlay .race-clock strong { font-size: 32px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+#racePlay .race-clock span { font-size: 10px; }
+/* Bewaarde post-itvariant: alleen actief met de optionele klasse race-clock-postit.
+   Zonder die klasse blijft de klok bovenin de puzzel staan. */
+:root {
+  --race-note-paper: #fff0a6;
+  --race-note-ink: #222044;
+  --race-note-muted: #625733;
+  --race-note-warn: #8b490b;
+  --race-note-critical: #a32424;
+}
+@media (min-width: 1280px) {
+  #racePlay .race-clock.race-clock-postit {
+    position: absolute;
+    top: 30px;
+    left: calc(100% + 26px);
+    width: 154px;
+    min-height: 142px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 24px 12px 20px;
+    background: var(--race-note-paper);
+    border-radius: 2px 2px 12px 2px;
+    box-shadow: 3px 9px 20px rgba(8, 12, 45, .22);
+    transform: rotate(2deg);
+    text-align: center;
+  }
+  #racePlay .race-clock.race-clock-postit::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: calc(50% - 25px);
+    width: 50px;
+    height: 20px;
+    background: rgba(255, 255, 255, .42);
+    transform: rotate(-5deg);
+  }
+  #racePlay .race-clock.race-clock-postit strong { color: var(--race-note-ink); font-size: 36px; }
+  #racePlay .race-clock.race-clock-postit span { color: var(--race-note-muted); font-size: 10px; }
+  #racePlay .race-clock.race-clock-postit.warn strong { color: var(--race-note-warn); }
+  #racePlay .race-clock.race-clock-postit.crit strong { color: var(--race-note-critical); }
+}
+#racePlay .race-progress-track { margin: 12px 0; }
+#racePlay .race-scoreline { margin: 0; gap: 12px; flex-wrap: wrap; }
+#racePlay .race-history-label { display: block; margin: 12px 0 4px; }
+#racePlay .race-history-label:has(+ .race-history:empty),
+#racePlay .race-history:empty { display: none; }
+#racePlay .race-history { min-height: 0; padding: 4px 2px; }
+#racePlay .race-question-card {
+  width: 100%;
+  max-width: none;
+  margin: 22px 0 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+#racePlay #raceQuestionList .q-block {
+  padding: 16px 18px;
+  margin: 0;
+  border-radius: 14px;
+}
+#racePlay #raceQuestionList .q-label { font-size: 15px; line-height: 1.45; margin-bottom: 10px; }
+#racePlay #raceQuestionList .input-wrapper input { height: 50px; min-height: 50px; font-size: 16px; }
+#racePlay #raceQuestionList .connector { margin: 12px 0; gap: 14px; }
+#racePlay #raceQuestionList .connector-badge { width: 36px; height: 36px; min-height: 36px; font-size: 18px; }
+#racePlay .btn-check { min-height: 48px; margin-top: 20px; padding: 12px 18px; }
+#racePlay .race-hint { display: block; margin-top: 10px; font-size: 11px; line-height: 1.4; }
+#racePlay #raceQuestionList .puzzelfoto { width: 136px; }
+#racePlay #raceQuestionList .puzzelfoto .daily-photo img { height: 100px; }
+#racePlay #raceQuestionList .puzzelfoto .daily-photo span { padding: 8px 3px; line-height: 1.35; }
+@media (min-width: 561px) {
+  #racePlay #raceQuestionList .q-block:has(.puzzelfoto) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 150px;
+    grid-template-rows: 1fr auto auto auto 1fr;
+    column-gap: 20px;
+    align-content: center;
+    padding: 16px 18px;
+    min-height: 166px;
+  }
+  #racePlay #raceQuestionList .q-block:has(.puzzelfoto)::after { content: none; }
+  #racePlay #raceQuestionList .q-block:has(.puzzelfoto) > .q-label { grid-column: 1; grid-row: 2; }
+  #racePlay #raceQuestionList .q-block:has(.puzzelfoto) > .vraag-ondertekst { grid-column: 1; grid-row: 3; }
+  #racePlay #raceQuestionList .q-block:has(.puzzelfoto) > .input-wrapper { grid-column: 1; grid-row: 4; clear: none; }
+  #racePlay #raceQuestionList .puzzelfoto {
+    position: relative;
+    float: none;
+    top: auto;
+    right: auto;
+    grid-column: 2;
+    grid-row: 1 / 6;
+    align-self: center;
+    justify-self: end;
+    width: 150px;
+    margin: 0;
+  }
+}
+@media (max-width: 560px) {
+  #racePlay { padding: 18px 14px; }
+  #racePlay .race-question-card { margin-top: 18px; }
+  #racePlay #raceQuestionList .q-block { padding: 14px; }
+  #racePlay #raceQuestionList .puzzelfoto { width: 106px; margin: 0 0 12px 12px; }
+  #racePlay #raceQuestionList .puzzelfoto .daily-photo img { height: 80px; }
+}
