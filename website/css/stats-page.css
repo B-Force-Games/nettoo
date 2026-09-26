@@ -1,5 +1,5 @@
 /* Statistieken delen de oppervlakken, kleuren en typografie van het spel. */
-body[data-full-stats] .stats-page-screen { padding-top: 100px; }
+body[data-full-stats] .stats-page-screen { padding-top: 90px; }
 body[data-full-stats] .stats-nav-bar { display: none; }
 .stats-page-screen { display: none; min-height: 100vh; padding: 32px 24px 72px; color: var(--ink); }
 .stats-page-screen.active { display: block; }

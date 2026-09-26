@@ -490,7 +490,7 @@ textarea:focus-visible,
 
 /* Shared page frame */
 .library-screen {
-  padding: 100px 24px 72px;
+  padding: 90px 24px 72px;
   scrollbar-gutter: stable;
 }
 
@@ -2350,39 +2350,14 @@ body:has(#screen-puzzle.active, #libraryScreen.active, #breinkrakersScreen.activ
   }
 }
 
-/* Tijdens het spelen blijft de navigatie bereikbaar, maar neemt ze minder hoogte in. */
+/* Speelschermen houden ruimte onder de bovenbalk, die nu overal even hoog is. */
 #libraryScreen.active:has(#libraryPuzzleView[style*="display: block"]) .library-page-top,
 #raceScreen.active:has(#racePlay[style*="display: block"]) .library-page-top { display: none; }
-body:has(#screen-puzzle.active:not(.is-review),
-          #libraryScreen.active #libraryPuzzleView[style*="display: block"],
-          #raceScreen.active #racePlay[style*="display: block"],
-          #breinkrakersScreen.active.is-playing) .topbar {
-  height: 54px;
-  border-bottom: 0;
-  background: linear-gradient(180deg, var(--bg-main) 75%, transparent);
-  backdrop-filter: none;
+.screen-home.active { padding-top: 102px; }
+@media (max-width: 560px) {
+  .screen-home.active { padding-top: 78px; }
 }
-body:has(#screen-puzzle.active:not(.is-review),
-          #libraryScreen.active #libraryPuzzleView[style*="display: block"],
-          #raceScreen.active #racePlay[style*="display: block"],
-          #breinkrakersScreen.active.is-playing) .topbar-navigation > :is(.hamburger, .topbar-home) {
-  width: 36px;
-  height: 36px;
-  flex-basis: 36px;
-}
-body:has(#screen-puzzle.active:not(.is-review),
-          #libraryScreen.active #libraryPuzzleView[style*="display: block"],
-          #raceScreen.active #racePlay[style*="display: block"],
-          #breinkrakersScreen.active.is-playing) .topbar :is(.streak-badge, .stats-button, .user-btn) {
-  min-height: 36px;
-}
-body:has(#screen-puzzle.active:not(.is-review),
-          #libraryScreen.active #libraryPuzzleView[style*="display: block"],
-          #raceScreen.active #racePlay[style*="display: block"],
-          #breinkrakersScreen.active.is-playing) .topbar .stats-button {
-  width: 36px;
-  padding: 7px;
-}
+#libraryPuzzleView { scroll-margin-top: clamp(88px, 10vh, 106px); }
 
 @media (min-width: 760px) {
   #screen-puzzle.active:not(.is-review) { padding-top: clamp(64px, 7vh, 82px); }
@@ -2972,6 +2947,12 @@ html[data-landing-preview="editorial"] .home-quick-card strong { max-width: none
   border: 0;
 }
 #breinkrakersScreen.active.is-playing { padding-top: clamp(72px, 9vh, 100px); padding-bottom: 24px; }
+/* Ook tijdens een race blijft de bovenrand van de kaart volledig in beeld. */
+#raceScreen.active:has(#racePlay[style*="display: block"]) { padding-top: clamp(84px, 9vh, 100px); }
+/* De gewone puzzel houdt boven de witte kaart dezelfde rustige ademruimte. */
+#libraryScreen.active:has(#libraryPuzzleView[style*="display: block"] #libraryQuestionList > .q-block) {
+  padding-top: max(clamp(88px, 10vh, 106px), calc((100dvh - 690px) / 2));
+}
 #bkPlay .eyebrow { margin-bottom: 8px; }
 #bkPlay .headline { margin-bottom: 20px; font-size: 26px; line-height: 1.15; }
 #bkPlay .bk-question-card { padding: 20px; }

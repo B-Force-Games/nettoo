@@ -57,12 +57,12 @@
 
   /* ---------- Navigatie & Topbar ---------- */
   .topbar {
-    position: fixed; top: 0; left: 0; right: 0; height: 72px;
+    position: fixed; top: 0; left: 0; right: 0; height: 58px;
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 28px; z-index: 990; pointer-events: none;
-    background:color-mix(in srgb, var(--bg-main) 88%, transparent);
+    background:color-mix(in srgb, var(--bg-main) 94%, transparent);
     border-bottom:1px solid rgba(255,255,255,.1);
-    backdrop-filter:blur(14px);
+    backdrop-filter:blur(12px);
   }
   .topbar > * { pointer-events: auto; }
 
@@ -136,7 +136,7 @@
   .user-btn.logged-in:hover { background:rgba(15,18,69,.24); border-color:rgba(255,255,255,.45); }
   .user-btn-icon { flex:0 0 auto; }
   @media(max-width:560px){
-    .topbar { height:64px; padding:0 12px; }
+    .topbar { height:58px; padding:0 12px; }
     .hamburger { width:40px; height:40px; }
     .streak-badge { padding:0 10px; gap:5px; }
     .user-btn { padding:0 11px; max-width:126px; }
