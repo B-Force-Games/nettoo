@@ -1,0 +1,4311 @@
+{
+  "edition": "library-curated-20260927",
+  "source": "NETTO ALLE GOEDGEKEURDE VRAGEN.xlsx",
+  "review_note": "Redactionele selectie: herkenbaarheid, schatbaarheid en variatie; geen door spelers gekalibreerde moeilijkheid.",
+  "reserved": {
+    "q106": 1,
+    "q1401": 1,
+    "q350": 1,
+    "q911": 2,
+    "q190": 2,
+    "q148": 2,
+    "q149": 3,
+    "q1335": 3,
+    "q131": 3,
+    "q622": 3,
+    "q885": 4,
+    "q601": 4,
+    "q151": 4,
+    "q162": 5,
+    "q517": 5,
+    "q503": 5,
+    "q145": 6,
+    "q1337": 6,
+    "q1447": 6,
+    "q116": 7,
+    "q757": 7,
+    "q1377": 7,
+    "q1381": 8,
+    "q1126": 8,
+    "q945": 8,
+    "q120": 9,
+    "q610": 9,
+    "q398": 9,
+    "q1288": 9,
+    "q534": 10,
+    "q1379": 10,
+    "q393": 10,
+    "q786": 11,
+    "q1101": 11,
+    "q616": 11,
+    "q645": 12,
+    "q1137": 12,
+    "q960": 12,
+    "N72": 13,
+    "q643": 13,
+    "q017": 13,
+    "q579": 14,
+    "q1331": 14,
+    "q943": 14,
+    "q1075": 15,
+    "q1433": 15,
+    "q955": 15,
+    "q328": 16,
+    "q1227": 16,
+    "q740": 16,
+    "q317": 17,
+    "q952": 17,
+    "q691": 17,
+    "N35": 18,
+    "q792": 18,
+    "q260": 18,
+    "q455": 19,
+    "q698": 19,
+    "q511": 19,
+    "q1436": 20,
+    "q198": 20,
+    "q177": 20,
+    "q928": 20,
+    "q1037": 21,
+    "q580": 21,
+    "q527": 21,
+    "q558": 22,
+    "q513": 22,
+    "q027": 22,
+    "q547": 23,
+    "q682": 23,
+    "q307": 23,
+    "q773": 24,
+    "q1249": 24,
+    "q337": 24,
+    "q1437": 25,
+    "q946": 25,
+    "q574": 25,
+    "q1054": 26,
+    "q1309": 26,
+    "q802": 26,
+    "q134": 27,
+    "q753": 27,
+    "q229": 27,
+    "q604": 27,
+    "q342": 28,
+    "q929": 28,
+    "q256": 28,
+    "q571": 28,
+    "q340": 29,
+    "q488": 29,
+    "N53": 29,
+    "q508": 30,
+    "q603": 30,
+    "q242": 30,
+    "N67": 31,
+    "q467": 31,
+    "q405": 31,
+    "q690": 32,
+    "q1074": 32,
+    "q846": 32,
+    "q784": 33,
+    "q1027": 33,
+    "q939": 33,
+    "q639": 34,
+    "q768": 34,
+    "q589": 34,
+    "q273": 35,
+    "q561": 35,
+    "q231": 35,
+    "q1279": 36,
+    "q480": 36,
+    "q1089": 36,
+    "q605": 37,
+    "q1281": 37,
+    "q512": 37,
+    "q1012": 38,
+    "q290": 38,
+    "q074": 38,
+    "N40": 39,
+    "q401": 39,
+    "q379": 39,
+    "q225": 40,
+    "q686": 40,
+    "q271": 40,
+    "q345": 41,
+    "q404": 41,
+    "q232": 41,
+    "q935": 42,
+    "q557": 42,
+    "q069": 42,
+    "q665": 43,
+    "q1001": 43,
+    "q272": 43,
+    "q523": 44,
+    "q828": 44,
+    "q128": 44,
+    "q114": 45,
+    "q081": 45,
+    "q226": 45,
+    "q1019": 46,
+    "q1439": 46,
+    "q783": 46,
+    "q991": 47,
+    "q1135": 47,
+    "q288": 47,
+    "q299": 48,
+    "q529": 48,
+    "q251": 48,
+    "q308": 49,
+    "q450": 49,
+    "q1011": 49
+  },
+  "puzzles": [
+    {
+      "id": "b0954bdb-42b0-597f-ab1d-3e08f5fe039c",
+      "number": 1,
+      "operator": "×",
+      "questions": [
+        {
+          "id": "q106",
+          "row": 59,
+          "status": "APPROVED",
+          "category": "Biologie & gezondheid",
+          "original": "Hoeveel bloedgroepen kent het ABO-systeem?",
+          "question": "How many blood groups are in the ABO system?",
+          "subtitle": "Ignore positive and negative blood types.",
+          "answer": 4,
+          "evidence": "There are 4 main blood groups (types of blood) – A, B, AB and O.",
+          "source": "https://www.nhs.uk/conditions/blood-groups/",
+          "notes": "Explicitly approved by the user.",
+          "photo": null,
+          "unit_group": "groups",
+          "group": "q106",
+          "rating": 1,
+          "unit": "groups"
+        },
+        {
+          "id": "q1401",
+          "row": 560,
+          "status": "APPROVED",
+          "category": "Sport",
+          "original": "Hoeveel speelminuten duurt een officiële voetbalwedstrijd zonder verlenging?",
+          "question": "How many minutes of regulation time are in a football match?",
+          "subtitle": null,
+          "answer": 90,
+          "evidence": "Twee helften van 45 minuten, samen negentig.",
+          "source": "https://en.wikipedia.org/wiki/Association_football",
+          "notes": "Explicitly approved in Q1263–Q1408 review.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/GAE_-_NEC_-_53492583527_%28Calvin_Verdonk%29.jpg/330px-GAE_-_NEC_-_53492583527_%28Calvin_Verdonk%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:GAE_-_NEC_-_53492583527_(Calvin_Verdonk).jpg",
+            "licentie": "CC BY 2.0",
+            "maker": "Carlo Bruil Fotografie"
+          },
+          "unit_group": "minutes",
+          "group": "q1401",
+          "rating": 1,
+          "unit": "minutes"
+        },
+        {
+          "id": "q350",
+          "row": 189,
+          "status": "APPROVED",
+          "category": "Wiskunde",
+          "original": "Hoeveel graden heeft een volledige cirkel?",
+          "question": "How many degrees are in a full circle?",
+          "subtitle": null,
+          "answer": 360,
+          "evidence": "Een volledige cirkel meet per definitie 360 graden. De oude bron verwees naar een museumpagina over de David.",
+          "source": "https://en.wikipedia.org/wiki/Degree_(angle)",
+          "notes": "Explicitly approved by the user.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Kreis.svg/330px-Kreis.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Kreis.svg",
+            "licentie": "Public domain",
+            "maker": "Original: Ævar Arnfjörð Bjarmason Vector: Sven"
+          },
+          "unit_group": "degrees",
+          "group": "q350",
+          "rating": 1,
+          "unit": "°"
+        }
+      ],
+      "note": "Behoud: eenvoudige herkenbare ankers, passend bij Easy.",
+      "origin": {
+        "mode": "library",
+        "number": 1
+      },
+      "difficulty": "easy",
+      "difficulty_score": 30,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/GAE_-_NEC_-_53492583527_%28Calvin_Verdonk%29.jpg/330px-GAE_-_NEC_-_53492583527_%28Calvin_Verdonk%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:GAE_-_NEC_-_53492583527_(Calvin_Verdonk).jpg",
+        "licentie": "CC BY 2.0",
+        "maker": "Carlo Bruil Fotografie",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "fb490c30-99ff-5a1f-ab5a-865366a60f5a",
+      "number": 2,
+      "operator": "−",
+      "questions": [
+        {
+          "id": "q911",
+          "row": 395,
+          "status": "APPROVED",
+          "category": "Geografie",
+          "original": "Hoeveel landen grenzen aan Zuid-Afrika?",
+          "question": "How many countries border South Africa?",
+          "subtitle": null,
+          "answer": 6,
+          "evidence": "Namibie, Botswana, Zimbabwe, Mozambique, Eswatini en Lesotho.",
+          "source": "https://en.wikipedia.org/wiki/South_Africa",
+          "notes": "Final Q805–Q949 review decision.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/South_Africa_%28centered_orthographic_projection%29.svg/330px-South_Africa_%28centered_orthographic_projection%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:South_Africa_(centered_orthographic_projection).svg",
+            "licentie": "CC BY-SA 4.0",
+            "maker": "M.Bitton"
+          },
+          "unit_group": "countries",
+          "group": "q911",
+          "rating": 2,
+          "unit": "countries"
+        },
+        {
+          "id": "q190",
+          "row": 105,
+          "status": "APPROVED",
+          "category": "Eten & drinken",
+          "original": "Hoeveel shotjes espresso zitten er klassiek in een cappuccino?",
+          "question": "How many shots of espresso are traditionally used in a cappuccino?",
+          "subtitle": "Traditional Italian-style cappuccino.",
+          "answer": 1,
+          "evidence": "Klassiek een shot; veel zaken gebruiken er twee. Met \"klassiek\" erbij is de vraag eenduidig.",
+          "source": "https://en.wikipedia.org/wiki/Cappuccino",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Cappuccino_in_original.jpg/330px-Cappuccino_in_original.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Cappuccino_in_original.jpg",
+            "licentie": "CC BY 2.0",
+            "maker": "Vee Satayamas"
+          },
+          "unit_group": "espresso",
+          "group": "q190",
+          "rating": 1,
+          "unit": "shots"
+        },
+        {
+          "id": "q148",
+          "row": 82,
+          "status": "APPROVED",
+          "category": "Dieren",
+          "original": "Hoeveel armen heeft de gewone vijfarmige zeester?",
+          "question": "How many arms does a common starfish typically have?",
+          "subtitle": null,
+          "answer": 5,
+          "evidence": "De gewone zeester heeft vijf armen; de vraag noemt de vijfarmige soort expliciet.",
+          "source": "https://oceanservice.noaa.gov/facts/seastars.html",
+          "notes": "Species and scope still need tightening.",
+          "photo": null,
+          "unit_group": "arms",
+          "group": "q148",
+          "rating": 1,
+          "unit": "arms"
+        }
+      ],
+      "note": "Behoud: eenvoudige herkenbare ankers, passend bij Easy.",
+      "origin": {
+        "mode": "library",
+        "number": 4
+      },
+      "difficulty": "easy",
+      "difficulty_score": 30,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Cappuccino_in_original.jpg/330px-Cappuccino_in_original.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Cappuccino_in_original.jpg",
+        "licentie": "CC BY 2.0",
+        "maker": "Vee Satayamas",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "3a94b13e-8992-5f9d-8d2b-b8e88c490ad4",
+      "number": 3,
+      "operator": "+",
+      "questions": [
+        {
+          "id": "q149",
+          "row": 83,
+          "status": "APPROVED",
+          "category": "Dieren",
+          "original": "Hoeveel bulten heeft een dromedaris?",
+          "question": "How many humps does a dromedary have?",
+          "subtitle": null,
+          "answer": 1,
+          "evidence": "Bestaande bron opgehaald; het antwoord staat op de pagina.",
+          "source": "https://animals.sandiegozoo.org/animals/camel",
+          "notes": "Current evidence excerpt needs replacement.",
+          "photo": null,
+          "unit_group": "humps",
+          "group": "q149",
+          "rating": 1,
+          "unit": "humps"
+        },
+        {
+          "id": "q1335",
+          "row": 545,
+          "status": "APPROVED",
+          "category": "Spellen en speelgoed",
+          "original": "Hoeveel kleuren heeft een standaard Rubiks kubus?",
+          "question": "How many colors does a standard Rubik’s Cube have?",
+          "subtitle": null,
+          "answer": 6,
+          "evidence": "De kubus heeft zes kleuren, een per zijvlak. De oude bron waren de spelregels van Catan.",
+          "source": "https://en.wikipedia.org/wiki/Rubik%27s_Cube",
+          "notes": "Explicitly approved in Q1263–Q1408 review.",
+          "photo": null,
+          "unit_group": "colors",
+          "group": "q1335",
+          "rating": 1,
+          "unit": "colours"
+        },
+        {
+          "id": "q131",
+          "row": 72,
+          "status": "APPROVED",
+          "category": "Boeken en literatuur",
+          "original": "Hoeveel boeken bevat de Harry Potter-hoofdserie?",
+          "question": "How many books are in the main Harry Potter series?",
+          "subtitle": null,
+          "answer": 7,
+          "evidence": "The books were transformed into a blockbuster series of eight films (the final book, some 750 pages long, was adapted into two films) released over 10 years, which grossed more than $7 billion worldwide.",
+          "source": "http://web.archive.org/web/20260616143131/https://www.britannica.com/topic/Harry-Potter",
+          "notes": "Current evidence excerpt needs replacement.",
+          "photo": null,
+          "n": 7,
+          "unit": "books"
+        }
+      ],
+      "note": "Harry Potter vervangt een landengroep: direct herkenbaar.",
+      "origin": {
+        "mode": "library",
+        "number": 5
+      },
+      "difficulty": "easy",
+      "difficulty_score": 30,
+      "photo": null
+    },
+    {
+      "id": "3be90b3b-101d-5474-b394-b9c98cef8097",
+      "number": 4,
+      "operator": "−",
+      "questions": [
+        {
+          "id": "q885",
+          "row": 391,
+          "status": "APPROVED",
+          "category": "Geografie",
+          "original": "Hoeveel landen grenzen aan Frankrijk (vasteland excl. overzeese gebieden)?",
+          "question": "How many countries border mainland France?",
+          "subtitle": null,
+          "answer": 8,
+          "evidence": "Belgie, Luxemburg, Duitsland, Zwitserland, Italie, Monaco, Spanje en Andorra.",
+          "source": "https://nl.wikipedia.org/wiki/Frankrijk",
+          "notes": "Final Q805–Q949 review decision.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/330px-Flag_of_France.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_France.svg",
+            "licentie": "Public domain",
+            "maker": "Original: Unknown Vector: SKopp"
+          },
+          "unit_group": "countries",
+          "group": "q885",
+          "rating": 2,
+          "unit": "countries"
+        },
+        {
+          "id": "q601",
+          "row": 297,
+          "status": "APPROVED",
+          "category": "Biologie & gezondheid",
+          "original": "Hoeveel basissmaken worden in de moderne smaakleer onderscheiden?",
+          "question": "How many basic tastes are recognized in modern taste science?",
+          "subtitle": null,
+          "answer": 5,
+          "evidence": "De moderne smaakleer onderscheidt vijf basissmaken: zoet, zuur, zout, bitter en umami.",
+          "source": "https://nl.wikipedia.org/wiki/Smaak_(zintuig)",
+          "notes": null,
+          "photo": null,
+          "unit_group": "tastes",
+          "group": "q601",
+          "rating": 1,
+          "unit": "tastes"
+        },
+        {
+          "id": "q151",
+          "row": 85,
+          "status": "APPROVED",
+          "category": "Dieren",
+          "original": "Hoeveel harten heeft een octopus?",
+          "question": "How many hearts does an octopus have?",
+          "subtitle": null,
+          "answer": 3,
+          "evidence": "Een octopus heeft drie harten: twee kieuwharten en een lichaamshart.",
+          "source": "https://en.wikipedia.org/wiki/Octopus",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Octopus2.jpg/330px-Octopus2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Octopus2.jpg",
+            "licentie": "CC BY-SA 3.0",
+            "maker": "albert kok"
+          },
+          "unit_group": "hearts",
+          "group": "q151",
+          "rating": 1,
+          "unit": "hearts"
+        }
+      ],
+      "note": "Behoud: eenvoudige herkenbare ankers, passend bij Easy.",
+      "origin": {
+        "mode": "library",
+        "number": 6
+      },
+      "difficulty": "easy",
+      "difficulty_score": 30,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/330px-Flag_of_France.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_France.svg",
+        "licentie": "Public domain",
+        "maker": "Original: Unknown Vector: SKopp",
+        "vraag": 1
+      }
+    },
+    {
+      "id": "a840fb76-e126-5f40-897d-c6f0cde6fa47",
+      "number": 5,
+      "operator": "−",
+      "questions": [
+        {
+          "id": "q162",
+          "row": 89,
+          "status": "APPROVED",
+          "category": "Dieren",
+          "original": "Hoeveel poten heeft een kreeftachtige van de orde Isopoda?",
+          "question": "How many legs does an adult woodlouse have?",
+          "subtitle": null,
+          "answer": 14,
+          "evidence": "Scientists discover 14 strange new species hidden in the deep sea &#8226; Nov.",
+          "source": "http://web.archive.org/web/20251122114109/https://www.britannica.com/animal/isopod",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/Kellerassel_02.jpg/330px-Kellerassel_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Kellerassel_02.jpg",
+            "licentie": "Public domain",
+            "maker": "Arctanx"
+          },
+          "unit_group": "legs",
+          "group": "q162",
+          "rating": 3,
+          "unit": "legs"
+        },
+        {
+          "id": "q517",
+          "row": 252,
+          "status": "APPROVED",
+          "category": "Sterrenkunde & ruimte",
+          "original": "Hoeveel bemanningsleden had Apollo 11?",
+          "question": "How many crew members did Apollo 11 have?",
+          "subtitle": null,
+          "answer": 3,
+          "evidence": "In the 2nd and 3rd century CE, those at Didyma and Claros pronounced the so-called \"theological oracles\", in which Apollo confirms that all deities are aspects or servants of an all-encompassing, highest deity.",
+          "source": "https://en.wikipedia.org/wiki/Apollo",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/Apollo_11_insignia.png/330px-Apollo_11_insignia.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Apollo_11_insignia.png",
+            "licentie": "Public domain",
+            "maker": "NASA"
+          },
+          "unit_group": "crew",
+          "group": "q517",
+          "rating": 1,
+          "unit": "crew members"
+        },
+        {
+          "id": "q503",
+          "row": 242,
+          "status": "APPROVED",
+          "category": "Sport",
+          "original": "Hoeveel spelers staan er per voetbalteam op het veld?",
+          "question": "How many players per football team are on the pitch?",
+          "subtitle": null,
+          "answer": 11,
+          "evidence": "Bestaande bron opgehaald; het antwoord staat op de pagina.",
+          "source": "https://www.theifab.com/laws/latest/the-players/",
+          "notes": null,
+          "photo": null,
+          "unit_group": "players",
+          "group": "q503",
+          "rating": 1,
+          "unit": "players"
+        }
+      ],
+      "note": "Pissebedpoten, Apollo-bemanning en voetbal vervangen een herhaalde landgrensvraag.",
+      "origin": {
+        "mode": "library",
+        "number": 8
+      },
+      "difficulty": "easy",
+      "difficulty_score": 30,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/Apollo_11_insignia.png/330px-Apollo_11_insignia.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Apollo_11_insignia.png",
+        "licentie": "Public domain",
+        "maker": "NASA",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "94d4c02a-97e4-59df-b772-4bf6b159f8bf",
+      "number": 6,
+      "operator": "×",
+      "questions": [
+        {
+          "id": "q145",
+          "row": 80,
+          "status": "APPROVED",
+          "category": "Geografie",
+          "original": "Hoeveel kleuren heeft de vlag van België?",
+          "question": "How many colours are on the Belgian flag?",
+          "subtitle": null,
+          "answer": 3,
+          "evidence": "3 dat België drie gewesten omvat: het Vlaams Gewest (waarin vooral Nederlandstaligen wonen, met in bepaalde gemeenten faciliteiten voor Franstaligen), het Waals Gewest (waarin vooral Franstaligen en de Duitstalige gemeenschap wonen, in bepaalde gemeenten faciliteiten voor de Nederlandstaligen) en he",
+          "source": "https://nl.wikipedia.org/wiki/Belgi%C3%AB",
+          "notes": "Current evidence excerpt needs replacement.",
+          "photo": null,
+          "unit_group": "colours",
+          "group": "q145",
+          "rating": 1,
+          "unit": "colours"
+        },
+        {
+          "id": "q1337",
+          "row": 546,
+          "status": "APPROVED",
+          "category": "Spellen en speelgoed",
+          "original": "Hoeveel pionnen heeft iedere speler bij de start van schaken?",
+          "question": "How many pawns does each player start with in chess?",
+          "subtitle": null,
+          "answer": 8,
+          "evidence": "Elke speler begint met acht pionnen. De oude bron verwees naar een Jenga-spel.",
+          "source": "https://en.wikipedia.org/wiki/Rules_of_chess",
+          "notes": "Explicitly approved in Q1263–Q1408 review.",
+          "photo": null,
+          "unit_group": "pawns",
+          "group": "q1337",
+          "rating": 1,
+          "unit": "pawns"
+        },
+        {
+          "id": "q1447",
+          "row": 582,
+          "status": "APPROVED",
+          "category": "Taal",
+          "original": "Hoeveel letters heeft het Griekse alfabet?",
+          "question": "How many letters are in the Greek alphabet?",
+          "subtitle": null,
+          "answer": 24,
+          "evidence": "Dit alfabet is in de oudheid (rond de 9e eeuw v.Chr.) ontwikkeld uit het Fenicische alfabet en bestaat uit 24 letters.",
+          "source": "https://nl.wikipedia.org/wiki/Grieks_alfabet",
+          "notes": "Explicitly approved in Q1409–Q1510 review.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_Greece.svg/330px-Flag_of_Greece.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Greece.svg",
+            "licentie": "Public domain",
+            "maker": "Unknown author Unknown author"
+          },
+          "unit_group": "letters",
+          "group": "q1447",
+          "rating": 2,
+          "unit": "letters"
+        }
+      ],
+      "note": "Behoud: eenvoudige herkenbare ankers, passend bij Easy.",
+      "origin": {
+        "mode": "library",
+        "number": 11
+      },
+      "difficulty": "easy",
+      "difficulty_score": 30,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_Greece.svg/330px-Flag_of_Greece.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Greece.svg",
+        "licentie": "Public domain",
+        "maker": "Unknown author Unknown author",
+        "vraag": 3
+      }
+    },
+    {
+      "id": "c5cd2af3-baec-57b1-8687-efe25ec55d77",
+      "number": 7,
+      "operator": "×",
+      "questions": [
+        {
+          "id": "q116",
+          "row": 65,
+          "status": "APPROVED",
+          "category": "Biologie & gezondheid",
+          "original": "Hoeveel kamers heeft het menselijk hart?",
+          "question": "How many chambers does the human heart have?",
+          "subtitle": null,
+          "answer": 4,
+          "evidence": "Het menselijk hart heeft vier kamers: twee boezems en twee ventrikels.",
+          "source": "https://en.wikipedia.org/wiki/Heart",
+          "notes": "Explicitly approved by the user.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Anatomy_Heart_Latin_Tiesworks.jpg/330px-Anatomy_Heart_Latin_Tiesworks.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Anatomy_Heart_Latin_Tiesworks.jpg",
+            "licentie": "Public domain",
+            "maker": "Tvanbr"
+          },
+          "unit_group": "chambers",
+          "group": "q116",
+          "rating": 1,
+          "unit": "chambers"
+        },
+        {
+          "id": "q757",
+          "row": 337,
+          "status": "APPROVED",
+          "category": "Filosofie, psychologie en religie",
+          "original": "Hoeveel discipelen had Jezus volgens de Bijbel?",
+          "question": "How many apostles did Jesus choose according to the New Testament?",
+          "subtitle": null,
+          "answer": 12,
+          "evidence": "Jezus werd volgens Marcus op het derde uur na zonsopgang op Pesach (ongeveer negen uur 's morgens) gekruisigd (Marcus 14:12, 15:25).",
+          "source": "https://nl.wikipedia.org/wiki/Dood_en_herrijzenis_van_Jezus",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Christus_Ravenna_Mosaic.jpg/330px-Christus_Ravenna_Mosaic.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Christus_Ravenna_Mosaic.jpg",
+            "licentie": "Public domain",
+            "maker": "onbekend"
+          },
+          "unit_group": "apostles",
+          "group": "q757",
+          "rating": 1,
+          "unit": "apostles"
+        },
+        {
+          "id": "q1377",
+          "row": 552,
+          "status": "APPROVED",
+          "category": "Sport",
+          "original": "Hoeveel landen doen mee aan het FIFA World Cup 2026?",
+          "question": "How many teams competed in the 2026 FIFA World Cup?",
+          "subtitle": null,
+          "answer": 48,
+          "evidence": "FIFA: 2026 men’s World Cup used the 48-team format.",
+          "source": "https://www.fifa.com/en/articles/final-tournament-standings",
+          "notes": "Explicitly approved in Q1263–Q1408 review.",
+          "photo": null,
+          "unit_group": "cup",
+          "group": "q1377",
+          "rating": 2,
+          "unit": "teams"
+        }
+      ],
+      "note": "Behoud: eenvoudige herkenbare ankers, passend bij Easy.",
+      "origin": {
+        "mode": "library",
+        "number": 13
+      },
+      "difficulty": "easy",
+      "difficulty_score": 30,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Christus_Ravenna_Mosaic.jpg/330px-Christus_Ravenna_Mosaic.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Christus_Ravenna_Mosaic.jpg",
+        "licentie": "Public domain",
+        "maker": "onbekend",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "3519f698-9d7a-5d7e-ae5c-b8ed4ba84c5b",
+      "number": 8,
+      "operator": "−",
+      "questions": [
+        {
+          "id": "q1381",
+          "row": 555,
+          "status": "APPROVED",
+          "category": "Sport",
+          "original": "Hoeveel meter lang is een olympisch zwembad?",
+          "question": "How many meters long is an Olympic swimming pool?",
+          "subtitle": null,
+          "answer": 50,
+          "evidence": "In Nederland worden dergelijke baden eenvoudigweg 50 meterbaden genoemd, terwijl ze in Frankrijk het voorvoegsel Olympisch krijgen.",
+          "source": "https://nl.wikipedia.org/wiki/Zwembad_met_olympische_afmetingen",
+          "notes": "Explicitly approved in Q1263–Q1408 review.",
+          "photo": null,
+          "unit_group": "m",
+          "group": "q1381",
+          "rating": 1,
+          "unit": "m"
+        },
+        {
+          "id": "q1126",
+          "row": 501,
+          "status": "APPROVED",
+          "category": "Muziek",
+          "original": "Hoeveel snaren heeft een standaard basgitaar?",
+          "question": "How many strings does a standard bass guitar have?",
+          "subtitle": null,
+          "answer": 4,
+          "evidence": "Een standaard basgitaar heeft vier snaren: E, A, D en G.",
+          "source": "https://en.wikipedia.org/wiki/Bass_guitar",
+          "notes": null,
+          "photo": null,
+          "unit_group": "strings",
+          "group": "q1126",
+          "rating": 1,
+          "unit": "strings"
+        },
+        {
+          "id": "q945",
+          "row": 419,
+          "status": "APPROVED",
+          "category": "Geografie",
+          "original": "Hoeveel miljoen inwoners heeft Argentinië?",
+          "question": "How many million people live in Argentina?",
+          "subtitle": "As of 2025.",
+          "answer": 46,
+          "evidence": "| population_census = IncreaseNeutral 46,044,703 cite news |access-date=31 January 2023 |periodical= Página/12 |quote=La población argentina tiene actualmente 46.044.703 habitantes, es decir, 5.927.607 de personas más que las relevadas en el último censo, en 2010. En mayo de 2022, pocos días después del relevamiento, e",
+          "source": "https://en.wikipedia.org/wiki/Argentina",
+          "notes": "Final Q805–Q949 review decision.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/LocationArgentina2.svg/330px-LocationArgentina2.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:LocationArgentina2.svg",
+            "licentie": "CC BY-SA 3.0",
+            "maker": "B1mbo"
+          },
+          "unit_group": "people",
+          "group": "q945",
+          "rating": 2,
+          "unit": "× 1,000,000 people"
+        }
+      ],
+      "note": "Behoud: eenvoudige herkenbare ankers, passend bij Easy.",
+      "origin": {
+        "mode": "library",
+        "number": 14
+      },
+      "difficulty": "easy",
+      "difficulty_score": 30,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/LocationArgentina2.svg/330px-LocationArgentina2.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:LocationArgentina2.svg",
+        "licentie": "CC BY-SA 3.0",
+        "maker": "B1mbo",
+        "vraag": 3
+      }
+    },
+    {
+      "id": "682fe651-6940-5a7d-a329-b2775eafbd6e",
+      "number": 9,
+      "operator": "+",
+      "questions": [
+        {
+          "id": "q120",
+          "row": 67,
+          "status": "APPROVED",
+          "category": "Biologie & gezondheid",
+          "original": "Hoeveel paar ribben heeft een mens normaal?",
+          "question": "How many pairs of ribs does a human normally have?",
+          "subtitle": null,
+          "answer": 12,
+          "evidence": "De mens heeft twaalf paar ribben.",
+          "source": "https://en.wikipedia.org/wiki/Rib_cage",
+          "notes": "Explicitly approved by the user.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d1/Rib_cage.gif/330px-Rib_cage.gif?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Rib_cage.gif",
+            "licentie": "Public domain",
+            "maker": "Mikael Häggström"
+          },
+          "unit_group": "ribs",
+          "group": "q120",
+          "rating": 1,
+          "unit": "pairs of ribs"
+        },
+        {
+          "id": "q398",
+          "row": 206,
+          "status": "APPROVED",
+          "category": "Muziek",
+          "original": "Hoeveel toetsen heeft een standaard piano?",
+          "question": "How many keys does a standard piano have?",
+          "subtitle": null,
+          "answer": 88,
+          "evidence": "Bestaande bron opgehaald; het antwoord staat op de pagina.",
+          "source": "https://www.yamaha.com/en/musical_instrument_guide/piano/structure/",
+          "notes": "Explicitly approved by the user.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Steinway_Vienna_002.JPG/330px-Steinway_Vienna_002.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Steinway_Vienna_002.JPG",
+            "licentie": "CC BY-SA 3.0",
+            "maker": "Gryffindor"
+          },
+          "unit_group": "keys",
+          "group": "q398",
+          "rating": 1,
+          "unit": "keys"
+        },
+        {
+          "id": "q1288",
+          "row": 534,
+          "status": "APPROVED",
+          "category": "Politiek en recht",
+          "original": "Hoeveel senatoren zitten er in de Amerikaanse Senaat?",
+          "question": "How many senators are in the U.S. Senate?",
+          "subtitle": null,
+          "answer": 100,
+          "evidence": "Senatoren\nDe Senaat omvat 100 zetels, twee voor elke Amerikaanse staat.",
+          "source": "https://nl.wikipedia.org/wiki/Senaat_%28Verenigde_Staten%29",
+          "notes": "Explicitly approved in Q1263–Q1408 review.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Seal_of_the_United_States_Senate.svg/330px-Seal_of_the_United_States_Senate.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Seal_of_the_United_States_Senate.svg",
+            "licentie": "CC BY-SA 2.5",
+            "maker": "Louis Dreka designed the actual seal, first used in 1885 per here . Vectorized from a version in stained glass. Original"
+          },
+          "unit_group": "senators",
+          "group": "q1288",
+          "rating": 2,
+          "unit": "senators"
+        }
+      ],
+      "note": "Behoud: eenvoudige herkenbare ankers, passend bij Easy.",
+      "origin": {
+        "mode": "library",
+        "number": 21
+      },
+      "difficulty": "easy",
+      "difficulty_score": 30,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Steinway_Vienna_002.JPG/330px-Steinway_Vienna_002.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Steinway_Vienna_002.JPG",
+        "licentie": "CC BY-SA 3.0",
+        "maker": "Gryffindor",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "b74a81c1-a288-599b-ad43-50dce3640b84",
+      "number": 10,
+      "operator": "÷",
+      "questions": [
+        {
+          "id": "q534",
+          "row": 267,
+          "status": "APPROVED",
+          "category": "Sterrenkunde & ruimte",
+          "original": "Op hoeveel kilometer hoogte boven de aarde draait het ISS gemiddeld?",
+          "question": "How many kilometres above Earth does the ISS orbit on average?",
+          "subtitle": null,
+          "answer": 400,
+          "evidence": "Hoewel de diameter van de zon ongeveer 400 keer zo groot is als die van de maan, hebben zon en maan vanaf de Aarde gezien ongeveer dezelfde schijnbare diameter aan de hemel.",
+          "source": "https://nl.wikipedia.org/wiki/Aarde_%28planeet%29",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/The_station_pictured_from_the_SpaceX_Crew_Dragon_5_%28cropped%29.jpg/330px-The_station_pictured_from_the_SpaceX_Crew_Dragon_5_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:The_station_pictured_from_the_SpaceX_Crew_Dragon_5_(cropped).jpg",
+            "licentie": "Public domain",
+            "maker": "NASA"
+          },
+          "unit_group": "km",
+          "group": "q534",
+          "rating": 2,
+          "unit": "km"
+        },
+        {
+          "id": "q1379",
+          "row": 553,
+          "status": "APPROVED",
+          "category": "Sport",
+          "original": "Hoeveel meter is de klassieke sprintafstand in de atletiek?",
+          "question": "How many meters is the classic sprint distance in athletics?",
+          "subtitle": null,
+          "answer": 100,
+          "evidence": "De klassieke sprintafstand is honderd meter.",
+          "source": "https://worldathletics.org/",
+          "notes": "Explicitly approved in Q1263–Q1408 review.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Naisten_400_m_aidat.jpg/330px-Naisten_400_m_aidat.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Naisten_400_m_aidat.jpg",
+            "licentie": "Public domain",
+            "maker": "Lumijaguaari"
+          },
+          "unit_group": "m",
+          "group": "q1379",
+          "rating": 1,
+          "unit": "m"
+        },
+        {
+          "id": "q393",
+          "row": 204,
+          "status": "APPROVED",
+          "category": "Muziek",
+          "original": "Hoeveel snaren heeft een standaard viool?",
+          "question": "How many strings does a standard violin have?",
+          "subtitle": null,
+          "answer": 4,
+          "evidence": "Een viool heeft vier snaren: G, D, A en E.",
+          "source": "https://en.wikipedia.org/wiki/Violin",
+          "notes": "Explicitly approved by the user.",
+          "photo": null,
+          "unit_group": "strings",
+          "group": "q393",
+          "rating": 1,
+          "unit": "strings"
+        }
+      ],
+      "note": "Behoud: eenvoudige herkenbare ankers, passend bij Easy.",
+      "origin": {
+        "mode": "library",
+        "number": 24
+      },
+      "difficulty": "easy",
+      "difficulty_score": 30,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Naisten_400_m_aidat.jpg/330px-Naisten_400_m_aidat.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Naisten_400_m_aidat.jpg",
+        "licentie": "Public domain",
+        "maker": "Lumijaguaari",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "e7f38802-c8a4-5ed8-81af-c72d1eedd590",
+      "number": 11,
+      "operator": "÷",
+      "questions": [
+        {
+          "id": "q786",
+          "row": 348,
+          "status": "APPROVED",
+          "category": "Gebouwen en infrastructuur",
+          "original": "Hoeveel meter hoog is de Elizabeth Tower, de toren van Big Ben?",
+          "question": "How many meters tall is the Elizabeth Tower, home of Big Ben?",
+          "subtitle": null,
+          "answer": 96,
+          "evidence": "De Elizabeth Tower is 96 meter hoog.",
+          "source": "https://en.wikipedia.org/wiki/Big_Ben",
+          "notes": null,
+          "photo": null,
+          "unit_group": "m",
+          "group": "q786",
+          "rating": 2,
+          "unit": "m"
+        },
+        {
+          "id": "q1101",
+          "row": 497,
+          "status": "APPROVED",
+          "category": "Mode en lifestyle",
+          "original": "Hoeveel karaat is puur goud?",
+          "question": "How many karats is pure gold?",
+          "subtitle": null,
+          "answer": 24,
+          "evidence": "Het massagehalte aan goud van sieraden wordt gemeten in karaat; zuiver goud is 24 karaat.",
+          "source": "https://nl.wikipedia.org/wiki/Goud",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Gold-crystals.jpg/330px-Gold-crystals.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Gold-crystals.jpg",
+            "licentie": "CC BY-SA 3.0 de",
+            "maker": "Alchemist-hp ( talk ) www.pse-mendelejew.de"
+          },
+          "unit_group": "karats",
+          "group": "q1101",
+          "rating": 1,
+          "unit": "karats"
+        },
+        {
+          "id": "q616",
+          "row": 306,
+          "status": "APPROVED",
+          "category": "Biologie & gezondheid",
+          "original": "Uit hoeveel verschillende basen bestaat DNA?",
+          "question": "How many different bases make up DNA?",
+          "subtitle": null,
+          "answer": 4,
+          "evidence": "DNA bestaat uit vier basen: adenine, thymine, guanine en cytosine.",
+          "source": "https://www.genome.gov/genetics-glossary/Deoxyribonucleic-Acid",
+          "notes": null,
+          "photo": null,
+          "unit_group": "bases",
+          "group": "q616",
+          "rating": 1,
+          "unit": "bases"
+        }
+      ],
+      "note": "Behoud: herkenbare onderwerpen met één uitdagender schatting.",
+      "origin": {
+        "mode": "library",
+        "number": 20
+      },
+      "difficulty": "intermediate",
+      "difficulty_score": 50,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Gold-crystals.jpg/330px-Gold-crystals.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Gold-crystals.jpg",
+        "licentie": "CC BY-SA 3.0 de",
+        "maker": "Alchemist-hp ( talk ) www.pse-mendelejew.de",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "2b7c4268-d6db-5948-8184-46312680b919",
+      "number": 12,
+      "operator": "÷",
+      "questions": [
+        {
+          "id": "q645",
+          "row": 315,
+          "status": "APPROVED",
+          "category": "Dieren",
+          "original": "Hoeveel kilogram weegt een volwassen mannetjesolifant in Afrika?",
+          "question": "How many kilograms does an adult male African elephant weigh?",
+          "subtitle": null,
+          "answer": 6000,
+          "evidence": "Mannetjes wegen tot 6000 kg.",
+          "source": "https://en.wikipedia.org/wiki/African_bush_elephant",
+          "notes": null,
+          "photo": null,
+          "unit_group": "kg",
+          "group": "q645",
+          "rating": 2,
+          "unit": "kg"
+        },
+        {
+          "id": "q1137",
+          "row": 507,
+          "status": "APPROVED",
+          "category": "Sterrenkunde & ruimte",
+          "original": "Hoeveel kilometer boven de aarde ligt de Kármánlijn, de grens van de ruimte?",
+          "question": "How many kilometres above Earth is the commonly used boundary of space?",
+          "subtitle": "The Kármán line.",
+          "answer": 100,
+          "evidence": "De kármánlijn is een denkbeeldige grens op een hoogte van 100 kilometer boven de Aarde.",
+          "source": "https://nl.wikipedia.org/wiki/K%C3%A1rm%C3%A1nlijn",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Top_of_Atmosphere.jpg/330px-Top_of_Atmosphere.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Top_of_Atmosphere.jpg",
+            "licentie": "Public domain",
+            "maker": "NASA Earth Observatory"
+          },
+          "unit_group": "km",
+          "group": "q1137",
+          "rating": 2,
+          "unit": "km"
+        },
+        {
+          "id": "q960",
+          "row": 433,
+          "status": "APPROVED",
+          "category": "Geografie",
+          "original": "Hoeveel procent van het Amazonebekken ligt ongeveer in Brazilië?",
+          "question": "What percentage of the Amazon Basin lies in Brazil, approximately?",
+          "subtitle": null,
+          "answer": 60,
+          "evidence": "Ongeveer zestig procent van het bekken ligt in Brazilie.",
+          "source": "https://en.wikipedia.org/wiki/Amazon_basin",
+          "notes": "Explicitly approved by the user.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Coat_of_arms_of_Brazil.svg/330px-Coat_of_arms_of_Brazil.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_Brazil.svg",
+            "licentie": "Public domain",
+            "maker": "onbekend"
+          },
+          "unit_group": "percent",
+          "group": "q960",
+          "rating": 2,
+          "unit": "%"
+        }
+      ],
+      "note": "Behoud: herkenbare onderwerpen met één uitdagender schatting.",
+      "origin": {
+        "mode": "library",
+        "number": 27
+      },
+      "difficulty": "intermediate",
+      "difficulty_score": 50,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Top_of_Atmosphere.jpg/330px-Top_of_Atmosphere.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Top_of_Atmosphere.jpg",
+        "licentie": "Public domain",
+        "maker": "NASA Earth Observatory",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "5563b1e8-1998-564a-af54-7acec1087e0e",
+      "number": 13,
+      "operator": "−",
+      "questions": [
+        {
+          "id": "N72",
+          "row": 610,
+          "status": "APPROVED",
+          "category": "Geschiedenis",
+          "original": "How many passengers sailed on the Mayflower to America?",
+          "question": "How many passengers sailed on the Mayflower to America?",
+          "subtitle": null,
+          "answer": 102,
+          "evidence": "Plimoth Patuxet Museums: Mayflower carried 102 passengers on its 1620 voyage, excluding crew.",
+          "source": "https://plimoth.org/for-students/homework-help/mayflower-and-mayflower-compact",
+          "notes": "Explicitly approved N72. No existing matching question found; user-supplied custom identifier retained.",
+          "photo": null,
+          "unit_group": "america",
+          "group": "N72",
+          "rating": 4,
+          "unit": "passengers"
+        },
+        {
+          "id": "q643",
+          "row": 314,
+          "status": "APPROVED",
+          "category": "Dieren",
+          "original": "Hoeveel kilogram weegt een volwassen mannelijke rode reuzenkangoeroe maximaal?",
+          "question": "How many kilograms can an adult male red kangaroo weigh?",
+          "subtitle": null,
+          "answer": 90,
+          "evidence": "Mannetjes worden tot 90 kg zwaar.",
+          "source": "https://en.wikipedia.org/wiki/Red_kangaroo",
+          "notes": null,
+          "photo": null,
+          "unit_group": "kg",
+          "group": "q643",
+          "rating": 2,
+          "unit": "kg"
+        },
+        {
+          "id": "q017",
+          "row": 11,
+          "status": "APPROVED",
+          "category": "Filosofie, psychologie en religie",
+          "original": "Hoeveel hoofdgoden telt de Griekse mythologie op de berg Olympus (de Twaalf Olympiërs)?",
+          "question": "How many Olympian gods are there in Greek mythology?",
+          "subtitle": null,
+          "answer": 12,
+          "evidence": "Olympus was founded on October 12, 1919 as Takachiho Seisakusho by Takeshi Yamashita, initially specializing in microscopes and thermometers, and later in imaging.",
+          "source": "https://en.wikipedia.org/wiki/Olympus_Corporation",
+          "notes": "Explicitly approved in final salvage review.",
+          "photo": null,
+          "unit_group": "gods",
+          "group": "q017",
+          "rating": 2,
+          "unit": "gods"
+        }
+      ],
+      "note": "Behoud: herkenbare onderwerpen met één uitdagender schatting.",
+      "origin": {
+        "mode": "library",
+        "number": 33
+      },
+      "difficulty": "intermediate",
+      "difficulty_score": 50,
+      "photo": null
+    },
+    {
+      "id": "8dd775da-caa0-5a68-8045-2f20e1424ea3",
+      "number": 14,
+      "operator": "×",
+      "questions": [
+        {
+          "id": "q579",
+          "row": 291,
+          "status": "APPROVED",
+          "category": "Vervoer",
+          "original": "Hoeveel start- en landingsbanen heeft Heathrow?",
+          "question": "How many runways does Heathrow have?",
+          "subtitle": null,
+          "answer": 2,
+          "evidence": "De drie stations van Heathrow zijn Heathrow Terminals 2 & 3, Heathrow Terminal 4 en Heathrow Terminal 5.",
+          "source": "https://nl.wikipedia.org/wiki/London_Heathrow_Airport",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Terminal_5_at_London_Heathrow_Airport%2C_2008.jpg/330px-Terminal_5_at_London_Heathrow_Airport%2C_2008.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Terminal_5_at_London_Heathrow_Airport,_2008.jpg",
+            "licentie": "CC BY-SA 2.0",
+            "maker": "Warren Rohner"
+          },
+          "unit_group": "q579",
+          "group": "q579",
+          "rating": 2,
+          "unit": "runways"
+        },
+        {
+          "id": "q1331",
+          "row": 543,
+          "status": "APPROVED",
+          "category": "Spellen en speelgoed",
+          "original": "Hoeveel gekleurde vierkantjes telt een standaard Rubik's kubus aan de buitenkant?",
+          "question": "How many colored squares are on a standard Rubik’s Cube?",
+          "subtitle": null,
+          "answer": 54,
+          "evidence": "Zes vlakken van negen vierkantjes: 54.",
+          "source": "https://en.wikipedia.org/wiki/Rubik%27s_Cube",
+          "notes": "Explicitly approved in Q1263–Q1408 review.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Rubik%27s_cube.svg/330px-Rubik%27s_cube.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Rubik%27s_cube.svg",
+            "licentie": "CC BY-SA 3.0",
+            "maker": "This image was created by me, Booyabazooka"
+          },
+          "unit_group": "squares",
+          "group": "q1331",
+          "rating": 2,
+          "unit": "squares"
+        },
+        {
+          "id": "q943",
+          "row": 417,
+          "status": "APPROVED",
+          "category": "Geografie",
+          "original": "Hoeveel meter hoog zijn de Victoriawatervallen?",
+          "question": "What is the maximum height of Victoria Falls in meters?",
+          "subtitle": null,
+          "answer": 108,
+          "evidence": "De Victoriawatervallen zijn 108 meter hoog.",
+          "source": "https://whc.unesco.org/en/list/509/",
+          "notes": "Final Q805–Q949 review decision.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/VicFalls.jpg/330px-VicFalls.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:VicFalls.jpg",
+            "licentie": "CC BY-SA 3.0",
+            "maker": "Hans Hillewaert"
+          },
+          "unit_group": "m",
+          "group": "q943",
+          "rating": 4,
+          "unit": "m"
+        }
+      ],
+      "note": "Behoud: herkenbare onderwerpen met één uitdagender schatting.",
+      "origin": {
+        "mode": "library",
+        "number": 34
+      },
+      "difficulty": "intermediate",
+      "difficulty_score": 50,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Rubik%27s_cube.svg/330px-Rubik%27s_cube.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Rubik%27s_cube.svg",
+        "licentie": "CC BY-SA 3.0",
+        "maker": "This image was created by me, Booyabazooka",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "249733dc-50e0-5377-baec-7e4eb6af2984",
+      "number": 15,
+      "operator": "−",
+      "questions": [
+        {
+          "id": "q1075",
+          "row": 490,
+          "status": "APPROVED",
+          "category": "Landbouw en industrie",
+          "original": "Hoeveel dagen duurt de zwangerschap van een varken?",
+          "question": "How many days does a pig’s pregnancy last on average?",
+          "subtitle": null,
+          "answer": 114,
+          "evidence": "De draagtijd van een varken is 114 dagen: drie maanden, drie weken en drie dagen.",
+          "source": "https://en.wikipedia.org/wiki/Domestic_pig",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Pig_8907.JPG/330px-Pig_8907.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Pig_8907.JPG",
+            "licentie": "Public domain",
+            "maker": "Steven Lek"
+          },
+          "unit_group": "days",
+          "group": "q1075",
+          "rating": 4,
+          "unit": "days"
+        },
+        {
+          "id": "q1433",
+          "row": 572,
+          "status": "APPROVED",
+          "category": "Sterrenkunde & ruimte",
+          "original": "Hoeveel minuten duurt een volledige baan van het ISS rond de aarde ongeveer?",
+          "question": "How many minutes does the ISS take to orbit Earth?",
+          "subtitle": null,
+          "answer": 90,
+          "evidence": "Alle objecten in een LEO bewegen zich voort met een snelheid van ongeveer 8 km/s, waardoor een volledige omgang rond de Aarde circa 90 minuten duurt.",
+          "source": "https://nl.wikipedia.org/wiki/Baan_%28hemellichaam%29",
+          "notes": "Explicitly approved in Q1409–Q1510 review.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/The_station_pictured_from_the_SpaceX_Crew_Dragon_5_%28cropped%29.jpg/330px-The_station_pictured_from_the_SpaceX_Crew_Dragon_5_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:The_station_pictured_from_the_SpaceX_Crew_Dragon_5_(cropped).jpg",
+            "licentie": "Public domain",
+            "maker": "NASA"
+          },
+          "unit_group": "minutes",
+          "group": "q1433",
+          "rating": 2,
+          "unit": "minutes"
+        },
+        {
+          "id": "q955",
+          "row": 429,
+          "status": "APPROVED",
+          "category": "Taal",
+          "original": "Hoeveel officiële talen telt de Europese Unie?",
+          "question": "How many official languages does the European Union have?",
+          "subtitle": null,
+          "answer": 24,
+          "evidence": "Talen\n\nDe 24 officiële talen van de instituten van de Europese Unie zijn:\n\nAlle besluiten van de instellingen worden vertaald in alle officiële talen.",
+          "source": "https://nl.wikipedia.org/wiki/Europese_Unie",
+          "notes": "Explicitly approved by the user.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/330px-Flag_of_Europe.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Europe.svg",
+            "licentie": "Public domain",
+            "maker": "User:Verdy p , User:-xfi- , User:Paddu , User:Nightstallion , User:Funakoshi , User:Jeltz , User:Dbenbenn , User:Zscout3"
+          },
+          "unit_group": "languages",
+          "group": "q955",
+          "rating": 2,
+          "unit": "languages"
+        }
+      ],
+      "note": "Behoud: herkenbare onderwerpen met één uitdagender schatting.",
+      "origin": {
+        "mode": "library",
+        "number": 35
+      },
+      "difficulty": "intermediate",
+      "difficulty_score": 50,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/The_station_pictured_from_the_SpaceX_Crew_Dragon_5_%28cropped%29.jpg/330px-The_station_pictured_from_the_SpaceX_Crew_Dragon_5_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:The_station_pictured_from_the_SpaceX_Crew_Dragon_5_(cropped).jpg",
+        "licentie": "Public domain",
+        "maker": "NASA",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "48a68edd-3eca-59d0-abe3-128b2256a9a6",
+      "number": 16,
+      "operator": "÷",
+      "questions": [
+        {
+          "id": "q328",
+          "row": 173,
+          "status": "APPROVED",
+          "category": "Geschiedenis",
+          "original": "Hoeveel schepen telde de Spaanse Armada volgens de gebruikelijke telling?",
+          "question": "How many ships were in the Spanish Armada?",
+          "subtitle": null,
+          "answer": 130,
+          "evidence": "De vloot telde ongeveer 130 schepen.",
+          "source": "https://en.wikipedia.org/wiki/Spanish_Armada",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Armadaroute.jpg/330px-Armadaroute.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Armadaroute.jpg",
+            "licentie": "Public domain",
+            "maker": "Robert Adams, Augustine Ryther"
+          },
+          "unit_group": "ships",
+          "group": "q328",
+          "rating": 4,
+          "unit": "ships"
+        },
+        {
+          "id": "q1227",
+          "row": 519,
+          "status": "APPROVED",
+          "category": "Geografie",
+          "original": "Hoeveel procent van Nederland ligt onder zeeniveau?",
+          "question": "What percentage of the Netherlands lies below sea level?",
+          "subtitle": null,
+          "answer": 26,
+          "evidence": "Ongeveer een kwart van Nederland ligt onder zeeniveau; de telling hangt af van de gekozen referentiehoogte.",
+          "source": "https://www.rijkswaterstaat.nl/",
+          "notes": "Explicitly approved in final salvage review.",
+          "photo": null,
+          "unit_group": "percent",
+          "group": "q1227",
+          "rating": 2,
+          "unit": "%"
+        },
+        {
+          "id": "q740",
+          "row": 333,
+          "status": "APPROVED",
+          "category": "Films en series",
+          "original": "Hoeveel afleveringen heeft de miniserie Chernobyl?",
+          "question": "How many episodes are in the miniseries Chernobyl?",
+          "subtitle": null,
+          "answer": 5,
+          "evidence": "26 April 1986: Chernobyl disaster\nAfter the nuclear disaster at the Chernobyl Nuclear Power Plant; the worst nuclear disaster in history, the city of Chernobyl was evacuated on 5 May 1986.",
+          "source": "https://en.wikipedia.org/wiki/Chernobyl",
+          "notes": null,
+          "photo": null,
+          "unit_group": "episodes",
+          "group": "q740",
+          "rating": 2,
+          "unit": "episodes"
+        }
+      ],
+      "note": "Behoud: herkenbare onderwerpen met één uitdagender schatting.",
+      "origin": {
+        "mode": "library",
+        "number": 37
+      },
+      "difficulty": "intermediate",
+      "difficulty_score": 50,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Armadaroute.jpg/330px-Armadaroute.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Armadaroute.jpg",
+        "licentie": "Public domain",
+        "maker": "Robert Adams, Augustine Ryther",
+        "vraag": 1
+      }
+    },
+    {
+      "id": "4423e148-042d-5a1a-a5b1-36d464f1a2a5",
+      "number": 17,
+      "operator": "+",
+      "questions": [
+        {
+          "id": "q317",
+          "row": 165,
+          "status": "APPROVED",
+          "category": "Geschiedenis",
+          "original": "Hoeveel jaar duurde de Honderdjarige Oorlog daadwerkelijk?",
+          "question": "How many years did the Hundred Years’ War actually last?",
+          "subtitle": null,
+          "answer": 116,
+          "evidence": "De oorlog\nHet conflict duurde 116 jaar, onderbroken door verscheidene periodes van vrede, voordat het uiteindelijk eindigde door het verdrijven van de Plantagenets uit Frankrijk (behalve uit Calais).",
+          "source": "https://nl.wikipedia.org/wiki/Honderdjarige_Oorlog",
+          "notes": "Matches explicitly approved N31; existing catalogue row retained.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Siege_orleans.jpg/330px-Siege_orleans.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Siege_orleans.jpg",
+            "licentie": "Public domain",
+            "maker": "Anonymous Unknown author"
+          },
+          "unit_group": "years",
+          "group": "q317",
+          "rating": 4,
+          "unit": "years"
+        },
+        {
+          "id": "q952",
+          "row": 426,
+          "status": "APPROVED",
+          "category": "Geografie",
+          "original": "Hoeveel miljoen inwoners heeft Peru?",
+          "question": "How many million people live in Peru?",
+          "subtitle": null,
+          "answer": 34,
+          "evidence": "In 2021, Peru had, in terms of installed renewable electricity, 5,490 MW in hydropower (34th largest in the world), 409 MW in wind power (49th largest in the world), 336 MW in solar power (62nd largest in the world), and 185 MW in biomass.",
+          "source": "https://en.wikipedia.org/wiki/Peru",
+          "notes": "Explicitly approved by the user.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/Flag_of_Peru.svg/330px-Flag_of_Peru.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Peru.svg",
+            "licentie": "Public domain",
+            "maker": "David Benbennick"
+          },
+          "unit_group": "people",
+          "group": "q952",
+          "rating": 2,
+          "unit": "× 1,000,000 people"
+        },
+        {
+          "id": "q691",
+          "row": 328,
+          "status": "APPROVED",
+          "category": "Dieren",
+          "original": "Hoeveel ton weegt een volwassen blauwe vinvis?",
+          "question": "How many tons can an adult blue whale weigh?",
+          "subtitle": null,
+          "answer": 150,
+          "evidence": "De blauwe vinvis is het grootste dier dat op aarde leeft en wordt gemiddeld ongeveer 26 tot 30 meter lang en kan 150 tot 170 ton zwaar worden.",
+          "source": "https://nl.wikipedia.org/wiki/Blauwe_vinvis",
+          "notes": "Explicitly approved in final salvage review.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Blue_Whale_001_noaa_body_color.jpg/330px-Blue_Whale_001_noaa_body_color.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Blue_Whale_001_noaa_body_color.jpg",
+            "licentie": "Public domain",
+            "maker": "NOAA Fisheries ( TBjornstad 11:20, 18 April 2007 (UTC))"
+          },
+          "unit_group": "tonnes",
+          "group": "q691",
+          "rating": 2,
+          "unit": "tonnes"
+        }
+      ],
+      "note": "Behoud: herkenbare onderwerpen met één uitdagender schatting.",
+      "origin": {
+        "mode": "library",
+        "number": 40
+      },
+      "difficulty": "intermediate",
+      "difficulty_score": 50,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/Flag_of_Peru.svg/330px-Flag_of_Peru.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Peru.svg",
+        "licentie": "Public domain",
+        "maker": "David Benbennick",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "5a788f8b-bb7a-5298-8bae-2a27f94bd337",
+      "number": 18,
+      "operator": "−",
+      "questions": [
+        {
+          "id": "N35",
+          "row": 600,
+          "status": "APPROVED",
+          "category": "Geschiedenis",
+          "original": "How many kilometers long was the Berlin Wall?",
+          "question": "How many kilometers long was the Berlin Wall?",
+          "subtitle": null,
+          "answer": 155,
+          "evidence": "Berlin city authority: total wall length around West Berlin was approximately 155 km.",
+          "source": "https://www.berlin.de/sehenswuerdigkeiten/3561866-3558930-berliner-mauer.html",
+          "notes": "Explicitly approved N35. No existing matching question found; user-supplied custom identifier retained.",
+          "photo": null,
+          "unit_group": "km",
+          "group": "N35",
+          "rating": 4,
+          "unit": "km"
+        },
+        {
+          "id": "q792",
+          "row": 352,
+          "status": "APPROVED",
+          "category": "Gebouwen en infrastructuur",
+          "original": "Hoeveel meter hoog is de Grote Piramide van Gizeh nu?",
+          "question": "How many meters tall is the Great Pyramid of Giza today?",
+          "subtitle": null,
+          "answer": 139,
+          "evidence": "Oorspronkelijk 146,6 meter; door erosie nu 138,5.",
+          "source": "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Kheops-Pyramid.jpg/330px-Kheops-Pyramid.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Kheops-Pyramid.jpg",
+            "licentie": "CC BY 2.5",
+            "maker": "Nina"
+          },
+          "unit_group": "m",
+          "group": "q792",
+          "rating": 2,
+          "unit": "m"
+        },
+        {
+          "id": "q260",
+          "row": 142,
+          "status": "APPROVED",
+          "category": "Geografie",
+          "original": "Hoeveel deelstaten telt Duitsland?",
+          "question": "How many federal states does Germany have?",
+          "subtitle": null,
+          "answer": 16,
+          "evidence": "De Bondsrepubliek Duitsland is een federatie van zestien deelstaten, in het Duits Bundesländer of Länder (enkelvoud Land) geheten.",
+          "source": "https://nl.wikipedia.org/wiki/Duitsland",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/330px-Flag_of_Germany.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Germany.svg",
+            "licentie": "Public domain",
+            "maker": "User:SKopp , User:Madden , and other users"
+          },
+          "unit_group": "states",
+          "group": "q260",
+          "rating": 2,
+          "unit": "states"
+        }
+      ],
+      "note": "Behoud: herkenbare onderwerpen met één uitdagender schatting.",
+      "origin": {
+        "mode": "library",
+        "number": 41
+      },
+      "difficulty": "intermediate",
+      "difficulty_score": 50,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Kheops-Pyramid.jpg/330px-Kheops-Pyramid.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Kheops-Pyramid.jpg",
+        "licentie": "CC BY 2.5",
+        "maker": "Nina",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "433f451b-b85e-5a65-b16a-700c5cb0af9e",
+      "number": 19,
+      "operator": "−",
+      "questions": [
+        {
+          "id": "q455",
+          "row": 221,
+          "status": "APPROVED",
+          "category": "Records en vergelijkingen",
+          "original": "Hoeveel punten scoorde een team in de hoogste basketbalscore ooit?",
+          "question": "What is the highest score by one team in an NBA game?",
+          "subtitle": null,
+          "answer": 186,
+          "evidence": "Detroit won op 13 december 1983 met 186-184 van Denver na drie verlengingen; nog altijd de hoogste teamscore in een NBA-wedstrijd.",
+          "source": "https://www.basketball-reference.com/boxscores/198312130DEN.html",
+          "notes": "Explicitly approved by the user.",
+          "photo": null,
+          "unit_group": "points",
+          "group": "q455",
+          "rating": 4,
+          "unit": "points"
+        },
+        {
+          "id": "q698",
+          "row": 329,
+          "status": "APPROVED",
+          "category": "Economie & geld",
+          "original": "Hoeveel landen gebruiken de euro als officiële munt?",
+          "question": "How many countries use the euro as their official currency?",
+          "subtitle": null,
+          "answer": 21,
+          "evidence": "Buiten de herdenkingsmunten van € 2 zijn er al talloze munten geslagen die alleen nationaal te gebruiken zijn en waardes vertegenwoordigen als € 1½, € 2½, € 3, € 5, € 8, € 10, € 12½, € 20, € 25, € 50, € 100 etc.",
+          "source": "https://nl.wikipedia.org/wiki/Euro",
+          "notes": null,
+          "photo": null,
+          "unit_group": "money",
+          "group": "q698",
+          "rating": 2,
+          "unit": "countries"
+        },
+        {
+          "id": "q511",
+          "row": 247,
+          "status": "APPROVED",
+          "category": "Sterrenkunde & ruimte",
+          "original": "Hoeveel aardse jaren duurt een jaar op Neptunus ongeveer?",
+          "question": "How many Earth years does a year on Neptune last, approximately?",
+          "subtitle": null,
+          "answer": 165,
+          "evidence": "And Neptune makes a complete orbit around the Sun (a year in Neptunian time) in about 165 Earth years (60,190 Earth days).",
+          "source": "https://science.nasa.gov/neptune/facts/",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Neptune_Voyager2_color_calibrated.png/330px-Neptune_Voyager2_color_calibrated.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Neptune_Voyager2_color_calibrated.png",
+            "licentie": "CC0",
+            "maker": "NASA / Voyager 2 / PDS / OPUS / Ardenau4"
+          },
+          "unit_group": "years",
+          "group": "q511",
+          "rating": 2,
+          "unit": "years"
+        }
+      ],
+      "note": "Behoud: herkenbare onderwerpen met één uitdagender schatting.",
+      "origin": {
+        "mode": "library",
+        "number": 43
+      },
+      "difficulty": "intermediate",
+      "difficulty_score": 50,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Neptune_Voyager2_color_calibrated.png/330px-Neptune_Voyager2_color_calibrated.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Neptune_Voyager2_color_calibrated.png",
+        "licentie": "CC0",
+        "maker": "NASA / Voyager 2 / PDS / OPUS / Ardenau4",
+        "vraag": 3
+      }
+    },
+    {
+      "id": "f9702261-b2e9-56bd-b372-aaabb1c4acbb",
+      "number": 20,
+      "operator": "÷",
+      "questions": [
+        {
+          "id": "q1436",
+          "row": 575,
+          "status": "APPROVED",
+          "category": "Sterrenkunde & ruimte",
+          "original": "In welk jaar landde de eerste ruimtesonde op Mars?",
+          "question": "In what year did a spacecraft first achieve a soft landing on Mars?",
+          "subtitle": null,
+          "answer": 1971,
+          "evidence": "NASA: Mars 3 made the first soft landing on Mars on December 2, 1971; transmission ceased after about 20 seconds.",
+          "source": "https://www.nasa.gov/history/50-years-ago-mariner-9-launches-to-orbit-mars/",
+          "notes": "Explicitly approved in Q1409–Q1510 review.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png/330px-Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png",
+            "licentie": "CC BY 2.0",
+            "maker": "Kevin Gill from Los Angeles, CA, United States"
+          },
+          "unit_group": "years",
+          "group": "q1436",
+          "rating": 4,
+          "unit": "year"
+        },
+        {
+          "id": "q198",
+          "row": 109,
+          "status": "APPROVED",
+          "category": "Films en series",
+          "original": "Hoeveel afleveringen telt de serie Game of Thrones?",
+          "question": "How many episodes does Game of Thrones have?",
+          "subtitle": null,
+          "answer": 73,
+          "evidence": "| afleveringen = 73 ( Lijst van afleveringen van Game of Thrones|lijst van afleveringen )",
+          "source": "https://nl.wikipedia.org/wiki/Game_of_Thrones",
+          "notes": null,
+          "photo": null,
+          "unit_group": "episodes",
+          "group": "q198",
+          "rating": 2,
+          "unit": "episodes"
+        },
+        {
+          "id": "q177",
+          "row": 100,
+          "status": "APPROVED",
+          "category": "Politiek en recht",
+          "original": "Hoeveel lidstaten telt de Europese Unie?",
+          "question": "How many member states does the European Union have?",
+          "subtitle": "As of 2026.",
+          "answer": 27,
+          "evidence": "De Europese Unie (EU) is een uit 27 Europese landen bestaand statenverband.",
+          "source": "https://nl.wikipedia.org/wiki/Europese_Unie",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/330px-Flag_of_Europe.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Europe.svg",
+            "licentie": "Public domain",
+            "maker": "User:Verdy p , User:-xfi- , User:Paddu , User:Nightstallion , User:Funakoshi , User:Jeltz , User:Dbenbenn , User:Zscout3"
+          },
+          "unit_group": "states",
+          "group": "q177",
+          "rating": 2,
+          "unit": "states"
+        }
+      ],
+      "note": "Behoud: herkenbare onderwerpen met één uitdagender schatting.",
+      "origin": {
+        "mode": "library",
+        "number": 49
+      },
+      "difficulty": "intermediate",
+      "difficulty_score": 50,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png/330px-Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png",
+        "licentie": "CC BY 2.0",
+        "maker": "Kevin Gill from Los Angeles, CA, United States",
+        "vraag": 1
+      }
+    },
+    {
+      "id": "62eafff9-a80f-5eb2-ba35-bdd40fce2af7",
+      "number": 21,
+      "operator": "−",
+      "questions": [
+        {
+          "id": "q1037",
+          "row": 479,
+          "status": "APPROVED",
+          "category": "Geschiedenis",
+          "original": "In welk jaar viel het West-Romeinse Rijk traditioneel?",
+          "question": "In what year did the Western Roman Empire traditionally fall?",
+          "subtitle": null,
+          "answer": 476,
+          "evidence": "Het West-Romeinse Rijk bleef nog bestaan tot 476, toen de 'barbaarse' generaal in Romeinse dienst Odoaker de laatste West-Romeinse keizer afzette en zichzelf tot koning van het toenmalige Italia (wat grotendeels overeenkomt met de moderne staat Italië) liet uitroepen.",
+          "source": "https://nl.wikipedia.org/wiki/Romeinse_Rijk",
+          "notes": null,
+          "photo": null,
+          "unit_group": "years",
+          "group": "q1037",
+          "rating": 2,
+          "unit": "year"
+        },
+        {
+          "id": "q580",
+          "row": 292,
+          "status": "APPROVED",
+          "category": "Vervoer",
+          "original": "Hoeveel stations heeft de New York City Subway?",
+          "question": "How many stations does the New York City Subway have?",
+          "subtitle": null,
+          "answer": 472,
+          "evidence": "Opened on October 27, 1904, the New York City Subway is one of the world's oldest public transit systems, and the one with the most stations, with 423 stations in operation (472, if stations connected by transfers are counted multiple times).",
+          "source": "https://en.wikipedia.org/wiki/New_York_City_Subway",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/MTA_NYC_Subway_1_train_leaving_125th_St.jpg/330px-MTA_NYC_Subway_1_train_leaving_125th_St.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:MTA_NYC_Subway_1_train_leaving_125th_St.jpg",
+            "licentie": "CC BY-SA 4.0",
+            "maker": "Mtattrain"
+          },
+          "unit_group": "stations",
+          "group": "q580",
+          "rating": 4,
+          "unit": "stations"
+        },
+        {
+          "id": "q527",
+          "row": 261,
+          "status": "APPROVED",
+          "category": "Sterrenkunde & ruimte",
+          "original": "Hoeveel planeten in ons zonnestelsel hebben ringen?",
+          "question": "How many planets in our Solar System have rings?",
+          "subtitle": null,
+          "answer": 4,
+          "evidence": "Ontstaan\n\nHet zonnestelsel ontstond ongeveer 4,5 miljard jaar geleden, toen een interstellaire gaswolk door onbekende oorzaak actief werd en door zijn eigen gewicht begon te krimpen en steeds sneller rond te draaien, waarna in het midden van deze gaswolk de Zon ontstond.",
+          "source": "https://nl.wikipedia.org/wiki/Zonnestelsel",
+          "notes": null,
+          "photo": null,
+          "unit_group": "planets",
+          "group": "q527",
+          "rating": 2,
+          "unit": "planets"
+        }
+      ],
+      "note": "Behoud als Hard: grotere schattingen en specifiekere kennis, niet in de Daily.",
+      "origin": {
+        "mode": "library",
+        "number": 45
+      },
+      "difficulty": "hard",
+      "difficulty_score": 70,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/MTA_NYC_Subway_1_train_leaving_125th_St.jpg/330px-MTA_NYC_Subway_1_train_leaving_125th_St.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:MTA_NYC_Subway_1_train_leaving_125th_St.jpg",
+        "licentie": "CC BY-SA 4.0",
+        "maker": "Mtattrain",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "2e9c39b8-e0de-556b-be0c-6c5d86be8ae2",
+      "number": 22,
+      "operator": "÷",
+      "questions": [
+        {
+          "id": "q558",
+          "row": 278,
+          "status": "APPROVED",
+          "category": "Technologie",
+          "original": "In welk jaar werd de eerste commerciële harde schijf geïntroduceerd?",
+          "question": "In what year was the first commercial hard disk introduced?",
+          "subtitle": null,
+          "answer": 1956,
+          "evidence": "IBM introduceerde de 350 Disk Storage Unit in 1956.",
+          "source": "https://www.ibm.com/history/storage",
+          "notes": null,
+          "photo": null,
+          "unit_group": "years",
+          "group": "q558",
+          "rating": 4,
+          "unit": "year"
+        },
+        {
+          "id": "q513",
+          "row": 249,
+          "status": "APPROVED",
+          "category": "Sterrenkunde & ruimte",
+          "original": "Hoeveel astronauten hebben er in de geschiedenis op de maan gelopen?",
+          "question": "How many astronauts have walked on the Moon?",
+          "subtitle": null,
+          "answer": 12,
+          "evidence": "Op de Maan geland\nNeil Armstrong - Apollo 11 - juli 1969\nBuzz Aldrin - Apollo 11 - juli 1969\nPete Conrad - Apollo 12 - november 1969\nAlan Bean - Apollo 12 - november 1969\nAlan Shepard - Apollo 14 - februari 1971\nEdgar Mitchell - Apollo 14 - februari 1971\nDavid Scott - Apollo 15 - juli 1971\nJames Irw",
+          "source": "https://nl.wikipedia.org/wiki/Lijst_van_astronauten_op_de_Maan",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/Apollo_14_Shepard.jpg/330px-Apollo_14_Shepard.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Apollo_14_Shepard.jpg",
+            "licentie": "Public domain",
+            "maker": "Edgar D. Mitchell / NASA"
+          },
+          "unit_group": "q513",
+          "group": "q513",
+          "rating": 2,
+          "unit": "astronauts"
+        },
+        {
+          "id": "q027",
+          "row": 18,
+          "status": "APPROVED",
+          "category": "Gebouwen en infrastructuur",
+          "original": "Hoeveel verdiepingen heeft de Burj Khalifa?",
+          "question": "How many floors does the Burj Khalifa have?",
+          "subtitle": null,
+          "answer": 163,
+          "evidence": "In totaal heeft het gebouw 163 verdiepingen.",
+          "source": "https://nl.wikipedia.org/wiki/Burj_Khalifa",
+          "notes": "Explicitly approved by the user. English wording is recorded in Kept questions.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/Dubai_skyline_2015_%28crop%29.jpg/330px-Dubai_skyline_2015_%28crop%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Dubai_skyline_2015_(crop).jpg",
+            "licentie": "CC BY-SA 3.0",
+            "maker": "Tim.Reckmann"
+          },
+          "unit_group": "floors",
+          "group": "q027",
+          "rating": 3,
+          "unit": "floors"
+        }
+      ],
+      "note": "Behoud als Hard: grotere schattingen en specifiekere kennis, niet in de Daily.",
+      "origin": {
+        "mode": "library",
+        "number": 52
+      },
+      "difficulty": "hard",
+      "difficulty_score": 70,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/Apollo_14_Shepard.jpg/330px-Apollo_14_Shepard.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Apollo_14_Shepard.jpg",
+        "licentie": "Public domain",
+        "maker": "Edgar D. Mitchell / NASA",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "fe6ba2f6-b138-5c35-a445-365b015fd53a",
+      "number": 23,
+      "operator": "−",
+      "questions": [
+        {
+          "id": "q547",
+          "row": 272,
+          "status": "APPROVED",
+          "category": "Technologie",
+          "original": "Hoeveel pixels breed is een standaard 4K Ultra HD videoscherm?",
+          "question": "How many pixels wide is a standard 4K Ultra HD screen?",
+          "subtitle": null,
+          "answer": 3840,
+          "evidence": "4K Ultra HD is 3840 bij 2160 beeldpunten.",
+          "source": "https://en.wikipedia.org/wiki/4K_resolution",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Resolution_of_SD%2C_Full_HD%2C_4K_Ultra_HD_%26_8K_Ultra_HD.svg/330px-Resolution_of_SD%2C_Full_HD%2C_4K_Ultra_HD_%26_8K_Ultra_HD.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Resolution_of_SD,_Full_HD,_4K_Ultra_HD_%26_8K_Ultra_HD.svg",
+            "licentie": "CC0",
+            "maker": "Libron"
+          },
+          "unit_group": "pixels",
+          "group": "q547",
+          "rating": 3,
+          "unit": "pixels"
+        },
+        {
+          "id": "q682",
+          "row": 323,
+          "status": "APPROVED",
+          "category": "Dieren",
+          "original": "Hoeveel tanden heeft een volwassen huiskat?",
+          "question": "How many teeth does an adult domestic cat have?",
+          "subtitle": null,
+          "answer": 30,
+          "evidence": "Een volwassen kat heeft dertig blijvende tanden.",
+          "source": "https://en.wikipedia.org/wiki/Cat_anatomy",
+          "notes": "Explicitly approved in final salvage review.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Cat_poster_2.jpg/330px-Cat_poster_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Cat_poster_2.jpg",
+            "licentie": "CC BY-SA 3.0",
+            "maker": "Alvesgaspar (compilation)"
+          },
+          "unit_group": "teeth",
+          "group": "q682",
+          "rating": 2,
+          "unit": "teeth"
+        },
+        {
+          "id": "q307",
+          "row": 161,
+          "status": "APPROVED",
+          "category": "Geografie",
+          "original": "Op welke hoogte ligt het Titicacameer ongeveer boven zeeniveau?",
+          "question": "How high above sea level is Lake Titicaca?",
+          "subtitle": null,
+          "answer": 3810,
+          "evidence": "Lake Titicaca , the world’s highest lake navigable to large vessels , lying at 12,500 feet (3,810 metres) above sea level in the Andes Mountains of South America , astride the border between Peru to the west and Bolivia to the east.",
+          "source": "http://web.archive.org/web/20260310132911/https://www.britannica.com/place/Lake-Titicaca",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Lake_Titicaca_map.png/330px-Lake_Titicaca_map.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Lake_Titicaca_map.png",
+            "licentie": "CC BY 2.5",
+            "maker": "es:Usuario:Haylli , based on map from http://www.aquarius.geomar.de"
+          },
+          "unit_group": "m",
+          "group": "q307",
+          "rating": 4,
+          "unit": "m"
+        }
+      ],
+      "note": "Behoud als Hard: grotere schattingen en specifiekere kennis, niet in de Daily.",
+      "origin": {
+        "mode": "library",
+        "number": 54
+      },
+      "difficulty": "hard",
+      "difficulty_score": 70,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Cat_poster_2.jpg/330px-Cat_poster_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Cat_poster_2.jpg",
+        "licentie": "CC BY-SA 3.0",
+        "maker": "Alvesgaspar (compilation)",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "dd3e1e64-1103-5337-aea9-a1cb75b010aa",
+      "number": 24,
+      "operator": "+",
+      "questions": [
+        {
+          "id": "q773",
+          "row": 343,
+          "status": "APPROVED",
+          "category": "Gebouwen en infrastructuur",
+          "original": "Hoeveel ingangen heeft het Colosseum?",
+          "question": "How many numbered entrances did the Colosseum have?",
+          "subtitle": "For the general public.",
+          "answer": 76,
+          "evidence": "The completed structure was dedicated in 80 ce by Titus , Vespasian’s son and successor.",
+          "source": "http://web.archive.org/web/20260901170446/https://www.britannica.com/topic/Colosseum",
+          "notes": "Explicitly approved in final salvage review.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/330px-Colosseo_2020.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Colosseo_2020.jpg",
+            "licentie": "CC BY-SA 4.0",
+            "maker": "FeaturedPics"
+          },
+          "unit_group": "entrances",
+          "group": "q773",
+          "rating": 4,
+          "unit": "entrances"
+        },
+        {
+          "id": "q1249",
+          "row": 523,
+          "status": "APPROVED",
+          "category": "Geografie",
+          "original": "Hoeveel miljoen inwoners heeft China?",
+          "question": "How many million people live in China?",
+          "subtitle": "UN estimate for 2025.",
+          "answer": 1416,
+          "evidence": "De bevolking van China krimpt sinds 2022; elk vast getal veroudert.",
+          "source": "https://nl.wikipedia.org/wiki/Bevolking_van_China",
+          "notes": "Final version follows latest user decision. Original source/evidence retained as historical context; not independently reverified for this revised figure/scope.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/The_Great_Wall_pic_1.jpg/330px-The_Great_Wall_pic_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:The_Great_Wall_pic_1.jpg",
+            "licentie": "CC BY-SA 2.0",
+            "maker": "Craig Nagy"
+          },
+          "unit_group": "people",
+          "group": "q1249",
+          "rating": 4,
+          "unit": "× 1,000,000 people"
+        },
+        {
+          "id": "q337",
+          "row": 180,
+          "status": "APPROVED",
+          "category": "Geschiedenis",
+          "original": "In welk jaar bereikte Christoffel Columbus volgens de traditionele Europese geschiedschrijving Amerika?",
+          "question": "In what year did Christopher Columbus reach the Americas?",
+          "subtitle": null,
+          "answer": 1492,
+          "evidence": "Hij maakte naam door zijn ontdekking van Amerika onder Spaanse vlag in 1492.",
+          "source": "https://nl.wikipedia.org/wiki/Christoffel_Columbus",
+          "notes": "Explicitly approved by the user.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Christopher_Columbus.PNG/330px-Christopher_Columbus.PNG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Christopher_Columbus.PNG",
+            "licentie": "Public domain",
+            "maker": "Sebastiano del Piombo"
+          },
+          "unit_group": "years",
+          "group": "q337",
+          "rating": 2,
+          "unit": "year"
+        }
+      ],
+      "note": "Behoud als Hard: grotere schattingen en specifiekere kennis, niet in de Daily.",
+      "origin": {
+        "mode": "library",
+        "number": 55
+      },
+      "difficulty": "hard",
+      "difficulty_score": 70,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/The_Great_Wall_pic_1.jpg/330px-The_Great_Wall_pic_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:The_Great_Wall_pic_1.jpg",
+        "licentie": "CC BY-SA 2.0",
+        "maker": "Craig Nagy",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "edc7d5d8-6ddc-549b-8bfa-bdf9e165a769",
+      "number": 25,
+      "operator": "÷",
+      "questions": [
+        {
+          "id": "q1437",
+          "row": 576,
+          "status": "APPROVED",
+          "category": "Sterrenkunde & ruimte",
+          "original": "In welk jaar werd de eerste ruimtestationmodule gelanceerd?",
+          "question": "In what year was the world’s first space station launched?",
+          "subtitle": null,
+          "answer": 1971,
+          "evidence": "NASA: Salyut 1, the first space station, launched April 19, 1971.",
+          "source": "https://www.nasa.gov/missions/station/50-years-ago-launch-of-salyut-the-worlds-first-space-station/",
+          "notes": "Explicitly approved in Q1409–Q1510 review.",
+          "photo": null,
+          "unit_group": "years",
+          "group": "q1437",
+          "rating": 4,
+          "unit": "year"
+        },
+        {
+          "id": "q946",
+          "row": 420,
+          "status": "APPROVED",
+          "category": "Geografie",
+          "original": "Hoeveel miljoen inwoners heeft Australië?",
+          "question": "How many million people live in Australia?",
+          "subtitle": "As of 2025.",
+          "answer": 27,
+          "evidence": "Van de circa 27 miljoen inwoners woont het grootste deel in en nabij de grote steden, zoals Sydney, Melbourne, Brisbane, Perth en Adelaide.",
+          "source": "https://nl.wikipedia.org/wiki/Australi%C3%AB_%28land%29",
+          "notes": "Final Q805–Q949 review decision.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/Flag_of_Australia_%28converted%29.svg/330px-Flag_of_Australia_%28converted%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Australia_(converted).svg",
+            "licentie": "Public domain",
+            "maker": "Unknown (Vector graphics image by Ian Fieggen ) (only minor code changes by uploader.)"
+          },
+          "unit_group": "people",
+          "group": "q946",
+          "rating": 2,
+          "unit": "× 1,000,000 people"
+        },
+        {
+          "id": "q574",
+          "row": 289,
+          "status": "APPROVED",
+          "category": "Vervoer",
+          "original": "Hoeveel meter lang is een Airbus A380 ongeveer?",
+          "question": "How many metres long is an Airbus A380, approximately?",
+          "subtitle": null,
+          "answer": 73,
+          "evidence": "The Airbus A380 is the largest passenger plane ever built , measuring 73 metres long with a wingspan of nearly 80 metres.",
+          "source": "https://www.airbus.com/en/products-services/commercial-aircraft/passenger-aircraft/a380",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/A6-EDY_A380_Emirates_31_jan_2013_jfk_%288442269364%29_%28cropped%29.jpg/330px-A6-EDY_A380_Emirates_31_jan_2013_jfk_%288442269364%29_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:A6-EDY_A380_Emirates_31_jan_2013_jfk_(8442269364)_(cropped).jpg",
+            "licentie": "CC BY-SA 2.0",
+            "maker": "Maarten Visser from Capelle aan den IJssel, Nederland"
+          },
+          "unit_group": "m",
+          "group": "q574",
+          "rating": 4,
+          "unit": "m"
+        }
+      ],
+      "note": "Behoud als Hard: grotere schattingen en specifiekere kennis, niet in de Daily.",
+      "origin": {
+        "mode": "library",
+        "number": 58
+      },
+      "difficulty": "hard",
+      "difficulty_score": 70,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/Flag_of_Australia_%28converted%29.svg/330px-Flag_of_Australia_%28converted%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Australia_(converted).svg",
+        "licentie": "Public domain",
+        "maker": "Unknown (Vector graphics image by Ian Fieggen ) (only minor code changes by uploader.)",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "2ccc2280-2e6a-5201-a730-0dadd81c6293",
+      "number": 26,
+      "operator": "+",
+      "questions": [
+        {
+          "id": "q1054",
+          "row": 482,
+          "status": "APPROVED",
+          "category": "Geschiedenis",
+          "original": "In welk jaar werd de Amerikaanse Onafhankelijkheidsverklaring ondertekend?",
+          "question": "In what year was the U.S. Declaration of Independence signed?",
+          "subtitle": null,
+          "answer": 1776,
+          "evidence": "De verklaring werd door vertegenwoordigers van 12 van de toen 13 Amerikaanse kolonies aangenomen op 4 juli 1776.",
+          "source": "https://nl.wikipedia.org/wiki/Amerikaanse_Onafhankelijkheidsverklaring",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/United_States_Declaration_of_Independence.jpg/330px-United_States_Declaration_of_Independence.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:United_States_Declaration_of_Independence.jpg",
+            "licentie": "Public domain",
+            "maker": "original: w:Second Continental Congress ; reproduction: William Stone"
+          },
+          "unit_group": "years",
+          "group": "q1054",
+          "rating": 2,
+          "unit": "year"
+        },
+        {
+          "id": "q1309",
+          "row": 539,
+          "status": "APPROVED",
+          "category": "Records en vergelijkingen",
+          "original": "Hoe zwaar was de zwaarste schildpad ooit in kilogram?",
+          "question": "How many kilograms did the heaviest recorded leatherback turtle weigh?",
+          "subtitle": null,
+          "answer": 961,
+          "evidence": "Guinness World Records: heaviest recorded leatherback turtle weighed 961.1 kg, rounded to 961 kg.",
+          "source": "https://www.guinnessworldrecords.com/world-records/largest-chelonian",
+          "notes": "Explicitly approved in Q1263–Q1408 review.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Hawaii_turtle_2.JPG/330px-Hawaii_turtle_2.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Hawaii_turtle_2.JPG",
+            "licentie": "CC BY-SA 3.0",
+            "maker": "Brocken Inaglory"
+          },
+          "unit_group": "kg",
+          "group": "q1309",
+          "rating": 4,
+          "unit": "kg"
+        },
+        {
+          "id": "q802",
+          "row": 355,
+          "status": "APPROVED",
+          "category": "Gebouwen en infrastructuur",
+          "original": "Hoeveel meter lang is de Golden Gate Bridge?",
+          "question": "How many metres long is the Golden Gate Bridge?",
+          "subtitle": null,
+          "answer": 2737,
+          "evidence": "The total length of the Golden Gate Bridge from abutment to abutment is 8,981 feet (2,737 m).",
+          "source": "https://en.wikipedia.org/wiki/Golden_Gate_Bridge",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/GoldenGateBridge-001.jpg/330px-GoldenGateBridge-001.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:GoldenGateBridge-001.jpg",
+            "licentie": "CC BY 2.5",
+            "maker": "Rich Niewiroski Jr."
+          },
+          "unit_group": "m",
+          "group": "q802",
+          "rating": 4,
+          "unit": "m"
+        }
+      ],
+      "note": "Behoud als Hard: grotere schattingen en specifiekere kennis, niet in de Daily.",
+      "origin": {
+        "mode": "library",
+        "number": 59
+      },
+      "difficulty": "hard",
+      "difficulty_score": 70,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Hawaii_turtle_2.JPG/330px-Hawaii_turtle_2.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Hawaii_turtle_2.JPG",
+        "licentie": "CC BY-SA 3.0",
+        "maker": "Brocken Inaglory",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "1cd49ccd-8a68-5513-acfd-3c61961763bd",
+      "number": 27,
+      "operator": "+",
+      "questions": [
+        {
+          "id": "q134",
+          "row": 74,
+          "status": "APPROVED",
+          "category": "Boeken en literatuur",
+          "original": "Hoeveel boeken bevat het Nieuwe Testament?",
+          "question": "How many books are in the New Testament?",
+          "subtitle": null,
+          "answer": 27,
+          "evidence": "Het Nieuwe Testament (Koinè: Ἡ καινὴ διαθήκη, Hē kainḕ diathḗkē; Latijn: Novum Testamentum) is het tweede deel van de christelijke Bijbel en bestaat uit 27 werken, 'boeken', die alle in het Koinè Grieks zijn geschreven.",
+          "source": "https://nl.wikipedia.org/wiki/Nieuwe_Testament",
+          "notes": "No final individual decision recorded.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/Mathis_Gothart_Gr%C3%BCnewald_022.jpg/330px-Mathis_Gothart_Gr%C3%BCnewald_022.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Mathis_Gothart_Gr%C3%BCnewald_022.jpg",
+            "licentie": "Public domain",
+            "maker": "Matthias Grünewald"
+          },
+          "unit_group": "books",
+          "group": "q134",
+          "rating": 3,
+          "unit": "books"
+        },
+        {
+          "id": "q229",
+          "row": 125,
+          "status": "APPROVED",
+          "category": "Gebouwen en infrastructuur",
+          "original": "Hoeveel liften heeft het Empire State Building?",
+          "question": "How many elevators does the Empire State Building have?",
+          "subtitle": null,
+          "answer": 73,
+          "evidence": "Van de 73 liften gaat er niet één rechtstreeks naar de bovenste verdieping.",
+          "source": "https://nl.wikipedia.org/wiki/Empire_State_Building",
+          "notes": "Explicitly approved in final salvage review.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Empire_State_Building_from_Rockefeller_Center_%2851197886181%29_%28cropped%29.jpg/330px-Empire_State_Building_from_Rockefeller_Center_%2851197886181%29_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Empire_State_Building_from_Rockefeller_Center_(51197886181)_(cropped).jpg",
+            "licentie": "CC BY-SA 2.0",
+            "maker": "Domenico Convertini from Zurich, Schweiz"
+          },
+          "unit_group": "elevators",
+          "group": "q229",
+          "rating": 4,
+          "unit": "elevators"
+        },
+        {
+          "id": "q604",
+          "row": 300,
+          "status": "APPROVED",
+          "category": "Biologie & gezondheid",
+          "original": "Hoeveel duizend keer klopt een mensenhart per dag (bij rust)?",
+          "question": "How many thousand times does a human heart beat per day?",
+          "subtitle": null,
+          "answer": 100,
+          "evidence": "Zeventig slagen per minuut geeft ruim honderdduizend slagen per dag.",
+          "source": "https://en.wikipedia.org/wiki/Heart_rate",
+          "notes": "Explicitly approved in final salvage review.",
+          "photo": null,
+          "unit_group": "times",
+          "group": "q604",
+          "rating": 5,
+          "unit": "× 1,000 beats"
+        }
+      ],
+      "note": "Behoud als Hard: grotere schattingen en specifiekere kennis, niet in de Daily.",
+      "origin": {
+        "mode": "library",
+        "number": 60
+      },
+      "difficulty": "hard",
+      "difficulty_score": 70,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Empire_State_Building_from_Rockefeller_Center_%2851197886181%29_%28cropped%29.jpg/330px-Empire_State_Building_from_Rockefeller_Center_%2851197886181%29_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Empire_State_Building_from_Rockefeller_Center_(51197886181)_(cropped).jpg",
+        "licentie": "CC BY-SA 2.0",
+        "maker": "Domenico Convertini from Zurich, Schweiz",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "ed5eee90-f5ae-57b7-82e4-260d6aa2cc42",
+      "number": 28,
+      "operator": "−",
+      "questions": [
+        {
+          "id": "q342",
+          "row": 185,
+          "status": "APPROVED",
+          "category": "Geschiedenis",
+          "original": "In welk jaar werd de eerste Nobelprijs uitgereikt?",
+          "question": "In what year was the first Nobel Prize awarded?",
+          "subtitle": null,
+          "answer": 1901,
+          "evidence": "De prijs werd ingesteld in 1895 in het testament van Alfred Nobel, en in 1901 na zijn overlijden voor het eerst uitgereikt.",
+          "source": "https://nl.wikipedia.org/wiki/Nobelprijs",
+          "notes": "Explicitly approved by the user.",
+          "photo": null,
+          "unit_group": "years",
+          "group": "q342",
+          "rating": 4,
+          "unit": "year"
+        },
+        {
+          "id": "q929",
+          "row": 409,
+          "status": "APPROVED",
+          "category": "Geografie",
+          "original": "Hoeveel meter breed zijn de Victoriawatervallen?",
+          "question": "How many meters wide are Victoria Falls?",
+          "subtitle": null,
+          "answer": 1708,
+          "evidence": "De watervallen vormen een gordijn van 1708 meter breed.",
+          "source": "https://nl.wikipedia.org/wiki/Victoriawatervallen",
+          "notes": "Final Q805–Q949 review decision.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/VicFalls.jpg/330px-VicFalls.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:VicFalls.jpg",
+            "licentie": "CC BY-SA 3.0",
+            "maker": "Hans Hillewaert"
+          },
+          "unit_group": "m",
+          "group": "q929",
+          "rating": 4,
+          "unit": "m"
+        },
+        {
+          "id": "q256",
+          "row": 140,
+          "status": "APPROVED",
+          "category": "Gebouwen en infrastructuur",
+          "original": "Wat is de lengte van het Suezkanaal in Egypte in kilometers?",
+          "question": "How long is the Suez Canal?",
+          "subtitle": null,
+          "answer": 193,
+          "evidence": "Het Suezkanaal (Arabisch: قناة السويس Qanâ el Suweis) is een 193 km lang kanaal in de Landengte van Suez in Egypte, officieel geopend in 1869.",
+          "source": "https://nl.wikipedia.org/wiki/Suezkanaal",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Canal_de_Suez.jpg/330px-Canal_de_Suez.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Canal_de_Suez.jpg",
+            "licentie": "CC BY 2.5",
+            "maker": "onbekend"
+          },
+          "unit_group": "km",
+          "group": "q256",
+          "rating": 3,
+          "unit": "km"
+        }
+      ],
+      "note": "Behoud als Hard: grotere schattingen en specifiekere kennis, niet in de Daily.",
+      "origin": {
+        "mode": "library",
+        "number": 62
+      },
+      "difficulty": "hard",
+      "difficulty_score": 70,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/VicFalls.jpg/330px-VicFalls.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:VicFalls.jpg",
+        "licentie": "CC BY-SA 3.0",
+        "maker": "Hans Hillewaert",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "6551465a-7e7f-5d17-9807-a20e335aee9c",
+      "number": 29,
+      "operator": "+",
+      "questions": [
+        {
+          "id": "q340",
+          "row": 183,
+          "status": "APPROVED",
+          "category": "Geschiedenis",
+          "original": "In welk jaar vond de kernramp in Fukushima plaats?",
+          "question": "In what year did the Fukushima nuclear disaster occur?",
+          "subtitle": null,
+          "answer": 2011,
+          "evidence": "De kernramp van Fukushima (Japans: 福島第一原子力発電所事故 Fukushima daiichi genshiryoku hatsudensho jiko) rond de kerncentrale Fukushima I in Ōkuma, Japan was het gevolg van de zeebeving en de daaropvolgende tsunami van 11 maart 2011.",
+          "source": "https://nl.wikipedia.org/wiki/Kernramp_van_Fukushima",
+          "notes": "Explicitly approved in final salvage review.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Fukushima_I_by_Digital_Globe.jpg/330px-Fukushima_I_by_Digital_Globe.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Fukushima_I_by_Digital_Globe.jpg",
+            "licentie": "CC BY-SA 3.0",
+            "maker": "Digital Globe"
+          },
+          "unit_group": "years",
+          "group": "q340",
+          "rating": 3,
+          "unit": "year"
+        },
+        {
+          "id": "q488",
+          "row": 234,
+          "status": "APPROVED",
+          "category": "Spellen en speelgoed",
+          "original": "Hoeveel stippen staan er in totaal op een standaard set van 28 dominostenen?",
+          "question": "How many pips are there in total in a double-six domino set?",
+          "subtitle": null,
+          "answer": 168,
+          "evidence": "Een dubbel-zes set van 28 stenen draagt in totaal 168 ogen.",
+          "source": "https://en.wikipedia.org/wiki/Dominoes",
+          "notes": "Explicitly approved by the user.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Dominospiel.JPG/330px-Dominospiel.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Dominospiel.JPG",
+            "licentie": "CC BY-SA 3.0",
+            "maker": "No machine-readable author provided. Peng assumed (based on copyright claims)."
+          },
+          "unit_group": "pips",
+          "group": "q488",
+          "rating": 4,
+          "unit": "pips"
+        },
+        {
+          "id": "N53",
+          "row": 606,
+          "status": "APPROVED",
+          "category": "Vervoer",
+          "original": "How many kilometers per hour could Concorde reach?",
+          "question": "How many kilometers per hour could Concorde reach?",
+          "subtitle": null,
+          "answer": 2179,
+          "evidence": "BAE Systems: maximum speed Mach 2.04, equivalent to 2,179 km/h at cruise altitude.",
+          "source": "https://www.baesystems.com/heritage/page/bac-concorde",
+          "notes": "Explicitly approved N53. No existing matching question found; user-supplied custom identifier retained.",
+          "photo": null,
+          "unit_group": "speed",
+          "group": "N53",
+          "rating": 4,
+          "unit": "km/h"
+        }
+      ],
+      "note": "Behoud als Hard: grotere schattingen en specifiekere kennis, niet in de Daily.",
+      "origin": {
+        "mode": "library",
+        "number": 63
+      },
+      "difficulty": "hard",
+      "difficulty_score": 70,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Dominospiel.JPG/330px-Dominospiel.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Dominospiel.JPG",
+        "licentie": "CC BY-SA 3.0",
+        "maker": "No machine-readable author provided. Peng assumed (based on copyright claims).",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "7fba9913-d191-5436-b429-2a2011ac848e",
+      "number": 30,
+      "operator": "÷",
+      "questions": [
+        {
+          "id": "q508",
+          "row": 244,
+          "status": "APPROVED",
+          "category": "Sterrenkunde & ruimte",
+          "original": "Hoeveel Aardes passen er qua volume in de Zon?",
+          "question": "How many Earths could fit inside the Sun by volume?",
+          "subtitle": null,
+          "answer": 1300000,
+          "evidence": "Het volume van de zon is ongeveer 1,3 miljoen keer dat van de aarde. De oude bron verwees naar een UNESCO-werelderfgoedlijst.",
+          "source": "https://en.wikipedia.org/wiki/Sun",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/The_Sun_in_white_light.jpg/330px-The_Sun_in_white_light.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:The_Sun_in_white_light.jpg",
+            "licentie": "CC BY-SA 4.0",
+            "maker": "Matúš Motlo"
+          },
+          "unit_group": "Earths",
+          "group": "q508",
+          "rating": 5,
+          "unit": "Earths"
+        },
+        {
+          "id": "q603",
+          "row": 299,
+          "status": "APPROVED",
+          "category": "Biologie & gezondheid",
+          "original": "Hoeveel botten zitten er in één menselijke voet en enkel?",
+          "question": "How many bones are in one human foot and ankle?",
+          "subtitle": null,
+          "answer": 26,
+          "evidence": "Voet en enkel tellen samen 26 botten.",
+          "source": "https://en.wikipedia.org/wiki/Foot",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Ankle.jpg/330px-Ankle.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Ankle.jpg",
+            "licentie": "CC BY-SA 3.0",
+            "maker": "אנדר-ויק"
+          },
+          "unit_group": "bones",
+          "group": "q603",
+          "rating": 3,
+          "unit": "bones"
+        },
+        {
+          "id": "q242",
+          "row": 133,
+          "status": "APPROVED",
+          "category": "Gebouwen en infrastructuur",
+          "original": "Hoeveel toeschouwers konden er tegelijk plaatsnemen in het Colosseum in het Oude Rome?",
+          "question": "How many spectators could the Colosseum hold?",
+          "subtitle": null,
+          "answer": 50000,
+          "evidence": "De cavea bood plaats aan meer dan 50.000 toeschouwers.",
+          "source": "https://nl.wikipedia.org/wiki/Colosseum",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/330px-Colosseo_2020.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Colosseo_2020.jpg",
+            "licentie": "CC BY-SA 4.0",
+            "maker": "FeaturedPics"
+          },
+          "unit_group": "hold",
+          "group": "q242",
+          "rating": 4,
+          "unit": "spectators"
+        }
+      ],
+      "note": "Behoud als Hard: grotere schattingen en specifiekere kennis, niet in de Daily.",
+      "origin": {
+        "mode": "library",
+        "number": 66
+      },
+      "difficulty": "hard",
+      "difficulty_score": 70,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Ankle.jpg/330px-Ankle.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Ankle.jpg",
+        "licentie": "CC BY-SA 3.0",
+        "maker": "אנדר-ויק",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "8eed8b3a-20c1-5eb3-9ac8-ac92a66958b4",
+      "number": 31,
+      "operator": "+",
+      "questions": [
+        {
+          "id": "N67",
+          "row": 608,
+          "status": "APPROVED",
+          "category": "Geografie",
+          "original": "How many islands make up the Maldives?",
+          "question": "How many islands make up the Maldives?",
+          "subtitle": null,
+          "answer": 1192,
+          "evidence": "Official Visit Maldives tourism board: the country comprises 1,192 islands.",
+          "source": "https://visitmaldives.com/en",
+          "notes": "Explicitly approved N67. No existing matching question found; user-supplied custom identifier retained.",
+          "photo": null,
+          "unit_group": "islands",
+          "group": "N67",
+          "rating": 4,
+          "unit": "islands"
+        },
+        {
+          "id": "q467",
+          "row": 225,
+          "status": "APPROVED",
+          "category": "Scheikunde",
+          "original": "Hoeveel graden Celsius is het smeltpunt van aluminium ongeveer?",
+          "question": "What is the melting point of aluminium?",
+          "subtitle": null,
+          "answer": 660,
+          "evidence": "Aluminium smelt bij 660,3 graden Celsius.",
+          "source": "https://en.wikipedia.org/wiki/Aluminium",
+          "notes": "Explicitly approved by the user.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Aluminium-4.jpg/330px-Aluminium-4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Aluminium-4.jpg",
+            "licentie": "CC BY 3.0",
+            "maker": "Unknown author Unknown author"
+          },
+          "unit_group": "degrees",
+          "group": "q467",
+          "rating": 4,
+          "unit": "°C"
+        },
+        {
+          "id": "q405",
+          "row": 211,
+          "status": "APPROVED",
+          "category": "Natuurkunde",
+          "original": "Hoeveel meter is één internationale zeemijl exact?",
+          "question": "How many metres are in one international nautical mile?",
+          "subtitle": null,
+          "answer": 1852,
+          "evidence": "Een (internationale) zeemijl (Engels: (international) nautical mile, afgekort NM of nmi) is een lengtemaat die gelijk is aan precies 1852 meter.",
+          "source": "https://nl.wikipedia.org/wiki/Zeemijl",
+          "notes": "Explicitly approved by the user.",
+          "photo": null,
+          "unit_group": "m",
+          "group": "q405",
+          "rating": 4,
+          "unit": "m"
+        }
+      ],
+      "note": "Behoud als Hard: grotere schattingen en specifiekere kennis, niet in de Daily.",
+      "origin": {
+        "mode": "library",
+        "number": 69
+      },
+      "difficulty": "hard",
+      "difficulty_score": 70,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Aluminium-4.jpg/330px-Aluminium-4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Aluminium-4.jpg",
+        "licentie": "CC BY 3.0",
+        "maker": "Unknown author Unknown author",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "a09f0c33-1f65-55b5-be39-7056bbed31f2",
+      "number": 32,
+      "operator": "÷",
+      "questions": [
+        {
+          "id": "q690",
+          "row": 327,
+          "status": "APPROVED",
+          "category": "Dieren",
+          "original": "Hoeveel kilogram weegt een volwassen mannelijke Amerikaanse bizon?",
+          "question": "How many kilograms can an adult male American bison weigh?",
+          "subtitle": null,
+          "answer": 900,
+          "evidence": "Stieren wegen tot ongeveer 900 kg.",
+          "source": "https://en.wikipedia.org/wiki/American_bison",
+          "notes": "Explicitly approved in final salvage review.",
+          "photo": null,
+          "unit_group": "kg",
+          "group": "q690",
+          "rating": 5,
+          "unit": "kg"
+        },
+        {
+          "id": "q1074",
+          "row": 489,
+          "status": "APPROVED",
+          "category": "Landbouw en industrie",
+          "original": "Hoeveel dagen duurt de zwangerschap van een geit?",
+          "question": "How many days does a goat’s pregnancy last on average?",
+          "subtitle": null,
+          "answer": 150,
+          "evidence": "De draagtijd van een geit is ongeveer 150 dagen.",
+          "source": "https://en.wikipedia.org/wiki/Goat",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/90/Nederlandse_Landgeit_geiten.jpg/330px-Nederlandse_Landgeit_geiten.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Nederlandse_Landgeit_geiten.jpg",
+            "licentie": "CC BY-SA 3.0",
+            "maker": "Eadepoeltegroen at Dutch Wikipedia"
+          },
+          "unit_group": "days",
+          "group": "q1074",
+          "rating": 4,
+          "unit": "days"
+        },
+        {
+          "id": "q846",
+          "row": 374,
+          "status": "APPROVED",
+          "category": "Geografie",
+          "original": "Hoeveel eilandstaten telt Afrika?",
+          "question": "How many African countries are island nations?",
+          "subtitle": null,
+          "answer": 6,
+          "evidence": "Kaapverdie, Comoren, Madagaskar, Mauritius, Sao Tome en Principe en de Seychellen.",
+          "source": "https://en.wikipedia.org/wiki/List_of_island_countries",
+          "notes": "Final Q805–Q949 review decision.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/Africa_%28orthographic_projection%29.svg/330px-Africa_%28orthographic_projection%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Africa_(orthographic_projection).svg",
+            "licentie": "CC BY-SA 3.0",
+            "maker": "Martin23230"
+          },
+          "unit_group": "countries",
+          "group": "q846",
+          "rating": 4,
+          "unit": "countries"
+        }
+      ],
+      "note": "Behoud als Hard: grotere schattingen en specifiekere kennis, niet in de Daily.",
+      "origin": {
+        "mode": "library",
+        "number": 70
+      },
+      "difficulty": "hard",
+      "difficulty_score": 70,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/90/Nederlandse_Landgeit_geiten.jpg/330px-Nederlandse_Landgeit_geiten.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Nederlandse_Landgeit_geiten.jpg",
+        "licentie": "CC BY-SA 3.0",
+        "maker": "Eadepoeltegroen at Dutch Wikipedia",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "7ca5cfd9-363c-595d-a01a-f39f755340a8",
+      "number": 33,
+      "operator": "+",
+      "questions": [
+        {
+          "id": "q784",
+          "row": 347,
+          "status": "APPROVED",
+          "category": "Gebouwen en infrastructuur",
+          "original": "Hoeveel kilometer lang was Route 66?",
+          "question": "How many kilometers long was Route 66?",
+          "subtitle": null,
+          "answer": 3945,
+          "evidence": "Route 66 was 2448 mijl, ongeveer 3945 km.",
+          "source": "https://en.wikipedia.org/wiki/U.S._Route_66",
+          "notes": "Explicitly approved in final salvage review.",
+          "photo": null,
+          "unit_group": "km",
+          "group": "q784",
+          "rating": 4,
+          "unit": "km"
+        },
+        {
+          "id": "q1027",
+          "row": 472,
+          "status": "APPROVED",
+          "category": "Geschiedenis",
+          "original": "In welk jaar begon de Koreaanse oorlog?",
+          "question": "In what year did the Korean War begin?",
+          "subtitle": null,
+          "answer": 1950,
+          "evidence": "De oorlog begon in 1950 en duurde tot 1953.",
+          "source": "https://nl.wikipedia.org/wiki/Koreaanse_Oorlog",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/Lopez_scaling_seawall.jpg/330px-Lopez_scaling_seawall.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Lopez_scaling_seawall.jpg",
+            "licentie": "Public domain",
+            "maker": "Unknown Marine"
+          },
+          "unit_group": "years",
+          "group": "q1027",
+          "rating": 4,
+          "unit": "year"
+        },
+        {
+          "id": "q939",
+          "row": 416,
+          "status": "APPROVED",
+          "category": "Geografie",
+          "original": "Hoeveel meter hoog is de Kilimanjaro?",
+          "question": "How many meters tall is Kilimanjaro?",
+          "subtitle": null,
+          "answer": 5895,
+          "evidence": "| hoogte = 5895",
+          "source": "https://nl.wikipedia.org/wiki/Kilimanjaro_%28berg%29",
+          "notes": "Final Q805–Q949 review decision.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Kilimanjaro_from_Amboseli.jpg/330px-Kilimanjaro_from_Amboseli.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Kilimanjaro_from_Amboseli.jpg",
+            "licentie": "CC BY-SA 4.0",
+            "maker": "Sergey Pesterev"
+          },
+          "unit_group": "m",
+          "group": "q939",
+          "rating": 4,
+          "unit": "m"
+        }
+      ],
+      "note": "Behoud als Hard: grotere schattingen en specifiekere kennis, niet in de Daily.",
+      "origin": {
+        "mode": "library",
+        "number": 71
+      },
+      "difficulty": "hard",
+      "difficulty_score": 70,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/Lopez_scaling_seawall.jpg/330px-Lopez_scaling_seawall.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Lopez_scaling_seawall.jpg",
+        "licentie": "Public domain",
+        "maker": "Unknown Marine",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "53570bca-80e7-5554-9711-1247ad5264cc",
+      "number": 34,
+      "operator": "−",
+      "questions": [
+        {
+          "id": "q639",
+          "row": 313,
+          "status": "APPROVED",
+          "category": "Dieren",
+          "original": "Hoeveel eitjes kan een koninginnenbij per dag leggen?",
+          "question": "How many eggs can a queen bee lay in a day?",
+          "subtitle": null,
+          "answer": 2000,
+          "evidence": "Een koningin legt op het hoogtepunt van het seizoen tot tweeduizend eitjes per dag.",
+          "source": "https://en.wikipedia.org/wiki/Queen_bee",
+          "notes": null,
+          "photo": null,
+          "unit_group": "eggs",
+          "group": "q639",
+          "rating": 5,
+          "unit": "eggs"
+        },
+        {
+          "id": "q768",
+          "row": 342,
+          "status": "APPROVED",
+          "category": "Filosofie, psychologie en religie",
+          "original": "Hoeveel soeras telt de Koran?",
+          "question": "How many surahs are in the Quran?",
+          "subtitle": null,
+          "answer": 114,
+          "evidence": "In totaal bevat de Koran 114 soera's, bestaande uit 6.236 ayat (afhankelijk van de indeling), die met uitzondering van soera Het Berouw allemaal beginnen met de aanhef Bismillah ar-Rahmaan ar-Rahiem (In de naam van God, de genadevolle, de Barmhartige).",
+          "source": "https://nl.wikipedia.org/wiki/Koran",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/The_Holy_Quran.svg/330px-The_Holy_Quran.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:The_Holy_Quran.svg",
+            "licentie": "Public domain",
+            "maker": "https://www.fontsvector.com/"
+          },
+          "unit_group": "surahs",
+          "group": "q768",
+          "rating": 4,
+          "unit": "surahs"
+        },
+        {
+          "id": "q589",
+          "row": 294,
+          "status": "APPROVED",
+          "category": "Vervoer",
+          "original": "In welk jaar reed de eerste auto met een verbrandingsmotor?",
+          "question": "In what year did the first successful gasoline-powered automobile appear?",
+          "subtitle": null,
+          "answer": 1886,
+          "evidence": "Karl Benz reed in 1886 met de eerste auto met verbrandingsmotor.",
+          "source": "https://en.wikipedia.org/wiki/Benz_Patent-Motorwagen",
+          "notes": "Explicitly approved in final salvage review.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/PSM_V18_D500_An_american_internal_combustion_otto_engine.jpg/330px-PSM_V18_D500_An_american_internal_combustion_otto_engine.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:PSM_V18_D500_An_american_internal_combustion_otto_engine.jpg",
+            "licentie": "Public domain",
+            "maker": "Unknown author Unknown author"
+          },
+          "unit_group": "years",
+          "group": "q589",
+          "rating": 4,
+          "unit": "year"
+        }
+      ],
+      "note": "Behoud als Hard: grotere schattingen en specifiekere kennis, niet in de Daily.",
+      "origin": {
+        "mode": "library",
+        "number": 73
+      },
+      "difficulty": "hard",
+      "difficulty_score": 70,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/The_Holy_Quran.svg/330px-The_Holy_Quran.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:The_Holy_Quran.svg",
+        "licentie": "Public domain",
+        "maker": "https://www.fontsvector.com/",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "c668d0e3-92d1-5d96-b1cd-baf6766aef04",
+      "number": 35,
+      "operator": "−",
+      "questions": [
+        {
+          "id": "q273",
+          "row": 150,
+          "status": "APPROVED",
+          "category": "Geografie",
+          "original": "Hoeveel kilometer lang is het Himalayagebergte ongeveer?",
+          "question": "How long does the Himalayas mountain range stretch?",
+          "subtitle": null,
+          "answer": 2500,
+          "evidence": "The Himalayas stretch uninterruptedly for about 1,550 miles (2,500 km) in Asia, forming a barrier between the Plateau of Tibet to the north and the alluvial plains of the Indian subcontinent to the south.",
+          "source": "http://web.archive.org/web/20260902043756/https://www.britannica.com/place/Himalayas",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Hymalayas_86.15103E_31.99726N.jpg/330px-Hymalayas_86.15103E_31.99726N.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Hymalayas_86.15103E_31.99726N.jpg",
+            "licentie": "Public domain",
+            "maker": "onbekend"
+          },
+          "unit_group": "km",
+          "group": "q273",
+          "rating": 5,
+          "unit": "km"
+        },
+        {
+          "id": "q561",
+          "row": 280,
+          "status": "APPROVED",
+          "category": "Technologie",
+          "original": "In welk jaar werd de eerste sms verstuurd?",
+          "question": "In what year was the first text message sent?",
+          "subtitle": null,
+          "answer": 1992,
+          "evidence": "Neil Papworth verstuurde het eerste sms-bericht op 3 december 1992.",
+          "source": "https://en.wikipedia.org/wiki/SMS",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Party_SMS.jpg/330px-Party_SMS.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Party_SMS.jpg",
+            "licentie": "CC BY 2.0",
+            "maker": "Thomas van de Weerd from Utrecht, The Netherlands"
+          },
+          "unit_group": "years",
+          "group": "q561",
+          "rating": 4,
+          "unit": "year"
+        },
+        {
+          "id": "q231",
+          "row": 127,
+          "status": "APPROVED",
+          "category": "Gebouwen en infrastructuur",
+          "original": "Hoeveel meter hoog is Taipei 101?",
+          "question": "How many meters tall is Taipei 101?",
+          "subtitle": null,
+          "answer": 508,
+          "evidence": "Taipei 101 meet 508 meter tot de top van de spits.",
+          "source": "https://en.wikipedia.org/wiki/Taipei_101",
+          "notes": "Explicitly approved in final salvage review.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/Taipei_Skyline_2022.06.29.jpg/330px-Taipei_Skyline_2022.06.29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Taipei_Skyline_2022.06.29.jpg",
+            "licentie": "CC BY-SA 2.0",
+            "maker": "毛貓大少爺"
+          },
+          "unit_group": "m",
+          "group": "q231",
+          "rating": 4,
+          "unit": "m"
+        }
+      ],
+      "note": "Behoud als Hard: grotere schattingen en specifiekere kennis, niet in de Daily.",
+      "origin": {
+        "mode": "library",
+        "number": 75
+      },
+      "difficulty": "hard",
+      "difficulty_score": 70,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Party_SMS.jpg/330px-Party_SMS.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Party_SMS.jpg",
+        "licentie": "CC BY 2.0",
+        "maker": "Thomas van de Weerd from Utrecht, The Netherlands",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "c883a86b-b23a-53ff-84f8-d5a562c9b2c4",
+      "number": 36,
+      "operator": "×",
+      "questions": [
+        {
+          "id": "q1279",
+          "row": 531,
+          "status": "APPROVED",
+          "category": "Politiek en recht",
+          "original": "Hoeveel leden telt het Britse House of Commons?",
+          "question": "How many members are in the UK House of Commons?",
+          "subtitle": null,
+          "answer": 650,
+          "evidence": "The House of Commons is an elected body consisting of 650 members known as members of Parliament (MPs), who are elected to represent constituencies by the first-past-the-post system and hold their seats until Parliament is dissolved.",
+          "source": "https://en.wikipedia.org/wiki/House_of_Commons_of_the_United_Kingdom",
+          "notes": "Explicitly approved in Q1263–Q1408 review.",
+          "photo": null,
+          "unit_group": "members",
+          "group": "q1279",
+          "rating": 4,
+          "unit": "members"
+        },
+        {
+          "id": "q480",
+          "row": 230,
+          "status": "APPROVED",
+          "category": "Spellen en speelgoed",
+          "original": "Hoeveel genummerde scorevakken heeft een dartbord?",
+          "question": "How many numbered sections are on a standard dartboard?",
+          "subtitle": null,
+          "answer": 20,
+          "evidence": "Een dartbord heeft twintig genummerde vakken.",
+          "source": "https://en.wikipedia.org/wiki/Darts",
+          "notes": "Explicitly approved by the user.",
+          "unit_group": "sections",
+          "group": "q480",
+          "rating": 2,
+          "unit": "sections"
+        },
+        {
+          "id": "q1089",
+          "row": 495,
+          "status": "APPROVED",
+          "category": "Merken en producten",
+          "original": "Hoeveel winkels heeft Lidl wereldwijd ongeveer?",
+          "question": "How many Lidl stores are there worldwide?",
+          "subtitle": "As of September 2026.",
+          "answer": 13000,
+          "evidence": "Lidl passeerde 13.000 filialen. Het opgegeven 12.500 is te laag, en identiek aan dat van Aldi in vraag 1088 — twee verschillende ketens met precies hetzelfde getal.",
+          "source": "https://www.lidl.nl/",
+          "notes": "Explicitly approved in final salvage review.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Lidl-Logo.svg/330px-Lidl-Logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Lidl-Logo.svg",
+            "licentie": "Public domain",
+            "maker": "Lidl Stiftung & Co. KG"
+          },
+          "unit_group": "stores",
+          "group": "q1089",
+          "rating": 5,
+          "unit": "stores"
+        }
+      ],
+      "note": "Dartbord vervangt Kremlintorens: dezelfde som met een herkenbaar voorwerp.",
+      "origin": {
+        "mode": "library",
+        "number": 78
+      },
+      "difficulty": "hard",
+      "difficulty_score": 70,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Lidl-Logo.svg/330px-Lidl-Logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Lidl-Logo.svg",
+        "licentie": "Public domain",
+        "maker": "Lidl Stiftung & Co. KG",
+        "vraag": 3
+      }
+    },
+    {
+      "id": "24b45fad-4bd6-5fab-a70d-ee0a835df9f7",
+      "number": 37,
+      "operator": "÷",
+      "questions": [
+        {
+          "id": "q605",
+          "row": 301,
+          "status": "APPROVED",
+          "category": "Biologie & gezondheid",
+          "original": "Hoeveel liter bloed pompt een mensenhart gemiddeld per dag rond?",
+          "question": "How many liters of blood does the human heart pump in a day on average?",
+          "subtitle": null,
+          "answer": 7200,
+          "evidence": "For a healthy individual weighing 70 kg, the cardiac output at rest averages about 5 L/min. Vijf liter per minuut maal 1440 minuten is 7200 liter per dag.",
+          "source": "https://en.wikipedia.org/wiki/Cardiac_output",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Venous_and_arterial_blood.jpg/330px-Venous_and_arterial_blood.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Venous_and_arterial_blood.jpg",
+            "licentie": "CC BY-SA 3.0",
+            "maker": "Wesalius"
+          },
+          "unit_group": "litres",
+          "group": "q605",
+          "rating": 5,
+          "unit": "litres"
+        },
+        {
+          "id": "q1281",
+          "row": 532,
+          "status": "APPROVED",
+          "category": "Politiek en recht",
+          "original": "Hoeveel leden telt het Europees Parlement in de zittingsperiode 2024–2029?",
+          "question": "How many members are in the European Parliament?",
+          "subtitle": "For the 2024–2029 parliamentary term.",
+          "answer": 720,
+          "evidence": "European Parliament: 720 seats for the 2024–2029 term.",
+          "source": "https://www.europarl.europa.eu/topics/en/article/20190705STO56305/facts-and-figures-the-european-parliament-s-2024-2029-term",
+          "notes": "Explicitly approved in Q1263–Q1408 review.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/EP-logo-CMYK_NL.svg/330px-EP-logo-CMYK_NL.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:EP-logo-CMYK_NL.svg",
+            "licentie": "Public domain",
+            "maker": "European Parliament"
+          },
+          "unit_group": "members",
+          "group": "q1281",
+          "rating": 4,
+          "unit": "members"
+        },
+        {
+          "id": "q512",
+          "row": 248,
+          "status": "APPROVED",
+          "category": "Sterrenkunde & ruimte",
+          "original": "Hoeveel aardse uren duurt één volledige draai van Jupiter ongeveer?",
+          "question": "How many Earth hours does Jupiter take to complete one full rotation, approximately?",
+          "subtitle": null,
+          "answer": 10,
+          "evidence": "Pioneer 10 en 11\nPioneer 10 was de eerste ruimtesonde naar Jupiter en werd op 3 maart 1972 gelanceerd.",
+          "source": "https://nl.wikipedia.org/wiki/Jupiter_%28planeet%29",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Jupiter.jpg/330px-Jupiter.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Jupiter.jpg",
+            "licentie": "Public domain",
+            "maker": "NASA/JPL/USGS"
+          },
+          "unit_group": "hours",
+          "group": "q512",
+          "rating": 2,
+          "unit": "hours"
+        }
+      ],
+      "note": "Jupiters rotatie vervangt een Sahara-landentelling.",
+      "origin": {
+        "mode": "library",
+        "number": 91
+      },
+      "difficulty": "hard",
+      "difficulty_score": 70,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/EP-logo-CMYK_NL.svg/330px-EP-logo-CMYK_NL.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:EP-logo-CMYK_NL.svg",
+        "licentie": "Public domain",
+        "maker": "European Parliament",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "20d8d058-83c1-5a32-afe6-76d517aa56df",
+      "number": 38,
+      "operator": "−",
+      "questions": [
+        {
+          "id": "q1012",
+          "row": 467,
+          "status": "APPROVED",
+          "category": "Geschiedenis",
+          "original": "Hoeveel mensen stierven bij de uitbarsting van de Vesuvius in Pompeï volgens een veelgebruikte schatting?",
+          "question": "How many people are estimated to have died in Pompeii during the eruption of Mount Vesuvius?",
+          "subtitle": null,
+          "answer": 2000,
+          "evidence": "Before AD 79\nScientific knowledge of the geologic history of Vesuvius comes from core samples taken from a 2,000 m (6,600 ft) plus borehole on the flanks of the volcano, extending into Mesozoic rock.",
+          "source": "https://en.wikipedia.org/wiki/Mount_Vesuvius",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/Veduta_Scavi_Pompei_3.JPG/330px-Veduta_Scavi_Pompei_3.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Veduta_Scavi_Pompei_3.JPG",
+            "licentie": "CC BY-SA 3.0",
+            "maker": "Mentnafunangann"
+          },
+          "unit_group": "people",
+          "group": "q1012",
+          "rating": 5,
+          "unit": "people"
+        },
+        {
+          "id": "q290",
+          "row": 155,
+          "status": "APPROVED",
+          "category": "Geografie",
+          "original": "Hoeveel meter onder zeeniveau ligt het diepste punt van de Noordzee ongeveer?",
+          "question": "How far below sea level is the deepest point of the North Sea?",
+          "subtitle": null,
+          "answer": 700,
+          "evidence": "Alleen de Noorse geul, een smal gebied van de Noordelijke Noordzee voor Noorwegen, is veel dieper (zo'n 700 meter) en is daarom geen onderdeel meer van het continent Europa.",
+          "source": "https://nl.wikipedia.org/wiki/Noordzee",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Locatie_Noordzee.PNG/330px-Locatie_Noordzee.PNG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Locatie_Noordzee.PNG",
+            "licentie": "Public domain",
+            "maker": "edited by M.Minderhoud"
+          },
+          "unit_group": "m",
+          "group": "q290",
+          "rating": 3,
+          "unit": "m"
+        },
+        {
+          "id": "q074",
+          "row": 41,
+          "status": "APPROVED",
+          "category": "Spellen en speelgoed",
+          "original": "Hoeveel LEGO-steentjes worden er wereldwijd per seconde gemaakt?",
+          "question": "How many LEGO pieces are produced worldwide each second?",
+          "subtitle": null,
+          "answer": 1300,
+          "evidence": "LEGO produceert tientallen miljarden elementen per jaar; omgerekend rond de dertienhonderd per seconde. Het cijfer verschuift met de productie.",
+          "source": "https://en.wikipedia.org/wiki/Lego",
+          "notes": "Explicitly approved in final salvage review. Evidence/value unresolved: no authoritative current LEGO source found supporting exactly 1,300 pieces per second. Target retained; no reference year inferred.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Lego_Color_Bricks.jpg/330px-Lego_Color_Bricks.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Lego_Color_Bricks.jpg",
+            "licentie": "CC BY-SA 2.0",
+            "maker": "Alan Chia"
+          },
+          "unit_group": "pieces",
+          "group": "q074",
+          "rating": 4,
+          "unit": "pieces"
+        }
+      ],
+      "note": "Behoud als Extremely Hard: herkenbare objecten maar zeer lastige grootheden; geen Daily.",
+      "origin": {
+        "mode": "library",
+        "number": 77
+      },
+      "difficulty": "extremely-hard",
+      "difficulty_score": 90,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Locatie_Noordzee.PNG/330px-Locatie_Noordzee.PNG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Locatie_Noordzee.PNG",
+        "licentie": "Public domain",
+        "maker": "edited by M.Minderhoud",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "96b8ffd7-a19a-5c17-a870-25a53ff0ac07",
+      "number": 39,
+      "operator": "÷",
+      "questions": [
+        {
+          "id": "N40",
+          "row": 602,
+          "status": "APPROVED",
+          "category": "Geschiedenis",
+          "original": "How many houses were destroyed in the Great Fire of London?",
+          "question": "How many houses were destroyed in the Great Fire of London?",
+          "subtitle": null,
+          "answer": 13200,
+          "evidence": "London Museum: the 1666 fire destroyed 13,200 houses.",
+          "source": "https://www.londonmuseum.org.uk/collections/london-stories/great-fire-of-london/",
+          "notes": "Explicitly approved N40. No existing matching question found; user-supplied custom identifier retained.",
+          "photo": null,
+          "unit_group": "houses",
+          "group": "N40",
+          "rating": 5,
+          "unit": "houses"
+        },
+        {
+          "id": "q401",
+          "row": 208,
+          "status": "APPROVED",
+          "category": "Muziek",
+          "original": "Hoeveel hertz is de toonhoogte van de standaard a in de muziek?",
+          "question": "How many hertz is standard concert pitch A?",
+          "subtitle": null,
+          "answer": 440,
+          "evidence": "De kamertoon a is genormeerd op 440 Hz in ISO 16.",
+          "source": "https://www.iso.org/standard/3601.html",
+          "notes": "Explicitly approved by the user.",
+          "photo": null,
+          "unit_group": "hertz",
+          "group": "q401",
+          "rating": 4,
+          "unit": "Hz"
+        },
+        {
+          "id": "q379",
+          "row": 200,
+          "status": "APPROVED",
+          "category": "Milieu en duurzaamheid",
+          "original": "Welk percentage van het zoete water bevindt zich in grondwater?",
+          "question": "What percentage of Earth's freshwater is groundwater?",
+          "subtitle": null,
+          "answer": 30,
+          "evidence": "Another 30 percent of freshwater is in the ground.",
+          "source": "https://www.usgs.gov/special-topics/water-science-school/science/where-earths-water",
+          "notes": "Explicitly approved by the user.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/Groundwater_flow_NL.svg/330px-Groundwater_flow_NL.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Groundwater_flow_NL.svg",
+            "licentie": "Public domain",
+            "maker": "T.C. Winter, J.W. Harvey, O.L. Franke, and W.M. Alley File:Groundwater flow.svg : derivative work: Woudloper"
+          },
+          "unit_group": "percent",
+          "group": "q379",
+          "rating": 3,
+          "unit": "%"
+        }
+      ],
+      "note": "Behoud als Extremely Hard: herkenbare objecten maar zeer lastige grootheden; geen Daily.",
+      "origin": {
+        "mode": "library",
+        "number": 79
+      },
+      "difficulty": "extremely-hard",
+      "difficulty_score": 90,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/Groundwater_flow_NL.svg/330px-Groundwater_flow_NL.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Groundwater_flow_NL.svg",
+        "licentie": "Public domain",
+        "maker": "T.C. Winter, J.W. Harvey, O.L. Franke, and W.M. Alley File:Groundwater flow.svg : derivative work: Woudloper",
+        "vraag": 3
+      }
+    },
+    {
+      "id": "4ebdf3e9-2727-59a3-81b7-33c797b6a9ba",
+      "number": 40,
+      "operator": "÷",
+      "questions": [
+        {
+          "id": "q225",
+          "row": 122,
+          "status": "APPROVED",
+          "category": "Gebouwen en infrastructuur",
+          "original": "Hoeveel kilogram weegt de Great Bell, de grote klok van Big Ben?",
+          "question": "How many kilograms does Big Ben's Great Bell weigh?",
+          "subtitle": null,
+          "answer": 13700,
+          "evidence": "De Great Bell weegt 13,7 ton.",
+          "source": "https://en.wikipedia.org/wiki/Big_Ben",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Big-ben-1858.jpg/330px-Big-ben-1858.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Big-ben-1858.jpg",
+            "licentie": "Public domain",
+            "maker": "Unknown author Unknown author"
+          },
+          "unit_group": "kg",
+          "group": "q225",
+          "rating": 5,
+          "unit": "kg"
+        },
+        {
+          "id": "q686",
+          "row": 325,
+          "status": "APPROVED",
+          "category": "Dieren",
+          "original": "Hoeveel uur per dag slaapt een koala?",
+          "question": "How many hours a day does a koala sleep?",
+          "subtitle": null,
+          "answer": 20,
+          "evidence": "Koalas slapen 18 tot 22 uur per dag.",
+          "source": "https://en.wikipedia.org/wiki/Koala",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Koala_climbing_tree.jpg/330px-Koala_climbing_tree.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Koala_climbing_tree.jpg",
+            "licentie": "CC BY-SA 3.0",
+            "maker": "Diliff"
+          },
+          "unit_group": "hours",
+          "group": "q686",
+          "rating": 2,
+          "unit": "hours"
+        },
+        {
+          "id": "q271",
+          "row": 148,
+          "status": "APPROVED",
+          "category": "Geografie",
+          "original": "Hoeveel kilometer lang is de langste grot ter wereld, Mammoth Cave, ongeveer?",
+          "question": "How long is the world's longest known cave system?",
+          "subtitle": "Mammoth Cave, Kentucky, USA.",
+          "answer": 685,
+          "evidence": "De gekarteerde lengte groeit met elke nieuwe verkenning; inmiddels ruim 685 kilometer.",
+          "source": "https://en.wikipedia.org/wiki/Mammoth_Cave_National_Park",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Mammoth_Cave_Rotunda_%28USGS_Lwt02830%29.jpg/330px-Mammoth_Cave_Rotunda_%28USGS_Lwt02830%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Mammoth_Cave_Rotunda_(USGS_Lwt02830).jpg",
+            "licentie": "Public domain",
+            "maker": "Willis Thomas Lee"
+          },
+          "unit_group": "km",
+          "group": "q271",
+          "rating": 4,
+          "unit": "km"
+        }
+      ],
+      "note": "Behoud als Extremely Hard: herkenbare objecten maar zeer lastige grootheden; geen Daily.",
+      "origin": {
+        "mode": "library",
+        "number": 80
+      },
+      "difficulty": "extremely-hard",
+      "difficulty_score": 90,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Koala_climbing_tree.jpg/330px-Koala_climbing_tree.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Koala_climbing_tree.jpg",
+        "licentie": "CC BY-SA 3.0",
+        "maker": "Diliff",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "e353b715-c48c-5677-92d4-5abc8ee902c4",
+      "number": 41,
+      "operator": "−",
+      "questions": [
+        {
+          "id": "q345",
+          "row": 187,
+          "status": "APPROVED",
+          "category": "Kunst en cultuur",
+          "original": "Hoeveel centimeter hoog is Michelangelo’s David?",
+          "question": "How tall is Michelangelo's David?",
+          "subtitle": null,
+          "answer": 517,
+          "evidence": "Het beeld is 517 centimeter hoog, zonder sokkel.",
+          "source": "https://en.wikipedia.org/wiki/David_(Michelangelo)",
+          "notes": "Explicitly approved by the user.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/%27David%27_by_Michelangelo_FI_Acca_JBS_086.jpg/330px-%27David%27_by_Michelangelo_FI_Acca_JBS_086.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:%27David%27_by_Michelangelo_FI_Acca_JBS_086.jpg",
+            "licentie": "CC BY-SA 4.0",
+            "maker": "Jörg Bittner Unna"
+          },
+          "unit_group": "cm",
+          "group": "q345",
+          "rating": 4,
+          "unit": "cm"
+        },
+        {
+          "id": "q404",
+          "row": 210,
+          "status": "APPROVED",
+          "category": "Natuurkunde",
+          "original": "Hoeveel kilometer per uur waait wind bij windkracht 8 volgens de schaal van Beaufort?",
+          "question": "What is the highest wind speed classified as force 8 on the Beaufort scale?",
+          "subtitle": null,
+          "answer": 74,
+          "evidence": "Windkracht 8 loopt van 62 tot 74 km/u. Het opgegeven 75 hoort al bij windkracht 9.",
+          "source": "https://nl.wikipedia.org/wiki/Schaal_van_Beaufort",
+          "notes": "Explicit user approval of rebuilt question; 74 km/h is the upper limit of force 8, not the whole range.",
+          "photo": null,
+          "unit_group": "speed",
+          "group": "q404",
+          "rating": 4,
+          "unit": "km/h"
+        },
+        {
+          "id": "q232",
+          "row": 128,
+          "status": "APPROVED",
+          "category": "Gebouwen en infrastructuur",
+          "original": "Hoeveel meter hoog is het Empire State Building inclusief antenne?",
+          "question": "How many meters tall is the Empire State Building including its antenna?",
+          "subtitle": null,
+          "answer": 443,
+          "evidence": "The building has a roof height of 1,250 feet (380 m) and stands a total of 1,454 feet (443.2 m) tall including its antenna.",
+          "source": "https://en.wikipedia.org/wiki/Empire_State_Building",
+          "notes": "Explicitly approved in final salvage review.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Empire_State_Building_from_Rockefeller_Center_%2851197886181%29_%28cropped%29.jpg/330px-Empire_State_Building_from_Rockefeller_Center_%2851197886181%29_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Empire_State_Building_from_Rockefeller_Center_(51197886181)_(cropped).jpg",
+            "licentie": "CC BY-SA 2.0",
+            "maker": "Domenico Convertini from Zurich, Schweiz"
+          },
+          "unit_group": "m",
+          "group": "q232",
+          "rating": 4,
+          "unit": "m"
+        }
+      ],
+      "note": "Behoud als Extremely Hard: herkenbare objecten maar zeer lastige grootheden; geen Daily.",
+      "origin": {
+        "mode": "library",
+        "number": 81
+      },
+      "difficulty": "extremely-hard",
+      "difficulty_score": 90,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/%27David%27_by_Michelangelo_FI_Acca_JBS_086.jpg/330px-%27David%27_by_Michelangelo_FI_Acca_JBS_086.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:%27David%27_by_Michelangelo_FI_Acca_JBS_086.jpg",
+        "licentie": "CC BY-SA 4.0",
+        "maker": "Jörg Bittner Unna",
+        "vraag": 1
+      }
+    },
+    {
+      "id": "eee48bb6-a36d-5d1c-b505-3dc5a726996b",
+      "number": 42,
+      "operator": "−",
+      "questions": [
+        {
+          "id": "q935",
+          "row": 413,
+          "status": "APPROVED",
+          "category": "Geografie",
+          "original": "Hoeveel meter hoog is Mount Kosciuszko, het hoogste punt van Australië?",
+          "question": "How many metres tall is Australia’s highest mainland mountain?",
+          "subtitle": "Mount Kosciuszko.",
+          "answer": 2228,
+          "evidence": "De Mount Kosciuszko bevindt zich in New South Wales en is met 2228 m de hoogste berg van het Australische vasteland.",
+          "source": "https://nl.wikipedia.org/wiki/Mount_Kosciuszko",
+          "notes": "Final Q805–Q949 review decision.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/Mount_Kosciuszko.jpg/330px-Mount_Kosciuszko.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Mount_Kosciuszko.jpg",
+            "licentie": "CC BY-SA 3.0",
+            "maker": "onbekend"
+          },
+          "unit_group": "m",
+          "group": "q935",
+          "rating": 4,
+          "unit": "m"
+        },
+        {
+          "id": "q557",
+          "row": 277,
+          "status": "APPROVED",
+          "category": "Technologie",
+          "original": "In welk jaar werd de eerste commerciële cd uitgebracht?",
+          "question": "In what year was the first commercial CD released?",
+          "subtitle": null,
+          "answer": 1982,
+          "evidence": "De eerste commerciële cd verscheen in 1982.",
+          "source": "https://en.wikipedia.org/wiki/Compact_disc",
+          "notes": null,
+          "photo": null,
+          "unit_group": "years",
+          "group": "q557",
+          "rating": 4,
+          "unit": "year"
+        },
+        {
+          "id": "q069",
+          "row": 40,
+          "status": "APPROVED",
+          "category": "Records en vergelijkingen",
+          "original": "Hoe lang was de langste vrouw ooit in centimeters?",
+          "question": "How many centimetres tall was the tallest woman ever?",
+          "subtitle": null,
+          "answer": 246,
+          "evidence": "De langste vrouw ooit was Zeng Jinlian met 246,3 cm, niet 255.",
+          "source": "https://www.guinnessworldrecords.com/world-records/tallest-woman",
+          "notes": "Explicitly approved by the user. English wording is recorded in Kept questions.",
+          "photo": null,
+          "unit_group": "cm",
+          "group": "q069",
+          "rating": 4,
+          "unit": "cm"
+        }
+      ],
+      "note": "Behoud als Extremely Hard: herkenbare objecten maar zeer lastige grootheden; geen Daily.",
+      "origin": {
+        "mode": "library",
+        "number": 83
+      },
+      "difficulty": "extremely-hard",
+      "difficulty_score": 90,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/Mount_Kosciuszko.jpg/330px-Mount_Kosciuszko.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Mount_Kosciuszko.jpg",
+        "licentie": "CC BY-SA 3.0",
+        "maker": "onbekend",
+        "vraag": 1
+      }
+    },
+    {
+      "id": "b6241295-da59-5818-9626-338c8f8dcedf",
+      "number": 43,
+      "operator": "×",
+      "questions": [
+        {
+          "id": "q665",
+          "row": 321,
+          "status": "APPROVED",
+          "category": "Dieren",
+          "original": "Hoeveel meter per uur kruipen tuinslakken maximaal?",
+          "question": "How many meters can a garden snail crawl in one hour?",
+          "subtitle": null,
+          "answer": 50,
+          "evidence": "De gewone tuinslak haalt ongeveer 1,3 centimeter per seconde, oftewel bijna vijftig meter per uur. De oude bron ging over elektriciteitsmeters.",
+          "source": "https://en.wikipedia.org/wiki/Cornu_aspersum",
+          "notes": "Explicitly approved in final salvage review.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Helix_pomatia_%28Dourbes%29.jpg/330px-Helix_pomatia_%28Dourbes%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Helix_pomatia_(Dourbes).jpg",
+            "licentie": "CC BY-SA 4.0",
+            "maker": "Hans Hillewaert"
+          },
+          "unit_group": "m",
+          "group": "q665",
+          "rating": 4,
+          "unit": "m"
+        },
+        {
+          "id": "q1001",
+          "row": 463,
+          "status": "APPROVED",
+          "category": "Geschiedenis",
+          "original": "Hoeveel jaar duurde de apartheid in Zuid-Afrika (1948-1994)?",
+          "question": "How many years did apartheid officially last in South Africa?",
+          "subtitle": null,
+          "answer": 46,
+          "evidence": "Invoering Grote apartheid\n\nIn 1959 werd de Wet op de Bevordering van Bantoe-zelfbestuur (Promotion of Bantu Self-Government Act No 46) aangenomen, die leidde tot de invoering van 8, later 10 aparte \"thuislanden\" voor de verschillende etnische niet-blanke bevolkingsgroepen.",
+          "source": "https://nl.wikipedia.org/wiki/Apartheid_in_Zuid-Afrika",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/South_Africa_%28centered_orthographic_projection%29.svg/330px-South_Africa_%28centered_orthographic_projection%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:South_Africa_(centered_orthographic_projection).svg",
+            "licentie": "CC BY-SA 4.0",
+            "maker": "M.Bitton"
+          },
+          "unit_group": "years",
+          "group": "q1001",
+          "rating": 4,
+          "unit": "years"
+        },
+        {
+          "id": "q272",
+          "row": 149,
+          "status": "APPROVED",
+          "category": "Geografie",
+          "original": "Hoeveel kilometer lang is het Great Barrier Reef ongeveer?",
+          "question": "How long is the Great Barrier Reef?",
+          "subtitle": null,
+          "answer": 2300,
+          "evidence": "The Great Barrier Reef is the world's largest coral reef system, composed of over 2,900 individual reefs and 900 islands stretching for over 2,300 kilometres (1,400 mi) over an area of approximately 344,400 square kilometres (133,000 mi2).",
+          "source": "https://en.wikipedia.org/wiki/Great_Barrier_Reef",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/ISS-45_StoryOfWater%2C_Great_Barrier_Reef%2C_Australia.jpg/330px-ISS-45_StoryOfWater%2C_Great_Barrier_Reef%2C_Australia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:ISS-45_StoryOfWater,_Great_Barrier_Reef,_Australia.jpg",
+            "licentie": "Public domain",
+            "maker": "NASA/Kjell Lindgren"
+          },
+          "unit_group": "km",
+          "group": "q272",
+          "rating": 5,
+          "unit": "km"
+        }
+      ],
+      "note": "Behoud als Extremely Hard: herkenbare objecten maar zeer lastige grootheden; geen Daily.",
+      "origin": {
+        "mode": "library",
+        "number": 86
+      },
+      "difficulty": "extremely-hard",
+      "difficulty_score": 90,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/South_Africa_%28centered_orthographic_projection%29.svg/330px-South_Africa_%28centered_orthographic_projection%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:South_Africa_(centered_orthographic_projection).svg",
+        "licentie": "CC BY-SA 4.0",
+        "maker": "M.Bitton",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "e3c17540-3be0-5394-8a09-dd62b4997a4e",
+      "number": 44,
+      "operator": "×",
+      "questions": [
+        {
+          "id": "q523",
+          "row": 258,
+          "status": "APPROVED",
+          "category": "Sterrenkunde & ruimte",
+          "original": "Hoeveel kilometer per uur kunnen de sterkste winden op Neptunus ongeveer bereiken?",
+          "question": "How many kilometres per hour can the strongest winds on Neptune reach, approximately?",
+          "subtitle": null,
+          "answer": 2100,
+          "evidence": "Neptunus heeft de sterkste wind van elke planeet in het zonnestelsel, tot wel 2100 km/h.",
+          "source": "https://nl.wikipedia.org/wiki/Neptunus_%28planeet%29",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Neptune_Voyager2_color_calibrated.png/330px-Neptune_Voyager2_color_calibrated.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Neptune_Voyager2_color_calibrated.png",
+            "licentie": "CC0",
+            "maker": "NASA / Voyager 2 / PDS / OPUS / Ardenau4"
+          },
+          "unit_group": "speed",
+          "group": "q523",
+          "rating": 4,
+          "unit": "km/h"
+        },
+        {
+          "id": "q828",
+          "row": 365,
+          "status": "APPROVED",
+          "category": "Gebouwen en infrastructuur",
+          "original": "Hoeveel zuilen had het oorspronkelijke Parthenon volgens de klassieke indeling?",
+          "question": "How many columns were in the Parthenon’s outer colonnade?",
+          "subtitle": null,
+          "answer": 46,
+          "evidence": "De verhouding van de zuilen van de buitenste colonnade is 8 × 17 en deze telt in totaal 46 zuilen.",
+          "source": "https://nl.wikipedia.org/wiki/Parthenon",
+          "notes": "Final Q805–Q949 review decision.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/The_Parthenon_in_Athens.jpg/330px-The_Parthenon_in_Athens.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:The_Parthenon_in_Athens.jpg",
+            "licentie": "CC BY 2.0",
+            "maker": "Steve Swayne"
+          },
+          "unit_group": "columns",
+          "group": "q828",
+          "rating": 4,
+          "unit": "columns"
+        },
+        {
+          "id": "q128",
+          "row": 69,
+          "status": "APPROVED",
+          "category": "Biologie & gezondheid",
+          "original": "Wat is de totale geschatte lengte van alle bloedvaten in een volwassen menselijk lichaam in kilometers?",
+          "question": "How many kilometres long are all the blood vessels in an adult human body combined?",
+          "subtitle": null,
+          "answer": 96600,
+          "evidence": "De honderdduizend kilometer is een gangbare schatting, geen meting. Geen bron kan dit exact bevestigen.",
+          "source": "https://en.wikipedia.org/wiki/Circulatory_system",
+          "notes": "Evidence checked: 60,000 miles is about 96,600 km. This is a common public-facing estimate; scientific estimates vary widely.",
+          "photo": null,
+          "unit_group": "km",
+          "group": "q128",
+          "rating": 4,
+          "unit": "km"
+        }
+      ],
+      "note": "Behoud als Extremely Hard: herkenbare objecten maar zeer lastige grootheden; geen Daily.",
+      "origin": {
+        "mode": "library",
+        "number": 87
+      },
+      "difficulty": "extremely-hard",
+      "difficulty_score": 90,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/The_Parthenon_in_Athens.jpg/330px-The_Parthenon_in_Athens.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:The_Parthenon_in_Athens.jpg",
+        "licentie": "CC BY 2.0",
+        "maker": "Steve Swayne",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "48f6a706-3b3a-50bd-b059-c0ed303f6816",
+      "number": 45,
+      "operator": "×",
+      "questions": [
+        {
+          "id": "q114",
+          "row": 64,
+          "status": "APPROVED",
+          "category": "Biologie & gezondheid",
+          "original": "Hoeveel haren heeft een mens gemiddeld op zijn hoofd (afgerond)?",
+          "question": "How many hairs are on a human head on average?",
+          "subtitle": "Give an approximate answer.",
+          "answer": 100000,
+          "evidence": "Een hoofd draagt gemiddeld ongeveer 100.000 haarzakjes.",
+          "source": "https://en.wikipedia.org/wiki/Hair_follicle",
+          "notes": "Explicitly approved by the user.",
+          "photo": null,
+          "unit_group": "hairs",
+          "group": "q114",
+          "rating": 4,
+          "unit": "hairs"
+        },
+        {
+          "id": "q081",
+          "row": 46,
+          "status": "APPROVED",
+          "category": "Sterrenkunde & ruimte",
+          "original": "Hoeveel aardse uren duurt één volledige draai van Mars ongeveer?",
+          "question": "How many hours does Mars take to complete one full rotation?",
+          "subtitle": "In Earth hours, rounded to the nearest whole hour.",
+          "answer": 25,
+          "evidence": "Mars completes one rotation in 24.6 Earth hours, which rounds to 25 whole hours.",
+          "source": "https://science.nasa.gov/mars/facts/",
+          "notes": "Explicitly approved in final salvage review.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png/330px-Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png",
+            "licentie": "CC BY 2.0",
+            "maker": "Kevin Gill from Los Angeles, CA, United States"
+          },
+          "unit_group": "hours",
+          "group": "q081",
+          "rating": 2,
+          "unit": "hours"
+        },
+        {
+          "id": "q226",
+          "row": 123,
+          "status": "APPROVED",
+          "category": "Gebouwen en infrastructuur",
+          "original": "Hoeveel klinknagels houden de metalen delen van de Eiffeltoren bij elkaar?",
+          "question": "How many rivets were used to build the Eiffel Tower?",
+          "subtitle": null,
+          "answer": 2500000,
+          "evidence": "De toren telt ongeveer 2,5 miljoen klinknagels.",
+          "source": "https://en.wikipedia.org/wiki/Eiffel_Tower",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg/330px-Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Tour_Eiffel_Wikimedia_Commons_(cropped).jpg",
+            "licentie": "Public domain",
+            "maker": "Benh LIEU SONG"
+          },
+          "unit_group": "rivets",
+          "group": "q226",
+          "rating": 5,
+          "unit": "rivets"
+        }
+      ],
+      "note": "Marsrotatie vervangt een museuminventaris; de bewijszin en afronding zijn gecontroleerd bij NASA.",
+      "origin": {
+        "mode": "library",
+        "number": 96
+      },
+      "difficulty": "extremely-hard",
+      "difficulty_score": 90,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png/330px-Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png",
+        "licentie": "CC BY 2.0",
+        "maker": "Kevin Gill from Los Angeles, CA, United States",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "0092f24c-bca9-52ca-be46-266dede587d1",
+      "number": 46,
+      "operator": "−",
+      "questions": [
+        {
+          "id": "q1019",
+          "row": 470,
+          "status": "APPROVED",
+          "category": "Geschiedenis",
+          "original": "Hoeveel soldaten namen deel aan de landing in Normandië op D-Day?",
+          "question": "How many Allied troops landed in Normandy on D-Day?",
+          "subtitle": null,
+          "answer": 156000,
+          "evidence": "Op D-Day landden ongeveer 156.000 geallieerde militairen.",
+          "source": "https://en.wikipedia.org/wiki/Normandy_landings",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/1944_NormandyLST.jpg/330px-1944_NormandyLST.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:1944_NormandyLST.jpg",
+            "licentie": "Public domain",
+            "maker": "Chief Photographer's Mate (CPHOM) Robert F. Sargent , U.S. Coast Guard"
+          },
+          "unit_group": "d-day",
+          "group": "q1019",
+          "rating": 5,
+          "unit": "troops"
+        },
+        {
+          "id": "q1439",
+          "row": 577,
+          "status": "APPROVED",
+          "category": "Sterrenkunde & ruimte",
+          "original": "Wat is de baansnelheid van het ISS ongeveer?",
+          "question": "How many kilometers per hour does the ISS travel?",
+          "subtitle": null,
+          "answer": 28000,
+          "evidence": "NASA: ISS travels about 28,000 kilometers per hour.",
+          "source": "https://www.nasa.gov/missions/station/spot-the-station-frequently-asked-questions/",
+          "notes": "Explicitly approved in Q1409–Q1510 review.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/The_station_pictured_from_the_SpaceX_Crew_Dragon_5_%28cropped%29.jpg/330px-The_station_pictured_from_the_SpaceX_Crew_Dragon_5_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:The_station_pictured_from_the_SpaceX_Crew_Dragon_5_(cropped).jpg",
+            "licentie": "Public domain",
+            "maker": "NASA"
+          },
+          "unit_group": "speed",
+          "group": "q1439",
+          "rating": 4,
+          "unit": "km/h"
+        },
+        {
+          "id": "q783",
+          "row": 346,
+          "status": "APPROVED",
+          "category": "Gebouwen en infrastructuur",
+          "original": "Hoeveel kilometer staaldraad zit er in beide hoofdkabels van de Golden Gate Bridge samen?",
+          "question": "How many kilometers of steel wire are in the Golden Gate Bridge’s two main cables combined?",
+          "subtitle": null,
+          "answer": 128000,
+          "evidence": "De 128.000 kilometer staaldraad zit in beide hoofdkabels samen, niet in een. Per kabel is het ongeveer 64.500 kilometer.",
+          "source": "https://www.goldengate.org/bridge/history-research/statistics-data/design-construction-stats/",
+          "notes": "Explicitly approved in final salvage review.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/GoldenGateBridge-001.jpg/330px-GoldenGateBridge-001.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:GoldenGateBridge-001.jpg",
+            "licentie": "CC BY 2.5",
+            "maker": "Rich Niewiroski Jr."
+          },
+          "unit_group": "km",
+          "group": "q783",
+          "rating": 5,
+          "unit": "km"
+        }
+      ],
+      "note": "Behoud als Extremely Hard: herkenbare objecten maar zeer lastige grootheden; geen Daily.",
+      "origin": {
+        "mode": "library",
+        "number": 97
+      },
+      "difficulty": "extremely-hard",
+      "difficulty_score": 90,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/The_station_pictured_from_the_SpaceX_Crew_Dragon_5_%28cropped%29.jpg/330px-The_station_pictured_from_the_SpaceX_Crew_Dragon_5_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:The_station_pictured_from_the_SpaceX_Crew_Dragon_5_(cropped).jpg",
+        "licentie": "Public domain",
+        "maker": "NASA",
+        "vraag": 2
+      }
+    },
+    {
+      "id": "3481e430-ef95-5155-916e-06a266dd0b42",
+      "number": 47,
+      "operator": "×",
+      "questions": [
+        {
+          "id": "q991",
+          "row": 457,
+          "status": "APPROVED",
+          "category": "Geschiedenis",
+          "original": "Hoeveel dagen duurde de D-Day-invasie tot de bevrijding van Parijs?",
+          "question": "How many days passed between the D-Day invasion and the liberation of Paris?",
+          "subtitle": null,
+          "answer": 80,
+          "evidence": "Aan het begin van de 21e eeuw woonde bijna 80% van de bevolking van de Parijse agglomeratie in de banlieues, dus buiten de stad Parijs.",
+          "source": "https://nl.wikipedia.org/wiki/Parijs",
+          "notes": "Explicitly approved by the user.",
+          "photo": null,
+          "unit_group": "days",
+          "group": "q991",
+          "rating": 4,
+          "unit": "days"
+        },
+        {
+          "id": "q1135",
+          "row": 505,
+          "status": "APPROVED",
+          "category": "Natuurkunde",
+          "original": "Hoeveel graden Celsius kan een bliksemschicht bereiken?",
+          "question": "How hot can the air around a lightning bolt get, in degrees Celsius?",
+          "subtitle": null,
+          "answer": 30000,
+          "evidence": "De lucht in een bliksemkanaal loopt op tot ongeveer 30.000 graden Celsius.",
+          "source": "https://en.wikipedia.org/wiki/Lightning",
+          "notes": "Explicitly approved in final salvage review.",
+          "photo": null,
+          "unit_group": "degrees",
+          "group": "q1135",
+          "rating": 5,
+          "unit": "°C"
+        },
+        {
+          "id": "q288",
+          "row": 153,
+          "status": "APPROVED",
+          "category": "Geografie",
+          "original": "Hoeveel liter water stroomt er gemiddeld per seconde over de Niagarawatervallen?",
+          "question": "How many litres of water flow over Niagara Falls every second?",
+          "subtitle": null,
+          "answer": 2400000,
+          "evidence": "Er stroomt gemiddeld ongeveer 2400 kubieke meter per seconde, oftewel 2,4 miljoen liter. De oude bron was een UNESCO-archiefpagina.",
+          "source": "https://en.wikipedia.org/wiki/Niagara_Falls",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/3Falls_Niagara.jpg/330px-3Falls_Niagara.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:3Falls_Niagara.jpg",
+            "licentie": "CC BY-SA 3.0",
+            "maker": "Saffron Blaze"
+          },
+          "unit_group": "litres",
+          "group": "q288",
+          "rating": 5,
+          "unit": "litres"
+        }
+      ],
+      "note": "Behoud als Extremely Hard: herkenbare objecten maar zeer lastige grootheden; geen Daily.",
+      "origin": {
+        "mode": "library",
+        "number": 98
+      },
+      "difficulty": "extremely-hard",
+      "difficulty_score": 90,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/3Falls_Niagara.jpg/330px-3Falls_Niagara.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:3Falls_Niagara.jpg",
+        "licentie": "CC BY-SA 3.0",
+        "maker": "Saffron Blaze",
+        "vraag": 3
+      }
+    },
+    {
+      "id": "c5e45ed0-cdfa-5af6-a290-5c7ac45370fb",
+      "number": 48,
+      "operator": "÷",
+      "questions": [
+        {
+          "id": "q299",
+          "row": 158,
+          "status": "APPROVED",
+          "category": "Geografie",
+          "original": "Hoeveel vierkante kilometer is de Sahara ongeveer groot?",
+          "question": "How large is the Sahara Desert?",
+          "subtitle": null,
+          "answer": 9200000,
+          "evidence": "De Sahara beslaat ongeveer 9,2 miljoen vierkante kilometer.",
+          "source": "https://en.wikipedia.org/wiki/Sahara",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/Sahara_real_color.jpg/330px-Sahara_real_color.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Sahara_real_color.jpg",
+            "licentie": "Public domain",
+            "maker": "Project Apollo Archive"
+          },
+          "unit_group": "area",
+          "group": "q299",
+          "rating": 5,
+          "unit": "km²"
+        },
+        {
+          "id": "q529",
+          "row": 263,
+          "status": "APPROVED",
+          "category": "Sterrenkunde & ruimte",
+          "original": "Hoeveel planeten werden bezocht door het Voyager-programma?",
+          "question": "How many planets did the Voyager programme visit?",
+          "subtitle": "NASA’s twin space probes.",
+          "answer": 4,
+          "evidence": "Together, Voyager 1 and Voyager 2 explored Jupiter, Saturn, Uranus and Neptune: four planets.",
+          "source": "https://science.nasa.gov/mission/voyager/mission-overview/",
+          "notes": null,
+          "photo": null,
+          "unit_group": "planets",
+          "group": "q529",
+          "rating": 4,
+          "unit": "planets"
+        },
+        {
+          "id": "q251",
+          "row": 137,
+          "status": "APPROVED",
+          "category": "Gebouwen en infrastructuur",
+          "original": "Hoeveel zware stenen kalksteenblokken zijn er gebruikt om de Grote Piramide van Gizeh (Cheops) te bouwen?",
+          "question": "How many stone blocks were used to build the Great Pyramid of Giza?",
+          "subtitle": null,
+          "answer": 2300000,
+          "evidence": "De piramide bestaat uit ongeveer 2,3 miljoen blokken.",
+          "source": "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Great_Pyramid_of_Giza_-_Pyramid_of_Khufu.jpg/330px-Great_Pyramid_of_Giza_-_Pyramid_of_Khufu.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Great_Pyramid_of_Giza_-_Pyramid_of_Khufu.jpg",
+            "licentie": "CC BY-SA 4.0",
+            "maker": "Douwe C. van der Zee"
+          },
+          "unit_group": "blocks",
+          "group": "q251",
+          "rating": 5,
+          "unit": "blocks"
+        }
+      ],
+      "note": "Behoud als Extremely Hard: herkenbare objecten maar zeer lastige grootheden; geen Daily.",
+      "origin": {
+        "mode": "library",
+        "number": 99
+      },
+      "difficulty": "extremely-hard",
+      "difficulty_score": 90,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/Sahara_real_color.jpg/330px-Sahara_real_color.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Sahara_real_color.jpg",
+        "licentie": "Public domain",
+        "maker": "Project Apollo Archive",
+        "vraag": 1
+      }
+    },
+    {
+      "id": "bce0db8f-718a-5781-bbd7-2998bc1c0f56",
+      "number": 49,
+      "operator": "×",
+      "questions": [
+        {
+          "id": "q308",
+          "row": 162,
+          "status": "APPROVED",
+          "category": "Geografie",
+          "original": "Wat is de lengte van de rivier de Amazone in kilometers?",
+          "question": "How many kilometers long is the Amazon River?",
+          "subtitle": null,
+          "answer": 6400,
+          "evidence": "It has a recognized length of 6,400 kilometers (4,000 mi), but according to some reports, its length varies from 6,575 to 7,062 kilometers (4,086 to 4,388 mi).",
+          "source": "https://en.wikipedia.org/wiki/Amazon_River",
+          "notes": "Explicitly approved in final salvage review. Fixed NETTO convention: Amazon River length 6,400 km; alternative source-point methods differ.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Amazon_River_ESA387332.jpg/330px-Amazon_River_ESA387332.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Amazon_River_ESA387332.jpg",
+            "licentie": "CC BY-SA 3.0 igo",
+            "maker": "European Space Agency"
+          },
+          "unit_group": "km",
+          "group": "q308",
+          "rating": 5,
+          "unit": "km"
+        },
+        {
+          "id": "q450",
+          "row": 220,
+          "status": "APPROVED",
+          "category": "Gebouwen en infrastructuur",
+          "original": "Hoeveel kilogram weegt een gemiddeld stenen blok van de Piramide van Cheops?",
+          "question": "How much does an average stone block in the Great Pyramid of Giza weigh?",
+          "subtitle": null,
+          "answer": 2500,
+          "evidence": "Kenmerken\n\n\nAfmetingen\nDe piramide heeft een grondvlak van ongeveer 230 × 230 meter, was oorspronkelijk 146,59 meter hoog en bevat ongeveer 2,3 miljoen stenen met elk een gemiddeld gewicht van 2500 kilogram.",
+          "source": "https://nl.wikipedia.org/wiki/Piramide_van_Cheops",
+          "notes": "Explicitly approved by the user.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Kheops-Pyramid.jpg/330px-Kheops-Pyramid.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Kheops-Pyramid.jpg",
+            "licentie": "CC BY 2.5",
+            "maker": "Nina"
+          },
+          "unit_group": "kg",
+          "group": "q450",
+          "rating": 5,
+          "unit": "kg"
+        },
+        {
+          "id": "q1011",
+          "row": 466,
+          "status": "APPROVED",
+          "category": "Geschiedenis",
+          "original": "Hoeveel mensen dienden in totaal in het Amerikaanse leger tijdens de Tweede Wereldoorlog?",
+          "question": "How many Americans served in the U.S. armed forces during World War II?",
+          "subtitle": null,
+          "answer": 16000000,
+          "evidence": "Ruim zestien miljoen Amerikanen dienden in de Tweede Wereldoorlog.",
+          "source": "https://www.nationalww2museum.org/students-teachers/student-resources/research-starters/research-starters-us-military-numbers",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/WW2Montage.PNG/330px-WW2Montage.PNG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:WW2Montage.PNG",
+            "licentie": "Public domain",
+            "maker": "Oberiko ( talk · contribs )"
+          },
+          "unit_group": "ii",
+          "group": "q1011",
+          "rating": 5,
+          "unit": "people"
+        }
+      ],
+      "note": "Behoud als Extremely Hard: herkenbare objecten maar zeer lastige grootheden; geen Daily.",
+      "origin": {
+        "mode": "library",
+        "number": 100
+      },
+      "difficulty": "extremely-hard",
+      "difficulty_score": 90,
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Kheops-Pyramid.jpg/330px-Kheops-Pyramid.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Kheops-Pyramid.jpg",
+        "licentie": "CC BY 2.5",
+        "maker": "Nina",
+        "vraag": 2
+      }
+    }
+  ]
+}

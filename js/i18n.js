@@ -561,7 +561,9 @@
   const translatedAttributes = new WeakMap();
 
   function translateCore(source) {
-    const reviewed = window.NETTO_REBUILT_PUZZLES?.daily_review?.[source];
+    const reviewed = window.NETTO_REBUILT_PUZZLES?.daily_review?.[source]
+      || window.NETTO_REBUILT_PUZZLES?.library_review?.[source]
+      || window.NETTO_REBUILT_PUZZLES?.connection_review?.[source];
     if (reviewed) return language === 'nl' ? (reviewed.original || source) : source;
     if (language !== 'en' || !source) return source;
     const exactUi = ui[source];

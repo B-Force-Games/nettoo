@@ -42,7 +42,7 @@ def main():
                 'subtitle':q['subtitle'] or '', 'bron':q['source'],'uitleg':q['evidence'],
                 'uitleg_en':translations.get(q['evidence'],q['evidence'])}
         daily.append(entry)
-    assert 20<=len(daily)<=30
+    assert 1<=len(daily)<=366
     # Oude statische puzzels blijven herstelbaar, maar worden niet meer aangeboden.
     archive=ROOT/'puzzels/dailies_voor_review_20260927.json'
     if not archive.exists():
@@ -55,9 +55,10 @@ def main():
     values=[]
     for p in daily:
         values.append('  ('+', '.join(sqltext(v) for v in [p['id'],p['date'],p['operator'],p['q1_label'],p['q2_label'],p['q3_label']])+', '+', '.join(str(p[f'q{i}_answer']) for i in (1,2,3))+')')
-    template=(ROOT/'supabase/review_daily_template.sql').read_text(encoding='utf8')
+    template=(ROOT/'supabase'/selection.get('sql_template','review_daily_template.sql')).read_text(encoding='utf8')
     sql=template.replace('-- SELECTIE_WAARDEN',',\n'.join(values))
-    (ROOT/'supabase/vervang_dailies_20260927.sql').write_text(sql,encoding='utf8')
+    sql=sql.replace('SELECTIE_AANTAL',str(len(daily))).replace('SELECTIE_EDITIE',selection['edition'])
+    (ROOT/'supabase'/selection.get('sql_output','vervang_dailies_20260927.sql')).write_text(sql,encoding='utf8')
     print(f"{len(daily)} Dailies, {len(seen)} unieke goedgekeurde vragen; frontend en SQL bijgewerkt.")
 
 if __name__=='__main__':

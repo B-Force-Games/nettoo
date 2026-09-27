@@ -620,7 +620,7 @@
   // want dezelfde vragen staan met categorie en al in de puzzeldata.
   const VRAAG_CATEGORIE = (() => {
     const kaart = new Map();
-    for (const naam of ['daily', 'library', 'reserve']) {
+    for (const naam of ['daily', 'library', 'connection', 'reserve']) {
       for (const p of REBUILT_DATA[naam] || []) {
         const cats = Array.isArray(p.categories) ? p.categories : [];
         ['q1', 'q2', 'q3'].forEach((slot, i) => {
@@ -863,7 +863,8 @@
       const plays = readStatsStorage('netto_library_plays', {});
       results = libraryPuzzles.map(p => plays[p.id]).filter(Boolean);
     } else if (statsMode === 'brain') {
-      const saved = readStatsStorage('netto_connection_progress', {});
+      const connectionKey = REBUILT_DATA.connection_edition ? 'netto_connection_progress_' + REBUILT_DATA.connection_edition : 'netto_connection_progress';
+      const saved = readStatsStorage(connectionKey, {});
       results = Array.isArray(saved.results) ? saved.results : [];
     } else {
       const saved = readStatsStorage('netto_race_stats', []);
@@ -1619,7 +1620,7 @@
   }
 
   function initInputs() {
-    ['g1', 'g2', 'g3'].forEach((id, index, arr) => {
+    ['g1', 'g2', 'g3'].forEach(id => {
       const input = document.getElementById(id);
       bindWholeNumberInput(input, updateDailyDerivedInput);
       
@@ -1627,6 +1628,8 @@
       input.addEventListener('keydown', (e) => {
         // Navigatie met Enter
         if (e.key === 'Enter') {
+          const arr = dailyQuestionOrder().map(i => 'g' + (i + 1));
+          const index = arr.indexOf(id);
           if (index < arr.length - 1) {
             document.getElementById(arr[index + 1]).focus();
           } else {
@@ -1804,6 +1807,13 @@
              credit: stukjes.join(' · '), bron: f.pagina };
   }
 
+  // Alleen de presentatie wisselt: opgeslagen antwoorden blijven aan hun vraag gekoppeld.
+  function dailyQuestionOrder() {
+    const foto = PUZZLE_DATA?.image_path ? null : gekoppeldeFoto();
+    return ['+', '×', '*', 'x'].includes(PUZZLE_DATA?.operator) && foto?.vraag === 1
+      ? [1, 0, 2] : [0, 1, 2];
+  }
+
   function renderDailyPhoto() {
     const photo = document.getElementById('dailyPhotoButton');
     const image = document.getElementById('dailyPhotoImage');
@@ -1816,15 +1826,21 @@
     const assigned = PUZZLE_DATA?.image_path;
     const gekoppeld = assigned ? null : gekoppeldeFoto();
     const rotatie = assigned || gekoppeld || PUZZLE_DATA?.edition ? null : pickDailyPhoto(getActivePuzzleKey());
-    const kaarten = [...document.querySelectorAll('#dailyQuestionView > .q-block')];
+    const kaarten = [1, 2, 3].map(i => document.getElementById('g' + i)?.closest('.q-block'));
+    const volgorde = dailyQuestionOrder();
+    const operator = document.getElementById('operatorBadge')?.closest('.connector');
+    if (operator && kaarten.every(Boolean)) {
+      operator.before(kaarten[volgorde[0]]);
+      operator.after(kaarten[volgorde[1]]);
+    }
     kaarten.forEach(kaart => kaart.classList.remove('has-photo'));
     if (!assigned && !gekoppeld && !rotatie) { photo.hidden = true; return; }
 
-    // Foto's bij vraag 1 staan naast vraag 2 voor een rustige bovenkant.
-    // De inhoudelijke koppeling blijft staan in het bijschrift en het knoplabel.
+    // De foto blijft naast de bijbehorende vraag, ook bij vraag 1.
+    // De bestaande fotokolom houdt het beeld vrij van tekst en andere vragen.
     const vraagnummer = gekoppeld?.vraag >= 1 && gekoppeld.vraag <= 3 ? gekoppeld.vraag : 1;
-    const fotopositie = vraagnummer === 1 ? 2 : vraagnummer;
-    const fotokaart = kaarten[fotopositie - 1];
+    const zichtbaarNummer = volgorde.indexOf(vraagnummer - 1) + 1;
+    const fotokaart = kaarten[vraagnummer - 1];
     if (fotokaart) {
       fotokaart.prepend(photo);
       fotokaart.classList.add('has-photo');
@@ -1850,18 +1866,18 @@
     // Decoratief beeld: de knop draagt het label, de img blijft leeg zodat
     // schermlezers het niet dubbel voorlezen.
     photo.setAttribute('aria-label', gekoppeld
-      ? statsCopy('Vergroot de foto bij vraag ' + vraagnummer, 'Enlarge the photo for question ' + vraagnummer)
+      ? statsCopy('Vergroot de foto bij vraag ' + zichtbaarNummer, 'Enlarge the photo for question ' + zichtbaarNummer)
       : statsCopy('Vergroot de voorbeeldfoto', 'Enlarge sample photo'));
     document.getElementById('dailyPhotoCaption').textContent = gekoppeld
-      ? statsCopy('Bij vraag ' + gekoppeld.vraag + ' ↗', 'With question ' + gekoppeld.vraag + ' ↗')
+      ? statsCopy('Bij vraag ' + zichtbaarNummer + ' ↗', 'With question ' + zichtbaarNummer + ' ↗')
       : statsCopy('Voorbeeldfoto ↗', 'Sample photo ↗');
     // "Het antwoord staat er niet op" stond hier, en dat was niet waar: bij een
     // vraag over de hoogte van een toren helpt een foto van die toren je wel
     // degelijk schatten. Dat is ook precies de bedoeling. Beloof dus niet iets
     // wat het beeld niet waarmaakt, en zeg gewoon waar de foto bij hoort.
     document.getElementById('dailyPhotoDisclaimer').textContent = gekoppeld
-      ? statsCopy('Hoort bij vraag ' + gekoppeld.vraag + '.',
-                  'Belongs to question ' + gekoppeld.vraag + '.')
+      ? statsCopy('Hoort bij vraag ' + zichtbaarNummer + '.',
+                  'Belongs to question ' + zichtbaarNummer + '.')
       : statsCopy('Ontwerpvoorbeeld — deze foto is geen hint.', 'Design preview — this photo is not a clue.');
   }
 
@@ -1888,7 +1904,7 @@
   // Het spel toont de vraag vertaald, dus de eenheid moet mee. Eerst de
   // Engelse zin ontleden; lukt dat niet, dan het Nederlandse label vertalen.
   function eenheidUit(vraag) {
-    const reviewed = REBUILT_DATA.daily_review?.[vraag];
+    const reviewed = REBUILT_DATA.daily_review?.[vraag] || REBUILT_DATA.library_review?.[vraag] || REBUILT_DATA.connection_review?.[vraag];
     if (reviewed?.unit) return reviewed.unit;
     const nederlands = nederlandseEenheid(vraag);
     if (window.NettoI18n?.language !== 'en') return nederlands;
@@ -2036,7 +2052,7 @@
 
   function maakBronpaneel(vraag) {
     const bronnen = window.NETTO_BRONNEN;
-    const reviewed = REBUILT_DATA.daily_review?.[vraag];
+    const reviewed = REBUILT_DATA.daily_review?.[vraag] || REBUILT_DATA.library_review?.[vraag] || REBUILT_DATA.connection_review?.[vraag];
     const vermelding = reviewed || bronnen?.[vraag];
     if (!vermelding?.bron || !vermelding?.uitleg) return null;
     let url;
@@ -2396,6 +2412,12 @@
     renderBadge('badge-q1', s1, g1, echt.a1);
     renderBadge('badge-q2', s2, g2, echt.a2);
     renderBadge('badge-q3', s3, g3, echt.a3);
+    dailyQuestionOrder().forEach((index, position) => {
+      const label = document.getElementById('reviewQuestion' + (index + 1));
+      const card = label?.closest('.result-card-item');
+      if (label) label.textContent = statsCopy('Vraag ', 'Question ') + (position + 1);
+      if (card) card.parentElement.appendChild(card);
+    });
 
     // Nauwkeurigheid (Optie A: 100 / avgFactor)
     const accuracy = Math.round(100 / avgFactor);
@@ -2481,7 +2503,10 @@
     const restoreFocus = document.activeElement?.dataset?.question !== undefined;
     container.classList.toggle('is-overview', overview);
     if (overview) index = 0;
-    const { guesses, answers } = dailyReviewData;
+    const volgorde = dailyQuestionOrder();
+    const guesses = volgorde.map(i => dailyReviewData.guesses[i]);
+    const answers = volgorde.map(i => dailyReviewData.answers[i]);
+    const labels = volgorde.map(i => PUZZLE_DATA['q' + (i + 1) + '_label']);
     const guess = guesses[index], actual = answers[index];
     const copy = statsCopy;
     // Fixed illustrative percentages, never used for scoring or stored as player data.
@@ -2532,10 +2557,10 @@
       </svg>
       ${Math.abs(logRatio)>3 ? `<div class="hist-footnote">${copy('Jouw schatting valt buiten de schaal.','Your estimate is outside the scale.')}</div>` : ''}
       <details class="hist-data"><summary>${copy('Bekijk voorbeeldpercentages','View sample percentages')}</summary><div>${bins.map((percent,i)=>`<span>${new Intl.NumberFormat(nettoNumberLocale(),{maximumSignificantDigits:3}).format(2**(-3+i/2))}–${new Intl.NumberFormat(nettoNumberLocale(),{maximumSignificantDigits:3}).format(2**(-3+(i+1)/2))}×: ${percent}%</span>`).join('')}</div></details>`;
-    document.getElementById('selectedReviewQuestion').textContent = [PUZZLE_DATA.q1_label,PUZZLE_DATA.q2_label,PUZZLE_DATA.q3_label][index];
-    [PUZZLE_DATA.q1_label,PUZZLE_DATA.q2_label,PUZZLE_DATA.q3_label].forEach((label,i) => { document.getElementById('overviewQuestion'+i).textContent = label; });
+    document.getElementById('selectedReviewQuestion').textContent = labels[index];
+    labels.forEach((label,i) => { document.getElementById('overviewQuestion'+i).textContent = label; });
     if (!overview) {
-      const bron = maakBronpaneel(PUZZLE_DATA['q' + (index + 1) + '_label']);
+      const bron = maakBronpaneel(labels[index]);
       if (bron) container.querySelector('.review-comparison').insertAdjacentElement('afterend', bron);
     }
     if (restoreFocus) container.querySelector(`[data-question="${selected}"]`)?.focus();
@@ -2566,7 +2591,9 @@
     const r2 = getFactorRating(s2);
     const r3 = getFactorRating(s3);
 
-    const text = `Netto #${PUZZLE_DATA.number} · Score: ${acc}% 🎯 (${play.factor.toFixed(2)}×)\n1️⃣ ${formatLine(r1.emoji, play.g1, echt.a1, s1)}\n2️⃣ ${formatLine(r2.emoji, play.g2, echt.a2, s2)}\n3️⃣ ${formatLine(r3.emoji, play.g3, echt.a3, s3)}\n🔥 Streak: ${streak} ${streak === 1 ? 'dag' : 'dagen'}\n${speelAdres()}`;
+    const regels = [formatLine(r1.emoji, play.g1, echt.a1, s1), formatLine(r2.emoji, play.g2, echt.a2, s2), formatLine(r3.emoji, play.g3, echt.a3, s3)];
+    const vraagregels = dailyQuestionOrder().map((i, positie) => ['1️⃣', '2️⃣', '3️⃣'][positie] + ' ' + regels[i]).join('\n');
+    const text = `Netto #${PUZZLE_DATA.number} · Score: ${acc}% 🎯 (${play.factor.toFixed(2)}×)\n${vraagregels}\n🔥 Streak: ${streak} ${streak === 1 ? 'dag' : 'dagen'}\n${speelAdres()}`;
 
     if (navigator.clipboard) {
       navigator.clipboard.writeText(text).then(() => {

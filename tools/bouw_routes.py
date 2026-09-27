@@ -51,6 +51,8 @@ def routes(data: dict) -> dict[str, str]:
     for puzzle in data["library"]:
         number = int(puzzle["number"])
         items[f"puzzles/{number}"] = "index.html"
+    for puzzle in data.get('connection', data['library']):
+        number = int(puzzle['number'])
         if connection(puzzle):
             items[f"connections/{number}"] = "index.html"
     # Ook nog niet gepubliceerde dagpuzzels kunnen uit de database komen.

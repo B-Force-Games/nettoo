@@ -1,5 +1,8 @@
 // Drie bestaande vragen, zonder de oorspronkelijke volgorde of operator prijs te geven.
-const CONNECTION_PROGRESS_KEY = 'netto_connection_progress';
+// Een nieuwe inhoudsreeks krijgt eigen voortgang; oude resultaten blijven bewaard.
+const CONNECTION_PROGRESS_KEY = window.NETTO_REBUILT_PUZZLES?.connection_edition
+  ? 'netto_connection_progress_' + window.NETTO_REBUILT_PUZZLES.connection_edition
+  : 'netto_connection_progress';
 const connectionOperators = ['+', '−', '×', '÷'];
 let connectionPool = [];
 let connectionState = null;
@@ -67,7 +70,7 @@ function startNextConnection() {
 }
 
 function renderConnectionStart() {
-  connectionPool = libraryPuzzles.filter(cleanConnection);
+  connectionPool = (REBUILT_DATA.connection || libraryPuzzles).filter(cleanConnection);
   connectionState = null;
   const screen = document.getElementById('breinkrakersScreen');
   screen.classList.remove('is-playing');

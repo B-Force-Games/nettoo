@@ -36,13 +36,13 @@
 <script src="data/netto_fotos.js?v=13"></script>
 <script src="data/netto_bronnen.js?v=3"></script>
 <script src="data/netto_bronnen_en.js?v=1"></script>
-<script src="data/netto_frontend_puzzles.js?v=56"></script>
+<script src="data/netto_frontend_puzzles.js?v=59"></script>
 <script src="data/netto_race_pool.js?v=43"></script>
 <script src="data/netto_breinkrakers.js?v=30"></script>
 <script src="data/netto_translations_en.js?v=50"></script>
-<script src="js/i18n.js?v=75"></script>
+<script src="js/i18n.js?v=77"></script>
 <link rel="stylesheet" href="css/styles.css?v=62">
-<link rel="stylesheet" href="css/refinement.css?v=164">
+<link rel="stylesheet" href="css/refinement.css?v=166">
 <link rel="stylesheet" href="css/live-rounds.css?v=1">
 <link rel="stylesheet" href="css/stats-page.css?v=5">
 
@@ -156,17 +156,19 @@
             <h1 class="hero-headline" id="homeDailyTitle">Drie vragen.<br><span>Eén verband.</span></h1>
             <p class="hero-sub">Schat drie feiten. Gebruik het verband om slimmer te spelen.</p>
           </div>
-          <div class="home-equation" id="homeDailyEquation" aria-label="Categorieën van de Daily">
-            <span class="home-category-icon" id="homeDailyCategory1" role="img"></span>
-            <b id="homeDailyOperator">×</b>
-            <span class="home-category-icon" id="homeDailyCategory2" role="img"></span>
-            <b aria-hidden="true">=</b>
-            <span class="home-category-icon result" id="homeDailyCategory3" role="img"></span>
+          <div class="home-daily-bottom">
+            <div class="home-equation" id="homeDailyEquation" aria-label="Categorieën van de Daily">
+              <span class="home-category-icon" id="homeDailyCategory1" role="img"></span>
+              <b id="homeDailyOperator">×</b>
+              <span class="home-category-icon" id="homeDailyCategory2" role="img"></span>
+              <b aria-hidden="true">=</b>
+              <span class="home-category-icon result" id="homeDailyCategory3" role="img"></span>
+            </div>
+            <button class="hero-cta" id="btnStartPuzzle" onclick="NettoRoutes.openToday()">
+              <span>Speel de Daily</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
           </div>
-          <button class="hero-cta" id="btnStartPuzzle" onclick="NettoRoutes.openToday()">
-            <span>Speel de Daily</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </button>
         </section>
 
         <aside class="home-quick-actions" aria-label="Snel verder">
@@ -1111,12 +1113,12 @@
   <p class="daily-photo-credit" data-i18n-skip></p>
 </dialog>
 <!-- De volgorde is bewust: modules delen de bestaande classic-script scope. -->
-<script src="js/photo-credits.js?v=5"></script>
+<script src="js/photo-credits.js?v=6"></script>
 <script src="js/daily-photos.js?v=2"></script>
-<script src="js/question-context.js?v=2"></script>
-<script src="js/core.js?v=127"></script>
+<script src="js/question-context.js?v=4"></script>
+<script src="js/core.js?v=131"></script>
 <script src="js/puzzle-modes.js?v=61"></script>
-<script src="js/find-connection.js?v=9"></script>
+<script src="js/find-connection.js?v=11"></script>
 <script src="js/race.js?v=64"></script>
 <script src="js/live-rounds.js?v=1"></script>
 <script src="js/submissions.js?v=41"></script>
@@ -1124,7 +1126,7 @@
 <script src="js/site-navigation.js?v=5"></script>
 <script src="js/routes.js?v=4"></script>
 <script src="js/app.js?v=36"></script>
-<script src="js/stats-page.js?v=5"></script>
+<script src="js/stats-page.js?v=8"></script>
 
 </body>
 </html>

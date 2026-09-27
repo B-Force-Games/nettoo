@@ -1113,23 +1113,48 @@ body:has(#screen-puzzle.active, #libraryScreen.active, #breinkrakersScreen.activ
   .home-mode-card { transition: none; }
 }
 
-/* Landing v1.1: één duidelijke Daily, met compactere en herkenbare vervolgstappen. */
+/* De Daily krijgt meer rust binnen de vertrouwde breedte van de homepage. */
 .home-landing-grid {
   grid-template-columns: minmax(0, 1.62fr) minmax(280px, .78fr);
   gap: 20px;
 }
 
 .home-daily-card {
-  min-height: 450px;
+  min-height: 490px;
+  padding: 36px 38px;
+  border-radius: 24px;
   background:
-    radial-gradient(circle at 88% 12%, rgba(105, 219, 194, .12), transparent 28%),
-    linear-gradient(145deg, #171C50 0%, #111538 72%);
-  border-color: rgba(255, 255, 255, .18);
-  box-shadow: 0 22px 52px rgba(7, 10, 51, .24);
+    radial-gradient(ellipse at 100% 100%, rgba(80, 91, 192, .23), transparent 62%),
+    linear-gradient(125deg, #191D4A, #111430);
+  border-color: rgba(216, 222, 255, .24);
+  box-shadow: 0 20px 45px rgba(7, 10, 51, .18);
 }
+.home-daily-card::after { right: -8px; bottom: 40px; font-size: 300px; opacity: .6; }
+.home-daily-topline .home-section-label { font-size: 11px; letter-spacing: .18em; }
+.home-daily-card .hero-meta { color: #B7BEDF; font-size: 11px; }
+.home-daily-card .hero-headline { max-width: 650px; font-size: clamp(42px, 5.4vw, 72px); line-height: 1.04; letter-spacing: -.045em; }
+.home-daily-card .hero-sub { max-width: 570px; font-size: clamp(15px, 1.2vw, 19px); line-height: 1.55; margin: 20px 0 0; }
 
-.home-daily-copy { margin-top: 46px; }
-.home-equation { margin: 26px 0 30px; }
+.home-daily-copy { margin: clamp(32px, 4vh, 58px) 0 32px; }
+.home-daily-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 24px;
+  border-top: 1px solid rgba(198, 208, 255, .16);
+  position: relative;
+  z-index: 1;
+}
+.home-daily-bottom .home-equation { gap: 12px; margin: 0; }
+.home-daily-bottom .home-category-icon { width: 58px; height: 58px; border-radius: 14px; background: rgba(255,255,255,.075); }
+.home-daily-bottom .home-category-icon svg { width: 27px; height: 27px; }
+.home-daily-bottom .hero-cta { min-height: 58px; margin: 0; padding: 16px 24px; gap: 28px; font-size: 16px; border-radius: 14px; }
+.home-daily-bottom .hero-cta svg { transition: transform .18s ease; }
+.home-daily-bottom .hero-cta:hover svg { transform: translateX(4px); }
 
 .home-quick-card {
   overflow: hidden;
@@ -1195,12 +1220,26 @@ body:has(#screen-puzzle.active, #libraryScreen.active, #breinkrakersScreen.activ
   .home-landing-grid { grid-template-columns: 1fr; }
 }
 
+@media (min-width: 561px) and (max-width: 980px) {
+  .home-daily-card { min-height: 450px; }
+  .home-daily-card .hero-headline { font-size: clamp(48px, 7vw, 72px); }
+  .home-quick-card strong { font-size: 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-daily-bottom .hero-cta svg { transition: none; }
+}
+
 @media (max-width: 560px) {
   .screen-home { padding: 84px 12px 44px; }
-  .home-daily-card { min-height: 390px; padding: 23px 21px; }
-  .home-daily-copy { margin-top: 32px; }
-  .home-daily-card .hero-headline { font-size: 39px; }
-  .home-equation { margin: 20px 0 25px; }
+  .home-daily-card { min-height: 0; padding: 26px 22px; border-radius: 20px; }
+  .home-daily-copy { margin: 32px 0 28px; }
+  .home-daily-card .hero-headline { font-size: clamp(30px, 8.4vw, 46px); }
+  .home-daily-card .hero-sub { font-size: 15px; margin-top: 18px; }
+  .home-daily-bottom { gap: 24px; padding-top: 22px; }
+  .home-daily-bottom .home-equation { justify-content: center; width: 100%; }
+  .home-daily-bottom .hero-cta { width: 100%; justify-content: space-between; }
+  .home-quick-card .home-quick-detail { display: none; }
   .home-quick-actions { grid-auto-rows: 136px; }
   .home-quick-card { min-height: 136px; padding: 17px 15px; }
   .home-quick-card strong { margin-top: 24px; font-size: 17px; }
@@ -2678,9 +2717,9 @@ html[data-landing-preview="editorial"] .home-quick-card strong { max-width: none
 }
 
 @media (min-width: 760px) and (max-height: 650px) {
-  .home-daily-card { min-height: 360px; padding: 26px 30px; }
-  .home-daily-copy { margin-top: 20px; }
-  .home-daily-card .hero-headline { font-size: clamp(42px, 5vw, 55px); }
+  .home-daily-card { min-height: 390px; padding: 26px 30px; }
+  .home-daily-copy { margin: 26px 0; }
+  .home-daily-card .hero-headline { font-size: clamp(42px, 4.5vw, 68px); }
   .home-daily-card .hero-sub { margin-top: 12px; }
   .home-equation { margin: 17px 0 19px; }
 

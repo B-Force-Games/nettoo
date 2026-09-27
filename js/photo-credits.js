@@ -12,7 +12,8 @@ function fotoUitVraagtekst(puzzel) {
   if (!bron || !puzzel) return null;
   for (const i of [1, 2, 3]) {
     const label = puzzel['q' + i + '_label'];
-    const original = window.NETTO_REBUILT_PUZZLES?.daily_review?.[label]?.original;
+    const original = window.NETTO_REBUILT_PUZZLES?.daily_review?.[label]?.original
+      || window.NETTO_REBUILT_PUZZLES?.library_review?.[label]?.original;
     const gevonden = bron[original || label];
     if (gevonden) return { ...gevonden, vraag: i };
   }
@@ -29,7 +30,8 @@ function nogInDeBank(puzzel, foto) {
   if (!bron || !foto) return true;   // geen bank ingeladen: niets te toetsen
   const nr = Number(foto.vraag);
   const label = nr >= 1 && nr <= 3 ? puzzel?.['q' + nr + '_label'] : null;
-  const bij = window.NETTO_REBUILT_PUZZLES?.daily_review?.[label]?.original || label;
+  const bij = window.NETTO_REBUILT_PUZZLES?.daily_review?.[label]?.original
+    || window.NETTO_REBUILT_PUZZLES?.library_review?.[label]?.original || label;
   return bij ? Object.prototype.hasOwnProperty.call(bron, bij) : true;
 }
 
@@ -102,7 +104,7 @@ function renderPuzzelfoto(lijst, puzzel) {
 
 function verzamelFotocredits() {
   const data = window.NETTO_REBUILT_PUZZLES || {};
-  const puzzels = [...(data.library || []), ...(data.daily || []), ...(data.reserve || []), ...(data.race || []), ...(window.NETTO_RACE_POOL || [])];
+  const puzzels = [...(data.library || []), ...(data.daily || []), ...(data.connection || []), ...(data.reserve || []), ...(data.race || []), ...(window.NETTO_RACE_POOL || [])];
   // Ook ingeladen daily-toewijzingen en de bestaande sfeerfoto's tellen mee.
   if (typeof DAILY_PUZZLES !== 'undefined') puzzels.push(...DAILY_PUZZLES);
   const uniek = new Map();

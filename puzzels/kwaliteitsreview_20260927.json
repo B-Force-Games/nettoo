@@ -1,0 +1,2922 @@
+{
+  "counts": {
+    "daily": 20,
+    "library": 49,
+    "connection": 20
+  },
+  "reviewed_puzzles": 167,
+  "used_questions": 267,
+  "reserved_including_aliases": 278,
+  "held_for_source_check": {
+    "q989": "Bewijszin gaat over oppervlakte, niet over wereldwonderen.",
+    "q1084": "Tarwe-antwoord en bewijsberekening spreken elkaar tegen.",
+    "q1501": "Bron ondersteunt geen eenduidig eerste uitvindingsjaar."
+  },
+  "source_corrections": {
+    "q081": {
+      "before": {
+        "subtitle": null,
+        "source": "https://en.wikipedia.org/wiki/Mars",
+        "evidence": "With a significant axial tilt of 25 degrees, Mars experiences seasons, like Earth (which has an axial tilt of 23.5 degrees)."
+      },
+      "after": {
+        "subtitle": "In Earth hours, rounded to the nearest whole hour.",
+        "source": "https://science.nasa.gov/mars/facts/",
+        "evidence": "Mars completes one rotation in 24.6 Earth hours, which rounds to 25 whole hours."
+      }
+    },
+    "q529": {
+      "before": {
+        "subtitle": null,
+        "source": "https://science.nasa.gov/mission/voyager/",
+        "evidence": "article 4 days ago"
+      },
+      "after": {
+        "subtitle": "NASA’s twin space probes.",
+        "source": "https://science.nasa.gov/mission/voyager/mission-overview/",
+        "evidence": "Together, Voyager 1 and Voyager 2 explored Jupiter, Saturn, Uranus and Neptune: four planets."
+      }
+    },
+    "q1137": {
+      "before": {
+        "question": "How many kilometers above Earth is the Kármán line?",
+        "subtitle": null
+      },
+      "after": {
+        "question": "How many kilometres above Earth is the commonly used boundary of space?",
+        "subtitle": "The Kármán line."
+      }
+    },
+    "q935": {
+      "before": {
+        "question": "How many meters tall is Mount Kosciuszko?",
+        "subtitle": null
+      },
+      "after": {
+        "question": "How many metres tall is Australia’s highest mainland mountain?",
+        "subtitle": "Mount Kosciuszko."
+      }
+    },
+    "q971": {
+      "before": {
+        "question": "How many time zones does India use as one country?"
+      },
+      "after": {
+        "question": "How many time zones does India use?"
+      }
+    }
+  },
+  "audit": [
+    {
+      "mode": "daily",
+      "number": 1,
+      "questions": [
+        "q035",
+        "q044",
+        "q478"
+      ],
+      "reason": "Pokémon, Mona Lisa en Antarctica: drie herkenbare onderwerpen met uiteenlopende schaal.",
+      "destinations": [
+        {
+          "mode": "daily",
+          "number": 1,
+          "questions": [
+            "q035",
+            "q044",
+            "q478"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "daily",
+      "number": 2,
+      "questions": [
+        "q018",
+        "q091",
+        "q650"
+      ],
+      "reason": "Digitale camera, Buckingham Palace en een giraffe: herkenbare objecten met een verrassende aftreksom.",
+      "destinations": [
+        {
+          "mode": "daily",
+          "number": 4,
+          "questions": [
+            "q018",
+            "q091",
+            "q650"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "daily",
+      "number": 3,
+      "questions": [
+        "q016",
+        "q080",
+        "q107"
+      ],
+      "reason": "Venus met handbotten is interessant, maar de Muzen maken deze Daily te specialistisch; opnieuw gecombineerd in FTC.",
+      "destinations": [
+        {
+          "mode": "connection",
+          "number": 15,
+          "questions": [
+            "q080",
+            "q107"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "daily",
+      "number": 4,
+      "questions": [
+        "q015",
+        "q141",
+        "q473"
+      ],
+      "reason": "Uraniumprotonen en Shakespeare-sonnetten vragen allebei om specifieke voorkennis.",
+      "destinations": []
+    },
+    {
+      "mode": "daily",
+      "number": 5,
+      "questions": [
+        "q087",
+        "q101",
+        "q1133"
+      ],
+      "reason": "Thaise medeklinkers, Mozart-symfonieën en een exacte uitvindingsdatum bieden te weinig houvast.",
+      "destinations": []
+    },
+    {
+      "mode": "daily",
+      "number": 6,
+      "questions": [
+        "q003",
+        "q254",
+        "q487"
+      ],
+      "reason": "Pac-Man-pellets en miljarden neuronen zijn samen te specialistisch; de Eiffeltoren krijgt nieuwe partners.",
+      "destinations": [
+        {
+          "mode": "daily",
+          "number": 6,
+          "questions": [
+            "q254"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "daily",
+      "number": 7,
+      "questions": [
+        "q025",
+        "q108",
+        "q461"
+      ],
+      "reason": "Verdiepingen van de Petronas Towers en chemische elementen zijn geen brede Daily-ankers.",
+      "destinations": []
+    },
+    {
+      "mode": "daily",
+      "number": 8,
+      "questions": [
+        "q059",
+        "q082",
+        "q343"
+      ],
+      "reason": "Marsjaar, geluidssnelheid en Titanic: herkenbare onderwerpen, geen chemische of lokale nichekennis.",
+      "destinations": [
+        {
+          "mode": "daily",
+          "number": 8,
+          "questions": [
+            "q059",
+            "q082",
+            "q343"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "daily",
+      "number": 9,
+      "questions": [
+        "q043",
+        "q1349",
+        "q311"
+      ],
+      "reason": "Een specifieke wolkenkrabberhoogte met chromosomen past minder goed bij deze toegankelijke Daily-selectie.",
+      "destinations": []
+    },
+    {
+      "mode": "daily",
+      "number": 10,
+      "questions": [
+        "q037",
+        "q038",
+        "q246"
+      ],
+      "reason": "Twee precieze diepte-/traptellingen en een historische reisduur; weinig intuïtieve schatting.",
+      "destinations": []
+    },
+    {
+      "mode": "daily",
+      "number": 11,
+      "questions": [
+        "q012",
+        "q033",
+        "q164"
+      ],
+      "reason": "Tanganyikameer is de onbekende derde factor; cola en hondentanden krijgen een herkenbare derde vraag.",
+      "destinations": [
+        {
+          "mode": "connection",
+          "number": 14,
+          "questions": [
+            "q012",
+            "q164"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "daily",
+      "number": 12,
+      "questions": [
+        "q001",
+        "q180",
+        "q435"
+      ],
+      "reason": "Uienchromosomen en een beursoprichtingsjaar zijn te specialistisch voor een Daily.",
+      "destinations": []
+    },
+    {
+      "mode": "daily",
+      "number": 13,
+      "questions": [
+        "q013",
+        "q088",
+        "q117"
+      ],
+      "reason": "Big Mac en melktanden geven alledaagse ankers; één alfabetvraag in de gehele Daily-reeks.",
+      "destinations": [
+        {
+          "mode": "daily",
+          "number": 17,
+          "questions": [
+            "q013",
+            "q088",
+            "q117"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "daily",
+      "number": 14,
+      "questions": [
+        "q058",
+        "q1306",
+        "q1463"
+      ],
+      "reason": "Apple en pianotoetsen leiden naar het verrassende kattenrecord.",
+      "destinations": [
+        {
+          "mode": "daily",
+          "number": 10,
+          "questions": [
+            "q058",
+            "q1306",
+            "q1463"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "daily",
+      "number": 15,
+      "questions": [
+        "q077",
+        "q255",
+        "q305"
+      ],
+      "reason": "Tour de France, Vrijheidsbeeld en Everest: bekende sport, monument en historische gebeurtenis.",
+      "destinations": [
+        {
+          "mode": "daily",
+          "number": 12,
+          "questions": [
+            "q077",
+            "q255",
+            "q305"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "daily",
+      "number": 16,
+      "questions": [
+        "N55",
+        "q086",
+        "q636"
+      ],
+      "reason": "Nog een alfabetvraag naast een technische attractieduur; te veel vergelijkbare teltrivia.",
+      "destinations": []
+    },
+    {
+      "mode": "daily",
+      "number": 17,
+      "questions": [
+        "q064",
+        "q131",
+        "q267"
+      ],
+      "reason": "Kiesmannen en de precieze rivierlengte maken twee van de drie vragen lastig te benaderen.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 3,
+          "questions": [
+            "q131"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "daily",
+      "number": 18,
+      "questions": [
+        "q1455",
+        "q195",
+        "q794"
+      ],
+      "reason": "Twee Shanghai-bouw-/vervoersrecords naast een afleveringtelling; te weinig spreiding in herkenbaarheid.",
+      "destinations": []
+    },
+    {
+      "mode": "daily",
+      "number": 19,
+      "questions": [
+        "q020",
+        "q1257",
+        "q357"
+      ],
+      "reason": "Een electorale drempel en CN Tower-hoogte maken de Daily te afhankelijk van voorkennis.",
+      "destinations": []
+    },
+    {
+      "mode": "daily",
+      "number": 20,
+      "questions": [
+        "q051",
+        "q055",
+        "q1338"
+      ],
+      "reason": "Schaakbord, aardoppervlak en Beyoncé: duidelijke grootheden met een gedateerd prijzenaantal.",
+      "destinations": [
+        {
+          "mode": "daily",
+          "number": 14,
+          "questions": [
+            "q051",
+            "q055",
+            "q1338"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "daily",
+      "number": 21,
+      "questions": [
+        "N43",
+        "q1115",
+        "q930"
+      ],
+      "reason": "Drie precieze feiten: oprichtingsjaar, ravijndiepte en een componistencatalogus.",
+      "destinations": []
+    },
+    {
+      "mode": "daily",
+      "number": 22,
+      "questions": [
+        "N19",
+        "q008",
+        "q362"
+      ],
+      "reason": "Wereldproductie bananen is een industriestatistiek; Minecraft wordt elders opnieuw gebruikt.",
+      "destinations": [
+        {
+          "mode": "connection",
+          "number": 16,
+          "questions": [
+            "N19"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "daily",
+      "number": 23,
+      "questions": [
+        "N4",
+        "q095",
+        "q1492"
+      ],
+      "reason": "Onderzeese kabels en TEU-capaciteit zijn technische grootheden zonder eenvoudig dagelijks anker.",
+      "destinations": []
+    },
+    {
+      "mode": "daily",
+      "number": 24,
+      "questions": [
+        "q169",
+        "q197",
+        "q492"
+      ],
+      "reason": "Euro, Scrabble en Friends: vertrouwde begrippen en een leuke totaalvergelijking.",
+      "destinations": [
+        {
+          "mode": "daily",
+          "number": 19,
+          "questions": [
+            "q169",
+            "q197",
+            "q492"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "daily",
+      "number": 25,
+      "questions": [
+        "q140",
+        "q1435",
+        "q400"
+      ],
+      "reason": "Harpsnaren, diamantfacetten en een lanceerrecord stapelen specialistische tellingen op.",
+      "destinations": []
+    },
+    {
+      "mode": "library",
+      "number": 1,
+      "questions": [
+        "q106",
+        "q1401",
+        "q350"
+      ],
+      "reason": "Behoud: eenvoudige herkenbare ankers, passend bij Easy.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 1,
+          "questions": [
+            "q106",
+            "q1401",
+            "q350"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 2,
+      "questions": [
+        "q150",
+        "q460",
+        "q971"
+      ],
+      "reason": "Camel is zonder soort niet eenduidig; deze combinatie heeft bovendien weinig verrassingswaarde.",
+      "destinations": [
+        {
+          "mode": "connection",
+          "number": 5,
+          "questions": [
+            "q971"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 3,
+      "questions": [
+        "q1110",
+        "q974",
+        "q989"
+      ],
+      "reason": "q989 heeft een bewijszin over de oppervlakte van Egypte, niet over wereldwonderen; broncontrole nodig.",
+      "destinations": [
+        {
+          "mode": "connection",
+          "number": 16,
+          "questions": [
+            "q1110",
+            "q974"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 4,
+      "questions": [
+        "q148",
+        "q190",
+        "q911"
+      ],
+      "reason": "Behoud: eenvoudige herkenbare ankers, passend bij Easy.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 2,
+          "questions": [
+            "q148",
+            "q190",
+            "q911"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 5,
+      "questions": [
+        "q1335",
+        "q149",
+        "q566"
+      ],
+      "reason": "Harry Potter vervangt een landengroep: direct herkenbaar.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 3,
+          "questions": [
+            "q1335",
+            "q149"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 6,
+      "questions": [
+        "q151",
+        "q601",
+        "q885"
+      ],
+      "reason": "Behoud: eenvoudige herkenbare ankers, passend bij Easy.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 4,
+          "questions": [
+            "q151",
+            "q601",
+            "q885"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 7,
+      "questions": [
+        "q1392",
+        "q163",
+        "q296"
+      ],
+      "reason": "Spin, darts en Russische tijdzones: een toegankelijke puzzel tussen de grotere getallen.",
+      "destinations": [
+        {
+          "mode": "daily",
+          "number": 16,
+          "questions": [
+            "q1392",
+            "q163",
+            "q296"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 8,
+      "questions": [
+        "q503",
+        "q517",
+        "q904"
+      ],
+      "reason": "Pissebedpoten, Apollo-bemanning en voetbal vervangen een herhaalde landgrensvraag.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 5,
+          "questions": [
+            "q503",
+            "q517"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 9,
+      "questions": [
+        "q1409",
+        "q564",
+        "q685"
+      ],
+      "reason": "Nog een landgrens-telling; octopus en volleybal leveren met Mars een betere combinatie op.",
+      "destinations": [
+        {
+          "mode": "connection",
+          "number": 17,
+          "questions": [
+            "q1409",
+            "q685"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 10,
+      "questions": [
+        "q1268",
+        "q1453",
+        "q392"
+      ],
+      "reason": "De definitie van Oceanië en nog een landentelling voegen weinig toe aan de selectie.",
+      "destinations": []
+    },
+    {
+      "mode": "library",
+      "number": 11,
+      "questions": [
+        "q1337",
+        "q1447",
+        "q145"
+      ],
+      "reason": "Behoud: eenvoudige herkenbare ankers, passend bij Easy.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 6,
+          "questions": [
+            "q1337",
+            "q1447",
+            "q145"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 12,
+      "questions": [
+        "q1425",
+        "q263",
+        "q428"
+      ],
+      "reason": "NAVO, planeten en Japan: korte vragen met algemeen bekende referentiepunten.",
+      "destinations": [
+        {
+          "mode": "daily",
+          "number": 13,
+          "questions": [
+            "q1425",
+            "q263",
+            "q428"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 13,
+      "questions": [
+        "q116",
+        "q1377",
+        "q757"
+      ],
+      "reason": "Behoud: eenvoudige herkenbare ankers, passend bij Easy.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 7,
+          "questions": [
+            "q116",
+            "q1377",
+            "q757"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 14,
+      "questions": [
+        "q1126",
+        "q1381",
+        "q945"
+      ],
+      "reason": "Behoud: eenvoudige herkenbare ankers, passend bij Easy.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 8,
+          "questions": [
+            "q1126",
+            "q1381",
+            "q945"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 15,
+      "questions": [
+        "q076",
+        "q146",
+        "q923"
+      ],
+      "reason": "Het aantal Aziatische landen is definitiegevoelig en herhaalt landentelvragen.",
+      "destinations": []
+    },
+    {
+      "mode": "library",
+      "number": 16,
+      "questions": [
+        "q335",
+        "q493",
+        "q949"
+      ],
+      "reason": "Monopoly en vlagstrepen helpen bij een bevolkingsschatting; geen specialistische terminologie.",
+      "destinations": [
+        {
+          "mode": "daily",
+          "number": 20,
+          "questions": [
+            "q335",
+            "q493",
+            "q949"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 17,
+      "questions": [
+        "q1334",
+        "q318",
+        "q504"
+      ],
+      "reason": "UNO, basketbal en Elizabeth II zijn breed herkenbaar; de vermenigvuldiging verbindt ze onverwacht.",
+      "destinations": [
+        {
+          "mode": "daily",
+          "number": 7,
+          "questions": [
+            "q1334",
+            "q318",
+            "q504"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 18,
+      "questions": [
+        "q1399",
+        "q167",
+        "q490"
+      ],
+      "reason": "Kolibrievleugels geven de verrassing; Olympische ringen en schaakstukken geven houvast.",
+      "destinations": [
+        {
+          "mode": "daily",
+          "number": 3,
+          "questions": [
+            "q1399",
+            "q167",
+            "q490"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 19,
+      "questions": [
+        "q029",
+        "q122",
+        "q966"
+      ],
+      "reason": "Tanden en Amerikaanse vlag geven houvast voor de lengte van het Panamakanaal.",
+      "destinations": [
+        {
+          "mode": "daily",
+          "number": 9,
+          "questions": [
+            "q029",
+            "q122",
+            "q966"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 20,
+      "questions": [
+        "q1101",
+        "q616",
+        "q786"
+      ],
+      "reason": "Behoud: herkenbare onderwerpen met één uitdagender schatting.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 11,
+          "questions": [
+            "q1101",
+            "q616",
+            "q786"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 21,
+      "questions": [
+        "q120",
+        "q1288",
+        "q398"
+      ],
+      "reason": "Behoud: eenvoudige herkenbare ankers, passend bij Easy.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 9,
+          "questions": [
+            "q120",
+            "q1288",
+            "q398"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 22,
+      "questions": [
+        "q1021",
+        "q1395",
+        "q950"
+      ],
+      "reason": "Dartsmaximum, Amerikaanse staten en Mexico-bevolking: sportanker plus schaalgevoel.",
+      "destinations": [
+        {
+          "mode": "daily",
+          "number": 18,
+          "questions": [
+            "q1021",
+            "q1395",
+            "q950"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 23,
+      "questions": [
+        "q1410",
+        "q647",
+        "q744"
+      ],
+      "reason": "Friends en voetbal geven eenvoudige ankers voor het gewicht van een tijger.",
+      "destinations": [
+        {
+          "mode": "daily",
+          "number": 11,
+          "questions": [
+            "q1410",
+            "q647",
+            "q744"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 24,
+      "questions": [
+        "q1379",
+        "q393",
+        "q534"
+      ],
+      "reason": "Behoud: eenvoudige herkenbare ankers, passend bij Easy.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 10,
+          "questions": [
+            "q1379",
+            "q393",
+            "q534"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 25,
+      "questions": [
+        "N7",
+        "q1136",
+        "q497"
+      ],
+      "reason": "Kokend water en atletiekbaan maken de reistijd van zonlicht benaderbaar.",
+      "destinations": [
+        {
+          "mode": "daily",
+          "number": 15,
+          "questions": [
+            "N7",
+            "q1136",
+            "q497"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 26,
+      "questions": [
+        "N33",
+        "q570",
+        "q959"
+      ],
+      "reason": "Titanic-reddingsboten, Kanaaltunnel en droog Australië: concrete beelden om op te schatten.",
+      "destinations": [
+        {
+          "mode": "daily",
+          "number": 2,
+          "questions": [
+            "N33",
+            "q570",
+            "q959"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 27,
+      "questions": [
+        "q1137",
+        "q645",
+        "q960"
+      ],
+      "reason": "Behoud: herkenbare onderwerpen met één uitdagender schatting.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 12,
+          "questions": [
+            "q1137",
+            "q645",
+            "q960"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 28,
+      "questions": [
+        "q1238",
+        "q168",
+        "q609"
+      ],
+      "reason": "Lichaamswater, vlagstrepen en een walvishart: twee ankers en een sterke grootte-onthulling.",
+      "destinations": [
+        {
+          "mode": "daily",
+          "number": 5,
+          "questions": [
+            "q1238",
+            "q168",
+            "q609"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 29,
+      "questions": [
+        "q209",
+        "q782",
+        "q920"
+      ],
+      "reason": "Europa-landen, onderzeese tunnellengte en Titanen zijn samen een specialistische combinatie.",
+      "destinations": []
+    },
+    {
+      "mode": "library",
+      "number": 30,
+      "questions": [
+        "q187",
+        "q801",
+        "q875"
+      ],
+      "reason": "De precieze hoogte van Neuschwanstein is een te onbekend anker.",
+      "destinations": []
+    },
+    {
+      "mode": "library",
+      "number": 31,
+      "questions": [
+        "q512",
+        "q620",
+        "q954"
+      ],
+      "reason": "Bijbelcanon en het aantal Amerikaanse nationale parken zijn definitie-/peildatumgevoelig; Jupiter wordt hergebruikt.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 37,
+          "questions": [
+            "q512"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 32,
+      "questions": [
+        "q289",
+        "q373",
+        "q996"
+      ],
+      "reason": "Victoria-meer diepte is een tweede lastig feit naast oorlogsduur; weinig sterke onthulling.",
+      "destinations": []
+    },
+    {
+      "mode": "library",
+      "number": 33,
+      "questions": [
+        "N72",
+        "q017",
+        "q643"
+      ],
+      "reason": "Behoud: herkenbare onderwerpen met één uitdagender schatting.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 13,
+          "questions": [
+            "N72",
+            "q017",
+            "q643"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 34,
+      "questions": [
+        "q1331",
+        "q579",
+        "q943"
+      ],
+      "reason": "Behoud: herkenbare onderwerpen met één uitdagender schatting.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 14,
+          "questions": [
+            "q1331",
+            "q579",
+            "q943"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 35,
+      "questions": [
+        "q1075",
+        "q1433",
+        "q955"
+      ],
+      "reason": "Behoud: herkenbare onderwerpen met één uitdagender schatting.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 15,
+          "questions": [
+            "q1075",
+            "q1433",
+            "q955"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 36,
+      "questions": [
+        "q002",
+        "q515",
+        "q658"
+      ],
+      "reason": "Een snel veranderend aantal Jupiter-manen maakt deze combinatie onderhoudsgevoelig.",
+      "destinations": []
+    },
+    {
+      "mode": "library",
+      "number": 37,
+      "questions": [
+        "q1227",
+        "q328",
+        "q740"
+      ],
+      "reason": "Behoud: herkenbare onderwerpen met één uitdagender schatting.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 16,
+          "questions": [
+            "q1227",
+            "q328",
+            "q740"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 38,
+      "questions": [
+        "q224",
+        "q956",
+        "q976"
+      ],
+      "reason": "Official languages of India is zonder juridisch onderscheid te ambigu.",
+      "destinations": []
+    },
+    {
+      "mode": "library",
+      "number": 39,
+      "questions": [
+        "q052",
+        "q1032",
+        "q413"
+      ],
+      "reason": "Oud-Carthago en de Nederlandse Eerste Kamer zijn twee lokale/specialistische ankers; oceaanpercentage overlapt landpercentage.",
+      "destinations": []
+    },
+    {
+      "mode": "library",
+      "number": 40,
+      "questions": [
+        "q317",
+        "q691",
+        "q952"
+      ],
+      "reason": "Behoud: herkenbare onderwerpen met één uitdagender schatting.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 17,
+          "questions": [
+            "q317",
+            "q691",
+            "q952"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 41,
+      "questions": [
+        "N35",
+        "q260",
+        "q792"
+      ],
+      "reason": "Behoud: herkenbare onderwerpen met één uitdagender schatting.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 18,
+          "questions": [
+            "N35",
+            "q260",
+            "q792"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 42,
+      "questions": [
+        "q061",
+        "q481",
+        "q988"
+      ],
+      "reason": "De Euromast maakt de vraag lokaal; opnieuw een wereldwondertelling.",
+      "destinations": []
+    },
+    {
+      "mode": "library",
+      "number": 43,
+      "questions": [
+        "q455",
+        "q511",
+        "q698"
+      ],
+      "reason": "Behoud: herkenbare onderwerpen met één uitdagender schatting.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 19,
+          "questions": [
+            "q455",
+            "q511",
+            "q698"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 44,
+      "questions": [
+        "q1418",
+        "q326",
+        "q514"
+      ],
+      "reason": "Saturnus-manen veranderen snel; niet behouden alleen om 300 te halen.",
+      "destinations": []
+    },
+    {
+      "mode": "library",
+      "number": 45,
+      "questions": [
+        "q1037",
+        "q527",
+        "q580"
+      ],
+      "reason": "Behoud als Hard: grotere schattingen en specifiekere kennis, niet in de Daily.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 21,
+          "questions": [
+            "q1037",
+            "q527",
+            "q580"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 46,
+      "questions": [
+        "q1490",
+        "q218",
+        "q655"
+      ],
+      "reason": "Het aantal paarden van een specifiek monument is geen fijn schatanker; twee andere vragen worden gered.",
+      "destinations": [
+        {
+          "mode": "connection",
+          "number": 19,
+          "questions": [
+            "q1490",
+            "q655"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 47,
+      "questions": [
+        "q133",
+        "q761",
+        "q870"
+      ],
+      "reason": "Tanganyikameer en Bijbelcanon maken dit meer opzoekkennis dan een leuke schatting.",
+      "destinations": []
+    },
+    {
+      "mode": "library",
+      "number": 48,
+      "questions": [
+        "q228",
+        "q510",
+        "q842"
+      ],
+      "reason": "Leeuwen van Nelsons Column en rif-eilanden zijn allebei specialistische tellingen.",
+      "destinations": []
+    },
+    {
+      "mode": "library",
+      "number": 49,
+      "questions": [
+        "q1436",
+        "q177",
+        "q198"
+      ],
+      "reason": "Behoud: herkenbare onderwerpen met één uitdagender schatting.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 20,
+          "questions": [
+            "q1436",
+            "q177",
+            "q198"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 50,
+      "questions": [
+        "q1445",
+        "q334",
+        "q755"
+      ],
+      "reason": "Gettysburg-troepenaantal is specialistisch; Ramadan krijgt een betere combinatie.",
+      "destinations": [
+        {
+          "mode": "daily",
+          "number": 6,
+          "questions": [
+            "q755"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 51,
+      "questions": [
+        "q024",
+        "q100",
+        "q922"
+      ],
+      "reason": "Nog een gebouwtraptelling naast een exact luchtvaartjaar; Afrika krijgt een andere combinatie.",
+      "destinations": [
+        {
+          "mode": "connection",
+          "number": 20,
+          "questions": [
+            "q922"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 52,
+      "questions": [
+        "q027",
+        "q513",
+        "q558"
+      ],
+      "reason": "Behoud als Hard: grotere schattingen en specifiekere kennis, niet in de Daily.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 22,
+          "questions": [
+            "q027",
+            "q513",
+            "q558"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 53,
+      "questions": [
+        "q023",
+        "q090",
+        "q947"
+      ],
+      "reason": "CN Tower-trappen zijn repetitieve gebouwtrivia.",
+      "destinations": []
+    },
+    {
+      "mode": "library",
+      "number": 54,
+      "questions": [
+        "q307",
+        "q547",
+        "q682"
+      ],
+      "reason": "Behoud als Hard: grotere schattingen en specifiekere kennis, niet in de Daily.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 23,
+          "questions": [
+            "q307",
+            "q547",
+            "q682"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 55,
+      "questions": [
+        "q1249",
+        "q337",
+        "q773"
+      ],
+      "reason": "Behoud als Hard: grotere schattingen en specifiekere kennis, niet in de Daily.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 24,
+          "questions": [
+            "q1249",
+            "q337",
+            "q773"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 56,
+      "questions": [
+        "q1387",
+        "q144",
+        "q820"
+      ],
+      "reason": "Nog een Eiffeltoren-traptelling en een definitiegevoelige eerste krant.",
+      "destinations": []
+    },
+    {
+      "mode": "library",
+      "number": 57,
+      "questions": [
+        "q081",
+        "q094",
+        "q346"
+      ],
+      "reason": "First TV transmission is onduidelijk zonder definitie; Mars had bovendien de verkeerde bewijszin.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 45,
+          "questions": [
+            "q081"
+          ]
+        },
+        {
+          "mode": "connection",
+          "number": 14,
+          "questions": [
+            "q346"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 58,
+      "questions": [
+        "q1437",
+        "q574",
+        "q946"
+      ],
+      "reason": "Behoud als Hard: grotere schattingen en specifiekere kennis, niet in de Daily.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 25,
+          "questions": [
+            "q1437",
+            "q574",
+            "q946"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 59,
+      "questions": [
+        "q1054",
+        "q1309",
+        "q802"
+      ],
+      "reason": "Behoud als Hard: grotere schattingen en specifiekere kennis, niet in de Daily.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 26,
+          "questions": [
+            "q1054",
+            "q1309",
+            "q802"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 60,
+      "questions": [
+        "q134",
+        "q229",
+        "q604"
+      ],
+      "reason": "Behoud als Hard: grotere schattingen en specifiekere kennis, niet in de Daily.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 27,
+          "questions": [
+            "q134",
+            "q229",
+            "q604"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 61,
+      "questions": [
+        "q230",
+        "q336",
+        "q520"
+      ],
+      "reason": "De hoeveelheid bedrading in het ISS is te technisch en arbitrair.",
+      "destinations": []
+    },
+    {
+      "mode": "library",
+      "number": 62,
+      "questions": [
+        "q256",
+        "q342",
+        "q929"
+      ],
+      "reason": "Behoud als Hard: grotere schattingen en specifiekere kennis, niet in de Daily.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 28,
+          "questions": [
+            "q256",
+            "q342",
+            "q929"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 63,
+      "questions": [
+        "N53",
+        "q340",
+        "q488"
+      ],
+      "reason": "Behoud als Hard: grotere schattingen en specifiekere kennis, niet in de Daily.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 29,
+          "questions": [
+            "N53",
+            "q340",
+            "q488"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 64,
+      "questions": [
+        "q1073",
+        "q222",
+        "q409"
+      ],
+      "reason": "Bouwduur van Hagia Sophia vraagt specifieke architectuurkennis.",
+      "destinations": []
+    },
+    {
+      "mode": "library",
+      "number": 65,
+      "questions": [
+        "q364",
+        "q536",
+        "q907"
+      ],
+      "reason": "Wereldproductie maïs is een industriestatistiek met weinig onthullingswaarde.",
+      "destinations": []
+    },
+    {
+      "mode": "library",
+      "number": 66,
+      "questions": [
+        "q242",
+        "q508",
+        "q603"
+      ],
+      "reason": "Behoud als Hard: grotere schattingen en specifiekere kennis, niet in de Daily.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 30,
+          "questions": [
+            "q242",
+            "q508",
+            "q603"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 67,
+      "questions": [
+        "N70",
+        "q1084",
+        "q1213"
+      ],
+      "reason": "q1084 bevat een tegenstrijdige tarwe-onderbouwing; bovendien een lokale torenhoogte.",
+      "destinations": []
+    },
+    {
+      "mode": "library",
+      "number": 68,
+      "questions": [
+        "q1092",
+        "q162",
+        "q170"
+      ],
+      "reason": "Woodlouse-vraag past beter bij een lichtere combinatie; deze verzameling is geen sterke Hard-puzzel.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 5,
+          "questions": [
+            "q162"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 69,
+      "questions": [
+        "N67",
+        "q405",
+        "q467"
+      ],
+      "reason": "Behoud als Hard: grotere schattingen en specifiekere kennis, niet in de Daily.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 31,
+          "questions": [
+            "N67",
+            "q405",
+            "q467"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 70,
+      "questions": [
+        "q1074",
+        "q690",
+        "q846"
+      ],
+      "reason": "Behoud als Hard: grotere schattingen en specifiekere kennis, niet in de Daily.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 32,
+          "questions": [
+            "q1074",
+            "q690",
+            "q846"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 71,
+      "questions": [
+        "q1027",
+        "q784",
+        "q939"
+      ],
+      "reason": "Behoud als Hard: grotere schattingen en specifiekere kennis, niet in de Daily.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 33,
+          "questions": [
+            "q1027",
+            "q784",
+            "q939"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 72,
+      "questions": [
+        "q1045",
+        "q358",
+        "q849"
+      ],
+      "reason": "Sahara-uitgestrektheid hangt van de gemeten richting af; weer een draagtijdvraag.",
+      "destinations": []
+    },
+    {
+      "mode": "library",
+      "number": 73,
+      "questions": [
+        "q589",
+        "q639",
+        "q768"
+      ],
+      "reason": "Behoud als Hard: grotere schattingen en specifiekere kennis, niet in de Daily.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 34,
+          "questions": [
+            "q589",
+            "q639",
+            "q768"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 74,
+      "questions": [
+        "N45",
+        "q1215",
+        "q525"
+      ],
+      "reason": "Zalmhaven is buiten Nederland nauwelijks herkenbaar.",
+      "destinations": []
+    },
+    {
+      "mode": "library",
+      "number": 75,
+      "questions": [
+        "q231",
+        "q273",
+        "q561"
+      ],
+      "reason": "Behoud als Hard: grotere schattingen en specifiekere kennis, niet in de Daily.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 35,
+          "questions": [
+            "q231",
+            "q273",
+            "q561"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 76,
+      "questions": [
+        "q171",
+        "q760",
+        "q774"
+      ],
+      "reason": "Torah-geboden en bouwduur van de Dom van Keulen zijn twee specialistische feiten.",
+      "destinations": []
+    },
+    {
+      "mode": "library",
+      "number": 77,
+      "questions": [
+        "q074",
+        "q1012",
+        "q290"
+      ],
+      "reason": "Behoud als Extremely Hard: herkenbare objecten maar zeer lastige grootheden; geen Daily.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 38,
+          "questions": [
+            "q074",
+            "q1012",
+            "q290"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 78,
+      "questions": [
+        "q021",
+        "q1089",
+        "q1279"
+      ],
+      "reason": "Dartbord vervangt Kremlintorens: dezelfde som met een herkenbaar voorwerp.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 36,
+          "questions": [
+            "q1089",
+            "q1279"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 79,
+      "questions": [
+        "N40",
+        "q379",
+        "q401"
+      ],
+      "reason": "Behoud als Extremely Hard: herkenbare objecten maar zeer lastige grootheden; geen Daily.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 39,
+          "questions": [
+            "N40",
+            "q379",
+            "q401"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 80,
+      "questions": [
+        "q225",
+        "q271",
+        "q686"
+      ],
+      "reason": "Behoud als Extremely Hard: herkenbare objecten maar zeer lastige grootheden; geen Daily.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 40,
+          "questions": [
+            "q225",
+            "q271",
+            "q686"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 81,
+      "questions": [
+        "q232",
+        "q345",
+        "q404"
+      ],
+      "reason": "Behoud als Extremely Hard: herkenbare objecten maar zeer lastige grootheden; geen Daily.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 41,
+          "questions": [
+            "q232",
+            "q345",
+            "q404"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 82,
+      "questions": [
+        "q1250",
+        "q247",
+        "q613"
+      ],
+      "reason": "Nog een traptelling naast een historische eerste medische gebeurtenis.",
+      "destinations": []
+    },
+    {
+      "mode": "library",
+      "number": 83,
+      "questions": [
+        "q069",
+        "q557",
+        "q935"
+      ],
+      "reason": "Behoud als Extremely Hard: herkenbare objecten maar zeer lastige grootheden; geen Daily.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 42,
+          "questions": [
+            "q069",
+            "q557",
+            "q935"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 84,
+      "questions": [
+        "q099",
+        "q327",
+        "q937"
+      ],
+      "reason": "Het precieze D-Day-vlootbestand is moeilijk te schatten en Aconcagua vraagt extra voorkennis.",
+      "destinations": []
+    },
+    {
+      "mode": "library",
+      "number": 85,
+      "questions": [
+        "q1427",
+        "q1501",
+        "q931"
+      ],
+      "reason": "De bron zegt expliciet dat de eerste elektrische auto niet één exact uitvindingsjaar heeft.",
+      "destinations": []
+    },
+    {
+      "mode": "library",
+      "number": 86,
+      "questions": [
+        "q1001",
+        "q272",
+        "q665"
+      ],
+      "reason": "Behoud als Extremely Hard: herkenbare objecten maar zeer lastige grootheden; geen Daily.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 43,
+          "questions": [
+            "q1001",
+            "q272",
+            "q665"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 87,
+      "questions": [
+        "q128",
+        "q523",
+        "q828"
+      ],
+      "reason": "Behoud als Extremely Hard: herkenbare objecten maar zeer lastige grootheden; geen Daily.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 44,
+          "questions": [
+            "q128",
+            "q523",
+            "q828"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 88,
+      "questions": [
+        "q045",
+        "q917",
+        "q992"
+      ],
+      "reason": "Stroomgebied-landen en jaarlijkse goudproductie maken de puzzel een statistiekenquiz.",
+      "destinations": []
+    },
+    {
+      "mode": "library",
+      "number": 89,
+      "questions": [
+        "q210",
+        "q320",
+        "q953"
+      ],
+      "reason": "Romeinse grens, nationale parken en Plato-boeken stapelen definitiegevoelige tellingen op.",
+      "destinations": []
+    },
+    {
+      "mode": "library",
+      "number": 90,
+      "questions": [
+        "q238",
+        "q268",
+        "q403"
+      ],
+      "reason": "Uitgegraven Panamakanaalvolume is een technische archiefgrootheid.",
+      "destinations": []
+    },
+    {
+      "mode": "library",
+      "number": 91,
+      "questions": [
+        "q1281",
+        "q605",
+        "q918"
+      ],
+      "reason": "Jupiters rotatie vervangt een Sahara-landentelling.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 37,
+          "questions": [
+            "q1281",
+            "q605"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 92,
+      "questions": [
+        "q709",
+        "q817",
+        "q852"
+      ],
+      "reason": "Cheeseburger krijgt een betere Daily; ijzermassa herhaalt Eiffeltoren-bouwcijfers.",
+      "destinations": [
+        {
+          "mode": "daily",
+          "number": 6,
+          "questions": [
+            "q709"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 93,
+      "questions": [
+        "q066",
+        "q1316",
+        "q818"
+      ],
+      "reason": "Hotelportfolio en een specifiek IMAX-record zijn veranderlijke nichegegevens.",
+      "destinations": []
+    },
+    {
+      "mode": "library",
+      "number": 94,
+      "questions": [
+        "q1494",
+        "q325",
+        "q530"
+      ],
+      "reason": "Exacte parachutisten-, missie-uur- en verkeerslichttellingen zijn schijnprecisie zonder prettig houvast.",
+      "destinations": []
+    },
+    {
+      "mode": "library",
+      "number": 95,
+      "questions": [
+        "q241",
+        "q332",
+        "q853"
+      ],
+      "reason": "Australische kustlengte is afhankelijk van meetmethode; de enorme leger- en kustgetallen geven weinig schatplezier.",
+      "destinations": []
+    },
+    {
+      "mode": "library",
+      "number": 96,
+      "questions": [
+        "q114",
+        "q1234",
+        "q226"
+      ],
+      "reason": "Marsrotatie vervangt een museuminventaris; de bewijszin en afronding zijn gecontroleerd bij NASA.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 45,
+          "questions": [
+            "q114",
+            "q226"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 97,
+      "questions": [
+        "q1019",
+        "q1439",
+        "q783"
+      ],
+      "reason": "Behoud als Extremely Hard: herkenbare objecten maar zeer lastige grootheden; geen Daily.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 46,
+          "questions": [
+            "q1019",
+            "q1439",
+            "q783"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 98,
+      "questions": [
+        "q1135",
+        "q288",
+        "q991"
+      ],
+      "reason": "Behoud als Extremely Hard: herkenbare objecten maar zeer lastige grootheden; geen Daily.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 47,
+          "questions": [
+            "q1135",
+            "q288",
+            "q991"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 99,
+      "questions": [
+        "q251",
+        "q299",
+        "q529"
+      ],
+      "reason": "Behoud als Extremely Hard: herkenbare objecten maar zeer lastige grootheden; geen Daily.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 48,
+          "questions": [
+            "q251",
+            "q299",
+            "q529"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "library",
+      "number": 100,
+      "questions": [
+        "q1011",
+        "q308",
+        "q450"
+      ],
+      "reason": "Behoud als Extremely Hard: herkenbare objecten maar zeer lastige grootheden; geen Daily.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 49,
+          "questions": [
+            "q1011",
+            "q308",
+            "q450"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "connection",
+      "number": 1,
+      "questions": [
+        "q200",
+        "q787",
+        "q833"
+      ],
+      "reason": "Behoud: herkenbare onderwerpen; één lastiger feit mag door de verbinding worden opgelost.",
+      "destinations": [
+        {
+          "mode": "connection",
+          "number": 1,
+          "questions": [
+            "q200",
+            "q787",
+            "q833"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "connection",
+      "number": 2,
+      "questions": [
+        "q480",
+        "q762",
+        "q968"
+      ],
+      "reason": "Administratieve territoria en Odysseus-reisduur zijn specialistisch; dartbord wordt hergebruikt.",
+      "destinations": [
+        {
+          "mode": "library",
+          "number": 36,
+          "questions": [
+            "q480"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "connection",
+      "number": 3,
+      "questions": [
+        "q1004",
+        "q129",
+        "q951"
+      ],
+      "reason": "Afsluitdijk is een lokaal anker; Mandela en Nieuw-Zeeland krijgen andere partners.",
+      "destinations": [
+        {
+          "mode": "connection",
+          "number": 5,
+          "questions": [
+            "q1004"
+          ]
+        },
+        {
+          "mode": "connection",
+          "number": 19,
+          "questions": [
+            "q951"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "connection",
+      "number": 4,
+      "questions": [
+        "q1018",
+        "q1130",
+        "q152"
+      ],
+      "reason": "Behoud: herkenbare onderwerpen; één lastiger feit mag door de verbinding worden opgelost.",
+      "destinations": [
+        {
+          "mode": "connection",
+          "number": 2,
+          "questions": [
+            "q1018",
+            "q1130",
+            "q152"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "connection",
+      "number": 5,
+      "questions": [
+        "q539",
+        "q660",
+        "q871"
+      ],
+      "reason": "Latijns alfabet en Andes-landen stapelen formele tellingen op.",
+      "destinations": []
+    },
+    {
+      "mode": "connection",
+      "number": 6,
+      "questions": [
+        "q211",
+        "q353",
+        "q518"
+      ],
+      "reason": "Officiële talen en hoofdringen hangen af van classificatie.",
+      "destinations": []
+    },
+    {
+      "mode": "connection",
+      "number": 7,
+      "questions": [
+        "q1289",
+        "q1434",
+        "q275"
+      ],
+      "reason": "Borneo-landen en Australische bestuurlijke delen zijn twee geografische lijstjes.",
+      "destinations": []
+    },
+    {
+      "mode": "connection",
+      "number": 8,
+      "questions": [
+        "q079",
+        "q1421",
+        "q240"
+      ],
+      "reason": "Minaretten zonder foto zijn een zwakke derde vraag; honkbal wordt hergebruikt.",
+      "destinations": [
+        {
+          "mode": "connection",
+          "number": 20,
+          "questions": [
+            "q079"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "connection",
+      "number": 9,
+      "questions": [
+        "q039",
+        "q498",
+        "q899"
+      ],
+      "reason": "Ondertekenaars van een verklaring zijn een specialistische telling; NBA-duur wordt hergebruikt.",
+      "destinations": [
+        {
+          "mode": "connection",
+          "number": 18,
+          "questions": [
+            "q498"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "connection",
+      "number": 10,
+      "questions": [
+        "q528",
+        "q584",
+        "q948"
+      ],
+      "reason": "Behoud: herkenbare onderwerpen; één lastiger feit mag door de verbinding worden opgelost.",
+      "destinations": [
+        {
+          "mode": "connection",
+          "number": 3,
+          "questions": [
+            "q528",
+            "q584",
+            "q948"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "connection",
+      "number": 11,
+      "questions": [
+        "q1014",
+        "q1360",
+        "q469"
+      ],
+      "reason": "Behoud: herkenbare onderwerpen; één lastiger feit mag door de verbinding worden opgelost.",
+      "destinations": [
+        {
+          "mode": "connection",
+          "number": 4,
+          "questions": [
+            "q1014",
+            "q1360",
+            "q469"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "connection",
+      "number": 12,
+      "questions": [
+        "q1218",
+        "q1420",
+        "q153"
+      ],
+      "reason": "Kakkerlak-hartkamers zijn specialistische biologie; Apollo wordt hergebruikt.",
+      "destinations": [
+        {
+          "mode": "connection",
+          "number": 20,
+          "questions": [
+            "q1420"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "connection",
+      "number": 13,
+      "questions": [
+        "q1406",
+        "q670",
+        "q963"
+      ],
+      "reason": "Nieuw-Zeelandse regio’s zijn te administratief voor deze FTC-selectie.",
+      "destinations": []
+    },
+    {
+      "mode": "connection",
+      "number": 14,
+      "questions": [
+        "q489",
+        "q687",
+        "q916"
+      ],
+      "reason": "Mandela, India en Monopoly vervangen Albanese letters en nieuwjaarsdruiven.",
+      "destinations": [
+        {
+          "mode": "connection",
+          "number": 5,
+          "questions": [
+            "q489"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "connection",
+      "number": 15,
+      "questions": [
+        "q1364",
+        "q217",
+        "q568"
+      ],
+      "reason": "Behoud: herkenbare onderwerpen; één lastiger feit mag door de verbinding worden opgelost.",
+      "destinations": [
+        {
+          "mode": "connection",
+          "number": 6,
+          "questions": [
+            "q1364",
+            "q217",
+            "q568"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "connection",
+      "number": 16,
+      "questions": [
+        "q194",
+        "q526",
+        "q970"
+      ],
+      "reason": "Ringen van Uranus en tijdzones van Nieuw-Zeeland zijn definitiegevoelige tellingen.",
+      "destinations": []
+    },
+    {
+      "mode": "connection",
+      "number": 17,
+      "questions": [
+        "q321",
+        "q430",
+        "q926"
+      ],
+      "reason": "Landen op het Arabisch schiereiland herhalen geografische lijstvragen.",
+      "destinations": []
+    },
+    {
+      "mode": "connection",
+      "number": 18,
+      "questions": [
+        "N38",
+        "q161",
+        "q847"
+      ],
+      "reason": "Kattenchromosomen zijn niet intuïtief te schatten; Wright-vlucht wordt hergebruikt.",
+      "destinations": [
+        {
+          "mode": "connection",
+          "number": 18,
+          "questions": [
+            "N38"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "connection",
+      "number": 19,
+      "questions": [
+        "q1261",
+        "q137",
+        "q836"
+      ],
+      "reason": "Boekhoofdstukken en Senaatstermijn leveren samen weinig schatplezier.",
+      "destinations": []
+    },
+    {
+      "mode": "connection",
+      "number": 20,
+      "questions": [
+        "q113",
+        "q1263",
+        "q567"
+      ],
+      "reason": "Een uitzonderingsregel voor presidentstermijnen maakt de vraag lastig te interpreteren.",
+      "destinations": []
+    },
+    {
+      "mode": "connection",
+      "number": 21,
+      "questions": [
+        "q1200",
+        "q376",
+        "q961"
+      ],
+      "reason": "Chinese provincies en korfbalspelers vragen te veel regionale voorkennis.",
+      "destinations": []
+    },
+    {
+      "mode": "connection",
+      "number": 22,
+      "questions": [
+        "q1134",
+        "q239",
+        "q563"
+      ],
+      "reason": "Specifieke minaretten zonder foto; gespreksvolume wordt hergebruikt.",
+      "destinations": [
+        {
+          "mode": "connection",
+          "number": 18,
+          "questions": [
+            "q1134"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "connection",
+      "number": 23,
+      "questions": [
+        "q1223",
+        "q360",
+        "q969"
+      ],
+      "reason": "Zaanse Schans-molens en koffieproductie zijn lokale/industriële teltrivia.",
+      "destinations": []
+    },
+    {
+      "mode": "connection",
+      "number": 24,
+      "questions": [
+        "q130",
+        "q276",
+        "q576"
+      ],
+      "reason": "Behoud: herkenbare onderwerpen; één lastiger feit mag door de verbinding worden opgelost.",
+      "destinations": [
+        {
+          "mode": "connection",
+          "number": 7,
+          "questions": [
+            "q130",
+            "q276",
+            "q576"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "connection",
+      "number": 25,
+      "questions": [
+        "q172",
+        "q316",
+        "q848"
+      ],
+      "reason": "CFA-frank vereist uitleg voordat een speler kan schatten.",
+      "destinations": []
+    },
+    {
+      "mode": "connection",
+      "number": 26,
+      "questions": [
+        "q1103",
+        "q826",
+        "q993"
+      ],
+      "reason": "Verdiepingen van het Witte Huis en slagduur zijn tamelijk arbitraire feiten.",
+      "destinations": []
+    },
+    {
+      "mode": "connection",
+      "number": 27,
+      "questions": [
+        "q032",
+        "q109",
+        "q496"
+      ],
+      "reason": "Behoud: herkenbare onderwerpen; één lastiger feit mag door de verbinding worden opgelost.",
+      "destinations": [
+        {
+          "mode": "connection",
+          "number": 8,
+          "questions": [
+            "q032",
+            "q109",
+            "q496"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "connection",
+      "number": 28,
+      "questions": [
+        "q212",
+        "q811",
+        "q921"
+      ],
+      "reason": "Melanesië en sluiscomponenten zijn onbekende begrippen voor veel spelers.",
+      "destinations": []
+    },
+    {
+      "mode": "connection",
+      "number": 29,
+      "questions": [
+        "q089",
+        "q476",
+        "q997"
+      ],
+      "reason": "pH, Finse naamvallen en oorlogsduur zijn als combinatie te schools.",
+      "destinations": []
+    },
+    {
+      "mode": "connection",
+      "number": 30,
+      "questions": [
+        "q244",
+        "q385",
+        "q915"
+      ],
+      "reason": "Torens van Sagrada Família zonder foto; nog een zee-landentelling.",
+      "destinations": []
+    },
+    {
+      "mode": "connection",
+      "number": 31,
+      "questions": [
+        "q223",
+        "q424",
+        "q631"
+      ],
+      "reason": "Behoud: herkenbare onderwerpen; één lastiger feit mag door de verbinding worden opgelost.",
+      "destinations": [
+        {
+          "mode": "connection",
+          "number": 9,
+          "questions": [
+            "q223",
+            "q424",
+            "q631"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "connection",
+      "number": 32,
+      "questions": [
+        "q139",
+        "q573",
+        "q880"
+      ],
+      "reason": "Metro-lijnen en Congolese buurlanden zijn repetitieve tellingen; Mars wordt gered.",
+      "destinations": [
+        {
+          "mode": "connection",
+          "number": 17,
+          "questions": [
+            "q139"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "connection",
+      "number": 33,
+      "questions": [
+        "q065",
+        "q397",
+        "q619"
+      ],
+      "reason": "Rechters en religieuze canon zijn specialistisch; Beethoven wordt gered.",
+      "destinations": [
+        {
+          "mode": "connection",
+          "number": 15,
+          "questions": [
+            "q397"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "connection",
+      "number": 34,
+      "questions": [
+        "q1267",
+        "q1363",
+        "q184"
+      ],
+      "reason": "Behoud: herkenbare onderwerpen; één lastiger feit mag door de verbinding worden opgelost.",
+      "destinations": [
+        {
+          "mode": "connection",
+          "number": 10,
+          "questions": [
+            "q1267",
+            "q1363",
+            "q184"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "connection",
+      "number": 35,
+      "questions": [
+        "q221",
+        "q835",
+        "q957"
+      ],
+      "reason": "Behoud: herkenbare onderwerpen; één lastiger feit mag door de verbinding worden opgelost.",
+      "destinations": [
+        {
+          "mode": "connection",
+          "number": 11,
+          "questions": [
+            "q221",
+            "q835",
+            "q957"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "connection",
+      "number": 36,
+      "questions": [
+        "q432",
+        "q447",
+        "q936"
+      ],
+      "reason": "Behoud: herkenbare onderwerpen; één lastiger feit mag door de verbinding worden opgelost.",
+      "destinations": [
+        {
+          "mode": "connection",
+          "number": 12,
+          "questions": [
+            "q432",
+            "q447",
+            "q936"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "connection",
+      "number": 37,
+      "questions": [
+        "q007",
+        "q202",
+        "q913"
+      ],
+      "reason": "Filmografie en landen rond een meer zijn definitie-/peildatumgevoelig.",
+      "destinations": []
+    },
+    {
+      "mode": "connection",
+      "number": 38,
+      "questions": [
+        "q1003",
+        "q541",
+        "q914"
+      ],
+      "reason": "Alfabet, regeerduur en landen aan een zee leveren drie formele tellingen op.",
+      "destinations": []
+    },
+    {
+      "mode": "connection",
+      "number": 39,
+      "questions": [
+        "q1207",
+        "q1247",
+        "q854"
+      ],
+      "reason": "Kinderdijk en de Nederlandse Kamer zijn lokale kennis, niet internationaal herkenbaar.",
+      "destinations": []
+    },
+    {
+      "mode": "connection",
+      "number": 40,
+      "questions": [
+        "q1283",
+        "q390",
+        "q972"
+      ],
+      "reason": "Mozart-catalogus en Argentijnse provincies zijn twee specifieke kennislijstjes.",
+      "destinations": []
+    },
+    {
+      "mode": "connection",
+      "number": 41,
+      "questions": [
+        "q355",
+        "q700",
+        "q834"
+      ],
+      "reason": "Landen aan een oceaan en schilderijeninventaris zijn definitiegevoelige tellingen.",
+      "destinations": []
+    },
+    {
+      "mode": "connection",
+      "number": 42,
+      "questions": [
+        "q1278",
+        "q459",
+        "q944"
+      ],
+      "reason": "Behoud: herkenbare onderwerpen; één lastiger feit mag door de verbinding worden opgelost.",
+      "destinations": [
+        {
+          "mode": "connection",
+          "number": 13,
+          "questions": [
+            "q1278",
+            "q459",
+            "q944"
+          ]
+        }
+      ]
+    }
+  ]
+}

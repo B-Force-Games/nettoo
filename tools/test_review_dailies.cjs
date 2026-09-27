@@ -8,7 +8,7 @@ const context = {window:{}};
 vm.runInNewContext(fs.readFileSync(path.join(root,'data/netto_frontend_puzzles.js'),'utf8'),context);
 const data=context.window.NETTO_REBUILT_PUZZLES;
 const selection=JSON.parse(fs.readFileSync(path.join(root,'puzzels/daily_selectie_20260927.json'),'utf8'));
-assert.equal(data.daily.length,25);
+assert.equal(data.daily.length,20);
 const used=new Set();
 for(const p of data.daily){
   const selected=selection.puzzles.find(s=>s.id===p.id);
@@ -29,10 +29,10 @@ for(const p of data.daily){
   assert.equal(new Set(units).size,3);
   if(p.photo) assert.ok(p.photo.url&&p.photo.pagina&&p.photo.maker&&p.photo.licentie);
 }
-assert.equal(used.size,75);
+assert.equal(used.size,60);
 assert.equal(data.daily[0].date,'2026-09-21');
-assert.equal(data.daily[24].date,'2026-10-15');
-console.log('PASS: 25 exacte vergelijkingen; 75 unieke goedgekeurde vragen; categorieën, eenheden, teksten en fotoverantwoording.');
+assert.equal(data.daily[19].date,'2026-10-10');
+console.log('PASS: 20 exacte vergelijkingen; 60 unieke goedgekeurde vragen; categorieën, eenheden, teksten en fotoverantwoording.');
 
 // Optionele echte PostgreSQL-test via een bestaande PGlite-installatie.
 async function sqlTest(){
