@@ -1,0 +1,1927 @@
+{
+  "edition": "reviewed-20260927",
+  "source": "NETTO ALLE GOEDGEKEURDE VRAGEN.xlsx",
+  "start": "2026-09-21",
+  "approved_count": 609,
+  "reserved": {
+    "q478": 1,
+    "q044": 1,
+    "q035": 1,
+    "q091": 2,
+    "q018": 2,
+    "q650": 2,
+    "q080": 3,
+    "q107": 3,
+    "q016": 3,
+    "q015": 4,
+    "q473": 4,
+    "q141": 4,
+    "q087": 5,
+    "q1133": 5,
+    "q101": 5,
+    "q254": 6,
+    "q487": 6,
+    "q003": 6,
+    "q025": 7,
+    "q461": 7,
+    "q108": 7,
+    "q082": 8,
+    "q059": 8,
+    "q343": 8,
+    "q043": 9,
+    "q1349": 9,
+    "q311": 9,
+    "q037": 10,
+    "q246": 10,
+    "q038": 10,
+    "q012": 11,
+    "q164": 11,
+    "q033": 11,
+    "q001": 12,
+    "q435": 12,
+    "q180": 12,
+    "q013": 13,
+    "q088": 13,
+    "q117": 13,
+    "q1463": 14,
+    "q058": 14,
+    "q1306": 14,
+    "q077": 15,
+    "q255": 15,
+    "q305": 15,
+    "q636": 16,
+    "q086": 16,
+    "N55": 16,
+    "q131": 17,
+    "q064": 17,
+    "q267": 17,
+    "q794": 18,
+    "q1455": 18,
+    "q195": 18,
+    "q357": 19,
+    "q1257": 19,
+    "q020": 19,
+    "q1338": 20,
+    "q051": 20,
+    "q055": 20,
+    "N43": 21,
+    "q930": 21,
+    "q1115": 21,
+    "q362": 22,
+    "N19": 22,
+    "q008": 22,
+    "q095": 23,
+    "N4": 23,
+    "q1492": 23,
+    "q169": 24,
+    "q492": 24,
+    "q197": 24,
+    "q140": 25,
+    "q400": 25,
+    "q1435": 25,
+    "q622": 17,
+    "q258": 21,
+    "q791": 6
+  },
+  "puzzles": [
+    {
+      "id": "b002c770-1319-57bc-9862-8daf6adc94fd",
+      "number": 1,
+      "date": "2026-09-21",
+      "operator": "−",
+      "questions": [
+        {
+          "id": "q478",
+          "row": 229,
+          "status": "APPROVED",
+          "category": "Spellen en speelgoed",
+          "original": "Hoeveel Pokémon telt de eerste generatie, de Kanto Pokédex?",
+          "question": "How many original Pokémon were there?",
+          "subtitle": null,
+          "answer": 151,
+          "evidence": "Generation I with 151 Pokémon refers to Red, Green, Blue, and Yellow; generation II with 100 Pokémon refers to Gold, Silver, and Crystal; generation III with 135 Pokémon refers to Ruby, Sapphire, FireRed, LeafGreen, and Emerald; generation IV with 107 Pokémon refers to Diamond, Pearl, Platinum, Hear",
+          "source": "https://en.wikipedia.org/wiki/List_of_Pok%C3%A9mon",
+          "notes": "Explicitly approved by the user.\nMatches explicitly approved N16; existing catalogue row retained.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/330px-International_Pok%C3%A9mon_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:International_Pok%C3%A9mon_logo.svg",
+            "licentie": "Public domain",
+            "maker": "Pokémon , Nintendo / Creatures Inc. / Game Freak Inc."
+          },
+          "n": 151,
+          "unit": "Pokémon"
+        },
+        {
+          "id": "q044",
+          "row": 29,
+          "status": "APPROVED",
+          "category": "Kunst en cultuur",
+          "original": "Hoeveel centimeter breed is de Mona Lisa?",
+          "question": "How many centimetres wide is the Mona Lisa?",
+          "subtitle": null,
+          "answer": 53,
+          "evidence": "| breedte = 53",
+          "source": "https://nl.wikipedia.org/wiki/Mona_Lisa",
+          "notes": "Explicitly approved by the user. English wording is recorded in Kept questions.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/330px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Mona_Lisa,_by_Leonardo_da_Vinci,_from_C2RMF_retouched.jpg",
+            "licentie": "Public domain",
+            "maker": "Leonardo da Vinci"
+          },
+          "n": 53,
+          "unit": "cm"
+        },
+        {
+          "id": "q035",
+          "row": 23,
+          "status": "APPROVED",
+          "category": "Geografie",
+          "original": "Hoeveel procent van Antarctica is met ijs bedekt?",
+          "question": "What percentage of Antarctica is covered by ice?",
+          "subtitle": null,
+          "answer": 98,
+          "evidence": "Ongeveer 98 procent van Antarctica is met ijs bedekt.",
+          "source": "https://en.wikipedia.org/wiki/Antarctica",
+          "notes": "Explicitly approved by the user. English wording is recorded in Kept questions.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Antarctica_%28orthographic_projection%29.svg/330px-Antarctica_%28orthographic_projection%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Antarctica_(orthographic_projection).svg",
+            "licentie": "CC BY-SA 3.0",
+            "maker": "Heraldry"
+          },
+          "n": 98,
+          "unit": "%"
+        }
+      ],
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/330px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Mona_Lisa,_by_Leonardo_da_Vinci,_from_C2RMF_retouched.jpg",
+        "licentie": "Public domain",
+        "maker": "Leonardo da Vinci",
+        "vraag": 2
+      },
+      "note": "Pokémon, the Mona Lisa and Antarctica: three familiar subjects with an unexpected exact fit."
+    },
+    {
+      "id": "30cb0de4-308a-5250-b465-776e3a7ed47a",
+      "number": 2,
+      "date": "2026-09-22",
+      "operator": "−",
+      "questions": [
+        {
+          "id": "q091",
+          "row": 53,
+          "status": "APPROVED",
+          "category": "Technologie",
+          "original": "In welk jaar werd de eerste digitale camera ontwikkeld?",
+          "question": "In what year was the first digital camera developed?",
+          "subtitle": null,
+          "answer": 1975,
+          "evidence": "Steven Sasson bouwde in 1975 bij Kodak de eerste digitale camera.",
+          "source": "https://en.wikipedia.org/wiki/Digital_camera",
+          "notes": "Explicitly approved by the user. English wording is recorded in Kept questions.",
+          "photo": null,
+          "n": 1975,
+          "unit": "year"
+        },
+        {
+          "id": "q018",
+          "row": 12,
+          "status": "APPROVED",
+          "category": "Gebouwen en infrastructuur",
+          "original": "Hoeveel kamers heeft Buckingham Palace?",
+          "question": "How many rooms does Buckingham Palace have?",
+          "subtitle": "Count all rooms, not just bedrooms.",
+          "answer": 775,
+          "evidence": "Het paleis heeft 775 kamers (waarvan 78 badkamers), 1514 deuren en ruim 760 vensters, die om de zes weken worden gereinigd.",
+          "source": "https://nl.wikipedia.org/wiki/Buckingham_Palace",
+          "notes": "Explicitly approved by the user. English wording is recorded in Kept questions. Photo needed Photo needed",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Buckingham_Palace%2C_London_-_April_2009.jpg/330px-Buckingham_Palace%2C_London_-_April_2009.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Buckingham_Palace,_London_-_April_2009.jpg",
+            "licentie": "CC BY-SA 3.0",
+            "maker": "Diliff"
+          },
+          "n": 775,
+          "unit": "rooms"
+        },
+        {
+          "id": "q650",
+          "row": 317,
+          "status": "APPROVED",
+          "category": "Dieren",
+          "original": "Hoeveel kilogram weegt een volwassen giraffe?",
+          "question": "How many kilograms does an adult giraffe weigh?",
+          "subtitle": null,
+          "answer": 1200,
+          "evidence": "Mannetjes wegen ongeveer 1200 kg.",
+          "source": "https://en.wikipedia.org/wiki/Giraffe",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/Giraffa_camelopardalis_angolensis.jpg/330px-Giraffa_camelopardalis_angolensis.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Giraffa_camelopardalis_angolensis.jpg",
+            "licentie": "CC BY-SA 4.0",
+            "maker": "Hans Hillewaert"
+          },
+          "n": 1200,
+          "unit": "kg"
+        }
+      ],
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Buckingham_Palace%2C_London_-_April_2009.jpg/330px-Buckingham_Palace%2C_London_-_April_2009.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Buckingham_Palace,_London_-_April_2009.jpg",
+        "licentie": "CC BY-SA 3.0",
+        "maker": "Diliff",
+        "vraag": 2
+      },
+      "note": "The first digital camera connects palace rooms to the surprising weight of a giraffe."
+    },
+    {
+      "id": "73c1705e-91ae-51ac-baab-a10b5f934329",
+      "number": 3,
+      "date": "2026-09-23",
+      "operator": "÷",
+      "questions": [
+        {
+          "id": "q080",
+          "row": 45,
+          "status": "APPROVED",
+          "category": "Sterrenkunde & ruimte",
+          "original": "Hoeveel aardse dagen duurt één volledige draai van Venus ongeveer?",
+          "question": "How many days does Venus take to complete one full rotation?",
+          "subtitle": "Answer in Earth days.",
+          "answer": 243,
+          "evidence": "Sinds 1964 leveren radarwaarnemingen van het oppervlak een veel tragere, maar eveneens retrograde rotatieperiode van 243 aardse dagen.",
+          "source": "https://nl.wikipedia.org/wiki/Venus_%28planeet%29",
+          "notes": "Explicitly approved by the user. English wording is recorded in Kept questions.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Venus_from_Mariner_10.jpg/330px-Venus_from_Mariner_10.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Venus_from_Mariner_10.jpg",
+            "licentie": "Public domain",
+            "maker": "NASA/JPL-Caltech"
+          },
+          "n": 243,
+          "unit": "Earth days"
+        },
+        {
+          "id": "q107",
+          "row": 60,
+          "status": "APPROVED",
+          "category": "Biologie & gezondheid",
+          "original": "Hoeveel botten bevat één menselijke hand inclusief de pols?",
+          "question": "How many bones are in one human hand?",
+          "subtitle": "Include the wrist bones.",
+          "answer": 27,
+          "evidence": "De menselijke hand telt 27 botten, de polsbeentjes meegerekend.",
+          "source": "https://en.wikipedia.org/wiki/Hand",
+          "notes": "Explicitly approved by the user.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Human_skeleton_front_en.svg/330px-Human_skeleton_front_en.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Human_skeleton_front_en.svg",
+            "licentie": "Public domain",
+            "maker": "LadyofHats Mariana Ruiz Villarreal"
+          },
+          "n": 27,
+          "unit": "bones"
+        },
+        {
+          "id": "q016",
+          "row": 10,
+          "status": "APPROVED",
+          "category": "Filosofie, psychologie en religie",
+          "original": "Hoeveel Muzen (dochters van Zeus) telt de Griekse mythologie?",
+          "question": "How many Muses are there in Greek mythology?",
+          "subtitle": null,
+          "answer": 9,
+          "evidence": "De Griekse mythologie kent negen Muzen, dochters van Zeus en Mnemosyne. De oude bron verwees naar een informatieblad over DNA.",
+          "source": "https://en.wikipedia.org/wiki/Muses",
+          "notes": "Explicitly approved by the user. English wording is recorded in Kept questions.",
+          "photo": null,
+          "n": 9,
+          "unit": "Muses"
+        }
+      ],
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Venus_from_Mariner_10.jpg/330px-Venus_from_Mariner_10.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Venus_from_Mariner_10.jpg",
+        "licentie": "Public domain",
+        "maker": "NASA/JPL-Caltech",
+        "vraag": 1
+      },
+      "note": "A day on Venus becomes a hand full of bones and the nine Muses."
+    },
+    {
+      "id": "0b2dafc6-386b-599b-bc96-829a61f50eff",
+      "number": 4,
+      "date": "2026-09-24",
+      "operator": "+",
+      "questions": [
+        {
+          "id": "q015",
+          "row": 9,
+          "status": "APPROVED",
+          "category": "Films en series",
+          "original": "Hoeveel afleveringen telt de serie Breaking Bad?",
+          "question": "How many episodes does Breaking Bad have?",
+          "subtitle": "Include all five seasons of the original series.",
+          "answer": 62,
+          "evidence": "Breaking Bad premiered on AMC on January 20, 2008, and concluded on September 29, 2013, after five seasons and 62 episodes.",
+          "source": "https://en.wikipedia.org/wiki/Breaking_Bad",
+          "notes": "Explicitly approved by the user. English wording is recorded in Kept questions.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Breaking_Bad_official_logo.svg/330px-Breaking_Bad_official_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Breaking_Bad_official_logo.svg",
+            "licentie": "Public domain",
+            "maker": "Sony Television"
+          },
+          "n": 62,
+          "unit": "episodes"
+        },
+        {
+          "id": "q473",
+          "row": 227,
+          "status": "APPROVED",
+          "category": "Scheikunde",
+          "original": "Hoeveel protonen heeft een neutraal atoom van uranium?",
+          "question": "How many protons does a uranium atom have?",
+          "subtitle": null,
+          "answer": 92,
+          "evidence": "Uranium of uraan (IUPAC-naam) is een chemisch element met symbool U en atoomnummer 92. Het atoomnummer is het aantal protonen in de kern.",
+          "source": "https://nl.wikipedia.org/wiki/Uranium",
+          "notes": "Explicitly approved in final salvage review.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/HEUraniumC.jpg/330px-HEUraniumC.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:HEUraniumC.jpg",
+            "licentie": "Public domain",
+            "maker": "Unspecified"
+          },
+          "n": 92,
+          "unit": "protons"
+        },
+        {
+          "id": "q141",
+          "row": 78,
+          "status": "APPROVED",
+          "category": "Boeken en literatuur",
+          "original": "Hoeveel sonnetten schreef Shakespeare?",
+          "question": "How many sonnets did Shakespeare write?",
+          "subtitle": null,
+          "answer": 154,
+          "evidence": "Hij schreef 154 sonnetten en een aantal langere gedichten en kan beschouwd worden als de eerste moderne toneelschrijver.",
+          "source": "https://nl.wikipedia.org/wiki/William_Shakespeare",
+          "notes": "No final individual decision recorded.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Shakespeare.jpg/330px-Shakespeare.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Shakespeare.jpg",
+            "licentie": "Public domain",
+            "maker": "Attributed to John Taylor"
+          },
+          "n": 154,
+          "unit": "sonnets"
+        }
+      ],
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Breaking_Bad_official_logo.svg/330px-Breaking_Bad_official_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Breaking_Bad_official_logo.svg",
+        "licentie": "Public domain",
+        "maker": "Sony Television",
+        "vraag": 1
+      },
+      "note": "Breaking Bad meets real chemistry, then lands on Shakespeare's sonnets."
+    },
+    {
+      "id": "ffc27a64-007c-51ec-af80-77f7b52cb1cf",
+      "number": 5,
+      "date": "2026-09-25",
+      "operator": "×",
+      "questions": [
+        {
+          "id": "q087",
+          "row": 49,
+          "status": "APPROVED",
+          "category": "Taal",
+          "original": "Hoeveel letters heeft het Thaise alfabet?",
+          "question": "How many consonant letters are in the Thai script?",
+          "subtitle": null,
+          "answer": 44,
+          "evidence": "Het Thaise schrift telt 44 medeklinkertekens.",
+          "source": "https://en.wikipedia.org/wiki/Thai_script",
+          "notes": "Explicitly approved in final salvage review.",
+          "photo": null,
+          "n": 44,
+          "unit": "letters"
+        },
+        {
+          "id": "q1133",
+          "row": 503,
+          "status": "APPROVED",
+          "category": "Muziek",
+          "original": "Hoeveel symfonieën schreef Mozart?",
+          "question": "How many symphonies are included in the traditional numbered list of Mozart’s symphonies?",
+          "subtitle": null,
+          "answer": 41,
+          "evidence": "De genummerde symfonieen lopen tot 41, maar Mozart schreef er meer die buiten die nummering vallen.",
+          "source": "https://en.wikipedia.org/wiki/List_of_symphonies_by_Wolfgang_Amadeus_Mozart",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/Wolfgang-amadeus-mozart_1.jpg/330px-Wolfgang-amadeus-mozart_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Wolfgang-amadeus-mozart_1.jpg",
+            "licentie": "Public domain",
+            "maker": "Barbara Krafft"
+          },
+          "n": 41,
+          "unit": "symphonies"
+        },
+        {
+          "id": "q101",
+          "row": 58,
+          "status": "APPROVED",
+          "category": "Vervoer",
+          "original": "In welk jaar werd de eerste stoomlocomotief gebouwd?",
+          "question": "In what year was the first steam locomotive built?",
+          "subtitle": null,
+          "answer": 1804,
+          "evidence": "Geschiedenis\n\nDe eerste stoomlocomotief ter wereld werd in 1804 door Richard Trevithick in Engeland gebouwd.",
+          "source": "https://nl.wikipedia.org/wiki/Stoomlocomotief",
+          "notes": "Explicitly approved by the user. English wording is recorded in Kept questions.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/78_468_Dieringhausen.jpg/330px-78_468_Dieringhausen.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:78_468_Dieringhausen.jpg",
+            "licentie": "CC BY-SA 3.0",
+            "maker": "Hullie"
+          },
+          "n": 1804,
+          "unit": "year"
+        }
+      ],
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/Wolfgang-amadeus-mozart_1.jpg/330px-Wolfgang-amadeus-mozart_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Wolfgang-amadeus-mozart_1.jpg",
+        "licentie": "Public domain",
+        "maker": "Barbara Krafft",
+        "vraag": 2
+      },
+      "note": "Thai script and Mozart multiply into the first steam locomotive's year."
+    },
+    {
+      "id": "1b34bb4e-c69b-58e5-9cdb-52d27e0b913a",
+      "number": 6,
+      "date": "2026-09-26",
+      "operator": "−",
+      "questions": [
+        {
+          "id": "q254",
+          "row": 138,
+          "status": "APPROVED",
+          "category": "Gebouwen en infrastructuur",
+          "original": "Wat is de hoogte van de Eiffeltoren in meters (met antenne)?",
+          "question": "How tall is the Eiffel Tower including its antenna?",
+          "subtitle": null,
+          "answer": 330,
+          "evidence": "De toren heeft een hoogte van 330 meter, met zijn 116 antennes.",
+          "source": "https://nl.wikipedia.org/wiki/Eiffeltoren",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/Tour_Eiffel_Wikimedia_Commons.jpg/330px-Tour_Eiffel_Wikimedia_Commons.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Tour_Eiffel_Wikimedia_Commons.jpg",
+            "licentie": "Public domain",
+            "maker": "Benh LIEU SONG"
+          },
+          "n": 330,
+          "unit": "m"
+        },
+        {
+          "id": "q487",
+          "row": 233,
+          "status": "APPROVED",
+          "category": "Spellen en speelgoed",
+          "original": "Hoeveel stippen (inclusief de 4 grote power pellets) moet Pac-Man opeten om een level uit te spelen?",
+          "question": "How many dots and power pellets must Pac-Man eat to clear a maze?",
+          "subtitle": null,
+          "answer": 244,
+          "evidence": "Een doolhof bevat 240 stippen plus vier power pellets, samen 244.",
+          "source": "https://en.wikipedia.org/wiki/Pac-Man",
+          "notes": "Explicitly approved by the user.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/Prick%C3%A4tarpucken.svg/330px-Prick%C3%A4tarpucken.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Prick%C3%A4tarpucken.svg",
+            "licentie": "Public domain",
+            "maker": "User Solkoll (JPG) User Balthazar (SVG)"
+          },
+          "n": 244,
+          "unit": "pellets"
+        },
+        {
+          "id": "q003",
+          "row": 4,
+          "status": "APPROVED",
+          "category": "Biologie & gezondheid",
+          "original": "Hoeveel miljard neuronen (zenuwcellen) bevat het menselijk brein naar schatting?",
+          "question": "How many neurons does the human brain contain?",
+          "subtitle": "Give an approximate answer in billions.",
+          "answer": 86,
+          "evidence": "Azevedo e.a. (2009) telden 86 miljard neuronen in het menselijk brein.",
+          "source": "https://pubmed.ncbi.nlm.nih.gov/19226510/",
+          "notes": "Explicitly approved by the user. English wording is recorded in Kept questions.",
+          "photo": null,
+          "n": 86,
+          "unit": "× 1,000,000,000"
+        }
+      ],
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/Tour_Eiffel_Wikimedia_Commons.jpg/330px-Tour_Eiffel_Wikimedia_Commons.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Tour_Eiffel_Wikimedia_Commons.jpg",
+        "licentie": "Public domain",
+        "maker": "Benh LIEU SONG",
+        "vraag": 1
+      },
+      "note": "The Eiffel Tower and Pac-Man leave the number of billions of neurons in the human brain."
+    },
+    {
+      "id": "c889a869-385a-5ef6-b24a-2104cc2c58e4",
+      "number": 7,
+      "date": "2026-09-27",
+      "operator": "+",
+      "questions": [
+        {
+          "id": "q025",
+          "row": 17,
+          "status": "APPROVED",
+          "category": "Gebouwen en infrastructuur",
+          "original": "Hoeveel verdiepingen hebben de Petronas Twin Towers?",
+          "question": "How many floors do the Petronas Twin Towers have?",
+          "subtitle": null,
+          "answer": 88,
+          "evidence": "Het gebouw heeft 88 verdiepingen.",
+          "source": "https://nl.wikipedia.org/wiki/Petronas_Twin_Towers",
+          "notes": "Explicitly approved by the user. English wording is recorded in Kept questions.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Petronas_Panorama_II.jpg/330px-Petronas_Panorama_II.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Petronas_Panorama_II.jpg",
+            "licentie": "CC BY-SA 4.0",
+            "maker": "Someformofhuman"
+          },
+          "n": 88,
+          "unit": "floors"
+        },
+        {
+          "id": "q461",
+          "row": 224,
+          "status": "APPROVED",
+          "category": "Scheikunde",
+          "original": "Hoeveel chemische elementen telt het huidige periodiek systeem?",
+          "question": "How many chemical elements are in the periodic table?",
+          "subtitle": null,
+          "answer": 118,
+          "evidence": "Anno 2026 zijn de elementen met atoomnummer 1 (waterstof) tot en met 118 (oganesson) ontdekt of gesynthetiseerd.",
+          "source": "https://nl.wikipedia.org/wiki/Periodiek_systeem",
+          "notes": "Explicitly approved by the user.",
+          "photo": null,
+          "n": 118,
+          "unit": "elements"
+        },
+        {
+          "id": "q108",
+          "row": 61,
+          "status": "APPROVED",
+          "category": "Biologie & gezondheid",
+          "original": "Hoeveel botten heeft een volwassen menselijk lichaam?",
+          "question": "How many bones are in an adult human body?",
+          "subtitle": null,
+          "answer": 206,
+          "evidence": "Een volwassen skelet telt 206 botten.",
+          "source": "https://en.wikipedia.org/wiki/List_of_bones_of_the_human_skeleton",
+          "notes": "Explicitly approved by the user. Approved photo listed in canonical source. Approved photo listed in canonical source.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Bones_of_skeletal_system.jpg/330px-Bones_of_skeletal_system.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Bones_of_skeletal_system.jpg",
+            "licentie": "CC BY-SA 4.0",
+            "maker": "https://www.scientificanimations.com/"
+          },
+          "n": 206,
+          "unit": "bones"
+        }
+      ],
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Petronas_Panorama_II.jpg/330px-Petronas_Panorama_II.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Petronas_Panorama_II.jpg",
+        "licentie": "CC BY-SA 4.0",
+        "maker": "Someformofhuman",
+        "vraag": 1
+      },
+      "note": "Skyscraper floors and the periodic table add up to the adult skeleton."
+    },
+    {
+      "id": "1bc44f1c-16ca-55f0-820a-7ce2a9b9c862",
+      "number": 8,
+      "date": "2026-09-28",
+      "operator": "+",
+      "questions": [
+        {
+          "id": "q082",
+          "row": 47,
+          "status": "APPROVED",
+          "category": "Sterrenkunde & ruimte",
+          "original": "Hoeveel dagen doet de planeet Mars erover om rond de zon te draaien?",
+          "question": "How many days does Mars take to orbit the Sun?",
+          "subtitle": "Answer in Earth days.",
+          "answer": 687,
+          "evidence": "De siderische periode is 687 (aardse) dagen (of 1,8809 aardse jaren), dit is de tijd die Mars nodig heeft om een omloop rond de zon te voltooien.",
+          "source": "https://nl.wikipedia.org/wiki/Mars_%28planeet%29",
+          "notes": "Explicitly approved by the user. English wording is recorded in Kept questions.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png/330px-Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png",
+            "licentie": "CC BY 2.0",
+            "maker": "Kevin Gill from Los Angeles, CA, United States"
+          },
+          "n": 687,
+          "unit": "Earth days"
+        },
+        {
+          "id": "q059",
+          "row": 35,
+          "status": "APPROVED",
+          "category": "Natuurkunde",
+          "original": "Hoeveel kilometer per uur is de geluidssnelheid op zeeniveau afgerond?",
+          "question": "How many kilometres per hour does sound travel?",
+          "subtitle": "In air at sea level and 15°C.",
+          "answer": 1225,
+          "evidence": "Bij 15 °C op zeeniveau is de geluidssnelheid 340,3 m/s, oftewel 1225 km/u. De eerder opgegeven 1234 km/u hoort bij 20 °C.",
+          "source": "https://nl.wikipedia.org/wiki/Geluidssnelheid",
+          "notes": "Explicitly approved by the user. English wording is recorded in Kept questions.",
+          "photo": null,
+          "n": 1225,
+          "unit": "km/h"
+        },
+        {
+          "id": "q343",
+          "row": 186,
+          "status": "APPROVED",
+          "category": "Geschiedenis",
+          "original": "In welk jaar zonk de Titanic?",
+          "question": "In what year did the Titanic sink?",
+          "subtitle": null,
+          "answer": 1912,
+          "evidence": "Titanic was eigendom van rederij White Star Line en kwam in de nacht van 14 op 15 april 1912 op haar eerste reis met bijna volle kracht (in dienst) in aanvaring met een ijsberg.",
+          "source": "https://nl.wikipedia.org/wiki/Titanic_%28schip%2C_1912%29",
+          "notes": "Explicitly approved by the user.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/RMS_Titanic_3.jpg/330px-RMS_Titanic_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:RMS_Titanic_3.jpg",
+            "licentie": "Public domain",
+            "maker": "Francis Godolphin Osbourne Stuart"
+          },
+          "n": 1912,
+          "unit": "year"
+        }
+      ],
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png/330px-Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png",
+        "licentie": "CC BY 2.0",
+        "maker": "Kevin Gill from Los Angeles, CA, United States",
+        "vraag": 1
+      },
+      "note": "A Martian year plus the speed of sound lands exactly on the year the Titanic sank."
+    },
+    {
+      "id": "51c322d5-120d-5538-89bf-52594d33800b",
+      "number": 9,
+      "date": "2026-09-29",
+      "operator": "÷",
+      "questions": [
+        {
+          "id": "q043",
+          "row": 28,
+          "status": "APPROVED",
+          "category": "Gebouwen en infrastructuur",
+          "original": "Wat is de hoogte van de Burj Khalifa in Dubai in meters?",
+          "question": "How many metres high is the Burj Khalifa?",
+          "subtitle": null,
+          "answer": 828,
+          "evidence": "Op 17 januari 2009 bereikte de toren zijn hoogste punt, met een hoogte van 828 meter.",
+          "source": "https://nl.wikipedia.org/wiki/Burj_Khalifa",
+          "notes": "Explicitly approved by the user. English wording is recorded in Kept questions.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/Dubai_skyline_2015_%28crop%29.jpg/330px-Dubai_skyline_2015_%28crop%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Dubai_skyline_2015_(crop).jpg",
+            "licentie": "CC BY-SA 3.0",
+            "maker": "Tim.Reckmann"
+          },
+          "n": 828,
+          "unit": "m"
+        },
+        {
+          "id": "q1349",
+          "row": 548,
+          "status": "APPROVED",
+          "category": "Sport",
+          "original": "Hoeveel holes heeft een standaard golfbaan?",
+          "question": "How many holes are on a standard golf course?",
+          "subtitle": null,
+          "answer": 18,
+          "evidence": "Een volledige golfbaan heeft 18 holes.",
+          "source": "https://nl.wikipedia.org/wiki/Golfbaan",
+          "notes": "Explicitly approved in Q1263–Q1408 review.",
+          "photo": null,
+          "n": 18,
+          "unit": "holes"
+        },
+        {
+          "id": "q311",
+          "row": 163,
+          "status": "APPROVED",
+          "category": "Biologie & gezondheid",
+          "original": "Hoeveel chromosomen telt een gezonde menselijke cel?",
+          "question": "How many chromosomes are in a typical human body cell?",
+          "subtitle": null,
+          "answer": 46,
+          "evidence": "Een gezonde menselijke lichaamscel bevat 46 chromosomen, 23 paren.",
+          "source": "https://www.genome.gov/genetics-glossary/Chromosome",
+          "notes": null,
+          "photo": null,
+          "n": 46,
+          "unit": "chromosomes"
+        }
+      ],
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/Dubai_skyline_2015_%28crop%29.jpg/330px-Dubai_skyline_2015_%28crop%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Dubai_skyline_2015_(crop).jpg",
+        "licentie": "CC BY-SA 3.0",
+        "maker": "Tim.Reckmann",
+        "vraag": 1
+      },
+      "note": "The Burj Khalifa divided by a golf course reveals our chromosome count."
+    },
+    {
+      "id": "edaa23f0-5d8e-5682-9b6d-d595632e9a62",
+      "number": 10,
+      "date": "2026-09-30",
+      "operator": "−",
+      "questions": [
+        {
+          "id": "q037",
+          "row": 24,
+          "status": "APPROVED",
+          "category": "Geografie",
+          "original": "Wat is de diepte van het diepste zoetwatermeer ter wereld (Baikalmeer in Rusland) in meters?",
+          "question": "How many metres deep is the world’s deepest freshwater lake?",
+          "subtitle": "Lake Baikal in Russia, measured at its deepest point.",
+          "answer": 1642,
+          "evidence": "Het diepste punt ligt op 1642 meter; daarmee is het het diepste meer ter wereld.",
+          "source": "https://en.wikipedia.org/wiki/Lake_Baikal",
+          "notes": "Explicitly approved by the user. English wording is recorded in Kept questions.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Baikal.A2001296.0420.250m-NASA.jpg/330px-Baikal.A2001296.0420.250m-NASA.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Baikal.A2001296.0420.250m-NASA.jpg",
+            "licentie": "Public domain",
+            "maker": "Jacques Descloitres, MODIS Land Rapid Response Team, NASA/GSFC"
+          },
+          "n": 1642,
+          "unit": "m"
+        },
+        {
+          "id": "q246",
+          "row": 135,
+          "status": "APPROVED",
+          "category": "Gebouwen en infrastructuur",
+          "original": "Hoeveel traptreden beklim je naar de 86e verdieping van het Empire State Building?",
+          "question": "How many steps are there from ground level to the 86th floor of the Empire State Building?",
+          "subtitle": null,
+          "answer": 1576,
+          "evidence": "Van de begane grond naar de 86e verdieping zijn het 1576 treden.",
+          "source": "https://en.wikipedia.org/wiki/Empire_State_Building",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Empire_State_Building_from_Rockefeller_Center_%2851197886181%29_%28cropped%29.jpg/330px-Empire_State_Building_from_Rockefeller_Center_%2851197886181%29_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Empire_State_Building_from_Rockefeller_Center_(51197886181)_(cropped).jpg",
+            "licentie": "CC BY-SA 2.0",
+            "maker": "Domenico Convertini from Zurich, Schweiz"
+          },
+          "n": 1576,
+          "unit": "steps"
+        },
+        {
+          "id": "q038",
+          "row": 25,
+          "status": "APPROVED",
+          "category": "Geschiedenis",
+          "original": "Hoeveel dagen duurde de reis van de Mayflower naar Noord-Amerika?",
+          "question": "How many days did the Mayflower’s voyage to North America take?",
+          "subtitle": "The 1620 Atlantic crossing, from Plymouth to Cape Cod.",
+          "answer": 66,
+          "evidence": "After more than two months (66 days) at sea, the Pilgrims finally arrived at Cape Cod on November 11, 1620.",
+          "source": "https://plimoth.org/learn/just-kids/homework-help/mayflower",
+          "notes": "Explicitly approved by the user. English wording is recorded in Kept questions.",
+          "photo": null,
+          "n": 66,
+          "unit": "days"
+        }
+      ],
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Baikal.A2001296.0420.250m-NASA.jpg/330px-Baikal.A2001296.0420.250m-NASA.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Baikal.A2001296.0420.250m-NASA.jpg",
+        "licentie": "Public domain",
+        "maker": "Jacques Descloitres, MODIS Land Rapid Response Team, NASA/GSFC",
+        "vraag": 1
+      },
+      "note": "Lake Baikal's depth minus a climb up the Empire State Building gives the Mayflower's crossing time."
+    },
+    {
+      "id": "cfaf10ba-ebd8-51ce-b6eb-a49003d46ce7",
+      "number": 11,
+      "date": "2026-10-01",
+      "operator": "×",
+      "questions": [
+        {
+          "id": "q012",
+          "row": 7,
+          "status": "APPROVED",
+          "category": "Eten & drinken",
+          "original": "Hoeveel gram suiker zit er in een blikje Coca-Cola van 330 ml?",
+          "question": "How many grams of sugar are in a 330 ml can of Coca-Cola?",
+          "subtitle": null,
+          "answer": 35,
+          "evidence": "Coca-Cola over het eigen product: \"35 g in a 330 ml can.\"",
+          "source": "https://www.coca-cola.com/ng/en/about-us/faq/how-much-sugar-is-in-cocacola-original-taste",
+          "notes": "Explicitly approved by the user. English wording is recorded in Kept questions.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/15-09-26-RalfR-WLC-0098_-_Coca-Cola_glass_bottle_%28Germany%29.jpg/330px-15-09-26-RalfR-WLC-0098_-_Coca-Cola_glass_bottle_%28Germany%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:15-09-26-RalfR-WLC-0098_-_Coca-Cola_glass_bottle_(Germany).jpg",
+            "licentie": "Public domain",
+            "maker": "Ralf Roletschek"
+          },
+          "n": 35,
+          "unit": "g"
+        },
+        {
+          "id": "q164",
+          "row": 91,
+          "status": "APPROVED",
+          "category": "Dieren",
+          "original": "Hoeveel tanden heeft een volwassen hond?",
+          "question": "How many teeth does an adult dog normally have?",
+          "subtitle": null,
+          "answer": 42,
+          "evidence": "Ondanks deze variatie hebben alle honden dezelfde basisanatomie, meestal met krachtige kaken en doorgaans 42 tanden.",
+          "source": "https://nl.wikipedia.org/wiki/Hond",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Huskiesatrest.jpg/330px-Huskiesatrest.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Huskiesatrest.jpg",
+            "licentie": "CC BY 2.0",
+            "maker": "M. Rehemtulla"
+          },
+          "n": 42,
+          "unit": "teeth"
+        },
+        {
+          "id": "q033",
+          "row": 21,
+          "status": "APPROVED",
+          "category": "Geografie",
+          "original": "Hoeveel meter diep is het Tanganyikameer op het diepste punt ongeveer?",
+          "question": "How many metres deep is Lake Tanganyika?",
+          "subtitle": null,
+          "answer": 1470,
+          "evidence": "Het Tanganyikameer is op het diepste punt 1470 meter diep.",
+          "source": "https://en.wikipedia.org/wiki/Lake_Tanganyika",
+          "notes": "Explicitly approved by the user. English wording is recorded in Kept questions. Photo needed Photo needed",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/STS51G-034-0012_Lake_Tanganyika_June1985.jpg/330px-STS51G-034-0012_Lake_Tanganyika_June1985.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:STS51G-034-0012_Lake_Tanganyika_June1985.jpg",
+            "licentie": "Public domain",
+            "maker": "NASA"
+          },
+          "n": 1470,
+          "unit": "m"
+        }
+      ],
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/15-09-26-RalfR-WLC-0098_-_Coca-Cola_glass_bottle_%28Germany%29.jpg/330px-15-09-26-RalfR-WLC-0098_-_Coca-Cola_glass_bottle_%28Germany%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:15-09-26-RalfR-WLC-0098_-_Coca-Cola_glass_bottle_(Germany).jpg",
+        "licentie": "Public domain",
+        "maker": "Ralf Roletschek",
+        "vraag": 1
+      },
+      "note": "Coca-Cola sugar and a dog's teeth multiply into the depth of Lake Tanganyika."
+    },
+    {
+      "id": "4b194ce1-6733-50a2-ae70-538cef119256",
+      "number": 12,
+      "date": "2026-10-02",
+      "operator": "×",
+      "questions": [
+        {
+          "id": "q001",
+          "row": 2,
+          "status": "APPROVED",
+          "category": "Biologie & gezondheid",
+          "original": "Hoeveel chromosomen heeft een gewone ui Allium cepa in een lichaamscel?",
+          "question": "How many chromosomes does an onion have in a body cell?",
+          "subtitle": "The common onion, Allium cepa.",
+          "answer": 16,
+          "evidence": "Allium cepa is diploid met 2n = 16 chromosomen.",
+          "source": "https://en.wikipedia.org/wiki/Onion",
+          "notes": "Explicitly approved by the user. English wording is recorded in Kept questions.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Mixed_onions.jpg/330px-Mixed_onions.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Mixed_onions.jpg",
+            "licentie": "CC BY-SA 3.0",
+            "maker": "Colin"
+          },
+          "n": 16,
+          "unit": "chromosomes"
+        },
+        {
+          "id": "q435",
+          "row": 218,
+          "status": "APPROVED",
+          "category": "Records en vergelijkingen",
+          "original": "Hoe hoog was de hoogste hond ooit in centimeters?",
+          "question": "How tall was the tallest dog ever?",
+          "subtitle": null,
+          "answer": 112,
+          "evidence": "Zeus, een Duitse dog, mat 111,8 cm bij de schoft.",
+          "source": "https://www.guinnessworldrecords.com/world-records/tallest-dog-ever",
+          "notes": "Explicitly approved by the user.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Huskiesatrest.jpg/330px-Huskiesatrest.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Huskiesatrest.jpg",
+            "licentie": "CC BY 2.0",
+            "maker": "M. Rehemtulla"
+          },
+          "n": 112,
+          "unit": "cm"
+        },
+        {
+          "id": "q180",
+          "row": 101,
+          "status": "APPROVED",
+          "category": "Economie & geld",
+          "original": "In welk jaar werd de New York Stock Exchange opgericht?",
+          "question": "In what year was the New York Stock Exchange founded?",
+          "subtitle": null,
+          "answer": 1792,
+          "evidence": "De NYSE ontstond in 1792 met de Buttonwood Agreement.",
+          "source": "https://en.wikipedia.org/wiki/New_York_Stock_Exchange",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/New_York_Stock_Exchange_Facade_2015.jpg/330px-New_York_Stock_Exchange_Facade_2015.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:New_York_Stock_Exchange_Facade_2015.jpg",
+            "licentie": "CC BY 2.0",
+            "maker": "Jeffrey Zeldman from Manhattan, USA"
+          },
+          "n": 1792,
+          "unit": "year"
+        }
+      ],
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Mixed_onions.jpg/330px-Mixed_onions.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Mixed_onions.jpg",
+        "licentie": "CC BY-SA 3.0",
+        "maker": "Colin",
+        "vraag": 1
+      },
+      "note": "Onion chromosomes and the tallest dog's height produce the founding year of the New York Stock Exchange."
+    },
+    {
+      "id": "5042680c-9027-5fa5-8d94-57672073cbd7",
+      "number": 13,
+      "date": "2026-10-03",
+      "operator": "÷",
+      "questions": [
+        {
+          "id": "q013",
+          "row": 8,
+          "status": "APPROVED",
+          "category": "Eten & drinken",
+          "original": "Hoeveel kilocalorieën bevat een Amerikaanse McDonald’s Big Mac?",
+          "question": "How many kilocalories does a McDonald’s Big Mac contain?",
+          "subtitle": "A standard Big Mac sold in the United States.",
+          "answer": 580,
+          "evidence": "De Amerikaanse Big Mac bevat ongeveer 580 kilocalorieen.",
+          "source": "https://en.wikipedia.org/wiki/Big_Mac",
+          "notes": "Explicitly approved by the user. English wording is recorded in Kept questions. Reference year and nutritional value still need checking. Reference year and nutritional value still need checking.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Big_Mac.png/330px-Big_Mac.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Big_Mac.png",
+            "licentie": "CC BY-SA 4.0",
+            "maker": "Anemonemma , 3df"
+          },
+          "n": 580,
+          "unit": "kcal"
+        },
+        {
+          "id": "q088",
+          "row": 50,
+          "status": "APPROVED",
+          "category": "Taal",
+          "original": "Hoeveel letters heeft het Turkse alfabet?",
+          "question": "How many letters does the Turkish alphabet have?",
+          "subtitle": null,
+          "answer": 29,
+          "evidence": "Het heeft 29 letters.",
+          "source": "https://nl.wikipedia.org/wiki/Turks_alfabet",
+          "notes": "Explicitly approved by the user. English wording is recorded in Kept questions.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Ataturk-September_20%2C_1928.jpg/330px-Ataturk-September_20%2C_1928.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Ataturk-September_20,_1928.jpg",
+            "licentie": "Public domain",
+            "maker": "Presidency of the Republic of Turkey"
+          },
+          "n": 29,
+          "unit": "letters"
+        },
+        {
+          "id": "q117",
+          "row": 66,
+          "status": "APPROVED",
+          "category": "Biologie & gezondheid",
+          "original": "Hoeveel melktanden heeft een kind in een compleet melkgebit?",
+          "question": "How many baby teeth are in a child’s complete set?",
+          "subtitle": null,
+          "answer": 20,
+          "evidence": "At birth people usually have 20 baby (primary) teeth, which start to come in (erupt) at about 6 months of age.",
+          "source": "https://www.mouthhealthy.org/all-topics-a-z/eruption-charts",
+          "notes": "Explicitly approved by the user.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Deciduous_teeth_by_David_Shankbone_new.jpg/330px-Deciduous_teeth_by_David_Shankbone_new.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Deciduous_teeth_by_David_Shankbone_new.jpg",
+            "licentie": "CC BY-SA 3.0",
+            "maker": "David Shankbone modified by R-E-AL ( talk | contribs | Gallery ) (German Wikipedia)"
+          },
+          "n": 20,
+          "unit": "teeth"
+        }
+      ],
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Big_Mac.png/330px-Big_Mac.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Big_Mac.png",
+        "licentie": "CC BY-SA 4.0",
+        "maker": "Anemonemma , 3df",
+        "vraag": 1
+      },
+      "note": "Big Mac calories divided by Turkish letters give a complete set of baby teeth."
+    },
+    {
+      "id": "7a0c54a8-485a-5512-af55-84eac4473d59",
+      "number": 14,
+      "date": "2026-10-04",
+      "operator": "÷",
+      "questions": [
+        {
+          "id": "q1463",
+          "row": 587,
+          "status": "APPROVED",
+          "category": "Technologie",
+          "original": "In welk jaar werd Apple opgericht?",
+          "question": "In what year was Apple founded?",
+          "subtitle": null,
+          "answer": 1976,
+          "evidence": "is een Amerikaans technologiebedrijf dat op 1 april 1976 is opgericht (toen met de naam Apple Computer, Inc.) door Steve Jobs, Steve Wozniak en Ronald Wayne.",
+          "source": "https://nl.wikipedia.org/wiki/Apple_Inc.",
+          "notes": "Explicitly approved in Q1409–Q1510 review.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/330px-Apple_logo_black.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Apple_logo_black.svg",
+            "licentie": "Public domain",
+            "maker": "Original: Rob Janoff"
+          },
+          "n": 1976,
+          "unit": "year"
+        },
+        {
+          "id": "q058",
+          "row": 34,
+          "status": "APPROVED",
+          "category": "Muziek",
+          "original": "Hoeveel witte toetsen heeft een concertpiano?",
+          "question": "How many white keys are on a standard concert piano?",
+          "subtitle": null,
+          "answer": 52,
+          "evidence": "Een piano heeft 88 toetsen: 52 witte en 36 zwarte.",
+          "source": "https://nl.wikipedia.org/wiki/Piano",
+          "notes": "Explicitly approved in final salvage review.",
+          "photo": null,
+          "n": 52,
+          "unit": "keys"
+        },
+        {
+          "id": "q1306",
+          "row": 538,
+          "status": "APPROVED",
+          "category": "Records en vergelijkingen",
+          "original": "Hoe oud werd de oudste kat ooit in jaren?",
+          "question": "How old was the oldest cat ever recorded?",
+          "subtitle": null,
+          "answer": 38,
+          "evidence": "Guinness World Records: Creme Puff lived 38 years and 3 days; target is completed years.",
+          "source": "https://www.guinnessworldrecords.com/world-records/oldest-cat-ever",
+          "notes": "Explicitly approved in Q1263–Q1408 review.",
+          "photo": null,
+          "n": 38,
+          "unit": "years"
+        }
+      ],
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/330px-Apple_logo_black.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Apple_logo_black.svg",
+        "licentie": "Public domain",
+        "maker": "Original: Rob Janoff",
+        "vraag": 1
+      },
+      "note": "Apple's founding year divided by white piano keys reveals the oldest cat's age."
+    },
+    {
+      "id": "2b523062-d3d3-56e7-941c-c766a550c37c",
+      "number": 15,
+      "date": "2026-10-05",
+      "operator": "×",
+      "questions": [
+        {
+          "id": "q077",
+          "row": 43,
+          "status": "APPROVED",
+          "category": "Sport",
+          "original": "Hoeveel etappes telt de Tour de France doorgaans?",
+          "question": "How many stages does the Tour de France usually have?",
+          "subtitle": null,
+          "answer": 21,
+          "evidence": "The modern editions of the Tour de France consist of 21 day-long stages over a 23- or 24-day period and cover approximately 3,500 kilometres (2,200 mi) total.",
+          "source": "https://en.wikipedia.org/wiki/Tour_de_France",
+          "notes": "Explicitly approved by the user. English wording is recorded in Kept questions.",
+          "photo": null,
+          "n": 21,
+          "unit": "stages"
+        },
+        {
+          "id": "q255",
+          "row": 139,
+          "status": "APPROVED",
+          "category": "Gebouwen en infrastructuur",
+          "original": "Wat is de hoogte van het Vrijheidsbeeld in New York inclusief sokkel in meters?",
+          "question": "How tall is the Statue of Liberty including its pedestal?",
+          "subtitle": null,
+          "answer": 93,
+          "evidence": "Kenmerken\nHet 46 meter hoge beeld (93 meter als de sokkel wordt meegerekend) met een gewicht van 225 ton was een geschenk van Frankrijk ter ere van het eeuwfeest van de Amerikaanse Onafhankelijkheidsverklaring en ook als teken van vriendschap.",
+          "source": "https://nl.wikipedia.org/wiki/Vrijheidsbeeld_%28New_York%29",
+          "notes": null,
+          "photo": null,
+          "n": 93,
+          "unit": "m"
+        },
+        {
+          "id": "q305",
+          "row": 160,
+          "status": "APPROVED",
+          "category": "Geschiedenis",
+          "original": "In welk jaar werd de Mount Everest voor het eerst succesvol beklommen?",
+          "question": "In what year was Mount Everest first successfully climbed?",
+          "subtitle": null,
+          "answer": 1953,
+          "evidence": "1953 - De eersten die de Everest beklommen en levend terugkwamen waren de Nieuw-Zeelander Edmund Hillary en sherpa Tenzing Norgay.",
+          "source": "https://nl.wikipedia.org/wiki/Mount_Everest",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Mt_Everest_Aerial.jpg/330px-Mt_Everest_Aerial.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Mt_Everest_Aerial.jpg",
+            "licentie": "CC BY 2.0",
+            "maker": "The original uploader was Daniel at English Wikipedia ."
+          },
+          "n": 1953,
+          "unit": "year"
+        }
+      ],
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Mt_Everest_Aerial.jpg/330px-Mt_Everest_Aerial.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Mt_Everest_Aerial.jpg",
+        "licentie": "CC BY 2.0",
+        "maker": "The original uploader was Daniel at English Wikipedia .",
+        "vraag": 3
+      },
+      "note": "Tour de France stages and the Statue of Liberty reach the year Everest was first climbed."
+    },
+    {
+      "id": "9dd13e68-b76d-5876-9976-9f77c5aeae9c",
+      "number": 16,
+      "date": "2026-10-06",
+      "operator": "÷",
+      "questions": [
+        {
+          "id": "q636",
+          "row": 312,
+          "status": "APPROVED",
+          "category": "Dieren",
+          "original": "Hoeveel dagen duurt de draagtijd van een olifant ongeveer?",
+          "question": "How many days is an elephant pregnant?",
+          "subtitle": null,
+          "answer": 660,
+          "evidence": "De draagtijd van een olifant is ongeveer 22 maanden, rond de 660 dagen.",
+          "source": "https://en.wikipedia.org/wiki/Elephant",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/2005-bandipur-tusker.jpg/330px-2005-bandipur-tusker.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:2005-bandipur-tusker.jpg",
+            "licentie": "CC BY-SA 3.0",
+            "maker": "Yathin S Krishnappa"
+          },
+          "n": 660,
+          "unit": "days"
+        },
+        {
+          "id": "q086",
+          "row": 48,
+          "status": "APPROVED",
+          "category": "Taal",
+          "original": "Hoeveel letters heeft het Hebreeuwse alfabet?",
+          "question": "How many letters does the Hebrew alphabet have?",
+          "subtitle": null,
+          "answer": 22,
+          "evidence": "Writing system\n\nUsers of the language write Modern Hebrew from right to left using the Hebrew alphabet – an \"impure\" abjad, or consonant-only script, of 22 letters.",
+          "source": "https://en.wikipedia.org/wiki/Hebrew_language",
+          "notes": "Explicitly approved by the user. English wording is recorded in Kept questions.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/%D7%94%D7%9E%D7%99%D7%9C%D7%94_%D7%A2%D7%91%D7%A8%D7%99%D7%AA_%D7%91%D7%9B%D7%AA%D7%91_%D7%95%D7%91%D7%9B%D7%AA%D7%91_%D7%94%D7%A2%D7%91%D7%A8%D7%99_%D7%94%D7%A7%D7%93%D7%95%D7%9D.jpg/330px-%D7%94%D7%9E%D7%99%D7%9C%D7%94_%D7%A2%D7%91%D7%A8%D7%99%D7%AA_%D7%91%D7%9B%D7%AA%D7%91_%D7%95%D7%91%D7%9B%D7%AA%D7%91_%D7%94%D7%A2%D7%91%D7%A8%D7%99_%D7%94%D7%A7%D7%93%D7%95%D7%9D.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:%D7%94%D7%9E%D7%99%D7%9C%D7%94_%D7%A2%D7%91%D7%A8%D7%99%D7%AA_%D7%91%D7%9B%D7%AA%D7%91_%D7%95%D7%91%D7%9B%D7%AA%D7%91_%D7%94%D7%A2%D7%91%D7%A8%D7%99_%D7%94%D7%A7%D7%93%D7%95%D7%9D.jpg",
+            "licentie": "CC BY-SA 4.0",
+            "maker": "Eliran t"
+          },
+          "n": 22,
+          "unit": "letters"
+        },
+        {
+          "id": "N55",
+          "row": 607,
+          "status": "APPROVED",
+          "category": "Gebouwen en infrastructuur",
+          "original": "How many minutes does one full rotation of the London Eye take?",
+          "question": "How many minutes does one full rotation of the London Eye take?",
+          "subtitle": null,
+          "answer": 30,
+          "evidence": "London Eye operator: one full rotation takes 30 minutes.",
+          "source": "https://www.londoneye.com/about-us/history/",
+          "notes": "Explicitly approved N55. No existing matching question found; user-supplied custom identifier retained.",
+          "photo": null,
+          "n": 30,
+          "unit": "minutes"
+        }
+      ],
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/2005-bandipur-tusker.jpg/330px-2005-bandipur-tusker.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:2005-bandipur-tusker.jpg",
+        "licentie": "CC BY-SA 3.0",
+        "maker": "Yathin S Krishnappa",
+        "vraag": 1
+      },
+      "note": "An elephant's pregnancy and Hebrew letters connect to a rotation of the London Eye."
+    },
+    {
+      "id": "6693dd20-4dc7-5eea-9d61-94a16773c651",
+      "number": 17,
+      "date": "2026-10-07",
+      "operator": "×",
+      "questions": [
+        {
+          "id": "q131",
+          "row": 72,
+          "status": "APPROVED",
+          "category": "Boeken en literatuur",
+          "original": "Hoeveel boeken bevat de Harry Potter-hoofdserie?",
+          "question": "How many books are in the main Harry Potter series?",
+          "subtitle": null,
+          "answer": 7,
+          "evidence": "The books were transformed into a blockbuster series of eight films (the final book, some 750 pages long, was adapted into two films) released over 10 years, which grossed more than $7 billion worldwide.",
+          "source": "http://web.archive.org/web/20260616143131/https://www.britannica.com/topic/Harry-Potter",
+          "notes": "Current evidence excerpt needs replacement.",
+          "photo": null,
+          "n": 7,
+          "unit": "books"
+        },
+        {
+          "id": "q064",
+          "row": 37,
+          "status": "APPROVED",
+          "category": "Politiek en recht",
+          "original": "Hoeveel kiesmannen telt het Amerikaanse Electoral College?",
+          "question": "How many electors make up the US Electoral College?",
+          "subtitle": null,
+          "answer": 538,
+          "evidence": "Een kandidaat moet minimaal 270 van de 538 kiesmannen behalen om de verkiezing te winnen.",
+          "source": "https://nl.wikipedia.org/wiki/Amerikaanse_presidentsverkiezingen_2028",
+          "notes": "Explicitly approved by the user. English wording is recorded in Kept questions.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/12/Electoral_map_2020.svg/330px-Electoral_map_2020.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Electoral_map_2020.svg",
+            "licentie": "CC BY 4.0",
+            "maker": "UserTwoSix"
+          },
+          "n": 538,
+          "unit": "electors"
+        },
+        {
+          "id": "q267",
+          "row": 145,
+          "status": "APPROVED",
+          "category": "Geografie",
+          "original": "Hoeveel kilometer lang is de Mississippi ongeveer?",
+          "question": "How long is the Mississippi River?",
+          "subtitle": null,
+          "answer": 3766,
+          "evidence": "It covers a total distance of 2,340 miles (3,766 km) from its source.",
+          "source": "http://web.archive.org/web/20260831035541/https://www.britannica.com/place/Mississippi-River",
+          "notes": null,
+          "photo": null,
+          "n": 3766,
+          "unit": "km"
+        }
+      ],
+      "photo": null,
+      "note": "Harry Potter books and Electoral College votes produce the length of the Mississippi."
+    },
+    {
+      "id": "b643cba0-235e-5651-bb74-e19d13483250",
+      "number": 18,
+      "date": "2026-10-08",
+      "operator": "−",
+      "questions": [
+        {
+          "id": "q794",
+          "row": 353,
+          "status": "APPROVED",
+          "category": "Gebouwen en infrastructuur",
+          "original": "Hoeveel meter hoog is de Shanghai Tower?",
+          "question": "How many meters tall is the Shanghai Tower?",
+          "subtitle": null,
+          "answer": 632,
+          "evidence": "The Shanghai Tower is a 128-story, 632-meter-tall (2,073-foot) megatall skyscraper located in Lujiazui, Pudong, Shanghai.",
+          "source": "https://en.wikipedia.org/wiki/Shanghai_Tower",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/Shanghai_tower_dec_26%2C_2014.jpg/330px-Shanghai_tower_dec_26%2C_2014.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Shanghai_tower_dec_26,_2014.jpg",
+            "licentie": "CC BY-SA 4.0",
+            "maker": "Yhz1221"
+          },
+          "n": 632,
+          "unit": "m"
+        },
+        {
+          "id": "q1455",
+          "row": 584,
+          "status": "APPROVED",
+          "category": "Vervoer",
+          "original": "Hoeveel kilometer per uur haalt de Shanghai Maglev?",
+          "question": "How fast did the Shanghai Maglev travel at its former top operating speed?",
+          "subtitle": "Commercial service.",
+          "answer": 431,
+          "evidence": "The top operational commercial speed of the Shanghai maglev was 431 km/h (268 mph), making it the world's fastest train in regular commercial service from its opening in April 2004 until its speed reduction in May 2021.",
+          "source": "https://en.wikipedia.org/wiki/Shanghai_maglev_train",
+          "notes": "Approved former commercial-service top operating speed. Answer unit: km/h.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Transrapid_08.jpg/330px-Transrapid_08.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Transrapid_08.jpg",
+            "licentie": "CC BY-SA 3.0",
+            "maker": "Stahlkocher"
+          },
+          "n": 431,
+          "unit": "km/h"
+        },
+        {
+          "id": "q195",
+          "row": 107,
+          "status": "APPROVED",
+          "category": "Films en series",
+          "original": "Hoeveel afleveringen telt de Amerikaanse versie van The Office?",
+          "question": "How many episodes does the US version of The Office have?",
+          "subtitle": "Excluding webisodes.",
+          "answer": 201,
+          "evidence": "De Amerikaanse versie telt 201 afleveringen over negen seizoenen.",
+          "source": "https://en.wikipedia.org/wiki/The_Office_(American_TV_series)",
+          "notes": null,
+          "photo": null,
+          "n": 201,
+          "unit": "episodes"
+        }
+      ],
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/Shanghai_tower_dec_26%2C_2014.jpg/330px-Shanghai_tower_dec_26%2C_2014.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Shanghai_tower_dec_26,_2014.jpg",
+        "licentie": "CC BY-SA 4.0",
+        "maker": "Yhz1221",
+        "vraag": 1
+      },
+      "note": "Shanghai's tower and Maglev make a surprising pair, with The Office as the reveal."
+    },
+    {
+      "id": "f9cbcad8-3038-5eff-b02c-3f0a1b40adaf",
+      "number": 19,
+      "date": "2026-10-09",
+      "operator": "+",
+      "questions": [
+        {
+          "id": "q357",
+          "row": 192,
+          "status": "APPROVED",
+          "category": "Landbouw en industrie",
+          "original": "Hoeveel dagen duurt de zwangerschap van een koe?",
+          "question": "How many days is a cow pregnant?",
+          "subtitle": null,
+          "answer": 283,
+          "evidence": "De draagtijd van een rund is ongeveer 283 dagen.",
+          "source": "https://en.wikipedia.org/wiki/Cattle",
+          "notes": "Explicitly approved by the user.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Cow_%28Fleckvieh_breed%29_Oeschinensee_Slaunger_2009-07-07.jpg/330px-Cow_%28Fleckvieh_breed%29_Oeschinensee_Slaunger_2009-07-07.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Cow_(Fleckvieh_breed)_Oeschinensee_Slaunger_2009-07-07.jpg",
+            "licentie": "CC BY-SA 3.0",
+            "maker": "Kim Hansen"
+          },
+          "n": 283,
+          "unit": "days"
+        },
+        {
+          "id": "q1257",
+          "row": 525,
+          "status": "APPROVED",
+          "category": "Politiek en recht",
+          "original": "Hoeveel kiesmannen zijn er nodig om de Amerikaanse presidentsverkiezing te winnen?",
+          "question": "How many electoral votes are needed to win a U.S. presidential election?",
+          "subtitle": null,
+          "answer": 270,
+          "evidence": "Van de 538 kiesmannen zijn er 270 nodig voor een meerderheid.",
+          "source": "https://www.archives.gov/electoral-college/about",
+          "notes": null,
+          "photo": null,
+          "n": 270,
+          "unit": "electoral votes"
+        },
+        {
+          "id": "q020",
+          "row": 13,
+          "status": "APPROVED",
+          "category": "Gebouwen en infrastructuur",
+          "original": "Hoeveel meter hoog is de CN Tower?",
+          "question": "How many metres high is the CN Tower?",
+          "subtitle": null,
+          "answer": 553,
+          "evidence": "The CN Tower is a 553.3-metre-high (1,815.3 ft) communications and observation tower in Toronto, Ontario, Canada.",
+          "source": "https://en.wikipedia.org/wiki/CN_Tower",
+          "notes": "Explicitly approved by the user. English wording is recorded in Kept questions.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/CN_Tower_logo.png/330px-CN_Tower_logo.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:CN_Tower_logo.png",
+            "licentie": "Public domain",
+            "maker": "Unknown author Unknown author"
+          },
+          "n": 553,
+          "unit": "m"
+        }
+      ],
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Cow_%28Fleckvieh_breed%29_Oeschinensee_Slaunger_2009-07-07.jpg/330px-Cow_%28Fleckvieh_breed%29_Oeschinensee_Slaunger_2009-07-07.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Cow_(Fleckvieh_breed)_Oeschinensee_Slaunger_2009-07-07.jpg",
+        "licentie": "CC BY-SA 3.0",
+        "maker": "Kim Hansen",
+        "vraag": 1
+      },
+      "note": "A cow's pregnancy and the votes needed for the US presidency reach the CN Tower."
+    },
+    {
+      "id": "e0a626b3-89dc-507e-9020-8b99025244db",
+      "number": 20,
+      "date": "2026-10-10",
+      "operator": "−",
+      "questions": [
+        {
+          "id": "q1338",
+          "row": 547,
+          "status": "APPROVED",
+          "category": "Spellen en speelgoed",
+          "original": "Hoeveel speelvelden heeft een standaard schaakbord?",
+          "question": "How many squares are on a standard chessboard?",
+          "subtitle": null,
+          "answer": 64,
+          "evidence": "2.1 The chessboard is composed of an 8 x 8 grid of 64 equal squares alternately light (the ‘white’ squares) and dark (the ‘black’ squares).",
+          "source": "https://handbook.fide.com/chapter/E012023",
+          "notes": "Explicitly approved in Q1263–Q1408 review.",
+          "photo": null,
+          "n": 64,
+          "unit": "squares"
+        },
+        {
+          "id": "q051",
+          "row": 31,
+          "status": "APPROVED",
+          "category": "Milieu en duurzaamheid",
+          "original": "Welk percentage van het aardoppervlak bestaat uit land?",
+          "question": "What percentage of Earth’s surface is land?",
+          "subtitle": null,
+          "answer": 29,
+          "evidence": "Land beslaat 29 procent van het aardoppervlak.",
+          "source": "https://en.wikipedia.org/wiki/Earth",
+          "notes": "Explicitly approved by the user. English wording is recorded in Kept questions.",
+          "photo": null,
+          "n": 29,
+          "unit": "%"
+        },
+        {
+          "id": "q055",
+          "row": 33,
+          "status": "APPROVED",
+          "category": "Muziek",
+          "original": "Hoeveel Grammy’s heeft Beyoncé volgens de stand na de Grammy Awards van 2025 gewonnen?",
+          "question": "How many Grammy Awards has Beyoncé won?",
+          "subtitle": "Include all wins up to and including the 2025 Grammy Awards.",
+          "answer": 35,
+          "evidence": "Records\n(Tot en met 2025)\nMeeste gewonnen Grammy's\n\n35: Beyoncé\n31: Sir Georg Solti\n28: Quincy Jones\n27: Alison Krauss, Kendrick Lamar\n26: Pierre Boulez\n25: Vladimir Horowitz, John Williams, Chick Corea, Jay-Z\n24: Kanye West\n22: U2, Stevie Wonder, Vince Gill\n20: Henry Mancini, Bruce Springsteen, Pat",
+          "source": "https://nl.wikipedia.org/wiki/Grammy_Award",
+          "notes": "Explicitly approved by the user. English wording is recorded in Kept questions.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Beyonc%C3%A9_-_Tottenham_Hotspur_Stadium_-_1st_June_2023_%2871_of_118%29_%2852945301662%29_%28face_cropped%29.jpg/330px-Beyonc%C3%A9_-_Tottenham_Hotspur_Stadium_-_1st_June_2023_%2871_of_118%29_%2852945301662%29_%28face_cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Beyonc%C3%A9_-_Tottenham_Hotspur_Stadium_-_1st_June_2023_(71_of_118)_(52945301662)_(face_cropped).jpg",
+            "licentie": "CC BY 2.0",
+            "maker": "Raph_PH"
+          },
+          "n": 35,
+          "unit": "awards"
+        }
+      ],
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Beyonc%C3%A9_-_Tottenham_Hotspur_Stadium_-_1st_June_2023_%2871_of_118%29_%2852945301662%29_%28face_cropped%29.jpg/330px-Beyonc%C3%A9_-_Tottenham_Hotspur_Stadium_-_1st_June_2023_%2871_of_118%29_%2852945301662%29_%28face_cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Beyonc%C3%A9_-_Tottenham_Hotspur_Stadium_-_1st_June_2023_(71_of_118)_(52945301662)_(face_cropped).jpg",
+        "licentie": "CC BY 2.0",
+        "maker": "Raph_PH",
+        "vraag": 3
+      },
+      "note": "Chessboard squares minus Earth's land percentage reveal Beyoncé's Grammy count."
+    },
+    {
+      "id": "8643e529-1906-58fb-9d54-064446aae3c3",
+      "number": 21,
+      "date": "2026-10-11",
+      "operator": "−",
+      "questions": [
+        {
+          "id": "N43",
+          "row": 603,
+          "status": "APPROVED",
+          "category": "Merken en producten",
+          "original": "In what year was Nintendo founded?",
+          "question": "In what year was Nintendo founded?",
+          "subtitle": null,
+          "answer": 1889,
+          "evidence": "Nintendo dates its founding as a playing-card business to 1889.",
+          "source": "https://www.nintendo.com/en-gb/Hardware/Nintendo-History/Nintendo-History-625945.html",
+          "notes": "Explicitly approved N43. No existing matching question found; user-supplied custom identifier retained.",
+          "photo": null,
+          "n": 1889,
+          "unit": "year"
+        },
+        {
+          "id": "q930",
+          "row": 410,
+          "status": "APPROVED",
+          "category": "Geografie",
+          "original": "Hoeveel meter diep is de Grand Canyon op het diepste punt?",
+          "question": "How many meters deep is the Grand Canyon at its deepest point?",
+          "subtitle": null,
+          "answer": 1857,
+          "evidence": "The Grand Canyon is 277 miles (446 km) long, up to 18 miles (29 km) wide and attains a depth of over a mile (6,093 feet or 1,857 meters).",
+          "source": "https://en.wikipedia.org/wiki/Grand_Canyon",
+          "notes": "Final Q805–Q949 review decision.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/Canyon_River_Tree_%28165872763%29.jpeg/330px-Canyon_River_Tree_%28165872763%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Canyon_River_Tree_(165872763).jpeg",
+            "licentie": "CC BY 3.0",
+            "maker": "Lennart Sikkema"
+          },
+          "n": 1857,
+          "unit": "m"
+        },
+        {
+          "id": "q1115",
+          "row": 500,
+          "status": "APPROVED",
+          "category": "Muziek",
+          "original": "Hoeveel pianosonates schreef Beethoven?",
+          "question": "How many piano sonatas did Beethoven compose?",
+          "subtitle": null,
+          "answer": 32,
+          "evidence": "32 pianosonates\ndiverse variatiereeksen, waaronder de 33 variaties op een wals van Anton Diabelli voor pianosolo\neen groot aantal korte pianostukken, waaronder Für Elise, enkele Fantasieën en oerversies van delen uit sonates\nnegen concerten voor solo-instrumenten en orkest: vijf 'officiële' pianocon",
+          "source": "https://nl.wikipedia.org/wiki/Ludwig_van_Beethoven",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Beethoven.jpg/330px-Beethoven.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Beethoven.jpg",
+            "licentie": "Public domain",
+            "maker": "Joseph Karl Stieler"
+          },
+          "n": 32,
+          "unit": "sonatas"
+        }
+      ],
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/Canyon_River_Tree_%28165872763%29.jpeg/330px-Canyon_River_Tree_%28165872763%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Canyon_River_Tree_(165872763).jpeg",
+        "licentie": "CC BY 3.0",
+        "maker": "Lennart Sikkema",
+        "vraag": 2
+      },
+      "note": "Nintendo's surprisingly early founding year connects the Grand Canyon and Beethoven."
+    },
+    {
+      "id": "a2184b34-b536-51f2-a9eb-eedc7d97af93",
+      "number": 22,
+      "date": "2026-10-12",
+      "operator": "×",
+      "questions": [
+        {
+          "id": "q362",
+          "row": 195,
+          "status": "APPROVED",
+          "category": "Landbouw en industrie",
+          "original": "Hoeveel ton bananen worden wereldwijd jaarlijks geproduceerd?",
+          "question": "How many million tonnes of bananas were produced worldwide in 2022?",
+          "subtitle": null,
+          "answer": 135,
+          "evidence": "FAOSTAT geeft de bananenproductie per jaar; rond de 135 miljoen ton.",
+          "source": "https://www.fao.org/faostat/en/#data/QCL",
+          "notes": "Approved with fixed year 2022; answer is 135 million tonnes. Chat references FAO/FAOSTAT; original source fields retained.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Bananavarieties.jpg/330px-Bananavarieties.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Bananavarieties.jpg",
+            "licentie": "CC BY-SA 3.0",
+            "maker": "TimothyPilgrim"
+          },
+          "n": 135,
+          "unit": "× 1,000,000 tonnes"
+        },
+        {
+          "id": "N19",
+          "row": 598,
+          "status": "APPROVED",
+          "category": "Spellen en speelgoed",
+          "original": "How many minutes does a full day-and-night cycle last in Minecraft?",
+          "question": "How many minutes does a full day-and-night cycle last in Minecraft?",
+          "subtitle": null,
+          "answer": 20,
+          "evidence": "Minecraft Education: a default day is 24,000 ticks, or 20 real-time minutes.",
+          "source": "https://education.minecraft.net/lessonsupportfiles/8325548264145603-Coding%20with%20Minecraft_Unit%206_Functions.pdf",
+          "notes": "Explicitly approved N19. No existing matching question found; user-supplied custom identifier retained.",
+          "photo": null,
+          "n": 20,
+          "unit": "minutes"
+        },
+        {
+          "id": "q008",
+          "row": 6,
+          "status": "APPROVED",
+          "category": "Dieren",
+          "original": "Hoeveel kilogram weegt de tong van een blauwe vinvis ongeveer?",
+          "question": "How many kilograms does a blue whale’s tongue weigh?",
+          "subtitle": null,
+          "answer": 2700,
+          "evidence": "De tong van een blauwe vinvis weegt ongeveer 2,7 ton.",
+          "source": "https://en.wikipedia.org/wiki/Blue_whale",
+          "notes": "Explicitly approved by the user. English wording is recorded in Kept questions. Evidence check requested; not yet performed. Evidence check requested; not yet performed.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Blue_Whale_001_noaa_body_color.jpg/330px-Blue_Whale_001_noaa_body_color.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Blue_Whale_001_noaa_body_color.jpg",
+            "licentie": "Public domain",
+            "maker": "NOAA Fisheries ( TBjornstad 11:20, 18 April 2007 (UTC))"
+          },
+          "n": 2700,
+          "unit": "kg"
+        }
+      ],
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Blue_Whale_001_noaa_body_color.jpg/330px-Blue_Whale_001_noaa_body_color.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Blue_Whale_001_noaa_body_color.jpg",
+        "licentie": "Public domain",
+        "maker": "NOAA Fisheries ( TBjornstad 11:20, 18 April 2007 (UTC))",
+        "vraag": 3
+      },
+      "note": "The world's banana harvest and a Minecraft day reveal the weight of a blue whale's tongue."
+    },
+    {
+      "id": "12527657-e5de-5554-9d64-c4c929982417",
+      "number": 23,
+      "date": "2026-10-13",
+      "operator": "×",
+      "questions": [
+        {
+          "id": "q095",
+          "row": 55,
+          "status": "APPROVED",
+          "category": "Technologie",
+          "original": "Wat is de totale lengte van alle onderzeese internetkabels op aarde in duizend kilometer?",
+          "question": "How many thousand kilometers of submarine internet cables are in service worldwide?",
+          "subtitle": "As of early 2026.",
+          "answer": 1500,
+          "evidence": "TeleGeography publiceert de totale kabellengte; die verandert doorlopend.",
+          "source": "https://www2.telegeography.com/submarine-cable-faqs-frequently-asked-questions",
+          "notes": "Explicitly approved in final salvage review. Target in thousands of kilometers: 1,500 represents the more-than-1.5-million-kilometer convention.",
+          "photo": null,
+          "n": 1500,
+          "unit": "× 1,000 km"
+        },
+        {
+          "id": "N4",
+          "row": 596,
+          "status": "APPROVED",
+          "category": "Sterrenkunde & ruimte",
+          "original": "How many times does the International Space Station orbit Earth in one day?",
+          "question": "How many times does the International Space Station orbit Earth in one day?",
+          "subtitle": null,
+          "answer": 16,
+          "evidence": "NASA gives 16 orbits in 24 hours; rounded daily target.",
+          "source": "https://www.nasa.gov/international-space-station/space-station-facts-and-figures/",
+          "notes": "Explicitly approved N4. No existing matching question found; user-supplied custom identifier retained.",
+          "photo": null,
+          "n": 16,
+          "unit": "orbits"
+        },
+        {
+          "id": "q1492",
+          "row": 591,
+          "status": "APPROVED",
+          "category": "Vervoer",
+          "original": "Hoeveel standaard 20-voet zeecontainers (TEU) kan het grootste containerschip ter wereld in één keer vervoeren?",
+          "question": "How many standard 20-foot containers can the world’s largest container ship carry?",
+          "subtitle": "TEU capacity, rounded to the nearest thousand; as of September 2026.",
+          "answer": 24000,
+          "evidence": "MSC IRINA: 24,346 TEU, rounded to 24,000 standard 20-foot equivalents for the approved NETTO target. Source dated June 2025; checked September 2026.",
+          "source": "https://www.adani.com/newsroom/media-releases/worlds-largest-container-ship-msc-irina-makes-historic-debut-at-vizhinjam-international-seaport",
+          "notes": "Approved rounded target: 24,000 TEU; reported vessel capacity is 24,346 TEU.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Container.JPG/330px-Container.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Container.JPG",
+            "licentie": "CC BY 2.5",
+            "maker": "Tomomarusan"
+          },
+          "n": 24000,
+          "unit": "TEU"
+        }
+      ],
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Container.JPG/330px-Container.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Container.JPG",
+        "licentie": "CC BY 2.5",
+        "maker": "Tomomarusan",
+        "vraag": 3
+      },
+      "note": "Undersea internet cables meet the ISS, ending with the capacity of a giant container ship."
+    },
+    {
+      "id": "77c04fb0-0927-5f4d-a232-9c26337f67c0",
+      "number": 24,
+      "date": "2026-10-14",
+      "operator": "+",
+      "questions": [
+        {
+          "id": "q169",
+          "row": 94,
+          "status": "APPROVED",
+          "category": "Economie & geld",
+          "original": "Hoeveel EU-landen voerden de euro in bij de start van de euro in 1999?",
+          "question": "How many EU countries adopted the euro when it was launched in 1999?",
+          "subtitle": null,
+          "answer": 11,
+          "evidence": "Elf landen voerden de euro in 1999 in. Het opgegeven 21 is het aantal eurolanden van nu, niet dat bij de start.",
+          "source": "https://economy-finance.ec.europa.eu/euro/eu-countries-and-euro_en",
+          "notes": null,
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/330px-Flag_of_Europe.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Europe.svg",
+            "licentie": "Public domain",
+            "maker": "User:Verdy p , User:-xfi- , User:Paddu , User:Nightstallion , User:Funakoshi , User:Jeltz , User:Dbenbenn , User:Zscout3"
+          },
+          "n": 11,
+          "unit": "countries"
+        },
+        {
+          "id": "q492",
+          "row": 237,
+          "status": "APPROVED",
+          "category": "Spellen en speelgoed",
+          "original": "Hoeveel vakjes telt het speelbord van Scrabble in totaal?",
+          "question": "How many squares are on a standard Scrabble board?",
+          "subtitle": null,
+          "answer": 225,
+          "evidence": "Spelmateriaal\nHet spel wordt gespeeld op een bord bestaande uit 15 × 15 = 225 vakjes, waarbij 61 gekleurde vakjes (8 rode, 17 roze, 24 lichtblauwe en 12 donkerblauwe) een bijzonder karakter hebben.",
+          "source": "https://nl.wikipedia.org/wiki/Scrabble",
+          "notes": "Explicitly approved by the user.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/Older_Scrabble_Dutch_edition_letter_overview.jpg/330px-Older_Scrabble_Dutch_edition_letter_overview.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Older_Scrabble_Dutch_edition_letter_overview.jpg",
+            "licentie": "CC BY-SA 3.0",
+            "maker": "Dascandy"
+          },
+          "n": 225,
+          "unit": "squares"
+        },
+        {
+          "id": "q197",
+          "row": 108,
+          "status": "APPROVED",
+          "category": "Films en series",
+          "original": "Hoeveel afleveringen telt de serie Friends in totaal?",
+          "question": "How many episodes of Friends were made?",
+          "subtitle": "Excluding the reunion special.",
+          "answer": 236,
+          "evidence": "| num_episodes = 236 (+ 1 special)",
+          "source": "https://en.wikipedia.org/wiki/Friends",
+          "notes": null,
+          "photo": null,
+          "n": 236,
+          "unit": "episodes"
+        }
+      ],
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/330px-Flag_of_Europe.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Europe.svg",
+        "licentie": "Public domain",
+        "maker": "User:Verdy p , User:-xfi- , User:Paddu , User:Nightstallion , User:Funakoshi , User:Jeltz , User:Dbenbenn , User:Zscout3",
+        "vraag": 1
+      },
+      "note": "The euro's original members plus Scrabble squares give the episode count of Friends."
+    },
+    {
+      "id": "78725b72-4430-5906-be10-5de82dc6e5d2",
+      "number": 25,
+      "date": "2026-10-15",
+      "operator": "+",
+      "questions": [
+        {
+          "id": "q140",
+          "row": 77,
+          "status": "APPROVED",
+          "category": "Muziek",
+          "original": "Hoeveel snaren heeft een standaard concert-pedaalharp?",
+          "question": "How many strings does a standard concert pedal harp have?",
+          "subtitle": null,
+          "answer": 47,
+          "evidence": "Een concertpedaalharp heeft 47 snaren. De oude bron ging over de Divina Commedia.",
+          "source": "https://en.wikipedia.org/wiki/Pedal_harp",
+          "notes": "No final individual decision recorded. Approved photo listed in canonical source. Approved photo listed in canonical source.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Harp_pedals_bigger.jpg/330px-Harp_pedals_bigger.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Harp_pedals_bigger.jpg",
+            "licentie": "CC BY-SA 4.0",
+            "maker": "Tjako van Schie"
+          },
+          "n": 47,
+          "unit": "strings"
+        },
+        {
+          "id": "q400",
+          "row": 207,
+          "status": "APPROVED",
+          "category": "Mode en lifestyle",
+          "original": "Hoeveel facetten (geslepen vlakjes) heeft een standaard ronde briljant geslepen diamant?",
+          "question": "How many facets does a standard round brilliant diamond have?",
+          "subtitle": "Excluding the culet.",
+          "answer": 57,
+          "evidence": "Een ronde briljant heeft 57 facetten, of 58 als je de culet meetelt. De vraag moet zeggen welke telling.",
+          "source": "https://en.wikipedia.org/wiki/Brilliant_(diamond_cut)",
+          "notes": "Explicitly approved by the user.",
+          "photo": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Brillanten.jpg/330px-Brillanten.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Brillanten.jpg",
+            "licentie": "CC BY-SA 3.0",
+            "maker": "Mario Sarto"
+          },
+          "n": 57,
+          "unit": "facets"
+        },
+        {
+          "id": "q1435",
+          "row": 574,
+          "status": "APPROVED",
+          "category": "Sterrenkunde & ruimte",
+          "original": "Hoeveel satellieten lanceerde India in één enkele raket als record (2017)?",
+          "question": "How many satellites did India launch on a single rocket in its 2017 record mission?",
+          "subtitle": null,
+          "answer": 104,
+          "evidence": "ISRO: PSLV-C37 launched 104 satellites on February 15, 2017.",
+          "source": "https://www.isro.gov.in/SuccessfullyLaunches104.html",
+          "notes": "Explicitly approved in Q1409–Q1510 review.",
+          "photo": null,
+          "n": 104,
+          "unit": "satellites"
+        }
+      ],
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Harp_pedals_bigger.jpg/330px-Harp_pedals_bigger.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "pagina": "https://commons.wikimedia.org/wiki/File:Harp_pedals_bigger.jpg",
+        "licentie": "CC BY-SA 4.0",
+        "maker": "Tjako van Schie",
+        "vraag": 1
+      },
+      "note": "Harp strings and diamond facets add up to a record-breaking satellite launch."
+    }
+  ]
+}

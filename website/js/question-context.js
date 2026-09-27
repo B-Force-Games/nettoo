@@ -3,6 +3,9 @@
 (function () {
   function context(vraag) {
     if (!vraag) return null;
+    const reviewed = window.NETTO_REBUILT_PUZZLES?.daily_review?.[vraag];
+    // Een lege definitieve ondertekst is bewust leeg, niet terugvallen op de oude.
+    if (reviewed) return reviewed.subtitle ? { nl: reviewed.subtitle, en: reviewed.subtitle } : null;
     const editorial = window.NETTO_VRAAG_CONTEXT?.[vraag];
     if (editorial) return editorial;
     const nl = [], en = [];

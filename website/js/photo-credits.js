@@ -7,10 +7,13 @@
 // foto is alsnog te vinden zonder de databank aan te passen. Dat werkt meteen
 // voor elke toekomstige dagpuzzel.
 function fotoUitVraagtekst(puzzel) {
+  if (puzzel?.edition && !puzzel.photo) return null;
   const bron = window.NETTO_FOTOS;
   if (!bron || !puzzel) return null;
   for (const i of [1, 2, 3]) {
-    const gevonden = bron[puzzel['q' + i + '_label']];
+    const label = puzzel['q' + i + '_label'];
+    const original = window.NETTO_REBUILT_PUZZLES?.daily_review?.[label]?.original;
+    const gevonden = bron[original || label];
     if (gevonden) return { ...gevonden, vraag: i };
   }
   return null;
@@ -25,7 +28,8 @@ function nogInDeBank(puzzel, foto) {
   const bron = window.NETTO_FOTOS;
   if (!bron || !foto) return true;   // geen bank ingeladen: niets te toetsen
   const nr = Number(foto.vraag);
-  const bij = nr >= 1 && nr <= 3 ? puzzel?.['q' + nr + '_label'] : null;
+  const label = nr >= 1 && nr <= 3 ? puzzel?.['q' + nr + '_label'] : null;
+  const bij = window.NETTO_REBUILT_PUZZLES?.daily_review?.[label]?.original || label;
   return bij ? Object.prototype.hasOwnProperty.call(bron, bij) : true;
 }
 

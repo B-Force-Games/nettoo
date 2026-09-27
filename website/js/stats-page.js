@@ -61,7 +61,8 @@
       const byDate = new Map(puzzles.map(p => [p.date, p]));
       const byNumber = new Map(puzzles.map(p => [Number(p.number), p]));
       const unique = new Map();
-      Object.entries(read('netto_plays', {})).sort(([a], [b]) => Number(validDate(a)) - Number(validDate(b))).forEach(([key, play]) => {
+      const playsKey = data.daily_edition ? 'netto_plays_' + data.daily_edition : 'netto_plays';
+      Object.entries(read(playsKey, {})).sort(([a], [b]) => Number(validDate(a)) - Number(validDate(b))).forEach(([key, play]) => {
         if (!validDate(key) && !/^puzzle_\d+$/.test(key)) return;
         const puzzle = byDate.get(key) || byNumber.get(Number(play?.puzzleNumber || key.slice(7)));
         const day = validDate(key) ? key : puzzle?.date;
@@ -99,7 +100,10 @@
     days.forEach(day => { run = previous && shift(previous, 1) === day ? run + 1 : 1; best = Math.max(best, run); previous = day; });
     let cursor = days.includes(dailyDate()) ? dailyDate() : shift(dailyDate(), -1);
     while (days.includes(cursor)) { current++; cursor = shift(cursor, -1); }
-    if (mode === 'daily' && !demo) best = Math.max(best, Number(read('netto_max_streak', 0)) || 0);
+    if (mode === 'daily' && !demo) {
+      const edition = window.NETTO_REBUILT_PUZZLES?.daily_edition;
+      best = Math.max(best, Number(read(edition ? 'netto_max_streak_' + edition : 'netto_max_streak', 0)) || 0);
+    }
     const ops = ['+', '−', '×', '÷'].map(symbol => {
       const values = entries.filter(e => e.operators.map(op => ({ '-': '−', '*': '×', '/': '÷' })[op] || op).includes(symbol)).map(e => e.factor);
       return { symbol, count: values.length, avg: average(values) };

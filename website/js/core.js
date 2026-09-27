@@ -365,17 +365,15 @@
 
   let activePuzzleIndex = 0;
   const REBUILT_DATA = window.NETTO_REBUILT_PUZZLES || { library: [], daily: [], reserve: [] };
+  const DAILY_EDITION = REBUILT_DATA.daily_edition || '';
+  // Geen nieuwe scores aan de oude serverreeks koppelen vóór de SQL is uitgevoerd.
+  let dailyEditionReady = !DAILY_EDITION;
+  const DAILY_PLAYS_KEY = DAILY_EDITION ? 'netto_plays_' + DAILY_EDITION : 'netto_plays';
   // De statische set blijft de basis: het spel moet werken zonder database.
-  const STATIC_DAILIES = (REBUILT_DATA.daily || []).map(normalizeLibraryPuzzle);
-  // Daily change: show the first archive Daily as today's puzzle, while the
-  // previous current Daily moves to the first archive position.
-  if (STATIC_DAILIES.length > 1) {
-    [STATIC_DAILIES[0], STATIC_DAILIES[STATIC_DAILIES.length - 1]] = [
-      STATIC_DAILIES[STATIC_DAILIES.length - 1],
-      STATIC_DAILIES[0]
-    ];
-  }
+  const STATIC_DAILIES = (REBUILT_DATA.daily || []).map(normalizeLibraryPuzzle)
+    .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
   let DAILY_PUZZLES = STATIC_DAILIES;
+  activePuzzleIndex = Math.max(0, DAILY_PUZZLES.findIndex(p => p.date <= TODAY_STR));
   let PUZZLE_DATA = DAILY_PUZZLES[activePuzzleIndex] || PUZZLE_ARCHIVE[0];
 
   // ===== Ingeplande dailies uit Supabase =====
@@ -397,6 +395,7 @@
 
   function mapDbDaily(row) {
     return normalizeLibraryPuzzle({
+      ...STATIC_DAILIES.find(p => p.id === row.id),
       id: row.id,
       operator: row.operator || '×',
       q1_label: row.question_1,
@@ -470,12 +469,14 @@
     if (!supabaseClient || dailySyncGedaan) return;
     dailySyncGedaan = true;
     try {
-      const { data, error } = await supabaseClient
+      let query = supabaseClient
         .from('puzzles')
         .select('id, question_1, question_2, question_3, operator, true_answer_1, true_answer_2, true_answer_3, scheduled_date, image_path, image_alt, image_caption, image_credit, image_source_url')
         .eq('status', 'scheduled')
-        .lte('scheduled_date', TODAY_STR)
-        .order('scheduled_date', { ascending: false });
+        .lte('scheduled_date', TODAY_STR);
+      // Oude serverpuzzels mogen de opnieuw beoordeelde reeks niet terugzetten.
+      if (DAILY_EDITION) query = query.eq('daily_edition', DAILY_EDITION);
+      const { data, error } = await query.order('scheduled_date', { ascending: false });
       // Ontbreekt question_3 nog (migratie niet gedraaid), dan faalt de select
       // en houden we gewoon de statische set aan. Wel loggen: anders is een
       // kapotte query niet te onderscheiden van "nog niets ingepland".
@@ -488,16 +489,20 @@
       }
       dailySyncAfgerond = true;
       if (!Array.isArray(data) || !data.length) { window.NettoRoutes?.dailyReady(); renderHomeDailyPreview(); return; }
+      dailyEditionReady = true;
+      stuurLokaleScoresOp();
 
-      const previousId = DAILY_PUZZLES[0]?.id;
+      const previousId = PUZZLE_DATA?.id;
       DAILY_PUZZLES = mergeDailies(data.map(mapDbDaily));
 
       // Alleen de actieve puzzel omwisselen als de speler er niet in zit;
       // midden in een ingevulde puzzel de vragen vervangen is onacceptabel.
       const playing = document.getElementById('screen-puzzle')?.classList.contains('active');
-      if (!playing && !dailyArchivePuzzleView && activePuzzleIndex === 0
-          && DAILY_PUZZLES[0] && DAILY_PUZZLES[0].id !== previousId) {
-        PUZZLE_DATA = DAILY_PUZZLES[0];
+      const availableIndex = DAILY_PUZZLES.findIndex(p => p.date <= TODAY_STR);
+      if (!playing && !dailyArchivePuzzleView && availableIndex >= 0
+          && DAILY_PUZZLES[availableIndex].id !== previousId) {
+        activePuzzleIndex = availableIndex;
+        PUZZLE_DATA = DAILY_PUZZLES[availableIndex];
         if (typeof loadActivePuzzle === 'function') loadActivePuzzle();
       }
       renderHomeDailyPreview();
@@ -722,7 +727,7 @@
     motion.addEventListener('change', finish);
   }
 
-  function renderHomeDailyPreview(puzzle = DAILY_PUZZLES[0] || PUZZLE_DATA) {
+  function renderHomeDailyPreview(puzzle = DAILY_PUZZLES.find(p => p.date <= TODAY_STR)) {
     if (!puzzle) return;
     const categories = categorieënVoor(puzzle);
     const operator = puzzle.operator || '×';
@@ -821,7 +826,7 @@
 
   function getLocalPlays() {
     try {
-      return JSON.parse(localStorage.getItem('netto_plays')) || {};
+      return JSON.parse(localStorage.getItem(DAILY_PLAYS_KEY)) || {};
     } catch(e) {
       return {};
     }
@@ -834,7 +839,7 @@
   // =========================================================================
   // 2B. DAILY STATISTIEKEN & STREAKS
   // =========================================================================
-  const STATS_MAX_STREAK_KEY = 'netto_max_streak';
+  const STATS_MAX_STREAK_KEY = DAILY_EDITION ? 'netto_max_streak_' + DAILY_EDITION : 'netto_max_streak';
   const STATS_BUCKETS = [
     { label: '90–100%', englishLabel: '90–100%', emoji: '🟩' },
     { label: '80–89%', englishLabel: '80–89%', emoji: '🟢' },
@@ -1810,7 +1815,7 @@
     // sfeerfoto-rotatie die nergens over gaat.
     const assigned = PUZZLE_DATA?.image_path;
     const gekoppeld = assigned ? null : gekoppeldeFoto();
-    const rotatie = assigned || gekoppeld ? null : pickDailyPhoto(getActivePuzzleKey());
+    const rotatie = assigned || gekoppeld || PUZZLE_DATA?.edition ? null : pickDailyPhoto(getActivePuzzleKey());
     const kaarten = [...document.querySelectorAll('#dailyQuestionView > .q-block')];
     kaarten.forEach(kaart => kaart.classList.remove('has-photo'));
     if (!assigned && !gekoppeld && !rotatie) { photo.hidden = true; return; }
@@ -1883,6 +1888,8 @@
   // Het spel toont de vraag vertaald, dus de eenheid moet mee. Eerst de
   // Engelse zin ontleden; lukt dat niet, dan het Nederlandse label vertalen.
   function eenheidUit(vraag) {
+    const reviewed = REBUILT_DATA.daily_review?.[vraag];
+    if (reviewed?.unit) return reviewed.unit;
     const nederlands = nederlandseEenheid(vraag);
     if (window.NettoI18n?.language !== 'en') return nederlands;
     const tekst = String(vraag || '');
@@ -2029,8 +2036,8 @@
 
   function maakBronpaneel(vraag) {
     const bronnen = window.NETTO_BRONNEN;
-    if (!bronnen || !Object.hasOwn(bronnen, vraag)) return null;
-    const vermelding = bronnen[vraag];
+    const reviewed = REBUILT_DATA.daily_review?.[vraag];
+    const vermelding = reviewed || bronnen?.[vraag];
     if (!vermelding?.bron || !vermelding?.uitleg) return null;
     let url;
     try { url = new URL(vermelding.bron); } catch { return null; }
@@ -2043,7 +2050,7 @@
     // Vertalingen zijn vooraf gegenereerd: geen externe vertaalverzoeken tijdens spelen.
     uitleg.setAttribute('data-i18n-skip', '');
     const english = window.NettoI18n?.language === 'en';
-    const translation = window.NETTO_BRONNEN_EN?.[vermelding.uitleg];
+    const translation = reviewed?.uitleg_en || window.NETTO_BRONNEN_EN?.[vermelding.uitleg];
     uitleg.textContent = english ? (translation || vermelding.uitleg) : vermelding.uitleg;
     const link = document.createElement('a');
     link.href = url.href;
@@ -2330,7 +2337,7 @@
 
     // Opslaan in LocalStorage
     plays[pKey] = { g1, g2, g3, factor: avgFactor, puzzleNumber: PUZZLE_DATA.number, playedAt: new Date().toISOString() };
-    localStorage.setItem('netto_plays', JSON.stringify(plays));
+    localStorage.setItem(DAILY_PLAYS_KEY, JSON.stringify(plays));
     if (!document.getElementById('streakCalendarPopover')?.hidden) renderStreakCalendar();
 
     // Velden uitschakelen
@@ -2617,7 +2624,7 @@
   // ignoreDuplicates zorgt dat een oude speelbeurt op een ander apparaat niet
   // wordt overschreven door wat er toevallig in deze browser stond.
   async function stuurLokaleScoresOp() {
-    if (!currentUser || !supabaseClient) return;
+    if (!currentUser || !supabaseClient || !dailyEditionReady) return;
     const rijen = Object.entries(getLocalPlays())
       .filter(([sleutel, spel]) => /^\d{4}-\d{2}-\d{2}$/.test(sleutel)
         && spel && Number.isFinite(Number(spel.factor)))
@@ -2636,7 +2643,7 @@
   }
 
   async function syncPlayToCloud(dateStr, g1, g2, g3, factor) {
-    if (!currentUser) return;
+    if (!currentUser || !dailyEditionReady) return;
 
     if (supabaseClient) {
       try {
@@ -3009,7 +3016,7 @@
     const eigenNaam = currentUser?.username || null;
     let rijen = [];
     try {
-      if (!supabaseClient) throw new Error('geen verbinding');
+      if (!supabaseClient || !dailyEditionReady) throw new Error('Daily-reeks nog niet beschikbaar op de server');
       const { data, error } = currentLbTab === 'today'
         ? await supabaseClient.rpc('leaderboard_dag', { p_datum: leaderboardSelectedDate })
         : await supabaseClient.rpc('leaderboard_streaks', { p_datum: TODAY_STR });

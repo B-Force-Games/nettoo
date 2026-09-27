@@ -1,0 +1,1017 @@
+[
+  {
+    "id": "daily-035",
+    "number": 35,
+    "name": "Puzzel #35",
+    "operator": "×",
+    "q1_label": "Hoeveel delen bevatte de oorspronkelijke publicatie van The Lord of the Rings?",
+    "q1_answer": 3,
+    "q2_label": "Hoeveel procent van de extra warmte door klimaatverandering wordt door de oceanen opgenomen?",
+    "q2_answer": 90,
+    "q3_label": "Hoeveel kiesmannen zijn er nodig om de Amerikaanse presidentsverkiezing te winnen?",
+    "q3_answer": 270,
+    "calculation": "3 × 90 = 270",
+    "categories": [
+      "Boeken en literatuur",
+      "Milieu en duurzaamheid",
+      "Politiek en recht"
+    ],
+    "difficulty": "easy",
+    "difficulty_score": 55.94,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/Unico_Anello.jpg/330px-Unico_Anello.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Unico_Anello.jpg",
+      "licentie": "Public domain",
+      "maker": "Hill",
+      "vraag": 1
+    },
+    "date": "2026-09-04",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-034",
+    "number": 34,
+    "name": "Puzzel #34",
+    "operator": "−",
+    "q1_label": "Welk percentage van het aardoppervlak bestaat uit oceanen en zeeën?",
+    "q1_answer": 71,
+    "q2_label": "Hoeveel biljoen bacteriën leven er naar schatting in en op het menselijk lichaam?",
+    "q2_answer": 38,
+    "q3_label": "Hoeveel letters heeft het Georgische alfabet?",
+    "q3_answer": 33,
+    "calculation": "71 − 38 = 33",
+    "categories": [
+      "Milieu en duurzaamheid",
+      "Biologie & gezondheid",
+      "Taal"
+    ],
+    "difficulty": "easy",
+    "difficulty_score": 57.8,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3f/Street_sign_in_Georgian_and_Latin_alphabets.jpg/330px-Street_sign_in_Georgian_and_Latin_alphabets.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Street_sign_in_Georgian_and_Latin_alphabets.jpg",
+      "licentie": "CC BY-SA 2.0",
+      "maker": "Henri Bergius from Finland",
+      "vraag": 3
+    },
+    "date": "2026-09-03",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-033",
+    "number": 33,
+    "name": "Puzzel #33",
+    "operator": "+",
+    "q1_label": "Hoeveel chromosomen heeft een gewone tuinerwt Pisum sativum in een lichaamscel?",
+    "q1_answer": 14,
+    "q2_label": "Hoeveel duizend kilometer fietspad telt Nederland?",
+    "q2_answer": 35,
+    "q3_label": "Hoeveel landen telt Azië?",
+    "q3_answer": 49,
+    "calculation": "14 + 35 = 49",
+    "categories": [
+      "Biologie & gezondheid",
+      "Vervoer",
+      "Geografie"
+    ],
+    "difficulty": "easy",
+    "difficulty_score": 44.31,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/Asia_%28orthographic_projection%29_without_New_Guinea.svg/330px-Asia_%28orthographic_projection%29_without_New_Guinea.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Asia_(orthographic_projection)_without_New_Guinea.svg",
+      "licentie": "CC BY-SA 4.0",
+      "maker": "Koyos + Ssolbergj",
+      "vraag": 3
+    },
+    "date": "2026-09-02",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-032",
+    "number": 32,
+    "name": "Puzzel #32",
+    "operator": "÷",
+    "q1_label": "Hoeveel soldaten vochten tijdens de Slag om Gettysburg ongeveer mee?",
+    "q1_answer": 165000,
+    "q2_label": "Hoeveel graden Celsius is het smeltpunt van aluminium ongeveer?",
+    "q2_answer": 660,
+    "q3_label": "Hoeveel kilometer van de Maas ligt in Nederland?",
+    "q3_answer": 250,
+    "calculation": "165000 ÷ 660 = 250",
+    "categories": [
+      "Geschiedenis",
+      "Scheikunde",
+      "Geografie"
+    ],
+    "difficulty": "extremely-hard",
+    "difficulty_score": 102.37,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Aluminium-4.jpg/330px-Aluminium-4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Aluminium-4.jpg",
+      "licentie": "CC BY 3.0",
+      "maker": "Unknown author Unknown author",
+      "vraag": 2
+    },
+    "date": "2026-09-01",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-031",
+    "number": 31,
+    "name": "Puzzel #31",
+    "operator": "×",
+    "q1_label": "Hoeveel meter ligt de Dode Zee ongeveer onder zeeniveau?",
+    "q1_answer": 430,
+    "q2_label": "Hoeveel letters heeft het Hebreeuwse alfabet?",
+    "q2_answer": 22,
+    "q3_label": "Hoeveel miljard kilometer legt licht af in één lichtjaar, afgerond?",
+    "q3_answer": 9460,
+    "calculation": "430 × 22 = 9460",
+    "categories": [
+      "Geografie",
+      "Taal",
+      "Sterrenkunde & ruimte"
+    ],
+    "difficulty": "extremely-hard",
+    "difficulty_score": 85.72,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/%D7%94%D7%9E%D7%99%D7%9C%D7%94_%D7%A2%D7%91%D7%A8%D7%99%D7%AA_%D7%91%D7%9B%D7%AA%D7%91_%D7%95%D7%91%D7%9B%D7%AA%D7%91_%D7%94%D7%A2%D7%91%D7%A8%D7%99_%D7%94%D7%A7%D7%93%D7%95%D7%9D.jpg/330px-%D7%94%D7%9E%D7%99%D7%9C%D7%94_%D7%A2%D7%91%D7%A8%D7%99%D7%AA_%D7%91%D7%9B%D7%AA%D7%91_%D7%95%D7%91%D7%9B%D7%AA%D7%91_%D7%94%D7%A2%D7%91%D7%A8%D7%99_%D7%94%D7%A7%D7%93%D7%95%D7%9D.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:%D7%94%D7%9E%D7%99%D7%9C%D7%94_%D7%A2%D7%91%D7%A8%D7%99%D7%AA_%D7%91%D7%9B%D7%AA%D7%91_%D7%95%D7%91%D7%9B%D7%AA%D7%91_%D7%94%D7%A2%D7%91%D7%A8%D7%99_%D7%94%D7%A7%D7%93%D7%95%D7%9D.jpg",
+      "licentie": "CC BY-SA 4.0",
+      "maker": "Eliran t",
+      "vraag": 2
+    },
+    "date": "2026-08-31",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-030",
+    "number": 30,
+    "name": "Puzzel #30",
+    "operator": "−",
+    "q1_label": "In welk jaar viel Japan de Amerikaanse vlootbasis Pearl Harbor aan?",
+    "q1_answer": 1941,
+    "q2_label": "Hoeveel meter hoog zijn de torens van de Brooklyn Bridge?",
+    "q2_answer": 84,
+    "q3_label": "Hoe diep is de Grand Canyon op het diepste punt ongeveer?",
+    "q3_answer": 1857,
+    "calculation": "1941 − 84 = 1857",
+    "categories": [
+      "Geschiedenis",
+      "Gebouwen en infrastructuur",
+      "Geografie"
+    ],
+    "difficulty": "extremely-hard",
+    "difficulty_score": 92.87,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/Canyon_River_Tree_%28165872763%29.jpeg/330px-Canyon_River_Tree_%28165872763%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Canyon_River_Tree_(165872763).jpeg",
+      "licentie": "CC BY 3.0",
+      "maker": "Lennart Sikkema",
+      "vraag": 3
+    },
+    "date": "2026-08-30",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-029",
+    "number": 29,
+    "name": "Puzzel #29",
+    "operator": "+",
+    "q1_label": "Hoeveel inwoners heeft Monaco?",
+    "q1_answer": 39000,
+    "q2_label": "Hoeveel vliegtuigen ondersteunden D-Day?",
+    "q2_answer": 11000,
+    "q3_label": "Hoeveel bijen leven er in een sterk bijenvolk in de zomer?",
+    "q3_answer": 50000,
+    "calculation": "39000 + 11000 = 50000",
+    "categories": [
+      "Geografie",
+      "Geschiedenis",
+      "Landbouw en industrie"
+    ],
+    "difficulty": "extremely-hard",
+    "difficulty_score": 97.31,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/Flag_of_Monaco.svg/330px-Flag_of_Monaco.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Monaco.svg",
+      "licentie": "Public domain",
+      "maker": "Drawn by User:SKopp",
+      "vraag": 1
+    },
+    "date": "2026-08-29",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-028",
+    "number": 28,
+    "name": "Puzzel #28",
+    "operator": "÷",
+    "q1_label": "In welk jaar werd de eerste stoomlocomotief gebouwd?",
+    "q1_answer": 1804,
+    "q2_label": "Hoeveel letters heeft het Thaise alfabet?",
+    "q2_answer": 44,
+    "q3_label": "Hoeveel symfonieën schreef Mozart?",
+    "q3_answer": 41,
+    "calculation": "1804 ÷ 44 = 41",
+    "categories": [
+      "Vervoer",
+      "Taal",
+      "Muziek"
+    ],
+    "difficulty": "hard",
+    "difficulty_score": 83.33,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/Wolfgang-amadeus-mozart_1.jpg/330px-Wolfgang-amadeus-mozart_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Wolfgang-amadeus-mozart_1.jpg",
+      "licentie": "Public domain",
+      "maker": "Barbara Krafft",
+      "vraag": 3
+    },
+    "date": "2026-08-28",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-027",
+    "number": 27,
+    "name": "Puzzel #27",
+    "operator": "×",
+    "q1_label": "Hoeveel minuten officiële speeltijd heeft een basketbalwedstrijd volgens de NBA-regels?",
+    "q1_answer": 48,
+    "q2_label": "Hoeveel botten heeft een volwassen menselijke schedel volgens de gebruikelijke anatomische indeling?",
+    "q2_answer": 22,
+    "q3_label": "Hoe groot was het grootste permanente IMAX-scherm in vierkante meter?",
+    "q3_answer": 1056,
+    "calculation": "48 × 22 = 1056",
+    "categories": [
+      "Sport",
+      "Biologie & gezondheid",
+      "Records en vergelijkingen"
+    ],
+    "difficulty": "hard",
+    "difficulty_score": 74.76,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/IMAX_Theatre_Sydney.jpg/330px-IMAX_Theatre_Sydney.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:IMAX_Theatre_Sydney.jpg",
+      "licentie": "CC BY-SA 3.0",
+      "maker": "Vanbasten 23",
+      "vraag": 3
+    },
+    "date": "2026-08-27",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-026",
+    "number": 26,
+    "name": "Puzzel #26",
+    "operator": "−",
+    "q1_label": "Hoeveel vogelsoorten telt Colombia, het land met de meeste ter wereld?",
+    "q1_answer": 1900,
+    "q2_label": "Hoeveel milliliter speeksel produceert een mens gemiddeld per dag?",
+    "q2_answer": 1200,
+    "q3_label": "Hoeveel meter onder zeeniveau ligt het diepste punt van de Noordzee ongeveer?",
+    "q3_answer": 700,
+    "calculation": "1900 − 1200 = 700",
+    "categories": [
+      "Dieren",
+      "Biologie & gezondheid",
+      "Geografie"
+    ],
+    "difficulty": "hard",
+    "difficulty_score": 76.04,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Locatie_Noordzee.PNG/330px-Locatie_Noordzee.PNG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Locatie_Noordzee.PNG",
+      "licentie": "Public domain",
+      "maker": "edited by M.Minderhoud",
+      "vraag": 3
+    },
+    "date": "2026-08-26",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-025",
+    "number": 25,
+    "name": "Puzzel #25",
+    "operator": "+",
+    "q1_label": "Hoeveel kilogram weegt een volwassen nijlpaard?",
+    "q1_answer": 1500,
+    "q2_label": "Hoeveel schepen ondersteunden de geallieerde landing in Normandië?",
+    "q2_answer": 6000,
+    "q3_label": "Hoeveel hotels heeft Hilton wereldwijd ongeveer?",
+    "q3_answer": 7500,
+    "calculation": "1500 + 6000 = 7500",
+    "categories": [
+      "Dieren",
+      "Geschiedenis",
+      "Reizen en toerisme"
+    ],
+    "difficulty": "hard",
+    "difficulty_score": 80.3,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Into_the_Jaws_of_Death_23-0455M_edit.jpg/330px-Into_the_Jaws_of_Death_23-0455M_edit.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Into_the_Jaws_of_Death_23-0455M_edit.jpg",
+      "licentie": "Public domain",
+      "maker": "Chief Photographer's Mate (CPHoM) Robert F. Sargent",
+      "vraag": 2
+    },
+    "date": "2026-08-25",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-024",
+    "number": 24,
+    "name": "Puzzel #24",
+    "operator": "÷",
+    "q1_label": "Hoeveel stappen per dag is de vaak geciteerde streefwaarde?",
+    "q1_answer": 10000,
+    "q2_label": "Hoe zwaar was de grootste portie friet ooit in kilogram?",
+    "q2_answer": 1000,
+    "q3_label": "Hoeveel poten heeft een krab?",
+    "q3_answer": 10,
+    "calculation": "10000 ÷ 1000 = 10",
+    "categories": [
+      "Biologie & gezondheid",
+      "Records en vergelijkingen",
+      "Dieren"
+    ],
+    "difficulty": "intermediate",
+    "difficulty_score": 70.42,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Fries_2.jpg/330px-Fries_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Fries_2.jpg",
+      "licentie": "CC BY-SA 3.0",
+      "maker": "Popo le Chien",
+      "vraag": 2
+    },
+    "date": "2026-08-24",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-023",
+    "number": 23,
+    "name": "Puzzel #23",
+    "operator": "×",
+    "q1_label": "Hoeveel leden telt het Britse Lagerhuis?",
+    "q1_answer": 650,
+    "q2_label": "Hoeveel miljard hartslagen maakt een mensenhart in een gemiddeld leven van 80 jaar?",
+    "q2_answer": 3,
+    "q3_label": "In welk jaar begon de Koreaanse oorlog?",
+    "q3_answer": 1950,
+    "calculation": "650 × 3 = 1950",
+    "categories": [
+      "Politiek en recht",
+      "Biologie & gezondheid",
+      "Geschiedenis"
+    ],
+    "difficulty": "intermediate",
+    "difficulty_score": 73.06,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/Lopez_scaling_seawall.jpg/330px-Lopez_scaling_seawall.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Lopez_scaling_seawall.jpg",
+      "licentie": "Public domain",
+      "maker": "Unknown Marine",
+      "vraag": 3
+    },
+    "date": "2026-08-23",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-022",
+    "number": 22,
+    "name": "Puzzel #22",
+    "operator": "−",
+    "q1_label": "Hoeveel aardse jaren duurt een jaar op Neptunus ongeveer?",
+    "q1_answer": 165,
+    "q2_label": "Hoeveel Pokémon telt de eerste generatie, de Kanto Pokédex?",
+    "q2_answer": 151,
+    "q3_label": "Hoeveel afleveringen telt de originele Britse serie The Office (inclusief specials)?",
+    "q3_answer": 14,
+    "calculation": "165 − 151 = 14",
+    "categories": [
+      "Sterrenkunde & ruimte",
+      "Spellen en speelgoed",
+      "Films en series"
+    ],
+    "difficulty": "intermediate",
+    "difficulty_score": 63.78,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Neptune_Voyager2_color_calibrated.png/330px-Neptune_Voyager2_color_calibrated.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Neptune_Voyager2_color_calibrated.png",
+      "licentie": "CC0",
+      "maker": "NASA / Voyager 2 / PDS / OPUS / Ardenau4",
+      "vraag": 1
+    },
+    "date": "2026-08-22",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-021",
+    "number": 21,
+    "name": "Puzzel #21",
+    "operator": "+",
+    "q1_label": "Hoeveel vakjes telt het speelbord van Scrabble in totaal?",
+    "q1_answer": 225,
+    "q2_label": "Hoe lang is de langste levende vrouw in centimeters?",
+    "q2_answer": 215,
+    "q3_label": "Hoeveel hertz is de toonhoogte van de standaard a in de muziek?",
+    "q3_answer": 440,
+    "calculation": "225 + 215 = 440",
+    "categories": [
+      "Spellen en speelgoed",
+      "Records en vergelijkingen",
+      "Muziek"
+    ],
+    "difficulty": "intermediate",
+    "difficulty_score": 69.33,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/Older_Scrabble_Dutch_edition_letter_overview.jpg/330px-Older_Scrabble_Dutch_edition_letter_overview.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Older_Scrabble_Dutch_edition_letter_overview.jpg",
+      "licentie": "CC BY-SA 3.0",
+      "maker": "Dascandy",
+      "vraag": 1
+    },
+    "date": "2026-08-21",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-020",
+    "number": 20,
+    "name": "Puzzel #20",
+    "operator": "÷",
+    "q1_label": "Hoeveel verdiepingen heeft de Shanghai Tower?",
+    "q1_answer": 128,
+    "q2_label": "Hoeveel hartkleppen heeft het menselijk hart?",
+    "q2_answer": 4,
+    "q3_label": "Hoeveel kilometer per uur zwemt een dolfijn op zijn snelst?",
+    "q3_answer": 32,
+    "calculation": "128 ÷ 4 = 32",
+    "categories": [
+      "Gebouwen en infrastructuur",
+      "Biologie & gezondheid",
+      "Dieren"
+    ],
+    "difficulty": "easy",
+    "difficulty_score": 61.28,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/Shanghai_tower_dec_26%2C_2014.jpg/330px-Shanghai_tower_dec_26%2C_2014.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Shanghai_tower_dec_26,_2014.jpg",
+      "licentie": "CC BY-SA 4.0",
+      "maker": "Yhz1221",
+      "vraag": 1
+    },
+    "date": "2026-08-20",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-019",
+    "number": 19,
+    "name": "Puzzel #19",
+    "operator": "×",
+    "q1_label": "Hoeveel torens heeft het Kremlin in Moskou?",
+    "q1_answer": 20,
+    "q2_label": "Hoeveel spelers staan er tegelijk op het veld bij een honkbalwedstrijd?",
+    "q2_answer": 18,
+    "q3_label": "Hoeveel graden heeft een volledige cirkel?",
+    "q3_answer": 360,
+    "calculation": "20 × 18 = 360",
+    "categories": [
+      "Gebouwen en infrastructuur",
+      "Sport",
+      "Wiskunde"
+    ],
+    "difficulty": "easy",
+    "difficulty_score": 57.58,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Kremlin_birds_eye_view-1.jpg/330px-Kremlin_birds_eye_view-1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Kremlin_birds_eye_view-1.jpg",
+      "licentie": "CC BY 4.0",
+      "maker": "Георгий Надеждин / ITAR-TASS",
+      "vraag": 1
+    },
+    "date": "2026-08-19",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-018",
+    "number": 18,
+    "name": "Puzzel #18",
+    "operator": "−",
+    "q1_label": "Hoeveel verdiepingen heeft de BD Bacatá in Bogotá?",
+    "q1_answer": 67,
+    "q2_label": "Hoeveel stukken heeft iedere speler bij de start van schaken?",
+    "q2_answer": 16,
+    "q3_label": "Hoeveel gram weegt een standaard Mars reep?",
+    "q3_answer": 51,
+    "calculation": "67 − 16 = 51",
+    "categories": [
+      "Gebouwen en infrastructuur",
+      "Spellen en speelgoed",
+      "Eten & drinken"
+    ],
+    "difficulty": "easy",
+    "difficulty_score": 55.79,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/2018_Bogot%C3%A1_edificios_BD_Bacat%C3%A1.jpg/330px-2018_Bogot%C3%A1_edificios_BD_Bacat%C3%A1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:2018_Bogot%C3%A1_edificios_BD_Bacat%C3%A1.jpg",
+      "licentie": "CC BY-SA 4.0",
+      "maker": "Felipe Restrepo Acosta",
+      "vraag": 1
+    },
+    "date": "2026-08-18",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-017",
+    "number": 17,
+    "name": "Puzzel #17",
+    "operator": "+",
+    "q1_label": "Hoeveel Oscars won The Lord of the Rings: The Return of the King?",
+    "q1_answer": 11,
+    "q2_label": "Hoeveel meter hoog is de Grote Piramide van Gizeh nu?",
+    "q2_answer": 139,
+    "q3_label": "Hoeveel kilogram voedsel (bladeren, gras, takken) eet een volwassen Afrikaanse olifant per dag?",
+    "q3_answer": 150,
+    "calculation": "11 + 139 = 150",
+    "categories": [
+      "Films en series",
+      "Gebouwen en infrastructuur",
+      "Dieren"
+    ],
+    "difficulty": "easy",
+    "difficulty_score": 50.04,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Kheops-Pyramid.jpg/330px-Kheops-Pyramid.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Kheops-Pyramid.jpg",
+      "licentie": "CC BY 2.5",
+      "maker": "Nina",
+      "vraag": 2
+    },
+    "date": "2026-08-17",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-016",
+    "number": 16,
+    "name": "Puzzel #16",
+    "operator": "÷",
+    "q1_label": "Hoeveel liter water stroomt er gemiddeld per seconde over de Niagarawatervallen?",
+    "q1_answer": 2400000,
+    "q2_label": "Hoeveel soldaten telde het leger van Napoleon tijdens de invasie van Rusland?",
+    "q2_answer": 600000,
+    "q3_label": "Hoeveel bloedgroepen kent het ABO-systeem?",
+    "q3_answer": 4,
+    "calculation": "2400000 ÷ 600000 = 4",
+    "categories": [
+      "Geografie",
+      "Geschiedenis",
+      "Biologie & gezondheid"
+    ],
+    "difficulty": "extremely-hard",
+    "difficulty_score": 122.57,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/3Falls_Niagara.jpg/330px-3Falls_Niagara.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:3Falls_Niagara.jpg",
+      "licentie": "CC BY-SA 3.0",
+      "maker": "Saffron Blaze",
+      "vraag": 1
+    },
+    "date": "2026-08-16",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-015",
+    "number": 15,
+    "name": "Puzzel #15",
+    "operator": "×",
+    "q1_label": "Hoeveel jaar duurde de regering van Elizabeth II?",
+    "q1_answer": 70,
+    "q2_label": "Hoeveel delen CO₂ per miljoen delen lucht mat NASA in 2024?",
+    "q2_answer": 425,
+    "q3_label": "Hoeveel kilometer lang is de kustlijn van Japan ongeveer?",
+    "q3_answer": 29750,
+    "calculation": "70 × 425 = 29750",
+    "categories": [
+      "Geschiedenis",
+      "Milieu en duurzaamheid",
+      "Geografie"
+    ],
+    "difficulty": "extremely-hard",
+    "difficulty_score": 95.54,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Satellite_View_of_Japan_1999.jpg/330px-Satellite_View_of_Japan_1999.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Satellite_View_of_Japan_1999.jpg",
+      "licentie": "Public domain",
+      "maker": "SeaWiFS Project, NASA/Goddard Space Flight Center, and ORBIMAGE",
+      "vraag": 3
+    },
+    "date": "2026-08-15",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-014",
+    "number": 14,
+    "name": "Puzzel #14",
+    "operator": "−",
+    "q1_label": "In welk jaar werd de eerste commerciële harde schijf geïntroduceerd?",
+    "q1_answer": 1956,
+    "q2_label": "Hoeveel meter is één internationale zeemijl exact?",
+    "q2_answer": 1852,
+    "q3_label": "Hoeveel miljoen passagiers verwerkt Atlanta Airport (Hartsfield-Jackson, de drukste luchthaven ter wereld) per jaar?",
+    "q3_answer": 104,
+    "calculation": "1956 − 1852 = 104",
+    "categories": [
+      "Technologie",
+      "Natuurkunde",
+      "Reizen en toerisme"
+    ],
+    "difficulty": "extremely-hard",
+    "difficulty_score": 93.81,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Atlanta_Airport_Aerial_Angle_%2831435634003%29_%282%29.jpg/330px-Atlanta_Airport_Aerial_Angle_%2831435634003%29_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Atlanta_Airport_Aerial_Angle_(31435634003)_(2).jpg",
+      "licentie": "CC BY-SA 2.0",
+      "maker": "formulanone from Huntsville, United States",
+      "vraag": 3
+    },
+    "date": "2026-08-14",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-013",
+    "number": 13,
+    "name": "Puzzel #13",
+    "operator": "+",
+    "q1_label": "Hoeveel satellieten lanceerde India in één enkele raket als record (2017)?",
+    "q1_answer": 104,
+    "q2_label": "In welk jaar werd de eerste internationale telefonische verbinding gemaakt?",
+    "q2_answer": 1887,
+    "q3_label": "Hoeveel meter lang is de langste overspanning van de Akashi Kaikyōbrug?",
+    "q3_answer": 1991,
+    "calculation": "104 + 1887 = 1991",
+    "categories": [
+      "Sterrenkunde & ruimte",
+      "Technologie",
+      "Gebouwen en infrastructuur"
+    ],
+    "difficulty": "extremely-hard",
+    "difficulty_score": 85.96,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Akashi_Bridge.JPG/330px-Akashi_Bridge.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Akashi_Bridge.JPG",
+      "licentie": "Public domain",
+      "maker": "Tysto",
+      "vraag": 3
+    },
+    "date": "2026-08-13",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-012",
+    "number": 12,
+    "name": "Puzzel #12",
+    "operator": "÷",
+    "q1_label": "Hoeveel meter lang is het Millauviaduct in Frankrijk?",
+    "q1_answer": 2460,
+    "q2_label": "Hoeveel delen bevat Don Quichot?",
+    "q2_answer": 2,
+    "q3_label": "Hoeveel kilometer lang is de Rijn?",
+    "q3_answer": 1230,
+    "calculation": "2460 ÷ 2 = 1230",
+    "categories": [
+      "Gebouwen en infrastructuur",
+      "Boeken en literatuur",
+      "Geografie"
+    ],
+    "difficulty": "hard",
+    "difficulty_score": 79.58,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Gustave_Dor%C3%A9_-_Miguel_de_Cervantes_-_Don_Quixote_-_Part_1_-_Chapter_1_-_Plate_1_%22A_world_of_disorderly_notions%2C_picked_out_of_his_books%2C_crowded_into_his_imagination%22.jpg/330px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Gustave_Dor%C3%A9_-_Miguel_de_Cervantes_-_Don_Quixote_-_Part_1_-_Chapter_1_-_Plate_1_%22A_world_of_disorderly_notions,_picked_out_of_his_books,_crowded_into_his_imagination%22.jpg",
+      "licentie": "Public domain",
+      "maker": "Héliodore Pisan / After Gustave Doré",
+      "vraag": 2
+    },
+    "date": "2026-08-12",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-011",
+    "number": 11,
+    "name": "Puzzel #11",
+    "operator": "×",
+    "q1_label": "Hoeveel kilogram rundvlees eet een Argentijn per jaar?",
+    "q1_answer": 50,
+    "q2_label": "Hoeveel officiële inwoners heeft Vaticaanstad?",
+    "q2_answer": 800,
+    "q3_label": "Hoeveel Starbucks-winkels zijn er wereldwijd ongeveer?",
+    "q3_answer": 40000,
+    "calculation": "50 × 800 = 40000",
+    "categories": [
+      "Eten & drinken",
+      "Geografie",
+      "Merken en producten"
+    ],
+    "difficulty": "hard",
+    "difficulty_score": 82.13,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/Flag_of_Vatican_City_%282023%E2%80%93present%29.svg/330px-Flag_of_Vatican_City_%282023%E2%80%93present%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Vatican_City_(2023%E2%80%93present).svg",
+      "licentie": "Public domain",
+      "maker": "Goran_tek-en",
+      "vraag": 2
+    },
+    "date": "2026-08-11",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-010",
+    "number": 10,
+    "name": "Puzzel #10",
+    "operator": "−",
+    "q1_label": "Hoeveel kilometer lang is het Baikalmeer ongeveer?",
+    "q1_answer": 636,
+    "q2_label": "Hoeveel meter lang is een officiële atletiekbaan op de binnenbaan?",
+    "q2_answer": 400,
+    "q3_label": "Hoeveel afleveringen telt de serie Friends in totaal?",
+    "q3_answer": 236,
+    "calculation": "636 − 400 = 236",
+    "categories": [
+      "Geografie",
+      "Sport",
+      "Films en series"
+    ],
+    "difficulty": "hard",
+    "difficulty_score": 77.82,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Baikal.A2001296.0420.250m-NASA.jpg/330px-Baikal.A2001296.0420.250m-NASA.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Baikal.A2001296.0420.250m-NASA.jpg",
+      "licentie": "Public domain",
+      "maker": "Jacques Descloitres, MODIS Land Rapid Response Team, NASA/GSFC",
+      "vraag": 1
+    },
+    "date": "2026-08-10",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-009",
+    "number": 9,
+    "name": "Puzzel #9",
+    "operator": "+",
+    "q1_label": "Hoeveel piramides telt Egypte ongeveer?",
+    "q1_answer": 120,
+    "q2_label": "In welk jaar werd de eerste universiteit ter wereld gesticht volgens de traditionele telling?",
+    "q2_answer": 859,
+    "q3_label": "Hoeveel meter hoog is Angel Falls ongeveer?",
+    "q3_answer": 979,
+    "calculation": "120 + 859 = 979",
+    "categories": [
+      "Gebouwen en infrastructuur",
+      "Geschiedenis",
+      "Geografie"
+    ],
+    "difficulty": "hard",
+    "difficulty_score": 76.09,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Salto_angel.jpg/330px-Salto_angel.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Salto_angel.jpg",
+      "licentie": "CC BY-SA 3.0",
+      "maker": "Tomaszp",
+      "vraag": 3
+    },
+    "date": "2026-08-09",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-008",
+    "number": 8,
+    "name": "Puzzel #8",
+    "operator": "÷",
+    "q1_label": "Hoeveel sonnetten schreef Shakespeare?",
+    "q1_answer": 154,
+    "q2_label": "Hoeveel bulten heeft een kameel?",
+    "q2_answer": 2,
+    "q3_label": "Hoeveel centimeter hoog is de Mona Lisa?",
+    "q3_answer": 77,
+    "calculation": "154 ÷ 2 = 77",
+    "categories": [
+      "Boeken en literatuur",
+      "Dieren",
+      "Kunst en cultuur"
+    ],
+    "difficulty": "intermediate",
+    "difficulty_score": 63.6,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Shakespeare.jpg/330px-Shakespeare.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Shakespeare.jpg",
+      "licentie": "Public domain",
+      "maker": "Attributed to John Taylor",
+      "vraag": 1
+    },
+    "date": "2026-08-08",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-007",
+    "number": 7,
+    "name": "Puzzel #7",
+    "operator": "×",
+    "q1_label": "Hoeveel procent van de bekende plant- en diersoorten leeft in tropische regenwouden?",
+    "q1_answer": 50,
+    "q2_label": "Hoeveel spelers heeft een rugbyteam per ploeg op het veld (union)?",
+    "q2_answer": 15,
+    "q3_label": "Hoeveel centimeter meten de dunne en dikke darm samen, volledig uitgestrekt?",
+    "q3_answer": 750,
+    "calculation": "50 × 15 = 750",
+    "categories": [
+      "Milieu en duurzaamheid",
+      "Sport",
+      "Biologie & gezondheid"
+    ],
+    "difficulty": "intermediate",
+    "difficulty_score": 63.87,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/View_from_Bukit_Terisek.jpg/330px-View_from_Bukit_Terisek.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:View_from_Bukit_Terisek.jpg",
+      "licentie": "CC BY 2.0",
+      "maker": "Sze Ning from Malaysia",
+      "vraag": 1
+    },
+    "date": "2026-08-07",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-006",
+    "number": 6,
+    "name": "Puzzel #6",
+    "operator": "−",
+    "q1_label": "Hoeveel stippen (inclusief de 4 grote power pellets) moet Pac-Man opeten om een level uit te spelen?",
+    "q1_answer": 244,
+    "q2_label": "Hoeveel groepen heeft het moderne periodiek systeem?",
+    "q2_answer": 18,
+    "q3_label": "Hoeveel kilometer lang is het metronet van Mexico-Stad?",
+    "q3_answer": 226,
+    "calculation": "244 − 18 = 226",
+    "categories": [
+      "Spellen en speelgoed",
+      "Scheikunde",
+      "Gebouwen en infrastructuur"
+    ],
+    "difficulty": "intermediate",
+    "difficulty_score": 68.24,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/Prick%C3%A4tarpucken.svg/330px-Prick%C3%A4tarpucken.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Prick%C3%A4tarpucken.svg",
+      "licentie": "Public domain",
+      "maker": "User Solkoll (JPG) User Balthazar (SVG)",
+      "vraag": 1
+    },
+    "date": "2026-08-06",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-005",
+    "number": 5,
+    "name": "Puzzel #5",
+    "operator": "+",
+    "q1_label": "Hoeveel Muzen (dochters van Zeus) telt de Griekse mythologie?",
+    "q1_answer": 9,
+    "q2_label": "Hoeveel meter hoog is Taipei 101?",
+    "q2_answer": 508,
+    "q3_label": "Hoeveel centimeter hoog is Michelangelo’s David?",
+    "q3_answer": 517,
+    "calculation": "9 + 508 = 517",
+    "categories": [
+      "Filosofie, psychologie en religie",
+      "Gebouwen en infrastructuur",
+      "Kunst en cultuur"
+    ],
+    "difficulty": "intermediate",
+    "difficulty_score": 64.21,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/%27David%27_by_Michelangelo_FI_Acca_JBS_086.jpg/330px-%27David%27_by_Michelangelo_FI_Acca_JBS_086.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:%27David%27_by_Michelangelo_FI_Acca_JBS_086.jpg",
+      "licentie": "CC BY-SA 4.0",
+      "maker": "Jörg Bittner Unna",
+      "vraag": 3
+    },
+    "date": "2026-08-05",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-004",
+    "number": 4,
+    "name": "Puzzel #4",
+    "operator": "÷",
+    "q1_label": "Hoeveel kilometer per uur rijdt een hogesnelheidstrein zoals de TGV maximaal in reguliere dienst?",
+    "q1_answer": 320,
+    "q2_label": "Hoeveel chromosomen heeft een gewone ui Allium cepa in een lichaamscel?",
+    "q2_answer": 16,
+    "q3_label": "Hoeveel watt laadt een standaard iPhone snellader?",
+    "q3_answer": 20,
+    "calculation": "320 ÷ 16 = 20",
+    "categories": [
+      "Vervoer",
+      "Biologie & gezondheid",
+      "Technologie"
+    ],
+    "difficulty": "easy",
+    "difficulty_score": 60.59,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/SNCF_TGV_Duplex_2N2_4718_%288464339495%29.jpg/330px-SNCF_TGV_Duplex_2N2_4718_%288464339495%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:SNCF_TGV_Duplex_2N2_4718_(8464339495).jpg",
+      "licentie": "CC BY-SA 2.0",
+      "maker": "Nelso Silva",
+      "vraag": 1
+    },
+    "date": "2026-08-04",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-003",
+    "number": 3,
+    "name": "Puzzel #3",
+    "operator": "×",
+    "q1_label": "Hoeveel EU-landen voerden de euro in bij de start van de euro in 1999?",
+    "q1_answer": 11,
+    "q2_label": "Hoeveel damstenen krijgt iedere speler bij de start van een standaard damspel?",
+    "q2_answer": 20,
+    "q3_label": "Hoeveel kilogram weegt een volwassen mannelijke Bengaalse tijger?",
+    "q3_answer": 220,
+    "calculation": "11 × 20 = 220",
+    "categories": [
+      "Economie & geld",
+      "Spellen en speelgoed",
+      "Dieren"
+    ],
+    "difficulty": "easy",
+    "difficulty_score": 53.46,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Panthera_tigris_tigris_Tadoba_India_wild_tiger.jpg/330px-Panthera_tigris_tigris_Tadoba_India_wild_tiger.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Panthera_tigris_tigris_Tadoba_India_wild_tiger.jpg",
+      "licentie": "CC BY-SA 3.0",
+      "maker": "Grassjewel",
+      "vraag": 3
+    },
+    "date": "2026-08-03",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-002",
+    "number": 2,
+    "name": "Puzzel #2",
+    "operator": "−",
+    "q1_label": "Hoeveel artikelen bevat de Nederlandse Grondwet?",
+    "q1_answer": 142,
+    "q2_label": "Hoeveel procent van het lichaam was bedekt met tatoeages bij de meest getatoeëerde man?",
+    "q2_answer": 100,
+    "q3_label": "Hoeveel tanden heeft een volwassen hond?",
+    "q3_answer": 42,
+    "calculation": "142 − 100 = 42",
+    "categories": [
+      "Politiek en recht",
+      "Records en vergelijkingen",
+      "Dieren"
+    ],
+    "difficulty": "easy",
+    "difficulty_score": 57.93,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Huskiesatrest.jpg/330px-Huskiesatrest.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Huskiesatrest.jpg",
+      "licentie": "CC BY 2.0",
+      "maker": "M. Rehemtulla",
+      "vraag": 3
+    },
+    "date": "2026-08-02",
+    "source_library_id": null
+  },
+  {
+    "id": "daily-001",
+    "number": 1,
+    "name": "Puzzel #1",
+    "operator": "+",
+    "q1_label": "Hoeveel provincies heeft Indonesië (2024)?",
+    "q1_answer": 38,
+    "q2_label": "Wat is de lengte van het Panamakanaal van de Atlantische naar de Stille Oceaan in km?",
+    "q2_answer": 82,
+    "q3_label": "Hoeveel meter lang mag een internationaal voetbalveld maximaal zijn?",
+    "q3_answer": 120,
+    "calculation": "38 + 82 = 120",
+    "categories": [
+      "Politiek en recht",
+      "Gebouwen en infrastructuur",
+      "Sport"
+    ],
+    "difficulty": "easy",
+    "difficulty_score": 51.93,
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Flag_of_Indonesia.svg/330px-Flag_of_Indonesia.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Flag_of_Indonesia.svg",
+      "licentie": "Public domain",
+      "maker": "Jayakatwang",
+      "vraag": 1
+    },
+    "date": "2026-08-01",
+    "source_library_id": null
+  }
+]
