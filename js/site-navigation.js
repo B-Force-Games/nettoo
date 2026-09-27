@@ -18,7 +18,7 @@
       // De pijl gaat één niveau terug, niet door de browsergeschiedenis.
       const visible = id => Boolean(document.getElementById(id)?.getClientRects().length);
       function destination() {
-        if (visible('liveRoom') || visible('livePlay') || visible('liveReveal') || visible('liveFinished')) return { label: copy('Terug naar Live Rondes', 'Back to Live Rounds'), open: () => { window.NettoLive.leave(); openLiveRounds(); } };
+        if (visible('liveRoom') || visible('livePlay') || visible('liveFinished')) return { label: copy('Terug naar Live Rondes', 'Back to Live Rounds'), open: () => { window.NettoLive.leave(); openLiveRounds(); } };
         if (visible('libraryPuzzleView')) return { label: copy('Terug naar alle puzzels', 'Back to all puzzles'), open: () => openPuzzles() };
         if (visible('bkPlay') || visible('bkDone')) return { label: copy('Terug naar alle verbanden', 'Back to all connections'), open: () => renderBreinkrakersStart() };
         return { label: copy('Naar home', 'Go home'), open: () => goHome() };

@@ -49,16 +49,29 @@
 #liveQuestionList .puzzelfoto { position: relative; float: right; width: 132px; margin: 0 0 12px 16px; top: auto; right: auto; }
 #liveQuestionList .puzzelfoto img { height: 98px; }
 #liveSubmit { margin-top: 24px; width: 100%; }
-.live-actual { margin: 24px 0 16px; background: #ffdf48; color: #18183e; border-radius: 12px; padding: 16px; font: 700 clamp(17px,3vw,24px)/1.5 'Space Mono',monospace; text-align: center; overflow-wrap: anywhere; }
-.live-reveal-questions { font-size: 13px; line-height: 1.5; margin-bottom: 24px; }
-.live-reveal-questions p { margin: 8px 0; }
 .live-table-wrap { overflow-x: auto; }
 .live-table { width: 100%; border-collapse: collapse; font-size: 13px; }
 .live-table td, .live-table th { padding: 14px 10px; text-align: right; border-bottom: 1px solid var(--surface-border); font-variant-numeric: tabular-nums; }
 .live-table th:first-child { text-align: left; min-width: 110px; }
 .live-table thead { font-size: 11px; color: var(--ink-muted, #626880); }
 .live-winner { background: color-mix(in srgb, #ffdf48 20%, var(--surface)); }
-.live-next { text-align: center; font-size: 14px; margin: 24px 0 8px; }
+#livePlay { position: relative; isolation: isolate; }
+.live-round-outcome { position: absolute; z-index: 5; inset: 0; display: grid; place-items: center; padding: 24px; border-radius: inherit; text-align: center; backdrop-filter: blur(4px); }
+.live-round-outcome.is-win { background: rgba(22, 158, 109, .9); color: #fff; }
+.live-round-outcome.is-loss { background: rgba(185, 55, 72, .91); color: #fff; }
+.live-round-outcome.is-draw { background: rgba(22, 25, 64, .9); color: #fff; }
+.live-outcome-content { display: grid; justify-items: center; gap: 10px; max-width: 420px; }
+.live-outcome-icon { display: grid; place-items: center; width: 82px; height: 82px; border: 3px solid currentColor; border-radius: 50%; font: 700 54px/1 'Space Mono', monospace; }
+.live-outcome-content strong { font-size: clamp(26px, 4vw, 42px); line-height: 1.15; }
+.live-outcome-content > span:last-child { font-size: 16px; line-height: 1.4; }
+.live-finish-actions { display: flex; flex-wrap: wrap; align-items: stretch; gap: 12px; }
+.live-finish-actions .hero-cta, .live-finish-actions .btn-check { width: auto; flex: 1 1 220px; margin: 0; }
+.live-answer-archive { margin-top: 28px; border-top: 1px solid var(--surface-border); padding-top: 24px; }
+.live-answer-round { padding: 20px 0; border-bottom: 1px solid var(--surface-border); }
+.live-answer-round h2 { margin-bottom: 14px; }
+.live-answer-questions { list-style: none; padding: 0; margin: 0 0 14px; }
+.live-answer-questions li { display: flex; justify-content: space-between; gap: 20px; padding: 7px 0; font-size: 13px; line-height: 1.4; }
+.live-answer-questions b { flex: none; font-family: 'Space Mono', monospace; }
 @media(min-width: 601px) {
   #liveQuestionList .q-block:has(.puzzelfoto) { display: grid; grid-template-columns: minmax(0,1fr) 132px; grid-template-rows: 1fr auto auto auto 1fr; column-gap: 20px; min-height: 164px; }
   #liveQuestionList .q-block:has(.puzzelfoto)::after { content: none; }

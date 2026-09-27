@@ -132,7 +132,6 @@
     el('liveSetup').hidden = false;
     el('liveRoom').hidden = true;
     el('livePlay').hidden = true;
-    el('liveReveal').hidden = true;
     el('liveFinished').hidden = true;
     el('liveResume').hidden = !remembered();
     renderOpenGames();
@@ -177,7 +176,7 @@
     ['liveLobbyPlayers','liveRoundPlayers'].forEach(id => { if (el(id).innerHTML !== content) el(id).innerHTML=content; });
   }
 
-  function renderPuzzle() {
+  function renderPuzzle(focus = true) {
     const puzzle = state.puzzle;
     if (!puzzle) return;
     const list = el('liveQuestionList');
@@ -192,7 +191,7 @@
       if (i<2) el('liveAnswer'+(i+1)).focus(); else submit();
     }));
     window.NettoI18n?.translateTree(list);
-    el('liveAnswer0')?.focus({preventScroll:true});
+    if (focus) el('liveAnswer0')?.focus({preventScroll:true});
   }
 
   async function submit() {
@@ -208,15 +207,57 @@
     finally { sending=false; tick(); }
   }
 
-  function renderReveal() {
-    const puzzle = state.puzzle;
+  function renderOutcome() {
+    const overlay = el('liveRoundOutcome');
     const winner = state.players.find(player => player.id===state.winner);
-    el('liveRevealTitle').textContent = winner ? copy(`${winner.name} wint ronde ${state.round}`,`${winner.name} wins round ${state.round}`)
-      : copy('Geen winnaar deze ronde','No winner this round');
-    el('liveActual').textContent = `${format(puzzle.q1_answer)} ${puzzle.operator} ${format(puzzle.q2_answer)} = ${format(puzzle.q3_answer)}`;
-    el('liveRevealQuestions').innerHTML = [1,2,3].map(n => `<p><b>${n}.</b> ${esc(window.NettoI18n?.t(puzzle['q'+n+'_label']) || puzzle['q'+n+'_label'])}</p>`).join('');
-    const rows=[...state.players].sort((a,b) => (a.id===state.winner?-1:b.id===state.winner?1:(a.factor??Infinity)-(b.factor??Infinity)));
-    el('liveRevealRows').innerHTML = rows.map(player => `<tr class="${player.id===state.winner?'live-winner':''}"><th scope="row">${player.id===state.winner?'★ ':''}${esc(player.name)}${player.disqualified?`<small>${copy('Niet verbonden','Disconnected')}</small>`:''}</th>${[0,1,2].map(i=>`<td>${player.answers?format(player.answers[i]):'—'}</td>`).join('')}<td>${player.factor==null?'—':factor(player.factor)}</td><td>${player.points}</td></tr>`).join('');
+    const won = state.winner===currentUser?.id;
+    overlay.classList.toggle('is-win', won);
+    overlay.classList.toggle('is-loss', Boolean(winner)&&!won);
+    overlay.classList.toggle('is-draw', !winner);
+    el('liveOutcomeIcon').textContent = won ? '✓' : winner ? '×' : '—';
+    el('liveOutcomeTitle').textContent = won ? copy('Ronde gewonnen!', 'Round won!')
+      : winner ? copy('Ronde verloren', 'Round lost') : copy('Geen winnaar', 'No winner');
+    el('liveOutcomeDetail').textContent = winner && !won
+      ? copy(`${winner.name} zat het dichtst bij.`, `${winner.name} was closest.`)
+      : !winner ? copy('Geen geldige inzending deze ronde.', 'No valid submission this round.')
+      : copy('Jij zat het dichtst bij.', 'You were closest.');
+    overlay.hidden = false;
+  }
+
+  function renderAnswerArchive(rounds) {
+    const archive = el('liveAnswerArchive');
+    if (!rounds.length) {
+      archive.innerHTML = `<p class="live-muted">${copy('Er zijn geen ronde-antwoorden beschikbaar.', 'No round answers are available.')}</p>`;
+      return;
+    }
+    archive.innerHTML = rounds.map(round => {
+      const puzzle = round.puzzle;
+      const questions = [1,2,3].map(n => `<li><span>${esc(window.NettoI18n?.t(puzzle['q'+n+'_label']) || puzzle['q'+n+'_label'])}</span><b>${format(puzzle['q'+n+'_answer'])}</b></li>`).join('');
+      const players = (round.players || []).map(player => `<tr class="${player.id===round.winner?'live-winner':''}"><th scope="row">${player.id===round.winner?'★ ':''}${esc(player.name)}</th>${[0,1,2].map(i=>`<td>${player.answers?.[i]!=null?format(player.answers[i]):'—'}</td>`).join('')}<td>${player.factor==null?'—':factor(player.factor)}</td></tr>`).join('');
+      return `<article class="live-answer-round"><h2>${copy(`Ronde ${round.round}`, `Round ${round.round}`)}</h2><ul class="live-answer-questions">${questions}</ul><div class="live-table-wrap" role="region" tabindex="0" aria-label="${copy(`Antwoorden ronde ${round.round}`, `Answers for round ${round.round}`)}"><table class="live-table"><thead><tr><th scope="col">${copy('Speler','Player')}</th><th scope="col">${copy('Vraag 1','Question 1')}</th><th scope="col">${copy('Vraag 2','Question 2')}</th><th scope="col">${copy('Vraag 3','Question 3')}</th><th scope="col">${copy('Gem. factor','Avg. factor')}</th></tr></thead><tbody>${players}</tbody></table></div></article>`;
+    }).join('');
+  }
+
+  async function toggleAnswers() {
+    if (!state || state.phase!=='finished') return;
+    const archive = el('liveAnswerArchive');
+    const button = el('liveShowAnswers');
+    if (!archive.hidden) { archive.hidden=true; button.setAttribute('aria-expanded','false'); return; }
+    archive.hidden=false;
+    button.setAttribute('aria-expanded','true');
+    if (archive.dataset.loaded===state.code) return;
+    archive.innerHTML = `<p class="live-muted">${copy('Antwoorden laden…','Loading answers…')}</p>`;
+    const code = state.code;
+    let data, error;
+    try { ({data,error} = await supabaseClient.rpc('live_rounds_results',{p_code:code})); }
+    catch (requestError) { error=requestError; }
+    if (!state || state.code!==code || state.phase!=='finished') return;
+    if (error || !Array.isArray(data)) {
+      archive.innerHTML = `<p class="live-notice">${copy('Antwoorden zijn nu niet beschikbaar. Probeer het opnieuw.', 'Answers are unavailable right now. Please try again.')}</p>`;
+      return;
+    }
+    renderAnswerArchive(data);
+    archive.dataset.loaded=code;
   }
 
   function renderFinish() {
@@ -225,6 +266,10 @@
     el('liveFinishTitle').textContent = best===0 ? copy('Geen rondes gewonnen','No rounds won') : winners.length>1
       ? copy('Gedeelde overwinning','Joint winners') : copy(`${winners[0].name} wint!`,`${winners[0].name} wins!`);
     el('liveFinalPlayers').innerHTML = state.players.map(player=>`<li class="live-player ${best>0&&player.points===best?'live-winner':''}"><span>${esc(player.name)}</span><b>${player.points} ${player.points===1?copy('punt','point'):copy('punten','points')}</b></li>`).join('');
+    el('liveAnswerArchive').hidden=true;
+    el('liveAnswerArchive').innerHTML='';
+    delete el('liveAnswerArchive').dataset.loaded;
+    el('liveShowAnswers').setAttribute('aria-expanded','false');
     clearInterval(heartbeat); clearInterval(clock);
     heartbeat=clock=null;
   }
@@ -233,9 +278,9 @@
     if (!state) return;
     el('liveSetup').hidden=true;
     el('liveRoom').hidden=state.phase!=='lobby';
-    el('livePlay').hidden=state.phase!=='playing';
-    el('liveReveal').hidden=state.phase!=='reveal';
+    el('livePlay').hidden=!['playing','reveal'].includes(state.phase);
     el('liveFinished').hidden=state.phase!=='finished';
+    el('liveRoundOutcome').hidden=state.phase!=='reveal';
     el('liveRoomCode').textContent=state.code;
     el('liveRoomSummary').textContent=`${state.seconds}s · ${state.rounds} ${copy('rondes','rounds')} · ${state.players.length}/8 · ${state.visibility==='open'?copy('Open room','Open room'):copy('Privéroom','Private room')}`;
     el('liveStart').hidden=state.host!==currentUser?.id;
@@ -250,7 +295,7 @@
       rendered=key;
       el('liveScreen').scrollTop=0;
       if (state.phase==='playing'&&state.puzzle) renderPuzzle();
-      if (state.phase==='reveal') { renderReveal(); el('liveRevealTitle').focus({preventScroll:true}); }
+      if (state.phase==='reveal') { if (!el('liveQuestionList').children.length) renderPuzzle(false); renderOutcome(); }
       if (state.phase==='finished') { renderFinish(); el('liveFinishTitle').focus({preventScroll:true}); }
     }
     if (state.phase==='playing'&&state.mine) state.mine.forEach((value,i)=>{ if(el('liveAnswer'+i)) el('liveAnswer'+i).value=format(value); });
@@ -274,10 +319,7 @@
     const timer=preparing ? copy(`Start over ${seconds}…`,`Starting in ${seconds}…`) : `${Math.floor(seconds/60)}:${String(seconds%60).padStart(2,'0')}`;
     if (el('liveTimer').textContent!==timer) el('liveTimer').textContent=timer;
     el('liveTimer').classList.toggle('is-urgent',!preparing&&seconds<=10);
-    if (state.phase==='reveal') el('liveNextRound').textContent=seconds>0
-      ? (state.round===state.rounds ? copy(`Eindstand over ${seconds}s`,`Final standings in ${seconds}s`):copy(`Volgende ronde over ${seconds}s`,`Next round in ${seconds}s`))
-      : copy('Even synchroniseren…','Synchronising…');
-    const locked=preparing||seconds===0||sending||!!me()?.submitted||!!me()?.disqualified||stale;
+    const locked=state.phase!=='playing'||preparing||seconds===0||sending||!!me()?.submitted||!!me()?.disqualified||stale;
     el('liveSubmit').disabled=locked;
     el('liveQuestionList').querySelectorAll('input').forEach(input=>{ input.disabled=locked; });
     el('liveSubmit').textContent=me()?.submitted ? copy('Ingezonden ✓','Submitted ✓') : sending?copy('Versturen…','Submitting…'):copy('Antwoorden inleveren','Submit answers');
@@ -305,6 +347,7 @@
     el('liveStart').addEventListener('click',()=>{if(!pending) request('start');});
     el('liveResume').addEventListener('click',()=>join(remembered()));
     el('liveSubmit').addEventListener('click',submit);
+    el('liveShowAnswers').addEventListener('click',toggleAnswers);
     document.querySelectorAll('[data-live-leave]').forEach(button=>button.addEventListener('click',()=>leave()));
     el('liveRefresh').addEventListener('click',()=>{ensureRaceLobby();renderOpenGames();});
     el('liveCopy').addEventListener('click',async()=>{
