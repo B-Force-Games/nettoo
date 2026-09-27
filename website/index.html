@@ -40,9 +40,9 @@
 <script src="data/netto_race_pool.js?v=43"></script>
 <script src="data/netto_breinkrakers.js?v=30"></script>
 <script src="data/netto_translations_en.js?v=50"></script>
-<script src="js/i18n.js?v=70"></script>
+<script src="js/i18n.js?v=74"></script>
 <link rel="stylesheet" href="css/styles.css?v=62">
-<link rel="stylesheet" href="css/refinement.css?v=158">
+<link rel="stylesheet" href="css/refinement.css?v=164">
 <link rel="stylesheet" href="css/live-rounds.css?v=1">
 <link rel="stylesheet" href="css/stats-page.css?v=5">
 
@@ -170,16 +170,16 @@
         </section>
 
         <aside class="home-quick-actions" aria-label="Snel verder">
-          <button class="home-quick-card home-quick-continue" id="btnContinuePuzzle" type="button" onclick="startNextPuzzle()">
-            <span class="home-section-label">Ga verder</span>
-            <strong>Speel puzzel 1</strong>
+          <button class="home-quick-card home-quick-continue" data-home-mode="puzzles" id="btnContinuePuzzle" type="button" onclick="startNextPuzzle()">
+            <span class="home-section-label">Spelen</span>
+            <strong>Puzzels</strong>
             <span class="home-quick-detail">Ga verder waar je gebleven was</span>
             <span class="home-quick-arrow" aria-hidden="true">↗</span>
           </button>
-          <button class="home-quick-card home-quick-library" type="button" onclick="openPuzzleRace(); switchRaceMode('online')">
-            <span class="home-section-label">Puzzel Race</span>
-            <strong>Speel online tegen anderen</strong>
-            <span class="home-quick-detail">Daag vrienden uit of doe mee met een open game.</span>
+          <button class="home-quick-card home-quick-library" data-home-mode="live" id="btnHomeMultiplayer" type="button" onclick="openLiveRounds()">
+            <span class="home-section-label">Multiplayer</span>
+            <strong>Live Rondes</strong>
+            <span class="home-quick-detail">Dezelfde puzzel. Dezelfde klok. Wie schat het best?</span>
             <span class="home-quick-arrow" aria-hidden="true">↗</span>
           </button>
         </aside>
@@ -194,24 +194,24 @@
         <button class="home-how-link" type="button" onclick="openHowItWorks()">Hoe werkt het? <span aria-hidden="true">→</span></button>
       </div>
       <div class="home-modes-grid">
-        <button class="home-mode-card" onclick="openPuzzles()">
+        <button class="home-mode-card" data-home-mode="puzzles" onclick="startNextPuzzle()">
           <span class="home-mode-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17.5h7M17.5 14v7"/></svg></span>
-          <span class="home-mode-body"><b>Puzzels</b><small>Kies een moeilijkheid en speel alle puzzels</small></span>
+          <span class="home-mode-body"><b>Puzzels</b><small>Ga verder waar je gebleven was</small></span>
           <span class="home-mode-arrow">→</span>
         </button>
-        <button class="home-mode-card" onclick="openPuzzleRace()">
+        <button class="home-mode-card" data-home-mode="race" onclick="openPuzzleRace()">
           <span class="home-mode-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6M12 5V2"/></svg></span>
           <span class="home-mode-body"><b>Puzzel Race</b><small>Solo, online of met vrienden</small></span>
           <span class="home-mode-arrow">→</span>
         </button>
-        <button class="home-mode-card" onclick="openConnection()">
+        <button class="home-mode-card" data-home-mode="connection" onclick="startNextConnection()">
           <span class="home-mode-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14l4-4M8 16l-1 1a3.5 3.5 0 0 1-5-5l4-4a3.5 3.5 0 0 1 5 0M16 8l1-1a3.5 3.5 0 0 1 5 5l-4 4a3.5 3.5 0 0 1-5 0"/></svg></span>
-          <span class="home-mode-body"><b>Find the Connection</b><small>Three questions. One hidden equation.</small></span>
+          <span class="home-mode-body"><b>Find the Connection</b><small>Ga verder waar je gebleven was</small></span>
           <span class="home-mode-arrow">→</span>
         </button>
-        <button class="home-mode-card" onclick="openDailyPuzzles()">
-          <span class="home-mode-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg></span>
-          <span class="home-mode-body"><b>Daily Archive</b><small>Alle dagpuzzels sinds dag één</small></span>
+        <button class="home-mode-card" data-home-mode="live" onclick="openLiveRounds()">
+          <span class="home-mode-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="7" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M17 4a3 3 0 0 1 0 6M21 21v-3a6 6 0 0 0-4-5.65"/></svg></span>
+          <span class="home-mode-body"><b>Live Rondes</b><small>Dezelfde puzzel. Dezelfde klok. Wie schat het best?</small></span>
           <span class="home-mode-arrow">→</span>
         </button>
       </div>
@@ -1114,9 +1114,9 @@
 <script src="js/photo-credits.js?v=4"></script>
 <script src="js/daily-photos.js?v=2"></script>
 <script src="js/question-context.js?v=1"></script>
-<script src="js/core.js?v=124"></script>
+<script src="js/core.js?v=126"></script>
 <script src="js/puzzle-modes.js?v=61"></script>
-<script src="js/find-connection.js?v=8"></script>
+<script src="js/find-connection.js?v=9"></script>
 <script src="js/race.js?v=64"></script>
 <script src="js/live-rounds.js?v=1"></script>
 <script src="js/submissions.js?v=41"></script>

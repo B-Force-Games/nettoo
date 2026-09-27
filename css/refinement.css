@@ -1150,8 +1150,12 @@ body:has(#screen-puzzle.active, #libraryScreen.active, #breinkrakersScreen.activ
   pointer-events: none;
 }
 
-.home-quick-continue { background: linear-gradient(145deg, #FFE77B, #FFD83F); }
-.home-quick-library { background: linear-gradient(145deg, #92E7D2, #69D8BF); }
+/* Vaste moduskleuren: elke combinatie van solo en multiplayer past bij elkaar. */
+[data-home-mode="puzzles"] { --home-mode-light: #FFEDB5; --home-mode-color: #F5D779; --home-mode-accent: #926B1D; }
+[data-home-mode="connection"] { --home-mode-light: #F9DFE7; --home-mode-color: #EBB9CD; --home-mode-accent: #995572; }
+[data-home-mode="live"] { --home-mode-light: #D2EEE2; --home-mode-color: #A7DDC6; --home-mode-accent: #337C63; }
+[data-home-mode="race"] { --home-mode-light: #D1EAFE; --home-mode-color: #A8D4F5; --home-mode-accent: #326B9D; }
+.home-quick-card[data-home-mode] { background: linear-gradient(145deg, var(--home-mode-light), var(--home-mode-color)); }
 
 .home-modes { margin-top: 46px; }
 .home-modes-grid { gap: 14px; }
@@ -1163,9 +1167,7 @@ body:has(#screen-puzzle.active, #libraryScreen.active, #breinkrakersScreen.activ
   --mode-accent: #4C55CB;
 }
 
-.home-mode-card:nth-child(2) { --mode-accent: #D58B13; }
-.home-mode-card:nth-child(3) { --mode-accent: #8D4FC4; }
-.home-mode-card:nth-child(4) { --mode-accent: #258F7B; }
+.home-mode-card[data-home-mode] { --mode-accent: var(--home-mode-accent); }
 
 .home-mode-card::before {
   content: '';

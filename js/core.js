@@ -3274,15 +3274,33 @@
   }
 
   function updateContinuePuzzleButton() {
-    const button = document.getElementById('btnContinuePuzzle');
-    if (!button) return;
-    const next = findNextIncompleteLibraryPuzzle();
-    const title = button.querySelector('strong');
-    if (title) {
-      title.textContent = next ? `Speel puzzel ${next.number}` : 'Alle puzzels voltooid ✓';
-    } else {
-      button.textContent = next ? `Speel puzzel ${next.number} →` : 'Alle puzzels voltooid ✓';
-    }
+    // Kies één keer per paginabezoek: dagelijkse updates en opgeslagen scores
+    // mogen de kaarten niet onder de muis van de speler laten wisselen.
+    const keuze = updateContinuePuzzleButton.keuze ||= [Math.random() < 0.5, Math.random() < 0.5];
+    const kaarten = [
+      {
+        id: 'btnContinuePuzzle',
+        modus: keuze[0] ? 'puzzles' : 'connection',
+        titel: keuze[0] ? 'Puzzels' : 'Find the Connection',
+        uitleg: 'Ga verder waar je gebleven was',
+        actie: keuze[0] ? () => startNextPuzzle() : () => startNextConnection()
+      },
+      {
+        id: 'btnHomeMultiplayer',
+        modus: keuze[1] ? 'live' : 'race',
+        titel: keuze[1] ? 'Live Rondes' : 'Puzzel Race',
+        uitleg: keuze[1] ? 'Dezelfde puzzel. Dezelfde klok. Wie schat het best?' : 'Race tegen vrienden of doe mee met een open game.',
+        actie: keuze[1] ? () => openLiveRounds() : () => { openPuzzleRace(); switchRaceMode('online'); }
+      }
+    ];
+    kaarten.forEach(kaart => {
+      const button = document.getElementById(kaart.id);
+      if (!button) return;
+      button.dataset.homeMode = kaart.modus;
+      button.querySelector('strong').textContent = window.NettoI18n?.t(kaart.titel) || kaart.titel;
+      button.querySelector('.home-quick-detail').textContent = window.NettoI18n?.t(kaart.uitleg) || kaart.uitleg;
+      button.onclick = kaart.actie;
+    });
   }
 
   function startNextPuzzle() {

@@ -58,6 +58,14 @@ function openConnection() {
   renderConnectionStart();
 }
 
+function startNextConnection() {
+  openConnection();
+  const gespeeld = new Set(connectionProgress().results.map(result => result.id));
+  const volgende = connectionPool.findIndex(puzzle => !gespeeld.has(puzzle.id));
+  // Als alles gespeeld is, blijft het overzicht beschikbaar om opnieuw te spelen.
+  if (volgende >= 0) startConnection(volgende);
+}
+
 function renderConnectionStart() {
   connectionPool = libraryPuzzles.filter(cleanConnection);
   connectionState = null;
