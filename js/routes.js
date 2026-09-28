@@ -83,7 +83,7 @@
     document.getElementById('routeStatusMessage').textContent = loading
       ? copy('We controleren of de puzzel al is vrijgegeven.', 'Checking whether this puzzle has been released.')
       : future
-        ? copy('Een nieuwe Daily verschijnt om 12:00 uur Londense tijd. Kom dan terug.', 'A new Daily appears at 12:00 London time. Come back then.')
+        ? copy('Een nieuwe Daily verschijnt om middernacht Londense tijd. Kom dan terug.', 'A new Daily appears at midnight London time. Come back then.')
         : copy('Voor deze datum staat nog geen puzzel klaar. Probeer het later opnieuw.', 'There is no puzzle ready for this date yet. Please try again later.');
     document.getElementById('routeStatusArchive').textContent = copy('Daily-archief', 'Daily Archive');
     document.getElementById('routeStatusHome').textContent = copy('Naar home', 'Go home');

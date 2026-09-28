@@ -20,11 +20,10 @@
   let shown = [];
   let summary = null;
 
-  // De daily wisselt om 12:00 in Londen, ook tijdens de zomertijd.
+  // De daily wisselt om middernacht in Londen, ook tijdens de zomertijd.
   function dailyDate(now = new Date()) {
-    const parts = Object.fromEntries(new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', hourCycle: 'h23' }).formatToParts(now).map(p => [p.type, p.value]));
-    const day = parts.year + '-' + parts.month + '-' + parts.day;
-    return Number(parts.hour) < 12 ? shift(day, -1) : day;
+    const parts = Object.fromEntries(new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(now).map(p => [p.type, p.value]));
+    return parts.year + '-' + parts.month + '-' + parts.day;
   }
   function calculate(a, op, b) {
     if (op === '+') return a + b;

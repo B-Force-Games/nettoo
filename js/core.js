@@ -173,26 +173,21 @@
 
   // Datum & Actuele Dagpuzzels (12 Geverifieerde, niet-overlappende puzzels!)
   // ===== Welke dag is het voor Netto? =====
-  // Een nieuwe daily komt vrij om 12:00 Londense tijd, niet om middernacht.
-  // Twaalf uur terugrekenen vanaf de Londense klok geeft precies dat
-  // omslagpunt, en klopt vanzelf rond zomer- en wintertijd.
+  // Een nieuwe daily komt vrij om middernacht in Londen, ook bij zomer- en wintertijd.
   // De RLS-policy op de puzzles-tabel rekent exact hetzelfde; wijkt dit af, dan
   // vraagt de client een datum op die de database nog verbergt.
   function nettoDagSleutel(moment = new Date()) {
     const delen = new Intl.DateTimeFormat('en-GB', {
-      timeZone: 'Europe/London', hourCycle: 'h23',
-      year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit',
+      timeZone: 'Europe/London',
+      year: 'numeric', month: '2-digit', day: '2-digit',
     }).formatToParts(moment).reduce((acc, deel) => {
       acc[deel.type] = deel.value;
       return acc;
     }, {});
-    const dag = new Date(Date.UTC(Number(delen.year), Number(delen.month) - 1, Number(delen.day)));
-    // Voor 12:00 Londense tijd loopt de daily van gisteren nog.
-    if (Number(delen.hour) < 12) dag.setUTCDate(dag.getUTCDate() - 1);
-    return dag.toISOString().slice(0, 10);
+    return `${delen.year}-${delen.month}-${delen.day}`;
   }
 
-  // Geen const: bij de vrijgave om 12:00 Londense tijd schuift dit door zonder
+  // Geen const: bij de vrijgave om middernacht in Londen schuift dit door zonder
   // dat de speler de pagina hoeft te verversen. Zie bewaakDagwissel().
   let TODAY_STR = nettoDagSleutel();
   
@@ -436,17 +431,18 @@
   let dailySyncAfgerond = false;
 
   // ===== Vrijgave oppikken zonder verversen =====
-  // Wie de pagina om 11:55 opent en om 12:05 nog openheeft, hoort de nieuwe
-  // daily te krijgen. Elke minuut kijken is simpeler dan uitrekenen hoeveel
-  // milliseconden het nog duurt, en het herstelt zichzelf nadat een laptop uit
-  // slaapstand komt — dan is een timer allang verlopen.
+  // Plan de wissel op middernacht; controleer opnieuw na slaapstand of tabwissel.
   function bewaakDagwissel() {
+    let dagTimer;
     const opnieuwControleren = () => {
+      clearTimeout(dagTimer);
+      dagTimer = setTimeout(opnieuwControleren, Math.max(1, londonMidnightTarget().getTime() - Date.now()));
       const nieuweSleutel = nettoDagSleutel();
       if (nieuweSleutel === TODAY_STR) return;
       TODAY_STR = nieuweSleutel;
       dailySyncGedaan = false;
       dailySyncAfgerond = false;
+      renderHomeDailyPreview();
       window.NettoRoutes?.dayChanged();
       if (supabaseClient) syncDailiesFromSupabase();
       else {
@@ -455,6 +451,7 @@
         window.NettoRoutes?.dailyReady();
       }
     };
+    opnieuwControleren();
     setInterval(opnieuwControleren, 60000);
     // Een achtergrondtab krijgt getemperde timers; bij terugkeer meteen kijken.
     document.addEventListener('visibilitychange', () => {
@@ -533,7 +530,7 @@
   let currentLbTab = 'today';
   let leaderboardSelectedDate = TODAY_STR;
   let leaderboardRequestId = 0;
-  let streakCalendarDate = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
+  let streakCalendarDate = new Date(TODAY_STR.slice(0, 7) + '-01T12:00:00');
   // De Daily Archive gebruikt dezelfde kaart als de puzzel, maar wisselt na
   // indienen naar een aparte resultatenstaat. Zo blijven vragen en review
   // overzichtelijk en kunnen spelers met de pijlen tussen beide states gaan.
@@ -1027,22 +1024,18 @@
     }).join('');
   }
 
-  function localMidnightTarget() {
-    const now = new Date();
-    return new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-  }
-
   function renderStatsCountdown() {
     const element = document.getElementById('statsCountdown');
     if (!element) return;
     element.hidden = statsMode !== 'daily';
     if (element.hidden) return;
-    const nextDay = localDateKey(localMidnightTarget());
+    const target = londonMidnightTarget();
+    const nextDay = nettoDagSleutel(target);
     if (!DAILY_PUZZLES.some(puzzle => puzzle.date === nextDay)) {
       element.textContent = statsCopy('Meer spelen? Bekijk het daily-archief.', 'Want to play more? Explore the daily archive.');
       return;
     }
-    const remaining = Math.max(0, localMidnightTarget().getTime() - Date.now());
+    const remaining = Math.max(0, target.getTime() - Date.now());
     const hours = Math.floor(remaining / 3600000);
     const minutes = Math.floor((remaining % 3600000) / 60000);
     const seconds = Math.floor((remaining % 60000) / 1000);
@@ -1229,8 +1222,8 @@
     if (!grid || !monthLabel) return;
     const year = streakCalendarDate.getFullYear();
     const month = streakCalendarDate.getMonth();
-    const today = new Date();
-    const todayKey = localDateKey(today);
+    const today = new Date(TODAY_STR + 'T12:00:00');
+    const todayKey = TODAY_STR;
     const playedDates = getPlayedDailyDates();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const startOffset = (new Date(year, month, 1).getDay() + 6) % 7;
@@ -2442,7 +2435,7 @@
 
     document.getElementById('results').classList.add('show');
     showDailyResults();
-    if (activePuzzleIndex === 0) startDailyCountdown();
+    if (PUZZLE_DATA?.date === TODAY_STR) startDailyCountdown();
     else { const countdown = document.getElementById('dailyCountdown'); if (countdown) countdown.remove(); if (countdownTimer) clearInterval(countdownTimer); }
     renderDailyArchive();
   }
@@ -3198,8 +3191,7 @@
     dailyReviewView = 'questions';
   }
 
-  function londonMidnightTarget() {
-    const now = new Date();
+  function londonMidnightTarget(now = new Date()) {
     const parts = new Intl.DateTimeFormat('en-GB', { timeZone:'Europe/London', year:'numeric', month:'2-digit', day:'2-digit' }).formatToParts(now);
     const date = Object.fromEntries(parts.filter(p => p.type !== 'literal').map(p => [p.type, p.value]));
     const tomorrow = new Date(Date.UTC(Number(date.year), Number(date.month) - 1, Number(date.day) + 1, 0, 0, 0));
@@ -3210,7 +3202,7 @@
   }
 
   function startDailyCountdown() {
-    if (activePuzzleIndex !== 0) return;
+    if (PUZZLE_DATA?.date !== TODAY_STR) return;
     const existing = document.getElementById('dailyCountdown');
     if (existing) existing.remove();
     if (countdownTimer) clearInterval(countdownTimer);
