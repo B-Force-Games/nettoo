@@ -30,8 +30,8 @@
     auth:{onAuthStateChange(){return {data:{subscription:{unsubscribe(){}}}};},async getSession(){return {data:{session:{user}}};}},
     from(){return query;},
     async rpc(name,params){
-      if(name!=='live_rounds')return empty;
-      return (await fetch('/__test/rpc',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({player,params})})).json();
+      if(!['live_rounds','live_rounds_results'].includes(name))return empty;
+      return (await fetch('/__test/rpc',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({player,params,name})})).json();
     },channel,async removeChannel(value){value.close();}
   };
   window.supabase={createClient:()=>client};

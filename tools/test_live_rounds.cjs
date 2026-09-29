@@ -16,8 +16,8 @@ async function rpc(n,action,code=null,options={}) {
 }
 async function fails(fn,code) { await assert.rejects(fn,error=>String(error.message).includes(code)); }
 async function test(name,fn) { await fn(); passed++; console.log('PASS '+name); }
-async function start(rounds=2,players=2) {
-  const room=await rpc(1,'create',null,{seconds:60,rounds,visibility:'closed'});
+async function start(rounds=2,players=2,options={showAnswers:true}) {
+  const room=await rpc(1,'create',null,{seconds:60,rounds,visibility:'closed',...options});
   for(let n=2;n<=players;n++) await rpc(n,'join',room.code);
   await rpc(1,'start',room.code);
   await db.query("update netto_live.rooms set starts_at=clock_timestamp()-interval '1 second',puzzle=$2::jsonb where code=$1",[room.code,JSON.stringify(puzzle)]);
@@ -32,6 +32,9 @@ async function main() {
     grant usage on schema auth to authenticated;`);
   const migration=fs.readFileSync(path.join(root,'supabase/live_rounds.sql'),'utf8');
   await test('Migration can run twice',async()=>{await db.exec(migration);await db.exec(migration);});
+  await db.exec(fs.readFileSync(path.join(root,'supabase/live_rounds_sneller_en_antwoorden.sql'),'utf8'));
+  const optionsMigration=fs.readFileSync(path.join(root,'supabase/live_rounds_lobby_options.sql'),'utf8');
+  await test('Lobby options migration can run twice',async()=>{await db.exec(optionsMigration);await db.exec(optionsMigration);});
   await test('Canonical race puzzles imported unchanged',async()=>{
     await db.exec(fs.readFileSync(path.join(root,'supabase/live_rounds_puzzles.sql'),'utf8'));
     assert.equal((await db.query('select count(*)::int as count from netto_live.puzzles')).rows[0].count,274);
@@ -127,6 +130,42 @@ async function main() {
       await assert.rejects(()=>db.query('select * from netto_live.submissions'),/permission denied/);
       await assert.rejects(()=>db.query("select netto_live.advance('ABC234',clock_timestamp())"),/permission denied/);
     } finally { await db.exec('reset role'); }
+  });
+  await test('Only the host can change shared rules before starting',async()=>{
+    assert.equal((await rpc(1,'available')).lobbyOptions,true);
+    const room=await rpc(1,'create',null,{seconds:30,rounds:2});
+    assert.equal(room.requireEquation,true);assert.equal(room.showAnswers,false);
+    await rpc(2,'join',room.code);
+    await fails(()=>rpc(2,'settings',room.code,{requireEquation:false,showAnswers:true}),'HOST_ONLY');
+    await fails(()=>rpc(1,'settings',room.code,{requireEquation:'false',showAnswers:true}),'INVALID_SETTINGS');
+    await rpc(1,'settings',room.code,{requireEquation:false,showAnswers:true});
+    const guest=await rpc(2,'state',room.code);
+    assert.equal(guest.requireEquation,false);assert.equal(guest.showAnswers,true);
+    await rpc(1,'start',room.code);
+    await fails(()=>rpc(1,'settings',room.code,{requireEquation:true,showAnswers:false}),'MATCH_STARTED');
+    await db.query('delete from netto_live.rooms where code=$1',[room.code]);
+  });
+  await test('All four rule combinations enforce equation, privacy, reveal time and archive access',async()=>{
+    for(const requireEquation of [true,false]) for(const showAnswers of [true,false]) {
+      const code=await start(1,2,{requireEquation,showAnswers});
+      await fails(()=>rpc(1,'submit',code,{round:1,answers:[1.5,2,4]}),'INVALID_ANSWERS');
+      if(requireEquation) await fails(()=>rpc(1,'submit',code,{round:1,answers:[10,20,31]}),'EQUATION_REQUIRED');
+      await rpc(1,'submit',code,{round:1,answers:requireEquation?[10,20,30]:[10,20,31]});
+      const hidden=await rpc(2,'state',code);
+      assert.ok(hidden.players.every(p=>p.answers===null&&p.factor===null));
+      const reveal=await rpc(2,'submit',code,{round:1,answers:[20,40,60]});
+      assert.equal(reveal.phase,'reveal');assert.equal(reveal.winner,user(1));
+      assert.equal('q1_answer' in reveal.puzzle,showAnswers);
+      assert.equal(reveal.players[0].answers!==null,showAnswers);
+      assert.equal(reveal.players[0].factor!==null,showAnswers);
+      assert.equal(Math.round((Date.parse(reveal.deadline)-Date.parse(reveal.serverTime))/1000),showAnswers?12:4);
+      await assert.rejects(()=>db.query('select public.live_rounds_results($1)',[code]),/MATCH_NOT_FINISHED/);
+      await finish(code);
+      const archive=(await db.query('select public.live_rounds_results($1) as rounds',[code])).rows[0].rounds;
+      assert.equal(archive.length,1);assert.equal(archive[0].puzzle.q1_answer,10);
+      assert.equal(archive[0].players[0].answers[2],requireEquation?30:31);
+      await db.query('delete from netto_live.rooms where code=$1',[code]);
+    }
   });
   console.log(`\n${passed} Live Rondes-databasetests geslaagd.`);
   await db.close();
