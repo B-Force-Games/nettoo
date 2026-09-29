@@ -30,7 +30,7 @@
       MATCH_STARTED: ['De wedstrijd is al begonnen.','This match has already started.'],
       NOT_A_MEMBER: ['Je zit niet meer in deze room.','You are no longer in this room.'],
       HOST_ONLY: ['Alleen de host kan de room beheren.','Only the host can manage this room.'],
-      SETTINGS_UNAVAILABLE: ['De nieuwe roominstellingen zijn nog niet beschikbaar. Probeer het na de update opnieuw.','The new room settings are not available yet. Please try again after the update.'],
+      SETTINGS_UNAVAILABLE: ['Deze server gebruikt nog de standaardregels: een kloppende som, zonder antwoorden tussen rondes. Klik opnieuw op Room maken om daarmee te spelen. De extra opties hebben een database-update nodig.','This server still uses standard rules: a valid equation, without between-round answers. Click Create room again to play with those rules. Custom rules need a database update.'],
       NEED_PLAYERS: ['Wacht op minstens één andere speler.','Wait for at least one other player.'],
       ROUND_CLOSED: ['Deze ronde is nog niet gestart of al afgelopen.','This round has not started or has already ended.'],
       DISCONNECTED_ROUND: ['Verbinding verbroken: je doet vanaf de volgende ronde weer mee.','Connection lost: you can play again next round.'],
@@ -126,7 +126,7 @@
       && /^[A-Z2-9]{6}$/.test(entry.roomCode) && entry.client_id!==RACE_CLIENT_ID && entry.players<8)
       .map(entry => [entry.roomCode,entry])).values()];
     list.innerHTML = games.length ? games.map(game => `<button type="button" class="race-open-game" data-code="${esc(game.roomCode)}"><span>${esc(game.name)}<small>${esc(game.seconds)}s · ${esc(game.rounds)} ${roundWord(game.rounds)} · ${esc(game.players)}/8</small><small>${game.requireEquation!==false?copy('Som verplicht','Equation required'):copy('Vrije antwoorden','Free answers')} · ${game.showAnswers?copy('Met onthulling','With reveals'):copy('Snelle rondes','Quick rounds')}</small></span><b>${copy('Meedoen','Join')} →</b></button>`).join('')
-      : `<p class="live-muted">${raceLobbyFout ? copy('Lobbyverbinding verbroken. Probeer opnieuw.','Lobby connection lost. Please retry.') : copy('Nog geen open rooms. Maak de eerste.','No open rooms yet. Create the first one.')}</p>`;
+      : `<div class="live-open-empty"><span class="live-open-empty-icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="15" cy="13" r="5"/><path d="M5 31v-3a10 10 0 0 1 20 0v3M27 9a5 5 0 0 1 0 10M30 23a9 9 0 0 1 5 8"/></svg></span><h3>${raceLobbyFout?copy('Even geen verbinding','Connection interrupted'):copy('De eerste room is aan jou','Start something fun')}</h3><p>${raceLobbyFout?copy('Vernieuw om opnieuw naar open rooms te zoeken.','Refresh to look for open rooms again.'):copy('Er zijn nu geen open rooms. Maak er een aan — andere spelers kunnen hier aansluiten.','No open rooms right now. Create one — other players can join you here.')}</p></div>`;
     list.querySelectorAll('[data-code]').forEach(button => button.addEventListener('click',() => join(button.dataset.code)));
   }
 
@@ -160,14 +160,26 @@
     try {
       const {data,error}=await supabaseClient.rpc('live_rounds',{p_action:'available',p_code:null,p_options:{}});
       if(error) throw error;
-      if(!data?.lobbyOptions) throw Error('SETTINGS_UNAVAILABLE');
+      if(!data?.lobbyOptions) {
+        // Oudere servers kunnen prima rooms maken, maar negeren deze nieuwe opties.
+        // Alleen hun werkelijke standaardregels mogen daarom worden verstuurd.
+        const customRules=!options.requireEquation||options.showAnswers;
+        el('liveRequireEquation').checked=true;
+        el('liveShowRoundAnswers').checked=false;
+        el('liveRequireEquation').disabled=el('liveShowRoundAnswers').disabled=true;
+        if(customRules) throw Error('SETTINGS_UNAVAILABLE');
+        delete options.requireEquation;
+        delete options.showAnswers;
+      } else {
+        el('liveRequireEquation').disabled=el('liveShowRoundAnswers').disabled=false;
+      }
       await request('create', options, null);
     } catch(error) { showError(error); }
     finally { button.disabled=false; }
   }
 
   async function updateSettings() {
-    if(!state || state.phase!=='lobby' || state.host!==currentUser?.id || pending) { if(state) render(); return; }
+    if(!state || typeof state.requireEquation!=='boolean' || state.phase!=='lobby' || state.host!==currentUser?.id || pending) { if(state) render(); return; }
     el('liveRoomRequireEquation').disabled=el('liveRoomShowAnswers').disabled=true;
     await request('settings',{requireEquation:el('liveRoomRequireEquation').checked,showAnswers:el('liveRoomShowAnswers').checked});
     if(state) render();
@@ -335,7 +347,10 @@
     el('liveStartHint').textContent=state.players.length<2?copy('Nog één speler nodig om te beginnen.','One more player needed to start.'):copy('Iedereen speelt dezelfde puzzel.','Everyone plays the same puzzle.');
     el('liveRoomRequireEquation').checked=state.requireEquation!==false;
     el('liveRoomShowAnswers').checked=state.showAnswers===true;
-    el('liveRoomRequireEquation').disabled=el('liveRoomShowAnswers').disabled=state.host!==currentUser?.id||state.phase!=='lobby';
+    const customRulesSupported=typeof state.requireEquation==='boolean'&&typeof state.showAnswers==='boolean';
+    el('liveRoomRequireEquation').disabled=el('liveRoomShowAnswers').disabled=!customRulesSupported||state.host!==currentUser?.id||state.phase!=='lobby';
+    el('liveRoomRulesNote').textContent=customRulesSupported?copy('De host kiest de regels voor iedereen.','The host chooses the rules for everyone.')
+      :copy('Standaardregels actief. Extra opties komen beschikbaar na de database-update.','Standard rules active. Custom rules become available after the database update.');
     el('liveStart').hidden=state.host!==currentUser?.id;
     el('liveStart').disabled=state.players.length<2;
     el('liveWaitingHost').hidden=state.host===currentUser?.id;
@@ -404,12 +419,6 @@
   document.addEventListener('DOMContentLoaded',()=>{
     el('liveCreateForm').addEventListener('submit',create);
     ['liveRoomRequireEquation','liveRoomShowAnswers'].forEach(id=>el(id).addEventListener('change',updateSettings));
-    function syncPresets() {
-      document.querySelectorAll('[data-live-field]').forEach(button=>button.setAttribute('aria-pressed',String(el(button.dataset.liveField).value===button.dataset.value)));
-    }
-    document.querySelectorAll('[data-live-field]').forEach(button=>button.addEventListener('click',()=>{el(button.dataset.liveField).value=button.dataset.value;syncPresets();}));
-    ['liveSeconds','liveRounds'].forEach(id=>el(id).addEventListener('input',syncPresets));
-    syncPresets();
     el('liveJoinForm').addEventListener('submit',event=>{event.preventDefault();join(el('liveJoinCode').value);});
     el('liveStart').addEventListener('click',()=>{if(!pending) request('start');});
     el('liveResume').addEventListener('click',()=>join(remembered()));

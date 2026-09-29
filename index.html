@@ -40,10 +40,10 @@
 <script src="data/netto_race_pool.js?v=43"></script>
 <script src="data/netto_breinkrakers.js?v=30"></script>
 <script src="data/netto_translations_en.js?v=50"></script>
-<script src="js/i18n.js?v=79"></script>
+<script src="js/i18n.js?v=80"></script>
 <link rel="stylesheet" href="css/styles.css?v=62">
 <link rel="stylesheet" href="css/refinement.css?v=166">
-<link rel="stylesheet" href="css/live-rounds.css?v=3">
+<link rel="stylesheet" href="css/live-rounds.css?v=5">
 <link rel="stylesheet" href="css/stats-page.css?v=5">
 
 </head>
@@ -463,11 +463,23 @@
       <section id="liveSetup" class="live-card">
         <div class="live-setup-heading"><div><h1>Live Rondes</h1><p class="live-intro">Dezelfde puzzel. Dezelfde klok. Wie zit er het dichtst bij?</p></div><span class="live-player-count">2–8 spelers</span></div>
         <div class="live-setup-grid">
+          <aside class="live-join-panel">
+            <div class="live-section-heading"><h2>Open rooms</h2><button id="liveRefresh" type="button" class="live-text-button">Vernieuwen</button></div>
+            <p class="live-muted">Kies een room en speel mee.</p>
+            <div id="liveOpenGames" aria-live="polite"></div>
+            <button id="liveResume" type="button" class="live-text-button" hidden>Terug naar je room</button>
+            <details class="live-private-join"><summary>Meedoen met een roomcode</summary>
+              <form id="liveJoinForm">
+                <label for="liveJoinCode">Roomcode<input id="liveJoinCode" type="text" maxlength="6" minlength="6" pattern="[A-Za-z2-9]{6}" placeholder="ABC234" autocomplete="off" autocapitalize="characters" spellcheck="false" required></label>
+                <button type="submit" class="btn-check">Meedoen →</button>
+              </form>
+            </details>
+          </aside>
           <form id="liveCreateForm" class="live-create-panel">
             <h2>Maak een room</h2>
             <div class="live-settings-grid">
-              <div><label for="liveSeconds">Seconden per ronde<input id="liveSeconds" type="number" inputmode="numeric" min="5" max="3600" step="1" value="60" required></label><div class="live-presets" aria-label="Seconden per ronde"><button type="button" data-live-field="liveSeconds" data-value="30">30s</button><button type="button" data-live-field="liveSeconds" data-value="60" aria-pressed="true">60s</button><button type="button" data-live-field="liveSeconds" data-value="90">90s</button></div></div>
-              <div><label for="liveRounds">Aantal rondes<input id="liveRounds" type="number" inputmode="numeric" min="1" max="1000" step="1" value="5" required></label><div class="live-presets" aria-label="Aantal rondes"><button type="button" data-live-field="liveRounds" data-value="5" aria-pressed="true">5</button><button type="button" data-live-field="liveRounds" data-value="10">10</button><button type="button" data-live-field="liveRounds" data-value="20">20</button></div></div>
+              <div><label for="liveSeconds">Seconden per ronde<input id="liveSeconds" type="number" inputmode="numeric" min="5" max="3600" step="1" value="60" required></label></div>
+              <div><label for="liveRounds">Aantal rondes<input id="liveRounds" type="number" inputmode="numeric" min="1" max="1000" step="1" value="5" required></label></div>
             </div>
             <label for="liveVisibility">Zichtbaarheid<select id="liveVisibility"><option value="open">Open — iedereen kan meedoen</option><option value="closed">Privé — alleen met roomcode</option></select></label>
             <fieldset class="live-option-list"><legend>Spelregels</legend>
@@ -475,16 +487,7 @@
               <label class="live-option"><span><strong>Antwoorden tussen rondes</strong><small>Bekijk na elke ronde 12 seconden lang de antwoorden.</small></span><input id="liveShowRoundAnswers" type="checkbox" role="switch"><span class="live-switch" aria-hidden="true"></span></label>
             </fieldset>
             <button class="hero-cta" type="submit">Room maken →</button>
-            <p class="live-form-footnote">1 punt per gewonnen ronde. Alle antwoorden blijven na afloop beschikbaar.</p>
           </form>
-          <aside class="live-join-panel"><form id="liveJoinForm">
-              <h2>Heb je een code?</h2><p class="live-muted">Sluit je aan bij de room van je vrienden.</p>
-              <label for="liveJoinCode">Roomcode<input id="liveJoinCode" type="text" maxlength="6" minlength="6" pattern="[A-Za-z2-9]{6}" placeholder="ABC234" autocomplete="off" autocapitalize="characters" spellcheck="false" required></label>
-              <button type="submit" class="btn-check">Meedoen →</button>
-              <button id="liveResume" type="button" class="live-text-button" hidden>Terug naar je room</button>
-            </form>
-            <div class="live-section-heading"><h2>Open rooms</h2><button id="liveRefresh" type="button" class="live-text-button">Vernieuwen</button></div><div id="liveOpenGames"></div>
-          </aside>
         </div>
       </section>
       <section id="liveRoom" class="live-card" hidden>
@@ -495,7 +498,7 @@
           <fieldset class="live-option-list live-room-options"><legend>Spelregels</legend>
             <label class="live-option"><span><strong>De som moet kloppen</strong><small>Antwoorden moeten samen de juiste som vormen.</small></span><input id="liveRoomRequireEquation" type="checkbox" role="switch"><span class="live-switch" aria-hidden="true"></span></label>
             <label class="live-option"><span><strong>Antwoorden tussen rondes</strong><small>Bekijk na elke ronde 12 seconden lang de antwoorden.</small></span><input id="liveRoomShowAnswers" type="checkbox" role="switch"><span class="live-switch" aria-hidden="true"></span></label>
-            <p class="live-muted">De host kiest de regels voor iedereen.</p>
+            <p id="liveRoomRulesNote" class="live-muted">De host kiest de regels voor iedereen.</p>
           </fieldset></div>
         <p id="liveWaitingHost" class="live-muted">Wachten tot de host start…</p>
         <div class="live-actions"><button id="liveStart" type="button" class="hero-cta">Start wedstrijd →</button><span id="liveStartHint" class="live-muted"></span></div>
@@ -1125,7 +1128,7 @@
 <script src="js/puzzle-modes.js?v=61"></script>
 <script src="js/find-connection.js?v=11"></script>
 <script src="js/race.js?v=64"></script>
-<script src="js/live-rounds.js?v=4"></script>
+<script src="js/live-rounds.js?v=6"></script>
 <script src="js/submissions.js?v=41"></script>
 <script src="js/library.js?v=59"></script>
 <script src="js/site-navigation.js?v=7"></script>

@@ -78,16 +78,12 @@
 .live-setup-heading .live-intro { max-width: 560px; font-size: 15px; color: var(--ink-muted); }
 .live-create-panel > h2, .live-join-panel h2 { font-size: 19px; margin-bottom: 20px; }
 .live-settings-grid > div { min-width: 0; }
-.live-settings-grid label { margin-bottom: 8px; }
-.live-presets { display: flex; gap: 6px; margin-bottom: 22px; }
-.live-presets button { flex: 1; border: 1px solid var(--surface-border); border-radius: 7px; padding: 7px 4px; background: var(--surface); color: var(--ink-muted); font: 600 12px/1.3 'Space Mono', monospace; cursor: pointer; }
-.live-presets button[aria-pressed="true"] { background: #eeedff; border-color: #9a94e3; color: #39328c; }
-.live-join-panel { background: var(--surface-2, #f6f6fc); border: 1px solid var(--surface-border); border-radius: 16px; padding: 24px; align-self: start; }
-.live-join-panel h2 { margin-bottom: 6px; }
+.live-settings-grid label { margin-bottom: 20px; }
+.live-join-panel { display: flex; flex-direction: column; border-right: 1px solid var(--surface-border); padding: 0 28px 0 0; align-self: stretch; }
+.live-join-panel h2 { margin-bottom: 20px; }
 .live-join-panel .live-muted { margin: 0 0 22px; }
 #liveJoinCode { letter-spacing: .16em; text-transform: uppercase; font-family: 'Space Mono', monospace; font-size: 18px; }
 .live-create-panel > .hero-cta, #liveJoinForm > .btn-check { width: 100%; justify-content: center; }
-.live-form-footnote { color: var(--ink-muted); font-size: 11px; line-height: 1.6; margin: 12px 0 0; }
 .live-option-list { border: 0; min-width: 0; padding: 0; margin: 24px 0; }
 .live-option-list legend { padding: 0; margin: 0 0 4px; font-size: 13px; font-weight: 700; }
 .live-card .live-option { display: flex; align-items: center; position: relative; gap: 16px; padding: 15px 0; border-bottom: 1px solid var(--surface-border); margin: 0; cursor: pointer; }
@@ -102,10 +98,33 @@
 .live-option input:focus-visible + .live-switch { outline: 3px solid #9792ee; outline-offset: 3px; }
 .live-option:has(input:disabled) { cursor: default; }
 .live-option input:disabled + .live-switch { opacity: .65; }
-.live-join-panel .live-section-heading { padding-top: 22px; margin-top: 28px; margin-bottom: 16px; gap: 12px; }
-.live-join-panel .live-section-heading h2 { margin: 0; font-size: 15px; }
+@media(max-width: 760px) {
+  .live-join-panel { border-right: 0; border-bottom: 1px solid var(--surface-border); padding: 0 0 24px; }
+}
+.live-join-panel .live-section-heading { padding: 0; margin: 0 0 10px; border: 0; gap: 12px; }
+.live-join-panel .live-section-heading h2 { margin: 0; font-size: 21px; }
 .live-join-panel .live-text-button { font-size: 12px; }
-#liveOpenGames .live-muted { margin: 0; padding: 12px 0; font-size: 12px; }
+#liveOpenGames { flex: 1; min-height: 180px; display: flex; flex-direction: column; }
+.live-open-empty { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 32px 24px; text-align: center; background: var(--surface-2); border: 1px solid var(--surface-border); border-radius: 14px; }
+.live-open-empty-icon { display: grid; place-items: center; width: 58px; height: 58px; border-radius: 18px; background: color-mix(in srgb, var(--surface) 75%, #9792ee); color: var(--ink-muted); margin-bottom: 6px; }
+.live-open-empty-icon svg { width: 36px; height: 36px; }
+.live-open-empty h3 { margin: 0; font-size: 17px; font-weight: 600; }
+.live-open-empty p { max-width: 270px; margin: 0; color: var(--ink-muted); font-size: 13px; line-height: 1.65; }
+.live-private-join { margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--surface-border); }
+.live-private-join summary { color: var(--ink-muted); font-size: 13px; font-weight: 600; cursor: pointer; padding: 5px 0; }
+.live-private-join summary:focus-visible { outline: 3px solid #9792ee; outline-offset: 3px; }
+.live-private-join form { padding-top: 18px; }
+/* De rechterkolom bepaalt de hoogte; een open codeformulier neemt ruimte van de lijst. */
+@media(min-width: 761px) {
+  .live-join-panel { contain: size; min-height: 0; }
+  #liveOpenGames { min-height: 0; overflow-y: auto; }
+  .live-private-join { flex: none; margin-top: 18px; }
+  .live-open-empty { padding: 20px; }
+  .live-open-empty-icon { flex-shrink: 0; }
+  .live-join-panel:has(.live-private-join[open]) .live-open-empty { padding: 12px; gap: 6px; }
+  .live-join-panel:has(.live-private-join[open]) .live-open-empty-icon { display: none; }
+  .live-join-panel:has(.live-private-join[open]) .live-open-empty p { font-size: 12px; line-height: 1.5; }
+}
 #liveOpenGames .race-open-game { display: flex; justify-content: space-between; align-items: center; gap: 10px; width: 100%; margin-bottom: 8px; padding: 12px; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 10px; text-align: left; color: var(--ink); cursor: pointer; }
 #liveOpenGames .race-open-game small { display: block; margin-top: 4px; font-size: 10px; line-height: 1.5; color: var(--ink-muted); }
 #liveOpenGames .race-open-game b { white-space: nowrap; font-size: 12px; }
