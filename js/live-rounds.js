@@ -6,7 +6,7 @@
   const el = id => document.getElementById(id);
   let state = null, channel = null, heartbeat = null, clock = null, generation = 0;
   let pending = 0, queue = Promise.resolve(), offset = 0, lastSuccess = 0, rendered = '';
-  let sending = false, previousEntry = false;
+  let sending = false, previousEntry = false, waitingForRound = false;
   const remembered = () => sessionStorage.getItem('netto_live_room') || '';
   const me = () => state?.players.find(player => player.id === currentUser?.id);
   const now = () => Date.now() + offset;
@@ -314,6 +314,14 @@
 
   function render() {
     if (!state) return;
+    // Laat de lobby of vorige ronde staan tot de gedeelde starttijd is bereikt.
+    // De nieuwe vragen reizen al mee, maar krijgen geen apart laadscherm.
+    waitingForRound = state.phase==='playing' && now()<Date.parse(state.startsAt);
+    if (waitingForRound) {
+      el('liveStart').disabled=true;
+      tick();
+      return;
+    }
     el('liveSetup').hidden=true;
     el('liveRoom').hidden=state.phase!=='lobby';
     const answerReview=state.phase==='reveal'&&state.showAnswers===true;
@@ -332,7 +340,6 @@
     el('liveStart').disabled=state.players.length<2;
     el('liveWaitingHost').hidden=state.host===currentUser?.id;
     el('liveRoundLabel').textContent=copy(`Ronde ${state.round} van ${state.rounds}`,`Round ${state.round} of ${state.rounds}`);
-    el('livePreparing').hidden=Boolean(state.puzzle);
     el('liveQuestionList').hidden=!state.puzzle;
     renderPlayers();
     const key=`${state.code}:${state.phase}:${state.round}:${!!state.puzzle}:${answerReview}`;
@@ -356,14 +363,16 @@
   function tick() {
     if (!state || state.phase==='finished') return;
     const preparing=state.phase==='playing'&&now()<Date.parse(state.startsAt);
-    if (state.phase==='playing') {
-      el('livePreparing').hidden=!preparing;
-      el('liveQuestionList').hidden=preparing||!state.puzzle;
+    const stale=Date.now()-lastSuccess>6000;
+    el('liveConnection').hidden=!stale;
+    if (waitingForRound) {
+      if (!preparing) { waitingForRound=false; render(); return; }
+      el('liveSubmit').disabled=true;
+      el('liveQuestionList').querySelectorAll('input').forEach(input=>{ input.disabled=true; });
+      return;
     }
     const target=preparing?state.startsAt:state.deadline;
     const seconds=Math.max(0,Math.ceil((Date.parse(target)-now())/1000));
-    const stale=Date.now()-lastSuccess>6000;
-    el('liveConnection').hidden=!stale;
     const timer=preparing ? copy(`Start over ${seconds}…`,`Starting in ${seconds}…`) : `${Math.floor(seconds/60)}:${String(seconds%60).padStart(2,'0')}`;
     if (el('liveTimer').textContent!==timer) el('liveTimer').textContent=timer;
     if(state.phase==='reveal'&&state.showAnswers) el('liveRevealTimer').textContent=String(seconds);
@@ -387,7 +396,7 @@
     if (code && supabaseClient) supabaseClient.rpc('live_rounds',{p_action:'leave',p_code:code,p_options:{}}).then(()=>{},()=>{});
     if (channel) { signal(); supabaseClient?.removeChannel(channel); channel=null; }
     if (previousEntry) unpublishOpenRaceEntry();
-    previousEntry=false; state=null; rendered=''; sending=false;
+    previousEntry=false; state=null; rendered=''; sending=false; waitingForRound=false;
     sessionStorage.removeItem('netto_live_room');
     if (reset) setup();
   }
