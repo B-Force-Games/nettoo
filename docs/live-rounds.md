@@ -6,8 +6,9 @@
 2. Voer `supabase/live_rounds_puzzles.sql` uit. Dit importeert 274 bestaande racepuzzels in een afgeschermde servercatalogus.
 3. Voer `supabase/live_rounds_sneller_en_antwoorden.sql` uit voor de opgeslagen wedstrijdantwoorden.
 4. Voer `supabase/live_rounds_lobby_options.sql` uit voor de gedeelde lobbyinstellingen. Bij bestaande installaties met stap 3 uitgevoerd is alleen dit laatste bestand nodig.
-5. Open `/live-rounds/` met twee verschillende ingelogde accounts. Eén account kan maar één speler per room zijn; twee tabs met hetzelfde account tellen niet als twee spelers.
-6. Maak een open room of deel de zesletterige roomcode van een privéroom. De host start zodra 2–8 spelers aanwezig zijn.
+5. Voer `supabase/live_rounds_max_players.sql` uit voor de vaste spelerslimiet per room (na stap 4). De host kiest bij aanmaken 2–8 plekken, standaard 8. Deze limiet kan daarna niet worden gewijzigd. Bestaande rooms behouden 8 plekken. De host kan nog steeds starten met minimaal twee spelers; het maximum hoeft niet bereikt te zijn.
+6. Open `/live-rounds/` met twee verschillende ingelogde accounts. Eén account kan maar één speler per room zijn; twee tabs met hetzelfde account tellen niet als twee spelers.
+7. Maak een open room of deel de zesletterige roomcode van een privéroom. De host start zodra minstens twee spelers aanwezig zijn.
 
 De update verandert geen bestaande Daily-, profiel- of Race-tabellen. De nieuwe tabellen staan in het niet-publieke schema `netto_live`; alleen de RPC `public.live_rounds` is beschikbaar voor ingelogde spelers. Voeg dat private schema **niet** toe aan de exposed schemas. Publicatie van de frontend installeert de SQL niet automatisch.
 

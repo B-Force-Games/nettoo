@@ -35,6 +35,8 @@ async function main() {
   await db.exec(fs.readFileSync(path.join(root,'supabase/live_rounds_sneller_en_antwoorden.sql'),'utf8'));
   const optionsMigration=fs.readFileSync(path.join(root,'supabase/live_rounds_lobby_options.sql'),'utf8');
   await test('Lobby options migration can run twice',async()=>{await db.exec(optionsMigration);await db.exec(optionsMigration);});
+  const capacityMigration=fs.readFileSync(path.join(root,'supabase/live_rounds_max_players.sql'),'utf8');
+  await test('Capacity migration can run twice',async()=>{await db.exec(capacityMigration);await db.exec(capacityMigration);});
   await test('Canonical race puzzles imported unchanged',async()=>{
     await db.exec(fs.readFileSync(path.join(root,'supabase/live_rounds_puzzles.sql'),'utf8'));
     assert.equal((await db.query('select count(*)::int as count from netto_live.puzzles')).rows[0].count,274);
@@ -165,6 +167,21 @@ async function main() {
       assert.equal(archive.length,1);assert.equal(archive[0].puzzle.q1_answer,10);
       assert.equal(archive[0].players[0].answers[2],requireEquation?30:31);
       await db.query('delete from netto_live.rooms where code=$1',[code]);
+    }
+  });
+  await test('Capacity is validated, enforced and immutable after creation',async()=>{
+    assert.equal((await rpc(1,'available')).maxPlayers,true);
+    for(const maxPlayers of [null,1,9,2.5,'4',true]) await fails(()=>rpc(1,'create',null,{seconds:60,rounds:1,maxPlayers}),'INVALID_CAPACITY');
+    for(const maxPlayers of [2,4,8]) {
+      const room=await rpc(1,'create',null,{seconds:60,rounds:1,maxPlayers});
+      assert.equal(room.maxPlayers,maxPlayers);
+      for(let n=2;n<=maxPlayers;n++) await rpc(n,'join',room.code);
+      await fails(()=>rpc(9,'join',room.code),'ROOM_FULL');
+      await fails(()=>rpc(1,'settings',room.code,{requireEquation:true,showAnswers:false,maxPlayers:maxPlayers===8?2:8}),'CAPACITY_LOCKED');
+      assert.equal((await rpc(1,'settings',room.code,{requireEquation:false,showAnswers:true})).maxPlayers,maxPlayers);
+      await rpc(2,'leave',room.code);
+      assert.equal((await rpc(9,'join',room.code)).players.length,maxPlayers);
+      await db.query('delete from netto_live.rooms where code=$1',[room.code]);
     }
   });
   console.log(`\n${passed} Live Rondes-databasetests geslaagd.`);

@@ -15,6 +15,7 @@ async function main(){
   await db.exec(fs.readFileSync(path.join(root,'supabase/live_rounds_puzzles.sql'),'utf8'));
   await db.exec(fs.readFileSync(path.join(root,'supabase/live_rounds_sneller_en_antwoorden.sql'),'utf8'));
   await db.exec(fs.readFileSync(path.join(root,'supabase/live_rounds_lobby_options.sql'),'utf8'));
+  await db.exec(fs.readFileSync(path.join(root,'supabase/live_rounds_max_players.sql'),'utf8'));
   let queue=Promise.resolve();
   http.createServer(async(req,res)=>{
     const url=new URL(req.url,'http://127.0.0.1');

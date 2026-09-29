@@ -5,7 +5,7 @@ const vm=require('node:vm');
 const path=require('node:path');
 const source=fs.readFileSync(path.join(__dirname,'../js/live-rounds.js'),'utf8');
 async function test(supported,requireEquation,showAnswers) {
-  const nodes={liveSeconds:{value:'60'},liveRounds:{value:'5'},liveVisibility:{value:'open'},
+  const nodes={liveSeconds:{value:'60'},liveRounds:{value:'5'},liveMaxPlayers:{value:'8'},liveVisibility:{value:'open'},
     liveRequireEquation:{checked:requireEquation},liveShowRoundAnswers:{checked:showAnswers},liveMessage:{}};
   const calls=[];
   const button={disabled:false};

@@ -9,6 +9,7 @@
   const ui = {
     'Live Rondes': 'Live Rounds',
     'Spelregels': 'Game rules',
+    'Maximaal spelers': 'Max players',
     'Kies een room en speel mee.': 'Pick a room and join the game.',
     'Meedoen met een roomcode': 'Join with a room code',
     'De som moet kloppen': 'Require a valid equation',

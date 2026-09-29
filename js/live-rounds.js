@@ -26,7 +26,10 @@
     const messages = {
       LOGIN_REQUIRED: ['Log opnieuw in om te spelen.','Please sign in again to play.'],
       ROOM_NOT_FOUND: ['Deze room bestaat niet meer.','This room no longer exists.'],
-      ROOM_FULL: ['Deze room heeft al acht spelers.','This room already has eight players.'],
+      ROOM_FULL: ['Deze room is vol.','This room is full.'],
+      INVALID_CAPACITY: ['Kies maximaal 2 tot 8 spelers.','Choose a player limit from 2 to 8.'],
+      CAPACITY_LOCKED: ['Het maximum staat vast zodra de room is aangemaakt.','The player limit is fixed once the room is created.'],
+      CAPACITY_UNAVAILABLE: ['Deze server heeft nog een vaste limiet van 8 spelers. Kies 8 of voer eerst de database-update uit.','This server still has a fixed limit of 8 players. Choose 8 or install the database update first.'],
       MATCH_STARTED: ['De wedstrijd is al begonnen.','This match has already started.'],
       NOT_A_MEMBER: ['Je zit niet meer in deze room.','You are no longer in this room.'],
       HOST_ONLY: ['Alleen de host kan de room beheren.','Only the host can manage this room.'],
@@ -115,7 +118,7 @@
   function lobbyEntry() {
     if (!state || state.phase !== 'lobby' || state.visibility !== 'open' || state.host !== currentUser?.id) return null;
     return {kind:'open-live',status:'waiting',roomCode:state.code,name:raceDisplayName(),seconds:state.seconds,
-      rounds:state.rounds,requireEquation:state.requireEquation!==false,showAnswers:state.showAnswers===true,players:state.players.length,createdAt:Date.parse(state.createdAt),client_id:RACE_CLIENT_ID};
+      rounds:state.rounds,maxPlayers:state.maxPlayers||8,requireEquation:state.requireEquation!==false,showAnswers:state.showAnswers===true,players:state.players.length,createdAt:Date.parse(state.createdAt),client_id:RACE_CLIENT_ID};
   }
 
   function renderOpenGames() {
@@ -123,9 +126,9 @@
     if (!list) return;
     const entries = Object.values(raceLobbyChannel?.presenceState() || {}).flat();
     const games = [...new Map(entries.filter(entry => entry.kind==='open-live' && entry.status==='waiting'
-      && /^[A-Z2-9]{6}$/.test(entry.roomCode) && entry.client_id!==RACE_CLIENT_ID && entry.players<8)
+      && /^[A-Z2-9]{6}$/.test(entry.roomCode) && entry.client_id!==RACE_CLIENT_ID && entry.players<(entry.maxPlayers||8))
       .map(entry => [entry.roomCode,entry])).values()];
-    list.innerHTML = games.length ? games.map(game => `<button type="button" class="race-open-game" data-code="${esc(game.roomCode)}"><span>${esc(game.name)}<small>${esc(game.seconds)}s · ${esc(game.rounds)} ${roundWord(game.rounds)} · ${esc(game.players)}/8</small><small>${game.requireEquation!==false?copy('Som verplicht','Equation required'):copy('Vrije antwoorden','Free answers')} · ${game.showAnswers?copy('Met onthulling','With reveals'):copy('Snelle rondes','Quick rounds')}</small></span><b>${copy('Meedoen','Join')} →</b></button>`).join('')
+list.innerHTML = games.length ? games.map(game => `<button type="button" class="race-open-game" data-code="${esc(game.roomCode)}"><span>${esc(game.name)}<small>${esc(game.seconds)}s · ${esc(game.rounds)} ${roundWord(game.rounds)} · ${esc(game.players)}/${esc(game.maxPlayers||8)}</small><small>${game.requireEquation!==false?copy('Som verplicht','Equation required'):copy('Vrije antwoorden','Free answers')} · ${game.showAnswers?copy('Met onthulling','With reveals'):copy('Snelle rondes','Quick rounds')}</small></span><b>${copy('Meedoen','Join')} →</b></button>`).join('')
       : `<div class="live-open-empty"><span class="live-open-empty-icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="15" cy="13" r="5"/><path d="M5 31v-3a10 10 0 0 1 20 0v3M27 9a5 5 0 0 1 0 10M30 23a9 9 0 0 1 5 8"/></svg></span><h3>${raceLobbyFout?copy('Even geen verbinding','Connection interrupted'):copy('De eerste room is aan jou','Start something fun')}</h3><p>${raceLobbyFout?copy('Vernieuw om opnieuw naar open rooms te zoeken.','Refresh to look for open rooms again.'):copy('Er zijn nu geen open rooms. Maak er een aan — andere spelers kunnen hier aansluiten.','No open rooms right now. Create one — other players can join you here.')}</p></div>`;
     list.querySelectorAll('[data-code]').forEach(button => button.addEventListener('click',() => join(button.dataset.code)));
   }
@@ -153,13 +156,17 @@
     if (!requireLogin() || pending) return;
     const form = event.currentTarget;
     if (!form.reportValidity()) return;
-    const options = {seconds:Number(el('liveSeconds').value),rounds:Number(el('liveRounds').value),visibility:el('liveVisibility').value,
+    const options = {seconds:Number(el('liveSeconds').value),rounds:Number(el('liveRounds').value),maxPlayers:Number(el('liveMaxPlayers').value),visibility:el('liveVisibility').value,
       requireEquation:el('liveRequireEquation').checked,showAnswers:el('liveShowRoundAnswers').checked};
     const button=form.querySelector('[type="submit"]');
     button.disabled=true;
     try {
       const {data,error}=await supabaseClient.rpc('live_rounds',{p_action:'available',p_code:null,p_options:{}});
       if(error) throw error;
+      if(!data?.maxPlayers) {
+        if(options.maxPlayers!==8) throw Error('CAPACITY_UNAVAILABLE');
+        delete options.maxPlayers;
+      }
       if(!data?.lobbyOptions) {
         // Oudere servers kunnen prima rooms maken, maar negeren deze nieuwe opties.
         // Alleen hun werkelijke standaardregels mogen daarom worden verstuurd.
@@ -180,8 +187,9 @@
 
   async function updateSettings() {
     if(!state || typeof state.requireEquation!=='boolean' || state.phase!=='lobby' || state.host!==currentUser?.id || pending) { if(state) render(); return; }
+    const options={requireEquation:el('liveRoomRequireEquation').checked,showAnswers:el('liveRoomShowAnswers').checked};
     el('liveRoomRequireEquation').disabled=el('liveRoomShowAnswers').disabled=true;
-    await request('settings',{requireEquation:el('liveRoomRequireEquation').checked,showAnswers:el('liveRoomShowAnswers').checked});
+    await request('settings',options);
     if(state) render();
   }
 
@@ -343,7 +351,7 @@
     el('liveRoundOutcome').hidden=state.phase!=='reveal'||answerReview;
     el('liveRoomCode').textContent=state.code;
     el('liveRoomSummary').innerHTML=`<span><b>${state.seconds}s</b> ${copy('per ronde','per round')}</span><span><b>${state.rounds}</b> ${roundWord(state.rounds)}</span><span>${state.visibility==='open'?copy('Open room','Open room'):copy('Privéroom','Private room')}</span>`;
-    el('liveLobbyCount').textContent=`${state.players.length}/8`;
+    el('liveLobbyCount').textContent=`${state.players.length}/${state.maxPlayers||8}`;
     el('liveStartHint').textContent=state.players.length<2?copy('Nog één speler nodig om te beginnen.','One more player needed to start.'):copy('Iedereen speelt dezelfde puzzel.','Everyone plays the same puzzle.');
     el('liveRoomRequireEquation').checked=state.requireEquation!==false;
     el('liveRoomShowAnswers').checked=state.showAnswers===true;
