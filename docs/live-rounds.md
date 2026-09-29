@@ -4,8 +4,10 @@
 
 1. Voer `supabase/live_rounds.sql` uit in de Supabase SQL Editor.
 2. Voer `supabase/live_rounds_puzzles.sql` uit. Dit importeert 274 bestaande racepuzzels in een afgeschermde servercatalogus.
-3. Open `/live-rounds/` met twee verschillende ingelogde accounts. Eén account kan maar één speler per room zijn; twee tabs met hetzelfde account tellen niet als twee spelers.
-4. Maak een open room of deel de zesletterige roomcode van een privéroom. De host start zodra 2–8 spelers aanwezig zijn.
+3. Voer `supabase/live_rounds_sneller_en_antwoorden.sql` uit voor de opgeslagen wedstrijdantwoorden.
+4. Voer `supabase/live_rounds_lobby_options.sql` uit voor de gedeelde lobbyinstellingen. Bij bestaande installaties met stap 3 uitgevoerd is alleen dit laatste bestand nodig.
+5. Open `/live-rounds/` met twee verschillende ingelogde accounts. Eén account kan maar één speler per room zijn; twee tabs met hetzelfde account tellen niet als twee spelers.
+6. Maak een open room of deel de zesletterige roomcode van een privéroom. De host start zodra 2–8 spelers aanwezig zijn.
 
 De update verandert geen bestaande Daily-, profiel- of Race-tabellen. De nieuwe tabellen staan in het niet-publieke schema `netto_live`; alleen de RPC `public.live_rounds` is beschikbaar voor ingelogde spelers. Voeg dat private schema **niet** toe aan de exposed schemas. Publicatie van de frontend installeert de SQL niet automatisch.
 
@@ -13,11 +15,13 @@ De update verandert geen bestaande Daily-, profiel- of Race-tabellen. De nieuwe 
 
 - Standaard 60 seconden en 5 rondes. Vrije invoer binnen veiligheidsgrenzen: 5–3.600 seconden, 1–1.000 rondes.
 - Drie seconden gezamenlijke aftelling. De vragen reizen alvast mee, maar worden pas bij de start zichtbaar en invoerbaar.
-- De bestaande drie vragen en operator blijven ongewijzigd. De som moet voor iedereen kloppen, onafhankelijk van de persoonlijke instelling. Bestaande getalinvoer, autocalculator, eenheden, onderteksten, fotovermelding en kleurpaletten worden hergebruikt.
+- De host kiest of de som verplicht klopt (standaard aan) en of antwoorden tussen rondes zichtbaar zijn (standaard uit). Deze regels gelden voor iedereen, staan ook in de wachtkamer en kunnen alleen vóór de start worden veranderd. De server bewaakt de gekozen regels. De drie antwoorden blijven positieve gehele getallen.
+- Bestaande getalinvoer, autocalculator, eenheden, onderteksten, fotovermelding en kleurpaletten worden hergebruikt.
 - Eén definitieve inzending per ronde. Score: het gemiddelde van `max(schatting / antwoord, antwoord / schatting)` over drie vragen.
 - De database vergelijkt de ongeronde score; bij een gelijke score wint de vroegste serverinzending. De oplopende servervolgorde maakt zelfs gelijke timestamps deterministisch.
 - De ronde eindigt bij de deadline of zodra iedereen heeft ingezonden. Geen geldige inzending betekent geen winnaar en geen punten.
-- De reveal duurt acht seconden; daarna begint automatisch de volgende ronde. Aan het einde tellen uitsluitend rondewinsten. Gelijke eindstanden geven gedeelde winnaars. Bij nul punten wint niemand.
+- Zonder antwoordweergave duurt de uitslagoverlay vier seconden. Met antwoordweergave verschijnt twaalf seconden lang een overzicht van vragen, juiste antwoorden en inzendingen. Tijdens een lopende ronde blijven antwoorden van tegenstanders altijd verborgen. Daarna begint automatisch de volgende ronde, met één seconde voorbereiding.
+- Aan het einde tellen uitsluitend rondewinsten. Gelijke eindstanden geven gedeelde winnaars. Bij nul punten wint niemand. Alle ronde-antwoorden zijn op het eindscherm beschikbaar, ongeacht de lobbyinstelling.
 - Na het starten geen nieuwe deelnemers. Bestaande deelnemers kunnen via ‘Terug naar je room’ hervatten na een refresh.
 
 ## Bestaande infrastructuur en betrouwbaarheid

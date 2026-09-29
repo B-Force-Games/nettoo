@@ -12,6 +12,7 @@
   const now = () => Date.now() + offset;
   const format = n => Number(n).toLocaleString(nettoNumberLocale());
   const factor = n => Number(n).toLocaleString(nettoNumberLocale(), {minimumFractionDigits:2,maximumFractionDigits:2}) + '×';
+  const roundWord = count => count===1?copy('ronde','round'):copy('rondes','rounds');
 
   function requireLogin() {
     if (currentUser && supabaseClient) return true;
@@ -28,7 +29,8 @@
       ROOM_FULL: ['Deze room heeft al acht spelers.','This room already has eight players.'],
       MATCH_STARTED: ['De wedstrijd is al begonnen.','This match has already started.'],
       NOT_A_MEMBER: ['Je zit niet meer in deze room.','You are no longer in this room.'],
-      HOST_ONLY: ['Alleen de host kan starten.','Only the host can start the match.'],
+      HOST_ONLY: ['Alleen de host kan de room beheren.','Only the host can manage this room.'],
+      SETTINGS_UNAVAILABLE: ['De nieuwe roominstellingen zijn nog niet beschikbaar. Probeer het na de update opnieuw.','The new room settings are not available yet. Please try again after the update.'],
       NEED_PLAYERS: ['Wacht op minstens één andere speler.','Wait for at least one other player.'],
       ROUND_CLOSED: ['Deze ronde is nog niet gestart of al afgelopen.','This round has not started or has already ended.'],
       DISCONNECTED_ROUND: ['Verbinding verbroken: je doet vanaf de volgende ronde weer mee.','Connection lost: you can play again next round.'],
@@ -113,7 +115,7 @@
   function lobbyEntry() {
     if (!state || state.phase !== 'lobby' || state.visibility !== 'open' || state.host !== currentUser?.id) return null;
     return {kind:'open-live',status:'waiting',roomCode:state.code,name:raceDisplayName(),seconds:state.seconds,
-      rounds:state.rounds,players:state.players.length,createdAt:Date.parse(state.createdAt),client_id:RACE_CLIENT_ID};
+      rounds:state.rounds,requireEquation:state.requireEquation!==false,showAnswers:state.showAnswers===true,players:state.players.length,createdAt:Date.parse(state.createdAt),client_id:RACE_CLIENT_ID};
   }
 
   function renderOpenGames() {
@@ -123,7 +125,7 @@
     const games = [...new Map(entries.filter(entry => entry.kind==='open-live' && entry.status==='waiting'
       && /^[A-Z2-9]{6}$/.test(entry.roomCode) && entry.client_id!==RACE_CLIENT_ID && entry.players<8)
       .map(entry => [entry.roomCode,entry])).values()];
-    list.innerHTML = games.length ? games.map(game => `<button type="button" class="race-open-game" data-code="${esc(game.roomCode)}"><span>${esc(game.name)}</span><span>${esc(game.seconds)}s · ${esc(game.rounds)} ${copy('rondes','rounds')} · ${esc(game.players)}/8</span><b>${copy('Meedoen','Join')} →</b></button>`).join('')
+    list.innerHTML = games.length ? games.map(game => `<button type="button" class="race-open-game" data-code="${esc(game.roomCode)}"><span>${esc(game.name)}<small>${esc(game.seconds)}s · ${esc(game.rounds)} ${roundWord(game.rounds)} · ${esc(game.players)}/8</small><small>${game.requireEquation!==false?copy('Som verplicht','Equation required'):copy('Vrije antwoorden','Free answers')} · ${game.showAnswers?copy('Met onthulling','With reveals'):copy('Snelle rondes','Quick rounds')}</small></span><b>${copy('Meedoen','Join')} →</b></button>`).join('')
       : `<p class="live-muted">${raceLobbyFout ? copy('Lobbyverbinding verbroken. Probeer opnieuw.','Lobby connection lost. Please retry.') : copy('Nog geen open rooms. Maak de eerste.','No open rooms yet. Create the first one.')}</p>`;
     list.querySelectorAll('[data-code]').forEach(button => button.addEventListener('click',() => join(button.dataset.code)));
   }
@@ -132,6 +134,7 @@
     el('liveSetup').hidden = false;
     el('liveRoom').hidden = true;
     el('livePlay').hidden = true;
+    el('liveReveal').hidden = true;
     el('liveFinished').hidden = true;
     el('liveResume').hidden = !remembered();
     renderOpenGames();
@@ -150,8 +153,24 @@
     if (!requireLogin() || pending) return;
     const form = event.currentTarget;
     if (!form.reportValidity()) return;
-    const options = {seconds:Number(el('liveSeconds').value),rounds:Number(el('liveRounds').value),visibility:el('liveVisibility').value};
-    await request('create', options, null);
+    const options = {seconds:Number(el('liveSeconds').value),rounds:Number(el('liveRounds').value),visibility:el('liveVisibility').value,
+      requireEquation:el('liveRequireEquation').checked,showAnswers:el('liveShowRoundAnswers').checked};
+    const button=form.querySelector('[type="submit"]');
+    button.disabled=true;
+    try {
+      const {data,error}=await supabaseClient.rpc('live_rounds',{p_action:'available',p_code:null,p_options:{}});
+      if(error) throw error;
+      if(!data?.lobbyOptions) throw Error('SETTINGS_UNAVAILABLE');
+      await request('create', options, null);
+    } catch(error) { showError(error); }
+    finally { button.disabled=false; }
+  }
+
+  async function updateSettings() {
+    if(!state || state.phase!=='lobby' || state.host!==currentUser?.id || pending) { if(state) render(); return; }
+    el('liveRoomRequireEquation').disabled=el('liveRoomShowAnswers').disabled=true;
+    await request('settings',{requireEquation:el('liveRoomRequireEquation').checked,showAnswers:el('liveRoomShowAnswers').checked});
+    if(state) render();
   }
 
   async function join(code) {
@@ -171,7 +190,7 @@
     const content = state.players.map(player => {
       const status = !player.connected || player.disqualified ? copy('Niet verbonden','Disconnected')
         : player.submitted ? copy('Ingezonden','Submitted') : state.phase==='lobby' ? copy('Klaar','Ready') : copy('Bezig','Thinking');
-      return `<li class="live-player ${player.submitted ? 'is-submitted' : ''}"><span class="live-marker" aria-label="${esc(status)}">${player.submitted ? '✓' : '○'}</span><span>${esc(player.name)}${player.id===currentUser?.id ? ' · '+copy('jij','you') : ''}${state.phase==='lobby' && player.id===host ? ' · host' : ''}<small>${status}</small></span><b>${player.points}</b></li>`;
+      return `<li class="live-player ${player.submitted || state.phase==='lobby' ? 'is-submitted' : ''}"><span class="live-marker" aria-label="${esc(status)}">${state.phase==='lobby'?esc(player.name.charAt(0).toUpperCase()):player.submitted?'✓':'○'}</span><span>${esc(player.name)}${player.id===currentUser?.id ? ' · '+copy('jij','you') : ''}<small>${state.phase==='lobby' && player.id===host?'Host':status}</small></span>${state.phase==='lobby'?'':`<b>${player.points}</b>`}</li>`;
     }).join('');
     ['liveLobbyPlayers','liveRoundPlayers'].forEach(id => { if (el(id).innerHTML !== content) el(id).innerHTML=content; });
   }
@@ -198,7 +217,7 @@
     if (!state || state.phase!=='playing' || !state.puzzle || sending || me()?.submitted || me()?.disqualified) return;
     if (now()>=Date.parse(state.deadline) || now()<Date.parse(state.startsAt)) return;
     const answers=[0,1,2].map(i => parseFormattedNumber(el('liveAnswer'+i).value));
-    if (!validWholeAnswers(answers) || !validWholeEquation(answers,state.puzzle.operator)) {
+    if (!validWholeAnswers(answers) || (state.requireEquation!==false && !validWholeEquation(answers,state.puzzle.operator))) {
       showNoticeToast(errorText({message:validWholeAnswers(answers)?'EQUATION_REQUIRED':'INVALID_ANSWERS'}),'≠',copy('Controleer je antwoorden','Check your answers'));
       return;
     }
@@ -233,9 +252,26 @@
     archive.innerHTML = rounds.map(round => {
       const puzzle = round.puzzle;
       const questions = [1,2,3].map(n => `<li><span>${esc(window.NettoI18n?.t(puzzle['q'+n+'_label']) || puzzle['q'+n+'_label'])}</span><b>${format(puzzle['q'+n+'_answer'])}</b></li>`).join('');
-      const players = (round.players || []).map(player => `<tr class="${player.id===round.winner?'live-winner':''}"><th scope="row">${player.id===round.winner?'★ ':''}${esc(player.name)}</th>${[0,1,2].map(i=>`<td>${player.answers?.[i]!=null?format(player.answers[i]):'—'}</td>`).join('')}<td>${player.factor==null?'—':factor(player.factor)}</td></tr>`).join('');
+      const players = (round.players || []).map(player => `<tr class="${player.id===round.winner?'live-winner':''}"><th scope="row">${player.id===round.winner?'★ ':''}${esc(player.name)}${player.id===currentUser?.id?`<small>${copy('jij','you')}</small>`:''}</th>${[0,1,2].map(i=>`<td>${player.answers?.[i]!=null?format(player.answers[i]):'—'}</td>`).join('')}<td>${player.factor==null?'—':factor(player.factor)}</td></tr>`).join('');
       return `<article class="live-answer-round"><h2>${copy(`Ronde ${round.round}`, `Round ${round.round}`)}</h2><ul class="live-answer-questions">${questions}</ul><div class="live-table-wrap" role="region" tabindex="0" aria-label="${copy(`Antwoorden ronde ${round.round}`, `Answers for round ${round.round}`)}"><table class="live-table"><thead><tr><th scope="col">${copy('Speler','Player')}</th><th scope="col">${copy('Vraag 1','Question 1')}</th><th scope="col">${copy('Vraag 2','Question 2')}</th><th scope="col">${copy('Vraag 3','Question 3')}</th><th scope="col">${copy('Gem. factor','Avg. factor')}</th></tr></thead><tbody>${players}</tbody></table></div></article>`;
     }).join('');
+  }
+
+  function renderRoundReview() {
+    const winner=state.players.find(player=>player.id===state.winner);
+    const won=state.winner===currentUser?.id;
+    el('liveRevealRound').textContent=copy(`Ronde ${state.round} van ${state.rounds}`,`Round ${state.round} of ${state.rounds}`);
+    el('liveRevealTitle').textContent=copy('De antwoorden','The answers');
+    const banner=el('liveRevealWinner');
+    banner.classList.toggle('is-win',won);
+    banner.textContent=won?copy('✓ Ronde gewonnen! Jij zat het dichtst bij.','✓ Round won! You were closest.')
+      :winner?copy(`${winner.name} wint deze ronde.`,`${winner.name} wins this round.`):copy('Geen geldige inzendingen. Niemand krijgt een punt.','No valid submissions. No points awarded.');
+    el('liveRevealNext').textContent=state.round>=state.rounds?copy('Tot de eindstand','Until final standings'):copy('Tot de volgende ronde','Until next round');
+    const puzzle=state.puzzle;
+    if(!puzzle) return;
+    const questions=[1,2,3].map(n=>`<div class="live-reveal-answer"><span class="live-muted">${copy('Vraag','Question')} ${n}</span><p>${esc(window.NettoI18n?.t(puzzle['q'+n+'_label'])||puzzle['q'+n+'_label'])}</p><strong>${format(puzzle['q'+n+'_answer'])}</strong></div>`).join('');
+    const players=state.players.map(player=>`<tr class="${player.id===state.winner?'live-winner':''}"><th scope="row">${player.id===state.winner?'★ ':''}${esc(player.name)}${player.id===currentUser?.id?`<small>${copy('jij','you')}</small>`:''}</th>${[0,1,2].map(i=>`<td>${player.answers?.[i]!=null&&!player.disqualified?format(player.answers[i]):'—'}</td>`).join('')}<td>${player.factor==null?'—':factor(player.factor)}</td></tr>`).join('');
+    el('liveRevealContent').innerHTML=`<div class="live-reveal-answers">${questions}</div><div class="live-reveal-equation">${esc(puzzle.calculation||'')}</div><div class="live-table-wrap" role="region" tabindex="0" aria-label="${copy('Antwoorden en tussenstand','Answers and standings')}"><table class="live-table"><thead><tr><th scope="col">${copy('Speler','Player')}</th>${[1,2,3].map(n=>`<th scope="col">${copy('Vraag','Question')} ${n}</th>`).join('')}<th scope="col">${copy('Gem. factor','Avg. factor')}</th></tr></thead><tbody>${players}</tbody></table></div>`;
   }
 
   async function toggleAnswers() {
@@ -265,7 +301,9 @@
     const winners=state.players.filter(player=>player.points===best);
     el('liveFinishTitle').textContent = best===0 ? copy('Geen rondes gewonnen','No rounds won') : winners.length>1
       ? copy('Gedeelde overwinning','Joint winners') : copy(`${winners[0].name} wint!`,`${winners[0].name} wins!`);
-    el('liveFinalPlayers').innerHTML = state.players.map(player=>`<li class="live-player ${best>0&&player.points===best?'live-winner':''}"><span>${esc(player.name)}</span><b>${player.points} ${player.points===1?copy('punt','point'):copy('punten','points')}</b></li>`).join('');
+    const ranked=[...state.players].sort((a,b)=>b.points-a.points);
+    el('liveFinalPlayers').innerHTML = ranked.map(player=>`<li class="live-player ${best>0&&player.points===best?'live-winner':''}"><span class="live-rank">${1+ranked.filter(other=>other.points>player.points).length}</span><span>${esc(player.name)}${player.id===currentUser?.id?`<small>${copy('jij','you')}</small>`:''}</span><b>${player.points} <small>${player.points===1?copy('punt','point'):copy('punten','points')}</small></b></li>`).join('');
+    el('liveFinishMeta').textContent=copy(`${state.rounds} ${roundWord(state.rounds)} gespeeld met ${state.players.length} spelers.`,`${state.rounds} ${roundWord(state.rounds)} played with ${state.players.length} players.`);
     el('liveAnswerArchive').hidden=true;
     el('liveAnswerArchive').innerHTML='';
     delete el('liveAnswerArchive').dataset.loaded;
@@ -278,11 +316,18 @@
     if (!state) return;
     el('liveSetup').hidden=true;
     el('liveRoom').hidden=state.phase!=='lobby';
-    el('livePlay').hidden=!['playing','reveal'].includes(state.phase);
+    const answerReview=state.phase==='reveal'&&state.showAnswers===true;
+    el('livePlay').hidden=!['playing','reveal'].includes(state.phase)||answerReview;
+    el('liveReveal').hidden=!answerReview;
     el('liveFinished').hidden=state.phase!=='finished';
-    el('liveRoundOutcome').hidden=state.phase!=='reveal';
+    el('liveRoundOutcome').hidden=state.phase!=='reveal'||answerReview;
     el('liveRoomCode').textContent=state.code;
-    el('liveRoomSummary').textContent=`${state.seconds}s · ${state.rounds} ${copy('rondes','rounds')} · ${state.players.length}/8 · ${state.visibility==='open'?copy('Open room','Open room'):copy('Privéroom','Private room')}`;
+    el('liveRoomSummary').innerHTML=`<span><b>${state.seconds}s</b> ${copy('per ronde','per round')}</span><span><b>${state.rounds}</b> ${roundWord(state.rounds)}</span><span>${state.visibility==='open'?copy('Open room','Open room'):copy('Privéroom','Private room')}</span>`;
+    el('liveLobbyCount').textContent=`${state.players.length}/8`;
+    el('liveStartHint').textContent=state.players.length<2?copy('Nog één speler nodig om te beginnen.','One more player needed to start.'):copy('Iedereen speelt dezelfde puzzel.','Everyone plays the same puzzle.');
+    el('liveRoomRequireEquation').checked=state.requireEquation!==false;
+    el('liveRoomShowAnswers').checked=state.showAnswers===true;
+    el('liveRoomRequireEquation').disabled=el('liveRoomShowAnswers').disabled=state.host!==currentUser?.id||state.phase!=='lobby';
     el('liveStart').hidden=state.host!==currentUser?.id;
     el('liveStart').disabled=state.players.length<2;
     el('liveWaitingHost').hidden=state.host===currentUser?.id;
@@ -290,12 +335,15 @@
     el('livePreparing').hidden=Boolean(state.puzzle);
     el('liveQuestionList').hidden=!state.puzzle;
     renderPlayers();
-    const key=`${state.code}:${state.phase}:${state.round}:${!!state.puzzle}`;
+    const key=`${state.code}:${state.phase}:${state.round}:${!!state.puzzle}:${answerReview}`;
     if (rendered!==key) {
       rendered=key;
       el('liveScreen').scrollTop=0;
       if (state.phase==='playing'&&state.puzzle) renderPuzzle();
-      if (state.phase==='reveal') { if (!el('liveQuestionList').children.length) renderPuzzle(false); renderOutcome(); }
+      if (state.phase==='reveal') {
+        if(answerReview) renderRoundReview();
+        else { if (!el('liveQuestionList').children.length) renderPuzzle(false); renderOutcome(); }
+      }
       if (state.phase==='finished') { renderFinish(); el('liveFinishTitle').focus({preventScroll:true}); }
     }
     if (state.phase==='playing'&&state.mine) state.mine.forEach((value,i)=>{ if(el('liveAnswer'+i)) el('liveAnswer'+i).value=format(value); });
@@ -318,14 +366,17 @@
     el('liveConnection').hidden=!stale;
     const timer=preparing ? copy(`Start over ${seconds}…`,`Starting in ${seconds}…`) : `${Math.floor(seconds/60)}:${String(seconds%60).padStart(2,'0')}`;
     if (el('liveTimer').textContent!==timer) el('liveTimer').textContent=timer;
+    if(state.phase==='reveal'&&state.showAnswers) el('liveRevealTimer').textContent=String(seconds);
     el('liveTimer').classList.toggle('is-urgent',!preparing&&seconds<=10);
     const locked=state.phase!=='playing'||preparing||seconds===0||sending||!!me()?.submitted||!!me()?.disqualified||stale;
     el('liveSubmit').disabled=locked;
+    el('livePlay').classList.toggle('has-submitted',!!me()?.submitted);
     el('liveQuestionList').querySelectorAll('input').forEach(input=>{ input.disabled=locked; });
     el('liveSubmit').textContent=me()?.submitted ? copy('Ingezonden ✓','Submitted ✓') : sending?copy('Versturen…','Submitting…'):copy('Antwoorden inleveren','Submit answers');
     el('liveRoundHint').textContent=me()?.disqualified?copy('Je doet vanaf de volgende ronde weer mee.','You can play again next round.')
       : me()?.submitted?copy('Je antwoorden staan vast. Wachten op de anderen…','Your answers are locked in. Waiting for the others…')
-      : copy('De som moet kloppen. Je kunt één keer inleveren.','The equation must match. You can submit once.');
+      : state.requireEquation!==false?copy('De som moet kloppen. Je kunt één keer inleveren.','The equation must match. You can submit once.')
+      : copy('De som is een aanwijzing. Je antwoorden hoeven er niet aan te voldoen.','The equation is a clue. Your answers do not have to match it.');
   }
 
   function leave(reset = true) {
@@ -343,6 +394,13 @@
 
   document.addEventListener('DOMContentLoaded',()=>{
     el('liveCreateForm').addEventListener('submit',create);
+    ['liveRoomRequireEquation','liveRoomShowAnswers'].forEach(id=>el(id).addEventListener('change',updateSettings));
+    function syncPresets() {
+      document.querySelectorAll('[data-live-field]').forEach(button=>button.setAttribute('aria-pressed',String(el(button.dataset.liveField).value===button.dataset.value)));
+    }
+    document.querySelectorAll('[data-live-field]').forEach(button=>button.addEventListener('click',()=>{el(button.dataset.liveField).value=button.dataset.value;syncPresets();}));
+    ['liveSeconds','liveRounds'].forEach(id=>el(id).addEventListener('input',syncPresets));
+    syncPresets();
     el('liveJoinForm').addEventListener('submit',event=>{event.preventDefault();join(el('liveJoinCode').value);});
     el('liveStart').addEventListener('click',()=>{if(!pending) request('start');});
     el('liveResume').addEventListener('click',()=>join(remembered()));

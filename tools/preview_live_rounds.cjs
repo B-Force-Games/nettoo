@@ -13,6 +13,8 @@ async function main(){
     grant usage on schema auth to authenticated;`);
   await db.exec(fs.readFileSync(path.join(root,'supabase/live_rounds.sql'),'utf8'));
   await db.exec(fs.readFileSync(path.join(root,'supabase/live_rounds_puzzles.sql'),'utf8'));
+  await db.exec(fs.readFileSync(path.join(root,'supabase/live_rounds_sneller_en_antwoorden.sql'),'utf8'));
+  await db.exec(fs.readFileSync(path.join(root,'supabase/live_rounds_lobby_options.sql'),'utf8'));
   let queue=Promise.resolve();
   http.createServer(async(req,res)=>{
     const url=new URL(req.url,'http://127.0.0.1');
@@ -20,12 +22,14 @@ async function main(){
       let body='';for await(const chunk of req){body+=chunk;if(body.length>16384){res.writeHead(413).end();return;}}
       const task=queue.catch(()=>{}).then(async()=>{
         try {
-          const {player,params}=JSON.parse(body);
+          const {player,params,name}=JSON.parse(body);
           if(!Number.isInteger(player)||player<1||player>9)throw Error('INVALID_TEST_PLAYER');
           await db.query("select set_config('request.jwt.claim.sub',$1,false),set_config('request.jwt.claims',$2,false)",[
             `00000000-0000-4000-8000-${String(player).padStart(12,'0')}`,JSON.stringify({user_metadata:{username:'Tester '+player}})]);
           await db.exec('set role authenticated');
-          const result=await db.query('select public.live_rounds($1,$2,$3::jsonb) as state',[params.p_action,params.p_code,JSON.stringify(params.p_options)]);
+          const result=name==='live_rounds_results'
+            ?await db.query('select public.live_rounds_results($1) as state',[params.p_code])
+            :await db.query('select public.live_rounds($1,$2,$3::jsonb) as state',[params.p_action,params.p_code,JSON.stringify(params.p_options)]);
           res.setHeader('Content-Type','application/json');res.end(JSON.stringify({data:result.rows[0].state,error:null}));
         }catch(error){res.setHeader('Content-Type','application/json');res.end(JSON.stringify({data:null,error:{message:error.message}}));}
         finally {await db.exec('reset role');}

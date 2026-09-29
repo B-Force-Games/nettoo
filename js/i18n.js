@@ -8,6 +8,17 @@
 
   const ui = {
     'Live Rondes': 'Live Rounds',
+    'Spelregels': 'Game rules',
+    'De som moet kloppen': 'Require a valid equation',
+    'Antwoorden moeten samen de juiste som vormen.': 'Your three answers must form a valid equation.',
+    'Antwoorden tussen rondes': 'Reveal answers between rounds',
+    'Bekijk na elke ronde 12 seconden lang de antwoorden.': 'Show a 12-second answer review after each round.',
+    '1 punt per gewonnen ronde. Alle antwoorden blijven na afloop beschikbaar.': '1 point per round won. All answers are available after the match.',
+    'Heb je een code?': 'Got a room code?',
+    'Sluit je aan bij de room van je vrienden.': 'Join your friends and play together.',
+    'Samen aan de start': 'Ready together',
+    'Deel deze code': 'Share this code',
+    'De host kiest de regels voor iedereen.': 'The host chooses the rules for everyone.',
     'Dezelfde puzzel. Dezelfde klok. Wie zit er het dichtst bij?': 'Same puzzle. Same clock. Who comes closest?',
     '2–8 spelers': '2–8 players',
     '1 punt per gewonnen ronde': '1 point per round won',
