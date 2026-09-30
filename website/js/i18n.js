@@ -45,6 +45,7 @@
     'Terug naar je room': 'Return to your room',
     'Open rooms': 'Open rooms',
     'Vernieuwen': 'Refresh',
+    'Rooms vernieuwen': 'Refresh rooms',
     'Wachtkamer': 'Lobby',
     'Code kopiëren': 'Copy code',
     'Spelers': 'Players',
