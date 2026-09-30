@@ -192,11 +192,17 @@
         ? 'Geen verbinding met de server, dus open games zijn nu niet te zien. Solo spelen kan wel.'
         : raceLobbyFout
           ? 'De verbinding met de lobby is weggevallen. Ververs om het opnieuw te proberen.'
-          : 'Nog geen open games. Maak de eerste.';
+          : 'Maak een game aan — andere spelers kunnen hier aansluiten.';
       list.innerHTML = '';
       const div = document.createElement('div');
       div.className = 'race-open-games-empty';
-      div.textContent = melding;
+      const title = document.createElement('strong');
+      title.textContent = !supabaseClient || raceLobbyFout
+        ? statsCopy('Even geen verbinding', 'Connection interrupted')
+        : statsCopy('Nog geen open games', 'No open games yet');
+      const description = document.createElement('span');
+      description.textContent = melding;
+      div.append(title, description);
       list.appendChild(div);
       return;
     }
@@ -355,9 +361,12 @@
       const active = button.id === `raceMode${mode[0].toUpperCase() + mode.slice(1)}Tab`;
       button.classList.toggle('active', active);
       button.setAttribute('aria-selected', active ? 'true' : 'false');
+      button.tabIndex = active ? 0 : -1;
     });
     document.getElementById('raceSoloSetup').style.display = mode === 'solo' ? 'block' : 'none';
     document.getElementById('raceOnlineSetup').style.display = mode === 'online' ? 'block' : 'none';
+    document.getElementById('raceSetupPlayerCount').textContent = mode === 'online' ? statsCopy('2 spelers', '2 players') : statsCopy('1 speler', '1 player');
+    document.querySelector('#raceStart .race-mode-tabs').hidden = false;
     renderRaceModeControls();
     if (mode === 'online') {
       ensureRaceLobby();
@@ -379,7 +388,7 @@
   }
 
   // Aan/uit-schakelaar in de online-tab: AAN = open game (zichtbaar in de lijst
-  // rechts), UIT = closed game (persoonlijke code, start nooit automatisch).
+  // met open games), UIT = closed game (persoonlijke code, start nooit automatisch).
   function toggleOnlineVisibility(open) {
     const isOpen = open !== false && open !== 'closed';
     raceOnlineVisibility = isOpen ? 'open' : 'closed';
@@ -389,8 +398,8 @@
     const sub = document.getElementById('raceVisibilitySub');
     if (title) title.textContent = isOpen ? 'Open game' : 'Closed game';
     if (sub) sub.textContent = isOpen
-      ? 'Iedereen ziet jouw game in de lijst rechts en kan direct joinen. Start automatisch na 20 seconden.'
-      : 'Alleen spelers met jouw persoonlijke code kunnen meedoen. Er start niets automatisch.';
+      ? statsCopy('Zichtbaar voor iedereen. Start 20 seconden nadat iemand meedoet.','Visible to everyone. Starts 20 seconds after someone joins.')
+      : statsCopy('Alleen met jouw code. Jij start zodra iedereen klaar is.','Only with your code. You start when everyone is ready.');
     const openControls = document.getElementById('raceOpenControls');
     const closedControls = document.getElementById('raceClosedControls');
     if (openControls) openControls.style.display = isOpen ? 'block' : 'none';
@@ -893,6 +902,7 @@
   }
 
   function showRaceDuelRoom(code) {
+    document.querySelector('#raceStart .race-mode-tabs').hidden = true;
     const setup = document.getElementById('raceDuelSetup');
     const room = document.getElementById('raceDuelRoom');
     if (setup) setup.style.display = 'none';
@@ -962,3 +972,15 @@
     const startEl = document.getElementById('raceStart');
     if (startEl && startEl.style.display !== 'none') switchRaceMode(raceMode);
   }
+
+  // Tabs zijn ook volledig bedienbaar met pijltjestoetsen, Home en End.
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabs = Array.from(document.querySelectorAll('#raceStart .race-mode-tab'));
+    tabs.forEach((tab, index) => tab.addEventListener('keydown', event => {
+      if (event.ctrlKey || event.metaKey || event.altKey || !['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      const next = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+      switchRaceMode(next === 0 ? 'solo' : 'online');
+      tabs[next].focus();
+    }));
+  });

@@ -40,10 +40,10 @@
 <script src="data/netto_race_pool.js?v=43"></script>
 <script src="data/netto_breinkrakers.js?v=30"></script>
 <script src="data/netto_translations_en.js?v=50"></script>
-<script src="js/i18n.js?v=81"></script>
+<script src="js/i18n.js?v=82"></script>
 <link rel="stylesheet" href="css/styles.css?v=62">
 <link rel="stylesheet" href="css/refinement.css?v=166">
-<link rel="stylesheet" href="css/live-rounds.css?v=5">
+<link rel="stylesheet" href="css/live-rounds.css?v=9">
 <link rel="stylesheet" href="css/stats-page.css?v=5">
 
 </head>
@@ -533,15 +533,14 @@
       <div class="library-page-top"><button class="library-home" onclick="goHome()">Netto</button><span class="library-page-kicker">NETTO · PUZZEL RACE</span></div>
 
       <section class="race-panel race-start-panel" id="raceStart">
+        <header class="race-setup-heading"><div><h1>Puzzel Race</h1><p>Speel tegen de klok. Alleen of met een tegenstander.</p></div><span class="live-player-count" id="raceSetupPlayerCount">1 speler</span></header>
         <div class="race-mode-tabs" role="tablist" aria-label="Puzzel Race modus">
-          <button class="race-mode-tab active" id="raceModeSoloTab" type="button" role="tab" aria-selected="true" onclick="switchRaceMode('solo')">Solo</button>
-          <button class="race-mode-tab" id="raceModeOnlineTab" type="button" role="tab" aria-selected="false" onclick="switchRaceMode('online')">Online spelen</button>
+          <button class="race-mode-tab active" id="raceModeSoloTab" type="button" role="tab" aria-selected="true" aria-controls="raceSoloSetup" onclick="switchRaceMode('solo')">Solo</button>
+          <button class="race-mode-tab" id="raceModeOnlineTab" type="button" role="tab" aria-selected="false" aria-controls="raceOnlineSetup" tabindex="-1" onclick="switchRaceMode('online')">Online spelen</button>
         </div>
 
-        <section class="race-mode-panel" id="raceSoloSetup" role="tabpanel">
-          <div class="race-kicker">NETTO · PUZZEL RACE</div>
-          <h1 class="race-title">Puzzel <span class="script">Race.</span></h1>
-          <p class="race-intro">Los zoveel mogelijk puzzels op voordat de tijd om is. Kies je tijd en hoe precies je moet schatten.</p>
+        <section class="race-mode-panel" id="raceSoloSetup" role="tabpanel" aria-labelledby="raceModeSoloTab">
+          <p class="race-intro">Los zoveel mogelijk puzzels op voordat de tijd om is.</p>
           <div class="race-config-grid">
             <div class="race-config-card">
               <span class="race-config-label">Tempo</span>
@@ -564,12 +563,22 @@
           <button class="hero-cta race-start-button" type="button" onclick="startPuzzleRace()">Start solo race <span aria-hidden="true">→</span></button>
         </section>
 
-        <section class="race-mode-panel" id="raceOnlineSetup" role="tabpanel" style="display:none;">
-          <div class="race-kicker">NETTO · PLAY ONLINE</div>
-          <h2 class="race-mode-heading">Vind een tegenstander.</h2>
-          <p class="race-intro">Speel met iedereen in een open spel, of deel een code met vrienden.</p>
+        <section class="race-mode-panel" id="raceOnlineSetup" role="tabpanel" aria-labelledby="raceModeOnlineTab" style="display:none;">
           <div class="race-online-layout">
+            <aside class="race-open-games">
+              <div class="race-open-games-heading"><h2>Open games</h2><button type="button" onclick="refreshOpenGames()" aria-label="Open games vernieuwen">↻</button></div>
+              <p class="race-lobby-intro">Kies een game en daag iemand uit.</p>
+              <div id="raceOpenGamesList" class="race-open-games-list" aria-live="polite"><div class="race-open-games-empty">Open games laden…</div></div>
+              <details class="live-private-join"><summary>Meedoen met een roomcode</summary>
+                <form class="race-duel-join race-online-code-join" onsubmit="event.preventDefault();joinRaceRoom('raceOnlineJoinCode')">
+                  <label for="raceOnlineJoinCode" class="sr-only">Roomcode</label>
+                  <input type="text" id="raceOnlineJoinCode" maxlength="6" minlength="6" required pattern="[A-Za-z2-9]{6}" placeholder="ABC234" autocomplete="off" autocapitalize="characters" spellcheck="false">
+                  <button type="submit">Meedoen →</button>
+                </form>
+              </details>
+            </aside>
             <div class="race-online-controls">
+              <h2>Maak een game</h2>
               <div class="race-config-card">
                 <span class="race-config-label">Tijd</span>
                 <div class="race-duration-options" id="raceOnlineDurations">
@@ -591,10 +600,10 @@
                 <div class="race-visibility-row">
                   <div class="race-visibility-copy">
                     <b id="raceVisibilityTitle">Open game</b>
-                    <small id="raceVisibilitySub">Iedereen ziet jouw game in de lijst rechts en kan direct joinen.</small>
+                    <small id="raceVisibilitySub">Zichtbaar voor iedereen. Start 20 seconden nadat iemand aansluit.</small>
                   </div>
                   <label class="race-switch">
-                    <input type="checkbox" id="raceVisibilityCheckbox" checked onchange="toggleOnlineVisibility(this.checked)">
+                    <input type="checkbox" id="raceVisibilityCheckbox" checked aria-label="Open game" onchange="toggleOnlineVisibility(this.checked)">
                     <span class="race-switch-track"><span class="race-switch-thumb"></span></span>
                   </label>
                 </div>
@@ -602,32 +611,19 @@
                   <button class="btn-check race-online-create" type="button" onclick="createOpenRaceGame()">Maak open game →</button>
                 </div>
                 <div id="raceClosedControls" style="display:none;">
-                  <small>Een closed game werkt met een persoonlijke code en start nooit automatisch.</small>
                   <button class="btn-check race-online-create" type="button" onclick="createClosedRaceGame('online')">Maak closed game →</button>
                 </div>
               </div>
             </div>
-            <aside class="race-open-games" aria-live="polite">
-              <div class="race-open-games-heading"><div><span class="race-config-label">OPEN GAMES</span><h3>Wie speelt er?</h3></div><button type="button" onclick="refreshOpenGames()" aria-label="Open games vernieuwen">↻</button></div>
-              <div id="raceOpenGamesList" class="race-open-games-list"><div class="race-open-games-empty">Open games laden…</div></div>
-            </aside>
           </div>
 
-          <div class="race-config-card race-joinbar">
-            <span class="race-config-label">Sluit aan met een code</span>
-            <p class="race-joinbar-text">Heb je een code gekregen van iemand? Vul hem hier in en je komt direct in de closed game.</p>
-            <div class="race-duel-join race-online-code-join">
-              <input type="text" id="raceOnlineJoinCode" maxlength="6" placeholder="CODE" autocomplete="off" aria-label="Room-code">
-              <button type="button" onclick="joinRaceRoom('raceOnlineJoinCode')">Join →</button>
-            </div>
-          </div>
         </section>
 
 
         <div class="race-duel-room" id="raceDuelRoom" style="display:none;">
           <div class="race-open-room-note" id="raceOpenRoomNote" style="display:none;">
             <b>🌐 Open game actief</b>
-            <span>Jouw game staat in de lijst "Wie speelt er?" rechts. Andere spelers joinen direct — zodra er iemand binnen is, telt het duel automatisch af (of je start zelf).</span>
+            <span>Jouw game staat bij Open games. Zodra iemand meedoet, begint het aftellen.</span>
           </div>
           <div class="race-duel-code-row" id="raceDuelCodeRow">
             <div>
@@ -1130,7 +1126,7 @@
 <script src="js/core.js?v=132"></script>
 <script src="js/puzzle-modes.js?v=61"></script>
 <script src="js/find-connection.js?v=11"></script>
-<script src="js/race.js?v=64"></script>
+<script src="js/race.js?v=65"></script>
 <script src="js/live-rounds.js?v=7"></script>
 <script src="js/submissions.js?v=41"></script>
 <script src="js/library.js?v=59"></script>

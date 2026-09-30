@@ -74,6 +74,18 @@
 .live-answer-questions b { flex: none; font-family: 'Space Mono', monospace; }
 /* De lobby groepeert kiezen, aansluiten en wachten zonder extra schermstappen. */
 .live-setup-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; margin-bottom: 32px; }
+/* Rustige blauwgrijze lobby met duidelijk afgebakende witte bedieningsvlakken. */
+#liveSetup { --surface-border: color-mix(in srgb, var(--surface) 64%, var(--ink)); --ink-muted: color-mix(in srgb, var(--ink) 78%, var(--surface)); background: color-mix(in srgb, var(--surface) 84%, #6689a9); }
+#liveSetup .live-create-panel { background: var(--surface); padding: 24px; border: 1px solid var(--surface-border); border-radius: 16px; box-shadow: 0 5px 18px #132d4810; }
+#liveSetup .live-join-panel { border: 0; padding: 0; }
+#liveSetup .live-open-empty { background: color-mix(in srgb, var(--surface) 67%, #6689a9); border-color: var(--surface-border); }
+#liveSetup .live-open-empty-icon { background: color-mix(in srgb, var(--surface) 45%, #ffdf48); color: var(--ink); }
+#liveSetup .live-private-join { border-color: var(--surface-border); }
+#liveSetup .live-setup-grid { gap: 24px; }
+#liveSetup > .live-setup-heading { padding-bottom: 24px; margin-bottom: 24px; border-bottom: 1px solid var(--surface-border); }
+@media(max-width: 760px) {
+  #liveSetup .live-create-panel { padding: 18px; }
+}
 .live-player-count { flex: none; padding: 7px 11px; border-radius: 8px; background: var(--surface-2); color: var(--ink-muted); font: 600 12px/1.5 'Space Mono', monospace; }
 .live-setup-heading .live-intro { max-width: 560px; font-size: 15px; color: var(--ink-muted); }
 .live-create-panel > h2, .live-join-panel h2 { font-size: 19px; margin-bottom: 20px; }
@@ -180,6 +192,66 @@
   #liveQuestionList .q-block { padding: 14px; }
   #liveQuestionList .puzzelfoto { width: 104px; }
   #liveQuestionList .puzzelfoto img { height: 80px; }
+}
+
+/* Beide racevarianten delen één rustige lobby; de spelkaart blijft ongewijzigd. */
+#raceStart { --surface-border: color-mix(in srgb, var(--surface) 64%, var(--ink)); --ink-muted: color-mix(in srgb, var(--ink) 78%, var(--surface)); max-width: 980px; margin-inline: auto; padding: clamp(20px, 3vw, 32px); background: color-mix(in srgb, var(--surface) 84%, #6689a9); }
+.race-setup-heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; padding-bottom: 24px; margin-bottom: 24px; border-bottom: 1px solid var(--surface-border); }
+.race-setup-heading h1 { font-size: clamp(25px, 4vw, 40px); line-height: 1.15; margin: 0 0 14px; }
+.race-setup-heading p { margin: 0; font-size: 15px; line-height: 1.5; color: var(--ink-muted); }
+#raceStart .race-mode-tabs { min-width: 0; width: fit-content; max-width: 100%; margin-bottom: 24px; background: color-mix(in srgb, var(--surface) 65%, #6689a9); border: 1px solid var(--surface-border); }
+#raceStart .race-mode-tabs[hidden] { display: none; }
+#raceStart .race-mode-tab { min-height: 44px; padding: 10px 24px; color: var(--ink-muted); font-size: 14px; white-space: nowrap; }
+#raceStart .race-mode-tab.active { background: var(--ink); color: var(--surface); }
+#raceStart button:focus-visible, #raceStart input:focus-visible { outline: 3px solid #7777ff; outline-offset: 3px; }
+#raceStart .race-intro { margin-top: 0; font-size: 15px; color: var(--ink-muted); }
+#raceStart .race-config-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-bottom: 20px; }
+#raceStart .race-config-card { background: var(--surface); border: 1px solid var(--surface-border); padding: 22px; border-radius: 14px; }
+#raceStart .race-config-label { font-size: 11px; color: var(--ink-muted); margin-bottom: 14px; }
+#raceStart .race-duration-options { gap: 8px; }
+#raceStart .race-duration-options button { min-height: 66px; background: var(--surface); border: 1px solid var(--surface-border); color: var(--ink-muted); }
+#raceStart .race-duration-options button.active { background: #ffdf48; border-color: #a88b1b; color: #171737; }
+#raceStart .race-duration-options button.active b { color: #171737; }
+#raceStart .race-tolerance-labels button { min-height: 44px; padding: 6px 2px; }
+#raceStart .race-tolerance-labels .active { background: color-mix(in srgb, var(--surface) 78%, #6689a9); }
+#raceStart .race-tolerance-labels small { font-size: 10px; margin-top: 3px; }
+#raceStart .race-tolerance-note { color: var(--ink-muted); margin-bottom: 0; }
+#raceStart .race-best { color: var(--ink-muted); margin: 16px 0; line-height: 1.5; }
+#raceStart .race-online-layout { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 24px; align-items: stretch; }
+#raceStart .race-online-controls { min-width: 0; padding: 24px; border: 1px solid var(--surface-border); border-radius: 16px; background: var(--surface); box-shadow: 0 5px 18px #132d4810; }
+#raceStart .race-online-controls > h2, #raceStart .race-open-games-heading h2 { font-size: 21px; line-height: 1.3; margin: 0; }
+#raceStart .race-online-controls > h2 { margin-bottom: 24px; }
+#raceStart .race-online-controls .race-config-card { padding: 0; border: 0; border-radius: 0; margin-bottom: 24px; }
+#raceStart .race-online-controls .race-config-card:last-child { margin-bottom: 0; padding-top: 20px; border-top: 1px solid var(--surface-border); }
+#raceStart .race-online-create { min-height: 48px; margin-top: 22px; }
+#raceStart .race-visibility-copy small { color: var(--ink-muted); line-height: 1.5; }
+#raceStart .race-switch input:focus-visible + .race-switch-track { outline: 3px solid #7777ff; outline-offset: 3px; }
+#raceStart .race-open-games { display: flex; flex-direction: column; min-width: 0; padding: 0; border: 0; background: none; }
+#raceStart .race-open-games-heading { margin-bottom: 6px; }
+#raceStart .race-open-games-heading button { min-width: 44px; min-height: 44px; border: 1px solid var(--surface-border); border-radius: 9px; background: var(--surface); color: var(--ink); font-size: 22px; cursor: pointer; }
+#raceStart .race-lobby-intro { margin: 0 0 20px; color: var(--ink-muted); font-size: 13px; line-height: 1.5; }
+#raceStart .race-open-games-list { flex: 1; display: flex; flex-direction: column; gap: 8px; max-height: none; min-height: 180px; }
+#raceStart .race-open-games-empty { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; text-align: center; padding: 28px; border: 1px solid var(--surface-border); border-radius: 14px; background: color-mix(in srgb, var(--surface) 67%, #6689a9); color: var(--ink-muted); font: 400 13px/1.65 'Space Grotesk', sans-serif; }
+#raceStart .race-open-games-empty strong { color: var(--ink); font-size: 17px; font-weight: 600; }
+#raceStart .race-open-game { flex: none; padding: 16px; background: var(--surface); border: 1px solid var(--surface-border); }
+#raceStart .race-online-code-join { display: flex; gap: 8px; margin: 0; }
+#raceStart .race-online-code-join input { width: 0; min-width: 0; flex: 1; min-height: 46px; letter-spacing: .12em; text-transform: uppercase; }
+#raceStart .race-online-code-join button { min-height: 46px; padding-inline: 14px; }
+#raceStart .race-online-code-join label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+#liveSetup .live-text-button, .live-private-join summary { min-height: 44px; align-content: center; }
+.live-player-count { font-variant-numeric: tabular-nums; }
+@media(min-width: 761px) {
+  #raceStart .race-open-games { contain: size; }
+  #raceStart .race-open-games-list { min-height: 0; overflow-y: auto; }
+}
+@media(max-width: 760px) {
+  #raceStart .race-config-grid, #raceStart .race-online-layout { grid-template-columns: minmax(0, 1fr); }
+  #raceStart .race-online-controls, #raceStart .race-config-card { padding: 18px; }
+  .race-setup-heading { flex-wrap: wrap; gap: 12px; }
+  #raceStart .race-mode-tabs { width: 100%; }
+  #raceStart .race-mode-tab { padding-inline: 16px; }
+  #raceStart .race-open-games-empty { min-height: 180px; padding: 24px; }
+  #raceStart .race-start-button { width: 100%; justify-content: center; }
 }
 
 /* Tijdens het spelen krijgt de puzzel voorrang op de omringende bediening. */
